@@ -25,6 +25,7 @@ public class Run {
         while(!(runOrders = openedMenu.openMenu()).equals(RunOrders.EXIT)) {
             setOpenMenu(getMenuByEnum(runOrders));
         }
+        System.out.println("thanks for trusting us!");
     }
     //a helping method for getting Menu by enum
     private Menu getMenuByEnum(RunOrders runOrders) {
