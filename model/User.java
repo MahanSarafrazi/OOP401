@@ -1,5 +1,8 @@
 package model;
 
-public abstract class User {
-    public abstract void newUser (String userName , String password) ;
+public class User {
+    protected String userName ;
+    protected String pass ;
+    public String getUserName () {return userName ;}
+    public String getPass () {return pass ;}
 }
