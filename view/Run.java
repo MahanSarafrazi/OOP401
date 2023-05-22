@@ -7,6 +7,9 @@ public class Run {
     private static Run run;
 
     public static Run getRun() {
+        if(run == null) {
+            run = new Run();
+        }
         return run;
     }
     //setting openedMenu
@@ -18,6 +21,19 @@ public class Run {
     //running the program from scratch
     public void running() {
         setOpenMenu(LoginMenu.getLoginMenu());
-        openedMenu.openMenu();
+        RunOrders runOrders;
+        while(!(runOrders = openedMenu.openMenu()).equals(RunOrders.EXIT)) {
+            setOpenMenu(getMenuByEnum(runOrders));
+        }
+    }
+    //a helping method for getting Menu by enum
+    private Menu getMenuByEnum(RunOrders runOrders) {
+        switch (runOrders) {
+            case LOGIN_MENU -> {
+                return LoginMenu.getLoginMenu();
+            }
+        }
+        //not used
+        return null;
     }
 }

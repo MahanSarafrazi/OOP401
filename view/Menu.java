@@ -1,7 +1,7 @@
 package view;
 
 public abstract class Menu {
-    public void openMenu() {
-
+    public RunOrders openMenu() {
+        return null;
     }
 }

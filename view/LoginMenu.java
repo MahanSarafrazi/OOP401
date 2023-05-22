@@ -7,6 +7,9 @@ public class LoginMenu extends Menu {
     private static LoginMenu loginMenu;
 
     public static LoginMenu getLoginMenu() {
+        if(loginMenu == null) {
+            loginMenu = new LoginMenu();
+        }
         return loginMenu;
     }
 
