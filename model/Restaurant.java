@@ -29,6 +29,20 @@ public class Restaurant {
          //*************************************************************
      public ArrayList<FoodType> ShowFoodType (){return foodTypes;}
      private ArrayList<Food> foods ;
+     public void AddFood(String NameFood, double PriceName){
+         Food food=new Food(NameFood,PriceName);
+         foods.add(food);
+     }
+     public void DeleteFood(long IDCode){
+         for (int i = 0; i < foods.size(); i++) {
+             if(foods.get(i).getID()==IDCode){
+                 foods.remove(i);
+             }
+         }
+     }
+
+
+
 
 
 
