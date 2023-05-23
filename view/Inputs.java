@@ -19,4 +19,15 @@ public enum Inputs {
     Inputs(String s) {
         this.commandingPattern = Pattern.compile(s);
     }
+
+    public static Pattern[] getPatterns() {
+
+        Pattern[] patterns = new Pattern[values().length];
+
+        for(int i = 0; i < values().length; ++i) {
+            patterns[i] = values()[i].commandingPattern;
+        }
+
+        return patterns;
+    }
 }
