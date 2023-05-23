@@ -1,13 +1,11 @@
 package controller;
 
-import model.Admin;
-import model.Customer;
-import model.User;
+import model.*;
 import view.Inputs;
 import view.Output;
 
 public class Manager {
-    private static Output checkValidLogin (String userName , String pass , Inputs input) {
+    /*private static Output checkValidLogin (String userName , String pass , Inputs input) {
         Output output ;
         if (input == Inputs.LOGIN_CUSTOMER) {
             Customer customer = Customer.getCustomerByUserName(userName);
@@ -49,5 +47,44 @@ public class Manager {
             }
         }
         return true ;
+    }*/
+    public Output addCustomer(String username, String password) {
+        for (Customer customer : UserList.getUserListInstance().getCustomers()) {
+            if(customer.getUserName().equals(username)) {
+                return Output.INVALID_USER_NAME;
+            }
+        }
+        Customer.newCustomer(username, password);
+        return Output.INVALID_PASSWORD;
+    }
+
+    public Output addAdmin(String username, String password) {
+        for (Admin admin : UserList.getUserListInstance().getAdmins()) {
+            if(admin.getUserName().equals(username)) {
+                return Output.INVALID_USER_NAME;
+            }
+        }
+        Admin.newAdmin(username, password);
+        return Output.INVALID_PASSWORD;
+    }
+
+    public Output addDeliverer(String username, String password) {
+        for (Deliverer deliverer : UserList.getUserListInstance().getDeliverers()) {
+            if(deliverer.getUserName().equals(username)) {
+                return Output.INVALID_USER_NAME;
+            }
+        }
+        Deliverer.newDeliverer(username, password);
+        return Output.INVALID_PASSWORD;
+    }
+
+    public Output addRestaurantOwner(String username, String password) {
+        for (RestaurantOwner restaurantOwner : UserList.getUserListInstance().getRestaurantOwners()) {
+            if(restaurantOwner.getUserName().equals(username)) {
+                return Output.INVALID_USER_NAME;
+            }
+        }
+        RestaurantOwner.newRestaurantOwner(username, password);
+        return Output.INVALID_PASSWORD;
     }
 }

@@ -27,6 +27,7 @@ public class Run {
         }
         System.out.println("thanks for trusting us!");
     }
+
     //a helping method for getting Menu by enum
     private Menu getMenuByEnum(RunOrders runOrders) {
         switch (runOrders) {

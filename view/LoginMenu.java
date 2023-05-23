@@ -52,15 +52,29 @@ public class LoginMenu extends Menu {
     }
     // passing to manager
     private void processAddCustomer(String username, String password) {
-        System.out.println("cus");
+        outputPrinter(manager.addCustomer(username, password));
     }
     private void processAddAdmin(String username, String password) {
-        System.out.println("ad");
+        outputPrinter(manager.addAdmin(username, password));
     }
     private void processAddDeliverer(String username, String password) {
-        System.out.println("del");
+        outputPrinter(manager.addDeliverer(username, password));
     }
     private void processAddRestaurantOwner(String username, String password) {
-        System.out.println("res");
+        outputPrinter(manager.addRestaurantOwner(username, password));
+    }
+
+
+    //OutputPrinter
+    private void outputPrinter(Output output) {
+        switch (output) {
+            case INVALID_USER_NAME -> {
+                System.out.println("user name is invalid");
+            } case INVALID_PASSWORD -> {
+                System.out.println("password is invalid");
+            } case SUCCESSFUL_LOGIN -> {
+                System.out.println("logged in successfully");
+            }
+        }
     }
 }
