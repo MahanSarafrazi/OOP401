@@ -74,6 +74,8 @@ public class LoginMenu extends Menu {
                 System.out.println("password is invalid");
             } case SUCCESSFUL_LOGIN -> {
                 System.out.println("logged in successfully");
+            } case SUCCESSFUL_REGISTER -> {
+                System.out.println("registered successfully");
             }
         }
     }
