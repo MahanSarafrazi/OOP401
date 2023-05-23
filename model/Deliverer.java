@@ -5,13 +5,10 @@ public class Deliverer extends User {
         Deliverer deliverer = new Deliverer (userName , pass);
         userList.deliverers.add(deliverer);
     }
-    private Deliverer (String userName , String pass) {
-        this.userName = userName ;
-        this.pass = pass ;
-    }
-    public Deliverer getDeliverer (String pass) {
+    private Deliverer (String userName , String pass) {super(userName, pass);}
+    public Deliverer getDelivererByUserName (String userName) {
         for (Deliverer deliverer : userList.deliverers)
-            if (deliverer.pass.equals(pass))
+            if (deliverer.userName.equals(userName))
                 return deliverer;
         return null;
     }

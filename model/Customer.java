@@ -6,13 +6,11 @@ public class Customer extends User {
         userList.customers.add(customer);
         return customer ;
     }
-    private Customer (String userName , String pass) {
-        this.userName = userName ;
-        this.pass = pass ;
+    private Customer (String userName , String pass) {super(userName, pass);
     }
-    public Customer getCustomer (String pass) {
+    public Customer getCustomerByUserName (String userName) {
         for (Customer customer : userList.customers)
-            if (customer.pass.equals(pass))
+            if (customer.userName.equals(userName))
                 return customer;
         return null;
     }

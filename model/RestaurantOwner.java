@@ -5,13 +5,10 @@ public class RestaurantOwner extends User {
         RestaurantOwner restaurantOwner = new RestaurantOwner (userName , pass);
         userList.restaurantOwners.add(restaurantOwner);
     }
-    private RestaurantOwner (String userName , String pass) {
-        this.userName = userName ;
-        this.pass = pass ;
-    }
-    public RestaurantOwner getRestaurantOwner (String pass) {
+    private RestaurantOwner (String userName , String pass) {super(userName, pass);}
+    public RestaurantOwner getRestaurantOwnerByUserName (String userName) {
         for (RestaurantOwner restaurantOwner : userList.restaurantOwners)
-            if (restaurantOwner.pass.equals(pass))
+            if (restaurantOwner.userName.equals(userName))
                 return restaurantOwner;
         return null;
     }

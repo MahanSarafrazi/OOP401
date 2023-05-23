@@ -5,13 +5,10 @@ public class Admin extends User {
         Admin admin = new Admin (userName , pass);
         userList.admins.add(admin);
     }
-    private Admin (String userName , String pass) {
-        this.userName = userName ;
-        this.pass = pass ;
-    }
-    public Admin getAdmin (String pass) {
+    private Admin (String userName , String pass) {super(userName, pass);}
+    public Admin getAdminByUserName (String userName) {
         for (Admin admin : userList.admins)
-            if (admin.pass.equals(pass))
+            if (admin.userName.equals(userName))
                 return admin;
         return null;
     }
