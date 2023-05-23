@@ -6,6 +6,7 @@ public class Restaurant {
     //Location locate ;
     //Edit Location;
      private String name;
+     public ArrayList<Food> order;
      public Restaurant(String name) {this.name=name;}
 
      public String getName(){return name;}
@@ -14,7 +15,7 @@ public class Restaurant {
      private ArrayList<FoodType> foodTypes ;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
      public boolean editFoodType(FoodType FirstfoodType,FoodType SecondaryFoodType){
-         //*************************************** چک کردن سفارش موجود؟؟
+         if (order.size()==0){
          for (int i = 0; i < foodTypes.size(); i++) {
              if (foodTypes.get(i) == FirstfoodType){
                  foodTypes.set(i , SecondaryFoodType);
@@ -23,11 +24,11 @@ public class Restaurant {
                  }
                  return true;
              }
-         }
+         }}
          return false;
      }
-         //*************************************************************
-     public ArrayList<FoodType> ShowFoodType (){return foodTypes;}
+
+     public ArrayList<FoodType> getFoodType (){return foodTypes;}
      private ArrayList<Food> foods ;
      public void AddFood(String NameFood, double PriceName){
          Food food=new Food(NameFood,PriceName);
@@ -40,9 +41,27 @@ public class Restaurant {
              }
          }
      }
-
-
-
+     public void EditFoodName( long IDCode,String newName){
+         for (int i = 0; i < foods.size(); i++) {
+             if (foods.get(i).getID()==IDCode){
+                 foods.get(i).setName(newName);
+             }
+         }
+     }
+    public void EditFoodPrice( long IDCode,double newPrice){
+        for (int i = 0; i < foods.size(); i++) {
+            if (foods.get(i).getID()==IDCode){
+                foods.get(i).setPrice(newPrice);
+            }
+        }
+    }
+    public void setActivationOrder(long IDCode, boolean activation){
+        for (int i = 0; i < foods.size(); i++) {
+            if (foods.get(i).getID()==IDCode){
+                foods.get(i).setActivation(activation);
+            }
+        }
+    }
 
 
 
@@ -50,6 +69,7 @@ public class Restaurant {
 
 
      //ArrayList<FoodType> RestaurantFoodType = new ArrayList<>();
+
 
 
 

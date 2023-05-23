@@ -11,6 +11,13 @@ public class Food {
         this.name = name;
     }
     public String getName(){return name;}
+    private boolean activation;
+    //this boolean for active or not active in order
+
+    public void setActivation(boolean activation) {
+        this.activation = activation;
+    }
+    public boolean getActivatin(){return activation;}
 
     private long ID;
     public void setID(long IDCode){ID=IDCode;}
