@@ -10,4 +10,5 @@ public class User {
         this.userName = userName;
         this.pass = pass;
     }
+
 }
