@@ -1,9 +1,6 @@
 package view;
 
-import controller.Manager;
-
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LoginMenu extends Menu {
     //making the program have just one LoginMenu object
@@ -13,7 +10,7 @@ public class LoginMenu extends Menu {
 
     private static LoginMenu loginMenu;
 
-    public static LoginMenu getLoginMenu() {
+    public static LoginMenu getLoginMenuInstance() {
         if(loginMenu == null) {
             loginMenu = new LoginMenu();
         }
@@ -42,13 +39,25 @@ public class LoginMenu extends Menu {
             } else if(matchers[3].find()) {
                 processAddRestaurantOwner(matchers[3].group(1), matchers[3].group(2));
             } else if(matchers[4].find()) {
-                processLoginCustomer(matchers[4].group(1), matchers[4].group(2));
+                if(processLoginCustomer(matchers[4].group(1), matchers[4].group(2))) {
+                    runOrders = RunOrders.CUSTOMER_MENU;
+                    inThisMenu = false;
+                }
             } else if(matchers[5].find()) {
-                processLoginAdmin(matchers[5].group(1), matchers[5].group(2));
+                if(processLoginAdmin(matchers[5].group(1), matchers[5].group(2))) {
+                    runOrders = RunOrders.ADMIN_MENU;
+                    inThisMenu = false;
+                }
             } else if(matchers[6].find()) {
-                processLoginDeliverer(matchers[6].group(1), matchers[6].group(2));
+                if(processLoginDeliverer(matchers[6].group(1), matchers[6].group(2))) {
+                    runOrders = RunOrders.DELIVERER_MENU;
+                    inThisMenu = false;
+                }
             } else if(matchers[7].find()) {
-                processLoginRestaurantOwner(matchers[7].group(1), matchers[7].group(2));
+                if(processLoginRestaurantOwner(matchers[7].group(1), matchers[7].group(2))) {
+                   runOrders = RunOrders.RESTAURANT_OWNER_MENU;
+                   inThisMenu = false;
+                }
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -71,33 +80,24 @@ public class LoginMenu extends Menu {
     private void processAddRestaurantOwner(String username, String password) {
         outputPrinter(manager.addRestaurantOwner(username, password));
     }
-    private void processLoginCustomer(String username, String password) {
-        outputPrinter(manager.logInCustomer(username, password));
+    private boolean processLoginCustomer(String username, String password) {
+        Output temp = manager.logInCustomer(username, password);
+        outputPrinter(temp);
+        return temp == Output.SUCCESSFUL_LOGIN;
     }
-    private void processLoginAdmin(String username, String password) {
-        outputPrinter(manager.logInAdmin(username, password));
+    private boolean processLoginAdmin(String username, String password) {
+        Output temp = manager.logInAdmin(username, password);
+        outputPrinter(temp);
+        return temp == Output.SUCCESSFUL_LOGIN;
     }
-    private void processLoginDeliverer(String username, String password) {
-        outputPrinter(manager.logInDeliverer(username, password));
+    private boolean processLoginDeliverer(String username, String password) {
+        Output temp = manager.logInDeliverer(username, password);
+        outputPrinter(temp);
+        return temp == Output.SUCCESSFUL_LOGIN;
     }
-    private void processLoginRestaurantOwner(String username, String password) {
-        outputPrinter(manager.logInRestaurantOwner(username, password));
-    }
-
-
-
-    //OutputPrinter
-    private void outputPrinter(Output output) {
-        switch (output) {
-            case INVALID_USER_NAME -> {
-                System.out.println("user name is invalid");
-            } case INVALID_PASSWORD -> {
-                System.out.println("password is invalid");
-            } case SUCCESSFUL_LOGIN -> {
-                System.out.println("logged in successfully");
-            } case SUCCESSFUL_REGISTER -> {
-                System.out.println("registered successfully");
-            }
-        }
+    private boolean processLoginRestaurantOwner(String username, String password) {
+        Output temp = manager.logInRestaurantOwner(username, password);
+        outputPrinter(temp);
+        return temp == Output.SUCCESSFUL_LOGIN;
     }
 }
