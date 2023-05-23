@@ -31,7 +31,7 @@ public class Manager {
         User user = null ;
         if (outputMethod(checkValidLogin("fariman","passF",input))) {
             if (input == Inputs.ADD_ADMIN)
-                user = Admin.newAdmin("fariman", "passF");
+                user = Admin.getAdminByUserName("fariman");
         }
         // further in app
         if (user instanceof Admin)
