@@ -7,10 +7,4 @@ public class Customer extends User {
         return customer;
     }
     private Customer (String userName , String pass) {super(userName, pass);}
-    public static Customer getCustomerByUserName (String userName) {
-        for (Customer customer : UserList.getUserListInstance().getCustomers())
-            if (customer.userName.equals(userName))
-                return customer;
-        return null;
-    }
 }

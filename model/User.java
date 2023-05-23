@@ -2,13 +2,13 @@ package model;
 
 public class User {
     protected String userName ;
-    protected String pass ;
+    protected String password;
     public String getUserName () {return userName ;}
-    public String getPass () {return pass ;}
+    public String getPassword() {return password;}
 
-    public User(String userName, String pass) {
+    public User(String userName, String password) {
         this.userName = userName;
-        this.pass = pass;
+        this.password = password;
     }
 
 }

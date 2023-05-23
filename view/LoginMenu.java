@@ -41,6 +41,14 @@ public class LoginMenu extends Menu {
                 processAddDeliverer(matchers[2].group(1), matchers[2].group(2));
             } else if(matchers[3].find()) {
                 processAddRestaurantOwner(matchers[3].group(1), matchers[3].group(2));
+            } else if(matchers[4].find()) {
+                processLoginCustomer(matchers[4].group(1), matchers[4].group(2));
+            } else if(matchers[5].find()) {
+                processLoginAdmin(matchers[5].group(1), matchers[5].group(2));
+            } else if(matchers[6].find()) {
+                processLoginDeliverer(matchers[6].group(1), matchers[6].group(2));
+            } else if(matchers[7].find()) {
+                processLoginRestaurantOwner(matchers[7].group(1), matchers[7].group(2));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -63,6 +71,19 @@ public class LoginMenu extends Menu {
     private void processAddRestaurantOwner(String username, String password) {
         outputPrinter(manager.addRestaurantOwner(username, password));
     }
+    private void processLoginCustomer(String username, String password) {
+        outputPrinter(manager.logInCustomer(username, password));
+    }
+    private void processLoginAdmin(String username, String password) {
+        outputPrinter(manager.logInAdmin(username, password));
+    }
+    private void processLoginDeliverer(String username, String password) {
+        outputPrinter(manager.logInDeliverer(username, password));
+    }
+    private void processLoginRestaurantOwner(String username, String password) {
+        outputPrinter(manager.logInRestaurantOwner(username, password));
+    }
+
 
 
     //OutputPrinter
