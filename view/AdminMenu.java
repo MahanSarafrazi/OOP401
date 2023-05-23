@@ -1,17 +1,15 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class AdminMenu extends Menu {
-    private AdminMenu() {
+    public AdminMenu() {
         super();
     }
-    private static AdminMenu adminMenuInstance;
-    public static AdminMenu getAdminMenuInstance() {
-        if(adminMenuInstance == null) {
-            adminMenuInstance = new AdminMenu();
-        }
-        return adminMenuInstance;
+    private static ArrayList<AdminMenu> adminMenus;
+    public static ArrayList<AdminMenu> getAdminMenuInstance() {
+        return adminMenus;
     }
 
     @Override
@@ -23,7 +21,10 @@ public class AdminMenu extends Menu {
         Matcher[] matchers = new Matcher[Inputs.values().length];
         //in Menu
         while(inThisMenu) {
-
+            input = scanner.nextLine();
+            for(int i = 0; i < Inputs.values().length; ++i) {
+                matchers[i] = Inputs.getPatterns()[i].matcher(input);
+            }
         }
     }
 }

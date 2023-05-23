@@ -1,18 +1,16 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class CustomerMenu extends Menu {
     //making the program have just one LoginMenu object
-    private CustomerMenu() {
+    public CustomerMenu() {
         super();
     }
-    private static CustomerMenu customerMenuInstance;
-    public static CustomerMenu getCustomerMenuInstance() {
-        if(customerMenuInstance == null) {
-            customerMenuInstance = new CustomerMenu();
-        }
-        return customerMenuInstance;
+    private static ArrayList <CustomerMenu> customerMenus;
+    public static ArrayList<CustomerMenu> getCustomerMenus() {
+        return customerMenus;
     }
 
     //Menu managing
@@ -26,7 +24,10 @@ public class CustomerMenu extends Menu {
         Matcher[] matchers = new Matcher[Inputs.values().length];
         //in Menu
         while(inThisMenu) {
-
+            input = scanner.nextLine();
+            for(int i = 0; i < Inputs.values().length; ++i) {
+                matchers[i] = Inputs.getPatterns()[i].matcher(input);
+            }
         }
     }
 }

@@ -1,17 +1,15 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class DelivererMenu extends Menu {
-    private DelivererMenu() {
+    public DelivererMenu() {
         super();
     }
-    private static DelivererMenu delivererMenuInstance;
-    public static DelivererMenu getDelivererMenuInstance() {
-        if(delivererMenuInstance == null) {
-            delivererMenuInstance = new DelivererMenu();
-        }
-        return delivererMenuInstance;
+    private static ArrayList<DelivererMenu> delivererMenus;
+    public static ArrayList<DelivererMenu> getDelivererMenus() {
+        return delivererMenus;
     }
 
     @Override
@@ -23,7 +21,10 @@ public class DelivererMenu extends Menu {
         Matcher[] matchers = new Matcher[Inputs.values().length];
         //in Menu
         while(inThisMenu) {
-
+            input = scanner.nextLine();
+            for(int i = 0; i < Inputs.values().length; ++i) {
+                matchers[i] = Inputs.getPatterns()[i].matcher(input);
+            }
         }
     }
 }
