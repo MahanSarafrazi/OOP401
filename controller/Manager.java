@@ -4,7 +4,21 @@ import model.*;
 import view.Output;
 
 public class Manager {
-    User loggedInUser ;
+    //only one Manager
+    private Manager() {};
+    private static Manager managerInstance;
+    public static Manager getManagerInstance() {
+        if(managerInstance == null) {
+            managerInstance = new Manager();
+        }
+        return managerInstance;
+    }
+
+    private User loggedInUser = null;
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
     public Output addCustomer(String username, String password) {
         for (Customer customer : UserList.getUserListInstance().getCustomers()) {
             if(customer.getUserName().equals(username)) {

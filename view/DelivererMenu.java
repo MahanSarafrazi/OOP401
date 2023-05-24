@@ -1,5 +1,7 @@
 package view;
 
+import model.Deliverer;
+
 import java.util.regex.Matcher;
 
 public class DelivererMenu extends Menu {
@@ -13,6 +15,7 @@ public class DelivererMenu extends Menu {
         }
         return delivererMenuInstance;
     }
+    private static Deliverer owner;
 
     @Override
     public RunOrders openMenu() {
@@ -25,5 +28,7 @@ public class DelivererMenu extends Menu {
         while(inThisMenu) {
 
         }
+
+        return runOrders;
     }
 }

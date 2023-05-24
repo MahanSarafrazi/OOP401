@@ -1,5 +1,7 @@
 package view;
 
+import model.Deliverer;
+
 import java.util.regex.Matcher;
 
 public class CustomerMenu extends Menu {
@@ -14,6 +16,8 @@ public class CustomerMenu extends Menu {
         }
         return customerMenuInstance;
     }
+    private static Character owner;
+
 
     //Menu managing
 
@@ -28,5 +32,7 @@ public class CustomerMenu extends Menu {
         while(inThisMenu) {
 
         }
+
+        return runOrders;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public abstract class Menu {
     protected final Scanner scanner;
-    protected final Manager manager = new Manager();
+    protected final Manager manager = Manager.getManagerInstance();
     public Menu() {
         this.scanner = new Scanner(System.in);
     }

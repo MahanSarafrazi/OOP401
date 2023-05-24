@@ -1,5 +1,7 @@
 package view;
 
+import model.Admin;
+
 import java.util.regex.Matcher;
 
 public class AdminMenu extends Menu {
@@ -13,10 +15,10 @@ public class AdminMenu extends Menu {
         }
         return adminMenuInstance;
     }
+    private static Admin owner;
 
 
     //in Menu
-
     @Override
     public RunOrders openMenu() {
         String input;
@@ -28,5 +30,8 @@ public class AdminMenu extends Menu {
         while(inThisMenu) {
 
         }
+
+
+        return runOrders;
     }
 }

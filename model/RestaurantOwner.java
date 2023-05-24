@@ -1,10 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+
 public class RestaurantOwner extends User {
     public static RestaurantOwner newRestaurantOwner (String userName , String  pass) {
         RestaurantOwner restaurantOwner = new RestaurantOwner (userName , pass);
         UserList.getUserListInstance().getRestaurantOwners().add(restaurantOwner);
         return restaurantOwner ;
     }
-    private RestaurantOwner (String userName , String pass) {super(userName, pass);}
+    private final ArrayList<Restaurant> restaurants;
+    private RestaurantOwner (String userName , String pass) {
+        super(userName, pass);
+        restaurants = new ArrayList<>();
+    }
+
+    public ArrayList<Restaurant> getRestaurants() {
+        return restaurants;
+    }
 }

@@ -11,6 +11,7 @@ public enum Inputs {
     LOGIN_ADMIN("^\\s*login\\s+admin\\s+(\\S+)\\s+(\\S+)\\s*$"), //By F
     LOGIN_DELIVERER("^\\s*login\\s+deliverer\\s+(\\S+)\\s+(\\S+)\\s*$"), //By F
     LOGIN_RESTAURANT_OWNER("^\\s*login\\s+restaurant owner\\s+(\\S+)\\s+(\\S+)\\s*$"), //By F
+    SELECT_RESTAURANT("^\\s*select\\s+restaurant\\s+(\\d+)\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
     ;
 
