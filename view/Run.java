@@ -33,6 +33,14 @@ public class Run {
         switch (runOrders) {
             case LOGIN_MENU -> {
                 return LoginMenu.getLoginMenu();
+            } case CUSTOMER_MENU -> {
+                return CustomerMenu.getCustomerMenuInstance();
+            } case ADMIN_MENU -> {
+                return AdminMenu.getAdminMenuInstance();
+            } case DELIVERER_MENU -> {
+                return DelivererMenu.getDelivererMenuInstance();
+            } case RESTAURANT_OWNER_MENU -> {
+                return RestaurantOwnerMenu.getRestaurantOwnerMenuInstance();
             }
         }
         //not used
