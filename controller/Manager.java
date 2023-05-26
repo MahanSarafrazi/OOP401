@@ -4,6 +4,8 @@ import model.*;
 import view.Output;
 import view.RestaurantOwnerMenu;
 
+import java.util.ArrayList;
+
 public class Manager {
     //only one Manager
     private Manager() {};
@@ -16,6 +18,7 @@ public class Manager {
     }
 
     private User loggedInUser = null;
+    private Restaurant activeRestaurant = null;
     public User getLoggedInUser() {
         return loggedInUser;
     }
@@ -116,9 +119,13 @@ public class Manager {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Restaurant restaurant : owner.getRestaurants()) {
             if(restaurant.getID() == ID) {
+                activeRestaurant = restaurant;
                 return restaurant;
             }
         }
         return null;
+    }
+    public ArrayList<FoodType> showFoodType() {
+        return activeRestaurant.getFoodType();
     }
 }

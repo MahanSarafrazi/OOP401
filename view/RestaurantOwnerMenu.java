@@ -1,8 +1,10 @@
 package view;
 
+import model.FoodType;
 import model.Restaurant;
 import model.RestaurantOwner;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Matcher;
 
@@ -56,7 +58,7 @@ public class RestaurantOwnerMenu extends Menu {
             } else if(matchers[9].find()) {
                 processAddingRestaurant(matchers[9].group(1));
             } else if(matchers[10].find()) {
-
+                processShowFoodType();
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -78,5 +80,12 @@ public class RestaurantOwnerMenu extends Menu {
     }
     private void processAddingRestaurant(String name) {
         outputPrinter(manager.addRestaurant(name));
+    }
+    private void processShowFoodType() {
+        ArrayList<FoodType> foodTypes = manager.showFoodType();
+        System.out.println("food types are:");
+        for (FoodType foodType : foodTypes) {
+            System.out.println(foodType);
+        }
     }
 }

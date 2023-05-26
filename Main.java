@@ -1,4 +1,5 @@
 
+import model.FoodType;
 import view.Run;
 
 public class Main {
