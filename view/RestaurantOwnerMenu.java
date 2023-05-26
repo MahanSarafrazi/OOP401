@@ -53,6 +53,10 @@ public class RestaurantOwnerMenu extends Menu {
             }
             if(activeRestaurant == null && matchers[8].find()) {
                 processSelectingRestaurant(Long.parseLong(matchers[8].group(1)));
+            } else if(matchers[9].find()) {
+                processAddingRestaurant(matchers[9].group(1));
+            } else if(matchers[10].find()) {
+
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -64,6 +68,15 @@ public class RestaurantOwnerMenu extends Menu {
 
 
     private void processSelectingRestaurant(long ID) {
-        System.out.println("test");
+        Restaurant temp = manager.selectRestaurant(ID);
+        if(temp == null) {
+            System.out.println("There is no restaurant with this ID!");
+        } else {
+            activeRestaurant = temp;
+            System.out.println("Restaurant selected successfully");
+        }
+    }
+    private void processAddingRestaurant(String name) {
+        outputPrinter(manager.addRestaurant(name));
     }
 }

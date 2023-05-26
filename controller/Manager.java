@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import view.Output;
+import view.RestaurantOwnerMenu;
 
 public class Manager {
     //only one Manager
@@ -105,5 +106,19 @@ public class Manager {
             }
         }
         return Output.INVALID_USER_NAME;
+    }
+    public Output addRestaurant(String name) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        owner.AddRestaurant(name);
+        return Output.SUCCESSFUL_REGISTER;
+    }
+    public Restaurant selectRestaurant(long ID) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Restaurant restaurant : owner.getRestaurants()) {
+            if(restaurant.getID() == ID) {
+                return restaurant;
+            }
+        }
+        return null;
     }
 }

@@ -7,10 +7,15 @@ public class Restaurant {
     //Edit Location;
      private String name;
      public ArrayList<Food> order;
-     public Restaurant(String name) {this.name=name;}
+     private static int numberOfRestaurants = 0;
+     public Restaurant(String name) {
+         this.name=name;
+         ++numberOfRestaurants;
+         this.ID = numberOfRestaurants;
+     }
 
      public String getName(){return name;}
-     private long ID;
+     private final long ID;
      public long getID(){return ID;}
      private ArrayList<FoodType> foodTypes ;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}

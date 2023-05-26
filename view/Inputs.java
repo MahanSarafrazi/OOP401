@@ -12,6 +12,9 @@ public enum Inputs {
     LOGIN_DELIVERER("^\\s*login\\s+deliverer\\s+(\\S+)\\s+(\\S+)\\s*$"), //By F
     LOGIN_RESTAURANT_OWNER("^\\s*login\\s+restaurant owner\\s+(\\S+)\\s+(\\S+)\\s*$"), //By F
     SELECT_RESTAURANT("^\\s*select\\s+restaurant\\s+(\\d+)\\s*$"),
+    ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s*$"),
+    SHOW_FOOD_TYPE("^\\s*show\\s+food\\s+type\\s*$"),
+    EDIT_FOOD_TYPE("^\\s*edit\\s+food\\s+type\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
     ;
 
