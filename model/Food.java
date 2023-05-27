@@ -17,7 +17,7 @@ public class Food {
     public void setActivation(boolean activation) {
         this.activation = activation;
     }
-    public boolean getActivatin(){return activation;}
+    public boolean getActivation(){return activation;}
 
     private long ID;
     public void setID(long IDCode){ID=IDCode;}
@@ -28,7 +28,9 @@ public class Food {
         this.price=price;
         this.discount = 0 ;
     }
-    public void setDiscount(double discount){ this.discount=discount;}
+    public void setDiscount(double discount){ this.discount=discount;
+
+     }
     public double getDiscount(){return discount;}
 
 

@@ -34,12 +34,24 @@ public class Restaurant {
          Food food=new Food(NameFood,PriceName);
          foods.add(food);
      }
-     public void DeleteFood(long IDCode){
+     public boolean DeleteFood(long IDCode){
+         //اگر غذای مورد نظر در لیست سفارشات رستوران باشد false خروجی می دهد
+         boolean check=false;
+         for (int i = 0; i < order.size(); i++) {
+             if(order.get(i).getID()==IDCode) {
+                 check=true;
+             }
+         }
+
+         if(check){
          for (int i = 0; i < foods.size(); i++) {
              if(foods.get(i).getID()==IDCode){
                  foods.remove(i);
              }
          }
+         return true;
+         }
+         return false;
      }
      public void EditFoodName( long IDCode,String newName){
          for (int i = 0; i < foods.size(); i++) {
@@ -55,13 +67,26 @@ public class Restaurant {
             }
         }
     }
-    public void setActivationOrder(long IDCode, boolean activation){
+
+    public boolean setActivationOrder(long IDCode, boolean activation){
+         //اگر غذای مورد نظر در لیست سفارشات باشد این تابع false خروجی می دهد
+        boolean check=false;
+        for (int i = 0; i < order.size(); i++) {
+            if(order.get(i).getID()==IDCode) {
+                check=true;
+            }
+        }
+        if(check){
         for (int i = 0; i < foods.size(); i++) {
             if (foods.get(i).getID()==IDCode){
                 foods.get(i).setActivation(activation);
             }
+            return true;
         }
+        }
+        return false;
     }
+
 
 
 
