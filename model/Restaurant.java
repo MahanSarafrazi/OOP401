@@ -6,22 +6,24 @@ public class Restaurant {
     //Location locate ;
     //Edit Location;
      private String name;
-     public ArrayList<Food> order;
+     public ArrayList<Order> orders;
      private static int numberOfRestaurants = 0;
-     public Restaurant(String name) {
+     public Restaurant(String name, FoodType foodType) {
          this.name=name;
          ++numberOfRestaurants;
          this.ID = numberOfRestaurants;
+         foodTypes = new ArrayList<>();
+         foodTypes.add(foodType);
      }
 
      public String getName(){return name;}
      private final long ID;
      public long getID(){return ID;}
-     private ArrayList<FoodType> foodTypes ;
+     private ArrayList<FoodType> foodTypes;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
 
     public boolean editFoodType(FoodType FirstfoodType, FoodType SecondaryFoodType) {
-         if (order.size()==0) {
+         if (orders.size()==0) {
              for (int i = 0; i < foodTypes.size(); i++) {
                  if (foodTypes.get(i) == FirstfoodType) {
                      foodTypes.set(i , SecondaryFoodType);
@@ -70,9 +72,19 @@ public class Restaurant {
         }
     }
 
+    public boolean isThereAnyOrderOfThisType(FoodType foodType) {
+         int count = 0;
+        for (Order order : orders) {
+            if(order.getType().equals(foodType)) {
+                ++count;
+            }
+        }
+        return count != 0;
+    }
 
-
-
+    public void addFoodType(FoodType foodType) {
+         foodTypes.add(foodType);
+    }
 
 
      //ArrayList<FoodType> RestaurantFoodType = new ArrayList<>();

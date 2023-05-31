@@ -50,14 +50,18 @@ public class RestaurantOwnerMenu extends Menu {
             if(owner.getActiveRestaurant() == null && matchers[8].find()) {
                 processSelectingRestaurant(Long.parseLong(matchers[8].group(1)));
             } else if(matchers[9].find()) {
-                processAddingRestaurant(matchers[9].group(1));
+                processAddingRestaurant(matchers[9].group(1), matchers[9].group(2));
             } else if(matchers[10].find()) {
                 processShowFoodType();
             } else if(matchers[11].find()) {
-                processEditFoodType(matchers[11].group(1), matchers[11].group(1));
+                processEditFoodType(matchers[11].group(1), matchers[11].group(2));
+            } else if(matchers[12].find()) {
+                processAddFoodType(matchers[12].group(1));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
+            } else {
+                System.out.println("invalid command");
             }
         }
 
@@ -66,19 +70,26 @@ public class RestaurantOwnerMenu extends Menu {
 
     @Override
     protected void outputPrinter(Output output) {
+        super.outputPrinter(output);
         switch (output) {
             case SUCCESSFUL_SELECT_RESTAURANT -> {
                 System.out.println("Restaurant selected successfully");
             } case INVALID_RESTAURANT_ID -> {
                 System.out.println("There is no restaurant with this ID!");
             } case NO_ACTIVE_RESTAURANT -> {
-                System.out.println("You haven't logged in in any restaurant");
+                System.out.println("You haven't logged in in any restaurant!");
             } case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> {
-                System.out.println("There is no such food type in this restaurant");
+                System.out.println("There is no such food type in this restaurant!");
             } case NO_SUCH_FOOD_TYPE_IN_GENERAL -> {
-                System.out.println("There is no food type with this name");
+                System.out.println("There is no food type with this name!");
             } case EQUAL_FOOD_TYPES -> {
                 System.out.println("These food types are the same!");
+            } case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> {
+                System.out.println("There is still orders with this food type!");
+            } case FOOD_TYPE_ALREADY_EXIST -> {
+                System.out.println("This food type already exist in this restaurant!");
+            } case FOOD_TYPE_ADDED -> {
+                System.out.println("Food type added successfully");
             }
         }
     }
@@ -87,8 +98,8 @@ public class RestaurantOwnerMenu extends Menu {
     private void processSelectingRestaurant(long ID) {
         outputPrinter(manager.selectRestaurant(ID));
     }
-    private void processAddingRestaurant(String name) {
-        outputPrinter(manager.addRestaurant(name));
+    private void processAddingRestaurant(String name, String foodType) {
+        outputPrinter(manager.addRestaurant(name, foodType));
     }
     private void processShowFoodType() {
         ArrayList<FoodType> foodTypes = manager.showFoodType();
@@ -100,5 +111,7 @@ public class RestaurantOwnerMenu extends Menu {
     private void processEditFoodType(String firstType, String secondType) {
         outputPrinter(manager.editFoodType(firstType, secondType));
     }
-
+    private void processAddFoodType(String foodType) {
+        outputPrinter(manager.addFoodType(foodType));
+    }
 }

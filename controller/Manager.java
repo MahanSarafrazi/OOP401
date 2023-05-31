@@ -2,8 +2,6 @@ package controller;
 
 import model.*;
 import view.Output;
-import view.RestaurantOwnerMenu;
-
 import java.util.ArrayList;
 
 public class Manager {
@@ -109,9 +107,21 @@ public class Manager {
         }
         return Output.INVALID_USER_NAME;
     }
-    public Output addRestaurant(String name) {
+    public Output addRestaurant(String name, String foodType) {
+        FoodType foodType1 = null;
+        for (FoodType value : FoodType.values()) {
+            if(value.commandingPattern.matcher(foodType).find()) {
+                foodType1 = value;
+                break;
+            }
+        }
+
+        if(foodType1 == null) {
+            return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
+        }
+
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
-        owner.AddRestaurant(name);
+        owner.AddRestaurant(name, foodType1);
         return Output.SUCCESSFUL_REGISTER;
     }
     public Output selectRestaurant(long ID) {
@@ -134,15 +144,18 @@ public class Manager {
                     break;
                 }
             }
+
             if(changingType == null) {
                 return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
             }
+
             for (FoodType value : FoodType.values()) {
                 if(value.commandingPattern.matcher(secondType).find()) {
                     replacingType = value;
                     break;
                 }
             }
+
             if(replacingType == null) {
                 return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
             }
@@ -152,9 +165,33 @@ public class Manager {
                 return Output.EQUAL_FOOD_TYPES;
             }
 
+            if(owner.getActiveRestaurant().isThereAnyOrderOfThisType(changingType)) {
+                return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
+            }
+
             return null;
         } catch (Exception e) {
             return Output.NO_ACTIVE_RESTAURANT;
         }
+    }
+
+    public Output addFoodType(String foodType) {
+        FoodType foodType1 = null;
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (FoodType value : FoodType.values()) {
+            if(value.commandingPattern.matcher(foodType).find()) {
+                foodType1 = value;
+            }
+        }
+        if(foodType1 == null) {
+            return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
+        }
+        for (FoodType type : owner.getActiveRestaurant().getFoodType()) {
+            if(type.equals(foodType1)) {
+                return Output.FOOD_TYPE_ALREADY_EXIST;
+            }
+        }
+        owner.getActiveRestaurant().addFoodType(foodType1);
+        return Output.FOOD_TYPE_ADDED;
     }
 }

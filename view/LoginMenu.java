@@ -19,6 +19,7 @@ public class LoginMenu extends Menu {
         }
         return loginMenu;
     }
+
     //Menu managing
     @Override
     public RunOrders openMenu() {
