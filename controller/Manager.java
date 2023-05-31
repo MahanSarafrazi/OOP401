@@ -18,7 +18,6 @@ public class Manager {
     }
 
     private User loggedInUser = null;
-    private Restaurant activeRestaurant = null;
     public User getLoggedInUser() {
         return loggedInUser;
     }
@@ -115,17 +114,47 @@ public class Manager {
         owner.AddRestaurant(name);
         return Output.SUCCESSFUL_REGISTER;
     }
-    public Restaurant selectRestaurant(long ID) {
+    public Output selectRestaurant(long ID) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
-        for (Restaurant restaurant : owner.getRestaurants()) {
-            if(restaurant.getID() == ID) {
-                activeRestaurant = restaurant;
-                return restaurant;
-            }
+        if(owner.editActiveRestaurant(ID)) {
+            return Output.SUCCESSFUL_SELECT_RESTAURANT;
         }
-        return null;
+        return Output.INVALID_RESTAURANT_ID;
     }
     public ArrayList<FoodType> showFoodType() {
-        return activeRestaurant.getFoodType();
+        return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoodType();
+    }
+    public Output editFoodType(String firstType, String secondType) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        FoodType changingType = null, replacingType = null;
+        try {
+            for (FoodType foodType : owner.getActiveRestaurant().getFoodType()) {
+                if(foodType.commandingPattern.matcher(firstType).find()) {
+                    changingType = foodType;
+                    break;
+                }
+            }
+            if(changingType == null) {
+                return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
+            }
+            for (FoodType value : FoodType.values()) {
+                if(value.commandingPattern.matcher(secondType).find()) {
+                    replacingType = value;
+                    break;
+                }
+            }
+            if(replacingType == null) {
+                return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
+            }
+
+
+            if(changingType == replacingType) {
+                return Output.EQUAL_FOOD_TYPES;
+            }
+
+            return null;
+        } catch (Exception e) {
+            return Output.NO_ACTIVE_RESTAURANT;
+        }
     }
 }

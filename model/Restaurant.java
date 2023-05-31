@@ -19,7 +19,8 @@ public class Restaurant {
      public long getID(){return ID;}
      private ArrayList<FoodType> foodTypes ;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
-     public boolean editFoodType(FoodType FirstfoodType,FoodType SecondaryFoodType) {
+
+    public boolean editFoodType(FoodType FirstfoodType, FoodType SecondaryFoodType) {
          if (order.size()==0) {
              for (int i = 0; i < foodTypes.size(); i++) {
                  if (foodTypes.get(i) == FirstfoodType) {

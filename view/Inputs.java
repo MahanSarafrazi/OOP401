@@ -14,7 +14,7 @@ public enum Inputs {
     SELECT_RESTAURANT("^\\s*select\\s+restaurant\\s+(\\d+)\\s*$"),
     ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s*$"),
     SHOW_FOOD_TYPE("^\\s*show\\s+food\\s+type\\s*$"),
-    EDIT_FOOD_TYPE("^\\s*edit\\s+food\\s+type\\s*$"),
+    EDIT_FOOD_TYPE("^\\s*edit\\s+food\\s+type\\s+(.+)\\s+(.+)\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
     ;
 

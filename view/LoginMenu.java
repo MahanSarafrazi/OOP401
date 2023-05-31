@@ -70,6 +70,7 @@ public class LoginMenu extends Menu {
         //changing condition
         return runOrders;
     }
+
     // passing to manager
     private void processAddCustomer(String username, String password) {
         outputPrinter(manager.addCustomer(username, password));

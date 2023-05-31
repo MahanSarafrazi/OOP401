@@ -9,6 +9,7 @@ public class RestaurantOwner extends User {
         return restaurantOwner ;
     }
     private final ArrayList<Restaurant> restaurants;
+    private Restaurant activeRestaurant = null;
     private RestaurantOwner (String userName , String pass) {
         super(userName, pass);
         restaurants = new ArrayList<>();
@@ -18,5 +19,22 @@ public class RestaurantOwner extends User {
     }
     public ArrayList<Restaurant> getRestaurants() {
         return restaurants;
+    }
+
+    public Restaurant getActiveRestaurant() {
+        return activeRestaurant;
+    }
+
+    public boolean editActiveRestaurant(long ID) {
+        for (Restaurant restaurant : restaurants) {
+            if(restaurant.getID() == ID) {
+                activeRestaurant = restaurant;
+                return true;
+            }
+        }
+        return false;
+    }
+    public void editActiveRestaurant(Restaurant restaurant) {
+        this.activeRestaurant = restaurant;
     }
 }

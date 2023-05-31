@@ -19,17 +19,11 @@ public class RestaurantOwnerMenu extends Menu {
         }
         return restaurantOwnerMenu;
     }
-    //owner
-    private RestaurantOwner owner;
-    private Restaurant activeRestaurant;
-    public RestaurantOwner getOwner() {
-        return owner;
-    }
 
     //in Menu
     @Override
     public RunOrders openMenu() {
-        owner = (RestaurantOwner) manager.getLoggedInUser();
+        RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
         if(owner.getRestaurants().size() > 1) {
             System.out.println("Welcome! Here is the list of your restaurants");
             owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).reversed().thenComparing(Restaurant::getID).reversed());
@@ -38,7 +32,7 @@ public class RestaurantOwnerMenu extends Menu {
             }
         } else if(owner.getRestaurants().size() == 1) {
             System.out.println("Welcome to your restaurant!");
-            activeRestaurant = owner.getRestaurants().get(0);
+            owner.editActiveRestaurant(owner.getRestaurants().get(0));
         } else {
             System.out.println("Welcome! please register a restaurant");
         }
@@ -53,12 +47,14 @@ public class RestaurantOwnerMenu extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if(activeRestaurant == null && matchers[8].find()) {
+            if(owner.getActiveRestaurant() == null && matchers[8].find()) {
                 processSelectingRestaurant(Long.parseLong(matchers[8].group(1)));
             } else if(matchers[9].find()) {
                 processAddingRestaurant(matchers[9].group(1));
             } else if(matchers[10].find()) {
                 processShowFoodType();
+            } else if(matchers[11].find()) {
+                processEditFoodType(matchers[11].group(1), matchers[11].group(1));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -68,15 +64,28 @@ public class RestaurantOwnerMenu extends Menu {
         return runOrders;
     }
 
-
-    private void processSelectingRestaurant(long ID) {
-        Restaurant temp = manager.selectRestaurant(ID);
-        if(temp == null) {
-            System.out.println("There is no restaurant with this ID!");
-        } else {
-            activeRestaurant = temp;
-            System.out.println("Restaurant selected successfully");
+    @Override
+    protected void outputPrinter(Output output) {
+        switch (output) {
+            case SUCCESSFUL_SELECT_RESTAURANT -> {
+                System.out.println("Restaurant selected successfully");
+            } case INVALID_RESTAURANT_ID -> {
+                System.out.println("There is no restaurant with this ID!");
+            } case NO_ACTIVE_RESTAURANT -> {
+                System.out.println("You haven't logged in in any restaurant");
+            } case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> {
+                System.out.println("There is no such food type in this restaurant");
+            } case NO_SUCH_FOOD_TYPE_IN_GENERAL -> {
+                System.out.println("There is no food type with this name");
+            } case EQUAL_FOOD_TYPES -> {
+                System.out.println("These food types are the same!");
+            }
         }
+    }
+
+    //passing to manager
+    private void processSelectingRestaurant(long ID) {
+        outputPrinter(manager.selectRestaurant(ID));
     }
     private void processAddingRestaurant(String name) {
         outputPrinter(manager.addRestaurant(name));
@@ -88,4 +97,8 @@ public class RestaurantOwnerMenu extends Menu {
             System.out.println(foodType);
         }
     }
+    private void processEditFoodType(String firstType, String secondType) {
+        outputPrinter(manager.editFoodType(firstType, secondType));
+    }
+
 }
