@@ -169,8 +169,10 @@ public class Manager {
                 return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
             }
 
-            return null;
-        } catch (Exception e) {
+            owner.getActiveRestaurant().editFoodType(changingType, replacingType);
+            return Output.FOOD_TYPE_EDITED;
+
+            } catch (Exception e) {
             return Output.NO_ACTIVE_RESTAURANT;
         }
     }
@@ -191,7 +193,7 @@ public class Manager {
                 return Output.FOOD_TYPE_ALREADY_EXIST;
             }
         }
-        owner.getActiveRestaurant().addFoodType(foodType1);
+        owner.getActiveRestaurant().setFoodType(foodType1);
         return Output.FOOD_TYPE_ADDED;
     }
 }

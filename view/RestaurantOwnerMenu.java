@@ -90,6 +90,8 @@ public class RestaurantOwnerMenu extends Menu {
                 System.out.println("This food type already exist in this restaurant!");
             } case FOOD_TYPE_ADDED -> {
                 System.out.println("Food type added successfully");
+            } case FOOD_TYPE_EDITED -> {
+                System.out.println("Food type edited successfully");
             }
         }
     }

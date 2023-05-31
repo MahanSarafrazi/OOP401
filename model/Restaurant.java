@@ -22,25 +22,23 @@ public class Restaurant {
      private ArrayList<FoodType> foodTypes;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
 
-    public boolean editFoodType(FoodType FirstfoodType, FoodType SecondaryFoodType) {
-         if (orders.size()==0) {
-             for (int i = 0; i < foodTypes.size(); i++) {
-                 if (foodTypes.get(i) == FirstfoodType) {
-                     foodTypes.set(i , SecondaryFoodType);
-                     for (int j = foods.size()-1; j > 0; j--) {
-                         foods.remove(j);
+    public void editFoodType(FoodType firstFoodType, FoodType secondFoodType) {
+         for (int i = 0; i < foodTypes.size(); i++) {
+             if (foodTypes.get(i).equals(firstFoodType)) {
+                 foodTypes.set(i , secondFoodType);
+                 for (Food food : foods) {
+                     if(food.getType().equals(firstFoodType)) {
+                         foods.remove(food);
                      }
-                     return true;
                  }
              }
          }
-         return false;
      }
 
      public ArrayList<FoodType> getFoodType (){return foodTypes;}
-     private ArrayList<Food> foods ;
-     public void AddFood(String NameFood, double PriceName){
-         Food food=new Food(NameFood,PriceName);
+     private ArrayList<Food> foods;
+     public void AddFood(String NameFood, double PriceName, FoodType type){
+         Food food=new Food(NameFood,PriceName, type);
          foods.add(food);
      }
      public void DeleteFood(long IDCode){
@@ -80,10 +78,6 @@ public class Restaurant {
             }
         }
         return count != 0;
-    }
-
-    public void addFoodType(FoodType foodType) {
-         foodTypes.add(foodType);
     }
 
 
