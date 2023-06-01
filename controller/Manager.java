@@ -30,16 +30,6 @@ public class Manager {
         return Output.SUCCESSFUL_REGISTER;
     }
 
-    public Output addAdmin(String username, String password) {
-        for (Admin admin : UserList.getUserListInstance().getAdmins()) {
-            if(admin.getUserName().equals(username)) {
-                return Output.INVALID_USER_NAME;
-            }
-        }
-        loggedInUser = Admin.newAdmin(username, password);
-        return Output.SUCCESSFUL_REGISTER;
-    }
-
     public Output addDeliverer(String username, String password) {
         for (Deliverer deliverer : UserList.getUserListInstance().getDeliverers()) {
             if(deliverer.getUserName().equals(username)) {
@@ -64,18 +54,6 @@ public class Manager {
             if(customer.getUserName().equals(username)) {
                 if(customer.getPassword().equals(password)) {
                     loggedInUser = customer;
-                    return Output.SUCCESSFUL_LOGIN;
-                }
-                return Output.INVALID_PASSWORD;
-            }
-        }
-        return Output.INVALID_USER_NAME;
-    }
-    public Output logInAdmin(String username, String password) {
-        for (Admin admin : UserList.getUserListInstance().getAdmins()) {
-            if(admin.getUserName().equals(username)) {
-                if(admin.getPassword().equals(password)) {
-                    loggedInUser = admin;
                     return Output.SUCCESSFUL_LOGIN;
                 }
                 return Output.INVALID_PASSWORD;

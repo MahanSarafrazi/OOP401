@@ -1,9 +1,6 @@
 package view;
 
-import controller.Manager;
-
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class LoginMenu extends Menu {
     //making the program have just one LoginMenu object
@@ -37,28 +34,21 @@ public class LoginMenu extends Menu {
             if(matchers[0].find()) {
                 processAddCustomer(matchers[0].group(1), matchers[0].group(2));
             } else if(matchers[1].find()) {
-                processAddAdmin(matchers[1].group(1), matchers[1].group(2));
+                processAddDeliverer(matchers[1].group(1), matchers[1].group(2));
             } else if(matchers[2].find()) {
-                processAddDeliverer(matchers[2].group(1), matchers[2].group(2));
+                processAddRestaurantOwner(matchers[2].group(1), matchers[2].group(2));
             } else if(matchers[3].find()) {
-                processAddRestaurantOwner(matchers[3].group(1), matchers[3].group(2));
-            } else if(matchers[4].find()) {
-                if(processLoginCustomer(matchers[4].group(1), matchers[4].group(2))) {
+                if(processLoginCustomer(matchers[3].group(1), matchers[3].group(2))) {
                     runOrders = RunOrders.CUSTOMER_MENU;
                     inThisMenu = false;
                 }
-            } else if(matchers[5].find()) {
-                if(processLoginAdmin(matchers[5].group(1), matchers[5].group(2))) {
-                    runOrders = RunOrders.ADMIN_MENU;
-                    inThisMenu = false;
-                }
-            } else if(matchers[6].find()) {
-                if(processLoginDeliverer(matchers[6].group(1), matchers[6].group(2))) {
+            } else if(matchers[4].find()) {
+                if(processLoginDeliverer(matchers[4].group(1), matchers[4].group(2))) {
                     runOrders = RunOrders.DELIVERER_MENU;
                     inThisMenu = false;
                 }
-            } else if(matchers[7].find()) {
-                if(processLoginRestaurantOwner(matchers[7].group(1), matchers[7].group(2))) {
+            } else if(matchers[5].find()) {
+                if(processLoginRestaurantOwner(matchers[5].group(1), matchers[5].group(2))) {
                     runOrders = RunOrders.RESTAURANT_OWNER_MENU;
                     inThisMenu = false;
                 }
@@ -68,16 +58,13 @@ public class LoginMenu extends Menu {
             }
         }
 
-        //changing condition
+        //changing conditions
         return runOrders;
     }
 
     // passing to manager
     private void processAddCustomer(String username, String password) {
         outputPrinter(manager.addCustomer(username, password));
-    }
-    private void processAddAdmin(String username, String password) {
-        outputPrinter(manager.addAdmin(username, password));
     }
     private void processAddDeliverer(String username, String password) {
         outputPrinter(manager.addDeliverer(username, password));
@@ -87,11 +74,6 @@ public class LoginMenu extends Menu {
     }
     private boolean processLoginCustomer(String username, String password) {
         Output temp = manager.logInCustomer(username, password);
-        outputPrinter(temp);
-        return temp.equals(Output.SUCCESSFUL_LOGIN);
-    }
-    private boolean processLoginAdmin(String username, String password) {
-        Output temp = manager.logInAdmin(username, password);
         outputPrinter(temp);
         return temp.equals(Output.SUCCESSFUL_LOGIN);
     }

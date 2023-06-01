@@ -47,18 +47,18 @@ public class RestaurantOwnerMenu extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if(owner.getActiveRestaurant() == null && matchers[8].find()) {
-                processSelectingRestaurant(Long.parseLong(matchers[8].group(1)));
-            } else if(matchers[9].find()) {
-                processAddingRestaurant(matchers[9].group(1), matchers[9].group(2));
-            } else if(matchers[10].find()) {
+            if(owner.getActiveRestaurant() == null && matchers[6].find()) {
+                processSelectingRestaurant(Long.parseLong(matchers[6].group(1)));
+            } else if(matchers[7].find()) {
+                processAddingRestaurant(matchers[7].group(1), matchers[7].group(2));
+            } else if(matchers[8].find()) {
                 processShowFoodType();
+            } else if(matchers[9].find()) {
+                processEditFoodType(matchers[9].group(1), matchers[9].group(2));
+            } else if(matchers[10].find()) {
+                processAddFoodType(matchers[10].group(1));
             } else if(matchers[11].find()) {
-                processEditFoodType(matchers[11].group(1), matchers[11].group(2));
-            } else if(matchers[12].find()) {
-                processAddFoodType(matchers[12].group(1));
-            } else if(matchers[13].find()) {
-                processAddFood(matchers[13].group(1), Double.parseDouble(matchers[13].group(2)), matchers[13].group(3));
+                processAddFood(matchers[11].group(1), Double.parseDouble(matchers[11].group(2)), matchers[11].group(3));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;

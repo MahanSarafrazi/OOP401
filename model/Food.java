@@ -11,11 +11,8 @@ public class Food {
     public void setPrice(double price) {
         this.price = price;
     }
-    public double getPrice(){return price;}
-    private String name;
-    public void setName(String name) {
-        this.name = name;
-    }
+    public double getPrice(){return price - price * discount;}
+    private final String name;
     public String getName(){return name;}
     private boolean activation;
     //this boolean for active or not active in order
@@ -23,10 +20,9 @@ public class Food {
     public void setActivation(boolean activation) {
         this.activation = activation;
     }
-    public boolean getActivatin(){return activation;}
+    public boolean getActivation(){return activation;}
 
     private long ID;
-    public void setID(long IDCode){ID=IDCode;}
     public long getID(){ return ID;}
     private double discount;
      public Food( String name, double price, FoodType type){
@@ -37,10 +33,4 @@ public class Food {
     }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}
-
-
-
-
-
-
 }

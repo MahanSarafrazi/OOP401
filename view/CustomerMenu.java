@@ -1,6 +1,6 @@
 package view;
 
-import model.Deliverer;
+import model.Customer;
 
 import java.util.regex.Matcher;
 
@@ -16,7 +16,7 @@ public class CustomerMenu extends Menu {
         }
         return customerMenuInstance;
     }
-    private static Character owner;
+    private static Customer owner;
 
 
     //Menu managing

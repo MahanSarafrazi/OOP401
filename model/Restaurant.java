@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class Restaurant {
     //Location locate ;
     //Edit Location;
-     private String name;
+     private final String name;
      public ArrayList<Order> orders;
-     private static int numberOfRestaurants = 0;
+     private static int numberOfRestaurants = RestaurantList.restaurants.size();
      public Restaurant(String name, FoodType foodType) {
          this.name=name;
          ++numberOfRestaurants;
@@ -21,18 +21,14 @@ public class Restaurant {
      public String getName(){return name;}
      private final long ID;
      public long getID(){return ID;}
-     private ArrayList<FoodType> foodTypes;
+     private final ArrayList<FoodType> foodTypes;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
 
     public void editFoodType(FoodType firstFoodType, FoodType secondFoodType) {
          for (int i = 0; i < foodTypes.size(); i++) {
              if (foodTypes.get(i).equals(firstFoodType)) {
                  foodTypes.set(i , secondFoodType);
-                 for (Food food : foods) {
-                     if(food.getType().equals(firstFoodType)) {
-                         foods.remove(food);
-                     }
-                 }
+                 foods.removeIf(food -> food.getType().equals(firstFoodType));
              }
          }
      }
@@ -42,22 +38,13 @@ public class Restaurant {
     }
 
     public ArrayList<FoodType> getFoodType (){return foodTypes;}
-     private ArrayList<Food> foods;
+     private final ArrayList<Food> foods;
      public void AddFood(String foodName, double foodPrice, FoodType foodType){
          foods.add(new Food(foodName, foodPrice, foodType));
      }
      public void DeleteFood(long IDCode){
          for (int i = 0; i < foods.size(); i++) {
-             if(foods.get(i).getID() == IDCode){
-                 foods.remove(i);
-             }
-         }
-     }
-     public void EditFoodName( long IDCode,String newName){
-         for (Food food : foods) {
-             if (food.getID() == IDCode) {
-                 food.setName(newName);
-             }
+             foods.removeIf(food -> food.getID() == IDCode);
          }
      }
     public void EditFoodPrice( long IDCode,double newPrice){
