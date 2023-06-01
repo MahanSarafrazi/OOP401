@@ -92,6 +92,12 @@ public class RestaurantOwnerMenu extends Menu {
                 System.out.println("Food type added successfully");
             } case FOOD_TYPE_EDITED -> {
                 System.out.println("Food type edited successfully");
+            } case SURE_EDIT_FOOD_TYPE -> {
+                System.out.println("Are you sure you want to change your restaurant food type?");
+            } case EDIT_FOOD_TYPE_CANCELED -> {
+                System.out.println("Edit food type canceled");
+            } case INVALID_COMMAND -> {
+                System.out.println("Invalid command!");
             }
         }
     }
@@ -111,7 +117,11 @@ public class RestaurantOwnerMenu extends Menu {
         }
     }
     private void processEditFoodType(String firstType, String secondType) {
-        outputPrinter(manager.editFoodType(firstType, secondType));
+        Output temp = manager.processEditFoodType(firstType, secondType);
+        outputPrinter(temp);
+        if(temp.equals(Output.SURE_EDIT_FOOD_TYPE)) {
+            outputPrinter(manager.editFoodType(firstType, secondType, scanner.nextLine()));
+        }
     }
     private void processAddFoodType(String foodType) {
         outputPrinter(manager.addFoodType(foodType));

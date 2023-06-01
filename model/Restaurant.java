@@ -12,6 +12,8 @@ public class Restaurant {
          this.name=name;
          ++numberOfRestaurants;
          this.ID = numberOfRestaurants;
+         foods = new ArrayList<>();
+         orders = new ArrayList<>();
          foodTypes = new ArrayList<>();
          foodTypes.add(foodType);
      }

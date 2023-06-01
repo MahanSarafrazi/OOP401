@@ -134,7 +134,7 @@ public class Manager {
     public ArrayList<FoodType> showFoodType() {
         return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoodType();
     }
-    public Output editFoodType(String firstType, String secondType) {
+    public Output processEditFoodType(String firstType, String secondType) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         FoodType changingType = null, replacingType = null;
         try {
@@ -169,14 +169,37 @@ public class Manager {
                 return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
             }
 
-            owner.getActiveRestaurant().editFoodType(changingType, replacingType);
-            return Output.FOOD_TYPE_EDITED;
+            return Output.SURE_EDIT_FOOD_TYPE;
 
             } catch (Exception e) {
             return Output.NO_ACTIVE_RESTAURANT;
         }
     }
 
+    public Output editFoodType(String firstType, String secondType, String command) {
+        if(command.matches("^\\s*(?i)no\\s*$")) {
+            return Output.EDIT_FOOD_TYPE_CANCELED;
+        } if(command.matches("^\\s*(?i)yes\\s*$$")) {
+            RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+            FoodType changingType = null, replacingType = null;
+            for (FoodType foodType : owner.getActiveRestaurant().getFoodType()) {
+                if(foodType.commandingPattern.matcher(firstType).find()) {
+                    changingType = foodType;
+                    break;
+                }
+            }
+            for (FoodType value : FoodType.values()) {
+                if(value.commandingPattern.matcher(secondType).find()) {
+                    replacingType = value;
+                    break;
+                }
+            }
+            owner.getActiveRestaurant().editFoodType(changingType, replacingType);
+            return Output.FOOD_TYPE_EDITED;
+        }
+
+        return Output.INVALID_COMMAND;
+    }
     public Output addFoodType(String foodType) {
         FoodType foodType1 = null;
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
