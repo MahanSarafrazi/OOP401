@@ -37,11 +37,14 @@ public class Restaurant {
          }
      }
 
-     public ArrayList<FoodType> getFoodType (){return foodTypes;}
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
+
+    public ArrayList<FoodType> getFoodType (){return foodTypes;}
      private ArrayList<Food> foods;
-     public void AddFood(String NameFood, double PriceName, FoodType type){
-         Food food=new Food(NameFood,PriceName, type);
-         foods.add(food);
+     public void AddFood(String foodName, double foodPrice, FoodType foodType){
+         foods.add(new Food(foodName, foodPrice, foodType));
      }
      public void DeleteFood(long IDCode){
          for (int i = 0; i < foods.size(); i++) {

@@ -57,6 +57,8 @@ public class RestaurantOwnerMenu extends Menu {
                 processEditFoodType(matchers[11].group(1), matchers[11].group(2));
             } else if(matchers[12].find()) {
                 processAddFoodType(matchers[12].group(1));
+            } else if(matchers[13].find()) {
+                processAddFood(matchers[13].group(1), Double.parseDouble(matchers[13].group(2)), matchers[13].group(3));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -85,6 +87,8 @@ public class RestaurantOwnerMenu extends Menu {
             case SURE_EDIT_FOOD_TYPE -> System.out.println("Are you sure you want to change your restaurant food type?");
             case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
             case INVALID_COMMAND -> System.out.println("Invalid command!");
+            case FOOD_ALREADY_EXIST -> System.out.println("This food already exist in this restaurant");
+            case FOOD_ADDED -> System.out.println("Food added successfully");
         }
     }
 
@@ -111,5 +115,8 @@ public class RestaurantOwnerMenu extends Menu {
     }
     private void processAddFoodType(String foodType) {
         outputPrinter(manager.addFoodType(foodType));
+    }
+    private void processAddFood(String foodName, double foodPrice, String foodType) {
+        outputPrinter(manager.addFood(foodName, foodPrice, foodType));
     }
 }

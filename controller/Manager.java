@@ -137,43 +137,42 @@ public class Manager {
     public Output processEditFoodType(String firstType, String secondType) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         FoodType changingType = null, replacingType = null;
-        try {
-            for (FoodType foodType : owner.getActiveRestaurant().getFoodType()) {
-                if(foodType.commandingPattern.matcher(firstType).find()) {
-                    changingType = foodType;
-                    break;
-                }
-            }
 
-            if(changingType == null) {
-                return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
-            }
-
-            for (FoodType value : FoodType.values()) {
-                if(value.commandingPattern.matcher(secondType).find()) {
-                    replacingType = value;
-                    break;
-                }
-            }
-
-            if(replacingType == null) {
-                return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
-            }
-
-
-            if(changingType == replacingType) {
-                return Output.EQUAL_FOOD_TYPES;
-            }
-
-            if(owner.getActiveRestaurant().isThereAnyOrderOfThisType(changingType)) {
-                return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
-            }
-
-            return Output.SURE_EDIT_FOOD_TYPE;
-
-            } catch (Exception e) {
+        if(owner.getActiveRestaurant() == null) {
             return Output.NO_ACTIVE_RESTAURANT;
         }
+
+        for (FoodType foodType : owner.getActiveRestaurant().getFoodType()) {
+            if(foodType.commandingPattern.matcher(firstType).find()) {
+                changingType = foodType;
+                break;
+            }
+        }
+
+        if(changingType == null) {
+            return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
+        }
+
+        for (FoodType value : FoodType.values()) {
+            if(value.commandingPattern.matcher(secondType).find()) {
+                replacingType = value;
+                break;
+            }
+        }
+
+        if(replacingType == null) {
+            return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
+        }
+
+        if(changingType == replacingType) {
+            return Output.EQUAL_FOOD_TYPES;
+        }
+
+        if(owner.getActiveRestaurant().isThereAnyOrderOfThisType(changingType)) {
+            return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
+        }
+
+        return Output.SURE_EDIT_FOOD_TYPE;
     }
 
     public Output editFoodType(String firstType, String secondType, String command) {
@@ -218,5 +217,30 @@ public class Manager {
         }
         owner.getActiveRestaurant().setFoodType(foodType1);
         return Output.FOOD_TYPE_ADDED;
+    }
+
+    public Output addFood(String foodName, double foodPrice, String foodType) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        if(owner.getActiveRestaurant() == null) {
+            return Output.NO_ACTIVE_RESTAURANT;
+        }
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getName().equals(foodName)) {
+                return Output.FOOD_ALREADY_EXIST;
+            }
+        }
+        FoodType foodType1 = null;
+        for (FoodType value : FoodType.values()) {
+            if(value.commandingPattern.matcher(foodType).find()) {
+                foodType1 = value;
+                break;
+            }
+        }
+        if(foodType1 == null) {
+            return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
+        }
+
+        owner.getActiveRestaurant().AddFood(foodName, foodPrice, foodType1);
+        return Output.FOOD_ADDED;
     }
 }
