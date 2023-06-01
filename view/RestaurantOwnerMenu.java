@@ -47,18 +47,25 @@ public class RestaurantOwnerMenu extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if(owner.getActiveRestaurant() == null && matchers[6].find()) {
-                processSelectingRestaurant(Long.parseLong(matchers[6].group(1)));
+            if(matchers[6].find()) {
+                runOrders = RunOrders.LOGIN_MENU;
+                outputPrinter(Output.LOGOUT);
+                manager.logout();
+                inThisMenu = false;
             } else if(matchers[7].find()) {
-                processAddingRestaurant(matchers[7].group(1), matchers[7].group(2));
-            } else if(matchers[8].find()) {
-                processShowFoodType();
-            } else if(matchers[9].find()) {
-                processEditFoodType(matchers[9].group(1), matchers[9].group(2));
+                processAddRestoreQuestion();
+            } else if(owner.getActiveRestaurant() == null && matchers[9].find()) {
+                processSelectingRestaurant(Long.parseLong(matchers[9].group(1)));
             } else if(matchers[10].find()) {
-                processAddFoodType(matchers[10].group(1));
+                processAddingRestaurant(matchers[10].group(1), matchers[10].group(2));
             } else if(matchers[11].find()) {
-                processAddFood(matchers[11].group(1), Double.parseDouble(matchers[11].group(2)), matchers[11].group(3));
+                processShowFoodType();
+            } else if(matchers[12].find()) {
+                processEditFoodType(matchers[12].group(1), matchers[12].group(2));
+            } else if(matchers[13].find()) {
+                processAddFoodType(matchers[13].group(1));
+            } else if(matchers[14].find()) {
+                processAddFood(matchers[14].group(1), Double.parseDouble(matchers[14].group(2)), matchers[14].group(3));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -86,9 +93,13 @@ public class RestaurantOwnerMenu extends Menu {
             case FOOD_TYPE_EDITED -> System.out.println("Food type edited successfully");
             case SURE_EDIT_FOOD_TYPE -> System.out.println("Are you sure you want to change your restaurant food type?");
             case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
-            case INVALID_COMMAND -> System.out.println("Invalid command!");
             case FOOD_ALREADY_EXIST -> System.out.println("This food already exist in this restaurant");
             case FOOD_ADDED -> System.out.println("Food added successfully");
+            case LOGOUT -> System.out.println("Logged out successfully");
+            case ADD_RESTORE_QUESTION -> System.out.println("Please set your restore question");
+            case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
+            case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
+            case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
         }
     }
 
@@ -119,4 +130,16 @@ public class RestaurantOwnerMenu extends Menu {
     private void processAddFood(String foodName, double foodPrice, String foodType) {
         outputPrinter(manager.addFood(foodName, foodPrice, foodType));
     }
+    private void processAddRestoreQuestion() {
+        Output temp = manager.checkRestoreQuestion();
+        outputPrinter(temp);
+        if (temp == Output.ADD_RESTORE_QUESTION) {
+            String question = scanner.nextLine();
+            outputPrinter(Output.ADD_RESTORE_ANSWER);
+            String answer = scanner.nextLine();
+            manager.setRestore(question,answer);
+            outputPrinter(Output.RESTORE_QUESTION_ADDED);
+        }
+    }
+
 }

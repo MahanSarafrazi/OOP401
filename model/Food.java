@@ -11,7 +11,8 @@ public class Food {
     public void setPrice(double price) {
         this.price = price;
     }
-    public double getPrice(){return price - price * discount;}
+    public double getPrice(){return price;}
+    public double getDiscountedPrice() {return price - price * discount;}
     private final String name;
     public String getName(){return name;}
     private boolean activation;

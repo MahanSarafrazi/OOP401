@@ -9,12 +9,15 @@ public enum Inputs {
     LOGIN_CUSTOMER("^\\s*login\\s+customer\\s+(\\S+)\\s+(\\S+)\\s*$"), //3
     LOGIN_DELIVERER("^\\s*login\\s+deliverer\\s+(\\S+)\\s+(\\S+)\\s*$"), //4
     LOGIN_RESTAURANT_OWNER("^\\s*login\\s+restaurant owner\\s+(\\S+)\\s+(\\S+)\\s*$"), //5
-    SELECT_RESTAURANT("^\\s*select\\s+restaurant\\s+(\\d+)\\s*$"), //6
-    ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s+(\\S+)\\s*$"), //7
-    SHOW_FOOD_TYPE("^\\s*show\\s+food\\s+type\\s*$"), //8
-    EDIT_FOOD_TYPE("^\\s*edit\\s+food\\s+type\\s+(\\S+)\\s+(\\S+)\\s*$"), //9
-    ADD_FOOD_TYPE("^\\s*add\\s+food\\s+type(\\S+)\\s*$"), //10
-    ADD_FOOD("^\\s*add\\s+food\\(\\S+)\\s+(\\d*\\.?\\d+)\\s+(\\S+)\\s*$"), //11
+    LOGOUT("^\\s*logout\\s*$"), //6
+    ADD_RESTORE_QUESTION("^\\s*add\\s+restore\\s+question\\s*$"), //7
+    RESTORE_PASSWORD("^\\s*restore\\s+password\\s+(\\S+)\\s*$"), //8
+    SELECT_RESTAURANT("^\\s*select\\s+restaurant\\s+(\\d+)\\s*$"), //9
+    ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s+(\\S+)\\s*$"), //10
+    SHOW_FOOD_TYPE("^\\s*show\\s+food\\s+type\\s*$"), //11
+    EDIT_FOOD_TYPE("^\\s*edit\\s+food\\s+type\\s+(\\S+)\\s+(\\S+)\\s*$"), //12
+    ADD_FOOD_TYPE("^\\s*add\\s+food\\s+type(\\S+)\\s*$"), //13
+    ADD_FOOD("^\\s*add\\s+food\\s+(\\S+)\\s+(\\d*\\.?\\d+)\\s+(\\S+)\\s*$"), //14
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
     ;
 

@@ -52,9 +52,13 @@ public class LoginMenu extends Menu {
                     runOrders = RunOrders.RESTAURANT_OWNER_MENU;
                     inThisMenu = false;
                 }
+            } else if(matchers[8].find()) {
+                processRestorePassword(matchers[8].group(1));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
+            } else  {
+                System.out.println("invalid command!");
             }
         }
 
@@ -86,6 +90,13 @@ public class LoginMenu extends Menu {
         Output temp = manager.logInRestaurantOwner(username, password);
         outputPrinter(temp);
         return temp.equals(Output.SUCCESSFUL_LOGIN);
+    }
+    private void processRestorePassword (String username) {
+        Output temp = manager.getRestoreQuestion(username);
+        outputPrinter(temp);
+        if (temp == Output.SHOW_RESTORE_QUESTION) {
+            outputPrinter(manager.getRestoreAnswer(username, scanner.nextLine()));
+        }
     }
 
 }

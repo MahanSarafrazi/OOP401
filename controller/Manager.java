@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import view.Output;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Manager {
     //only one Manager
@@ -19,33 +20,35 @@ public class Manager {
     public User getLoggedInUser() {
         return loggedInUser;
     }
+    public void logout () {loggedInUser = null;}
 
     public Output addCustomer(String username, String password) {
-        for (Customer customer : UserList.getUserListInstance().getCustomers()) {
-            if(customer.getUserName().equals(username)) {
-                return Output.INVALID_USER_NAME;
-            }
+        if(getUser(username) != null) {
+            return Output.INVALID_USER_NAME;
         }
+
+        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$"))
+            return Output.INVALID_PASSWORD;
         loggedInUser = Customer.newCustomer(username, password);
         return Output.SUCCESSFUL_REGISTER;
     }
 
     public Output addDeliverer(String username, String password) {
-        for (Deliverer deliverer : UserList.getUserListInstance().getDeliverers()) {
-            if(deliverer.getUserName().equals(username)) {
-                return Output.INVALID_USER_NAME;
-            }
+        if(getUser(username) != null) {
+            return Output.INVALID_USER_NAME;
         }
+        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$"))
+            return Output.INVALID_PASSWORD;
         loggedInUser = Deliverer.newDeliverer(username, password);
         return Output.SUCCESSFUL_REGISTER;
     }
 
     public Output addRestaurantOwner(String username, String password) {
-        for (RestaurantOwner restaurantOwner : UserList.getUserListInstance().getRestaurantOwners()) {
-            if(restaurantOwner.getUserName().equals(username)) {
-                return Output.INVALID_USER_NAME;
-            }
+        if(getUser(username) != null) {
+            return Output.INVALID_USER_NAME;
         }
+        if (!password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$"))
+            return Output.INVALID_PASSWORD;
         loggedInUser = RestaurantOwner.newRestaurantOwner(username, password);
         return Output.SUCCESSFUL_REGISTER;
     }
@@ -220,5 +223,41 @@ public class Manager {
 
         owner.getActiveRestaurant().AddFood(foodName, foodPrice, foodType1);
         return Output.FOOD_ADDED;
+    }
+    public Output getRestoreQuestion(String username) {
+        if (getUser(username) == null) {
+            return Output.INVALID_USER_NAME;
+        }
+        else if (Objects.requireNonNull(getUser(username)).getRestoreQuestion() == null)
+            return Output.NO_RESTORE_QUESTION;
+        return Output.SHOW_RESTORE_QUESTION;
+    }
+    public Output getRestoreAnswer(String username, String restoreAnswer) {
+        if (Objects.requireNonNull(getUser(username)).getRestoreAnswer().equals(restoreAnswer)) {
+            return Output.CORRECT_ANSWER;
+        }
+        return Output.WRONG_ANSWER;
+    }
+    public Output checkRestoreQuestion() {
+        if (loggedInUser.getRestoreQuestion() == null) {
+            return Output.ADD_RESTORE_QUESTION;
+        }
+        return Output.RESTORE_QUESTION_EXISTS;
+    }
+    public void setRestore(String question,String answer) {
+        loggedInUser.setRestoreQuestion(question);
+        loggedInUser.setRestoreAnswer(answer);
+    }
+    private User getUser (String username) {
+        for (Customer customer : UserList.getUserListInstance().getCustomers())
+            if (customer.getUserName().equals(username))
+                return customer;
+        for (Deliverer deliverer : UserList.getUserListInstance().getDeliverers())
+            if (deliverer.getUserName().equals(username))
+                return deliverer;
+        for (RestaurantOwner restaurantOwner : UserList.getUserListInstance().getRestaurantOwners())
+            if (restaurantOwner.getUserName().equals(username))
+                return restaurantOwner;
+        return null;
     }
 }
