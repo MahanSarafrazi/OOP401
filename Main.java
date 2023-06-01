@@ -1,4 +1,6 @@
 
+import model.FoodType;
+import model.RestaurantOwner;
 import view.Run;
 
 public class Main {

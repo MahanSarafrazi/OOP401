@@ -2,6 +2,12 @@ package model;
 
 public class Food {
     private double price;
+    private final FoodType type;
+
+    public FoodType getType() {
+        return type;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -17,21 +23,21 @@ public class Food {
     public void setActivation(boolean activation) {
         this.activation = activation;
     }
-    public boolean getActivation(){return activation;}
+    public boolean getActivatin(){return activation;}
 
     private long ID;
     public void setID(long IDCode){ID=IDCode;}
     public long getID(){ return ID;}
     private double discount;
-     public Food( String name, double price){
+     public Food( String name, double price, FoodType type){
         this.name=name;
         this.price=price;
         this.discount = 0 ;
+        this.type = type;
     }
-    public void setDiscount(double discount){ this.discount=discount;
-
-     }
+    public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}
+
 
 
 
