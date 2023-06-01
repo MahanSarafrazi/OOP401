@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Manager {
     //only one Manager
-    private Manager() {};
+    private Manager() {}
     private static Manager managerInstance;
     public static Manager getManagerInstance() {
         if(managerInstance == null) {
@@ -179,7 +179,7 @@ public class Manager {
     public Output editFoodType(String firstType, String secondType, String command) {
         if(command.matches("^\\s*(?i)no\\s*$")) {
             return Output.EDIT_FOOD_TYPE_CANCELED;
-        } if(command.matches("^\\s*(?i)yes\\s*$$")) {
+        } if(command.matches("^\\s*(?i)yes\\s*$")) {
             RestaurantOwner owner = (RestaurantOwner) loggedInUser;
             FoodType changingType = null, replacingType = null;
             for (FoodType foodType : owner.getActiveRestaurant().getFoodType()) {

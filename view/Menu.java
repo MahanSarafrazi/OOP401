@@ -18,15 +18,10 @@ public abstract class Menu {
     //OutputPrinter
     protected void outputPrinter(Output output) {
         switch (output) {
-            case INVALID_USER_NAME -> {
-                System.out.println("user name is invalid");
-            } case INVALID_PASSWORD -> {
-                System.out.println("password is invalid");
-            } case SUCCESSFUL_LOGIN -> {
-                System.out.println("logged in successfully");
-            } case SUCCESSFUL_REGISTER -> {
-                System.out.println("registered successfully");
-            }
+            case INVALID_USER_NAME -> System.out.println("user name is invalid");
+            case INVALID_PASSWORD -> System.out.println("password is invalid");
+            case SUCCESSFUL_LOGIN -> System.out.println("logged in successfully");
+            case SUCCESSFUL_REGISTER -> System.out.println("registered successfully");
         }
     }
 }
