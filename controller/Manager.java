@@ -32,7 +32,7 @@ public class Manager {
         this.map = map;
     }
 
-    private User getUser (String username) {
+    public User getUser (String username) {
         for (Customer customer : UserList.getUserListInstance().getCustomers())
             if (customer.getUserName().equals(username))
                 return customer;

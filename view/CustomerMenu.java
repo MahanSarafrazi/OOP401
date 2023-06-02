@@ -16,7 +16,6 @@ public class CustomerMenu extends Menu {
         }
         return customerMenuInstance;
     }
-    private static Customer owner;
 
 
     //Menu managing
