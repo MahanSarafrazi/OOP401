@@ -275,6 +275,26 @@ public class Manager {
         return Output.FOOD_ADDED;
     }
     public ArrayList<Food> getActiveRestaurantFoods() {return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoods();}
+    public Output editFoodName(long ID, String newName) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                food.setName(newName);
+                return Output.FOOD_NAME_EDITED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
+    public Output editFoodPrice(long ID, double newPrice) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                food.setPrice(newPrice);
+                return Output.FOOD_PRICE_EDITED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
     public Output checkRestoreQuestion() {
         if (loggedInUser.getRestoreQuestion() == null) {
             return Output.ADD_RESTORE_QUESTION;

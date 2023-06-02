@@ -41,10 +41,14 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 processAddFood(matchers[13].group(1), Double.parseDouble(matchers[13].group(2)), matchers[13].group(3));
             } else if(matchers[14].find()) {
                 processShowFoods();
-            } else if (input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
+            } else if(matchers[15].find()) {
+                processEditFoodName(Long.parseLong(matchers[15].group(1)), matchers[15].group(2));
+            } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
+            } else if(matchers[16].find()) {
+                processEditFoodPrice(Long.parseLong(matchers[16].group(1)), Double.parseDouble(matchers[16].group(2)));
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
                 processBack();
                 runOrders = RunOrders.RESTAURANT_OWNER_MENU;
@@ -83,6 +87,9 @@ public class RestaurantMenuUsedByOwner extends Menu {
             case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
             case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
             case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
+            case NO_FOOD_WITH_THIS_ID -> System.out.println("There is no food with this name in your restaurant");
+            case FOOD_NAME_EDITED -> System.out.println("Food name edited successfully");
+            case FOOD_PRICE_EDITED -> System.out.println("Food price edited successfully");
         }
     }
     private void processShowFoodType() {
@@ -115,6 +122,12 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 System.out.println("  food type:" + food.getType());
             }
         }
+    }
+    private void processEditFoodName(long ID, String newName) {
+        outputPrinter(manager.editFoodName(ID, newName));
+    }
+    private void processEditFoodPrice(long ID, double newPrice) {
+        outputPrinter(manager.editFoodPrice(ID, newPrice));
     }
     private void processLoggingOut () {
         outputPrinter(manager.logoutFromRestaurantMenuUsedByOwner());
