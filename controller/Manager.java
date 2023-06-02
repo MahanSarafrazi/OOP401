@@ -43,7 +43,6 @@ public class Manager {
         this.map = map;
     }
 
-    public void logout () {loggedInUser = null;}
 
     public Output addCustomer(String username, String password) {
         if(getUser(username) != null) {
@@ -171,10 +170,6 @@ public class Manager {
     public Output processEditFoodType(String firstType, String secondType) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         FoodType changingType = null, replacingType = null;
-
-        if(owner.getActiveRestaurant() == null) {
-            return Output.NO_ACTIVE_RESTAURANT;
-        }
 
         for (FoodType foodType : owner.getActiveRestaurant().getFoodType()) {
             if(foodType.commandingPattern.matcher(firstType).find()) {
