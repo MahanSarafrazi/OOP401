@@ -13,7 +13,7 @@ public class Food {
     }
     public double getPrice(){return price;}
     public double getDiscountedPrice() {return price - price * discount;}
-    private final String name;
+    private String name;
     public String getName(){return name;}
     private boolean activation;
     //this boolean for active or not active in order
@@ -29,9 +29,12 @@ public class Food {
      public Food( String name, double price, FoodType type){
         this.name=name;
         this.price=price;
-        this.discount = 0 ;
+        this.discount = 0;
         this.type = type;
     }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}
+    public void setName(String name) {
+         this.name = name;
+    }
 }
