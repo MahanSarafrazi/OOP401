@@ -17,9 +17,18 @@ public class Manager {
     }
 
     private User loggedInUser = null;
+    private Map map;
     public User getLoggedInUser() {
         return loggedInUser;
     }
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
     public void logout () {loggedInUser = null;}
 
     public Output addCustomer(String username, String password) {
