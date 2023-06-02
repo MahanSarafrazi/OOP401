@@ -9,6 +9,10 @@ public class UserList {
     private UserList() {}
     private static UserList UserListInstance;
 
+    public static void setUserListInstance(UserList userListInstance) {
+        UserListInstance = userListInstance;
+    }
+
     public ArrayList<Customer> getCustomers() {
         return customers;
     }
