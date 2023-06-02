@@ -31,6 +31,8 @@ public class Food {
         this.price=price;
         this.discount = 0;
         this.type = type;
+         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
+         this.ID=randomIDGenerator.getLastNumber();
     }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}

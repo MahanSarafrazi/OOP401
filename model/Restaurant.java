@@ -11,7 +11,8 @@ public class Restaurant {
      public Restaurant(String name, FoodType foodType) {
          this.name=name;
          ++numberOfRestaurants;
-         this.ID = numberOfRestaurants;
+         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
+         this.ID=randomIDGenerator.getLastNumber();
          foods = new ArrayList<>();
          orders = new ArrayList<>();
          foodTypes = new ArrayList<>();
