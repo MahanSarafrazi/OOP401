@@ -26,13 +26,14 @@ public class RestaurantOwnerMenu extends Menu {
         RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
         if(owner.getRestaurants().size() > 1) {
             System.out.println("Welcome! Here is the list of your restaurants");
-            owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).reversed().thenComparing(Restaurant::getID).reversed());
+            owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
             for (Restaurant restaurant : owner.getRestaurants()) {
-                System.out.println(restaurant.getName());
+                System.out.println(restaurant.getName()+" "+restaurant.getID());
             }
         } else if(owner.getRestaurants().size() == 1) {
             System.out.println("Welcome to your restaurant!");
             owner.editActiveRestaurant(owner.getRestaurants().get(0));
+            return RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
         } else {
             System.out.println("Welcome! please register a restaurant");
         }
@@ -58,14 +59,6 @@ public class RestaurantOwnerMenu extends Menu {
                 processSelectingRestaurant(Long.parseLong(matchers[9].group(1)));
             } else if(matchers[10].find()) {
                 processAddingRestaurant(matchers[10].group(1), matchers[10].group(2));
-            } else if(matchers[11].find()) {
-                processShowFoodType();
-            } else if(matchers[12].find()) {
-                processEditFoodType(matchers[12].group(1), matchers[12].group(2));
-            } else if(matchers[13].find()) {
-                processAddFoodType(matchers[13].group(1));
-            } else if(matchers[14].find()) {
-                processAddFood(matchers[14].group(1), Double.parseDouble(matchers[14].group(2)), matchers[14].group(3));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -109,26 +102,6 @@ public class RestaurantOwnerMenu extends Menu {
     }
     private void processAddingRestaurant(String name, String foodType) {
         outputPrinter(manager.addRestaurant(name, foodType));
-    }
-    private void processShowFoodType() {
-        ArrayList<FoodType> foodTypes = manager.showFoodType();
-        System.out.println("food types are:");
-        for (FoodType foodType : foodTypes) {
-            System.out.println(foodType);
-        }
-    }
-    private void processEditFoodType(String firstType, String secondType) {
-        Output temp = manager.processEditFoodType(firstType, secondType);
-        outputPrinter(temp);
-        if(temp.equals(Output.SURE_EDIT_FOOD_TYPE)) {
-            outputPrinter(manager.editFoodType(firstType, secondType, scanner.nextLine()));
-        }
-    }
-    private void processAddFoodType(String foodType) {
-        outputPrinter(manager.addFoodType(foodType));
-    }
-    private void processAddFood(String foodName, double foodPrice, String foodType) {
-        outputPrinter(manager.addFood(foodName, foodPrice, foodType));
     }
     private void processAddRestoreQuestion() {
         Output temp = manager.checkRestoreQuestion();
