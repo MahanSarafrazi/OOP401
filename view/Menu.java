@@ -23,10 +23,6 @@ public abstract class Menu {
             case SUCCESSFUL_LOGIN -> System.out.println("logged in successfully");
             case SUCCESSFUL_REGISTER -> System.out.println("registered successfully");
             case INVALID_COMMAND -> System.out.println("Invalid command!");
-            case NO_RESTORE_QUESTION -> System.out.println("you didn't set any question!");
-            case SHOW_RESTORE_QUESTION -> System.out.println(manager.getLoggedInUser().getRestoreQuestion());
-            case CORRECT_ANSWER -> System.out.println(manager.getLoggedInUser().getPassword());
-            case WRONG_ANSWER -> System.out.println("wrong answer!");
         }
     }
 

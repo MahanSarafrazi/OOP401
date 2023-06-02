@@ -32,7 +32,7 @@ public class Manager {
         this.map = map;
     }
 
-    private User getUser (String username) {
+    public User getUser (String username) {
         for (Customer customer : UserList.getUserListInstance().getCustomers())
             if (customer.getUserName().equals(username))
                 return customer;
@@ -111,6 +111,12 @@ public class Manager {
             }
         }
         return Output.INVALID_USER_NAME;
+    }
+    public Output checkRestoreQuestion() {
+        if (loggedInUser.getRestoreQuestion() == null) {
+            return Output.ADD_RESTORE_QUESTION;
+        }
+        return Output.RESTORE_QUESTION_EXISTS;
     }
     public Output getRestoreQuestion(String username) {
         if (getUser(username) == null) {
@@ -273,12 +279,6 @@ public class Manager {
 
         owner.getActiveRestaurant().AddFood(foodName, foodPrice, foodType1);
         return Output.FOOD_ADDED;
-    }
-    public Output checkRestoreQuestion() {
-        if (loggedInUser.getRestoreQuestion() == null) {
-            return Output.ADD_RESTORE_QUESTION;
-        }
-        return Output.RESTORE_QUESTION_EXISTS;
     }
     public void backFromRestaurantMenuUsedByOwner() {
         RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(false);

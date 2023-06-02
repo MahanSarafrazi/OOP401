@@ -1,5 +1,7 @@
 package view;
 
+import model.User;
+
 import java.util.regex.Matcher;
 
 public class LoginMenu extends Menu {
@@ -65,6 +67,15 @@ public class LoginMenu extends Menu {
         //changing conditions
         return runOrders;
     }
+    private void outputPrinter(Output output, User user) {
+        switch (output) {
+            case INVALID_USER_NAME -> System.out.println("user name is invalid");
+            case NO_RESTORE_QUESTION -> System.out.println("you didn't set any question!");
+            case SHOW_RESTORE_QUESTION -> System.out.println(user.getRestoreQuestion()+"?");
+            case CORRECT_ANSWER -> System.out.println("Your password is : \n"+user.getPassword());
+            case WRONG_ANSWER -> System.out.println("wrong answer!");
+        }
+    }
 
     // passing to manager
     private void processAddCustomer(String username, String password) {
@@ -93,9 +104,9 @@ public class LoginMenu extends Menu {
     }
     private void processRestoringPassword(String username) {
         Output temp = manager.getRestoreQuestion(username);
-        outputPrinter(temp);
+        outputPrinter(temp,manager.getUser(username));
         if (temp == Output.SHOW_RESTORE_QUESTION) {
-            outputPrinter(manager.getRestoreAnswer(username, scanner.nextLine()));
+            outputPrinter(manager.getRestoreAnswer(username, scanner.nextLine()),manager.getUser(username));
         }
     }
 
