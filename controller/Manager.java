@@ -295,6 +295,16 @@ public class Manager {
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
+    public Output deleteFood(long ID) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                owner.getActiveRestaurant().deleteFood(ID);
+                return Output.FOOD_PRICE_EDITED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
     public Output checkRestoreQuestion() {
         if (loggedInUser.getRestoreQuestion() == null) {
             return Output.ADD_RESTORE_QUESTION;

@@ -32,4 +32,5 @@ public enum Output {
     NO_FOOD_WITH_THIS_ID,
     FOOD_NAME_EDITED,
     FOOD_PRICE_EDITED,
+    FOOD_DELETED,
 }
