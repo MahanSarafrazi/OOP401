@@ -1,16 +1,15 @@
 package view;
 
-import model.FoodType;
 import model.Restaurant;
 import model.RestaurantOwner;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.regex.Matcher;
 
 public class RestaurantOwnerMenu extends Menu {
     private RestaurantOwnerMenu() {
         super();
+        assumption=true;
     }
     private static RestaurantOwnerMenu restaurantOwnerMenu;
     public static RestaurantOwnerMenu getRestaurantOwnerMenuInstance() {
@@ -19,12 +18,16 @@ public class RestaurantOwnerMenu extends Menu {
         }
         return restaurantOwnerMenu;
     }
+    private boolean assumption ;
+    public void setAssumption(boolean value) {
+        assumption=value;
+    }
 
     //in Menu
     @Override
     public RunOrders openMenu() {
         RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
-        if(owner.getRestaurants().size() > 1) {
+        if(owner.getRestaurants().size() > 1 || !assumption) {
             System.out.println("Welcome! Here is the list of your restaurants");
             owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
             for (Restaurant restaurant : owner.getRestaurants()) {
@@ -49,20 +52,23 @@ public class RestaurantOwnerMenu extends Menu {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
             if(matchers[6].find()) {
+                processAddingRestoreQuestion();
+            } else if(owner.getActiveRestaurant() == null && matchers[8].find()) {
+                if(processSelectingRestaurant(Long.parseLong(matchers[8].group(1)))) {
+                    System.out.println("Welcome to your restaurant!");
+                    runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
+                    inThisMenu = false;
+                }
+            } else if(matchers[9].find()) {
+                processAddingRestaurant(matchers[9].group(1), matchers[9].group(2));
+            } else if (input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
+                processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
-                outputPrinter(Output.LOGOUT);
-                manager.logout();
                 inThisMenu = false;
-            } else if(matchers[7].find()) {
-                processAddRestoreQuestion();
-            } else if(owner.getActiveRestaurant() == null && matchers[9].find()) {
-                processSelectingRestaurant(Long.parseLong(matchers[9].group(1)));
-            } else if(matchers[10].find()) {
-                processAddingRestaurant(matchers[10].group(1), matchers[10].group(2));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
-            } else {
+            }  else {
                 System.out.println("invalid command");
             }
         }
@@ -97,13 +103,15 @@ public class RestaurantOwnerMenu extends Menu {
     }
 
     //passing to manager
-    private void processSelectingRestaurant(long ID) {
-        outputPrinter(manager.selectRestaurant(ID));
+    private boolean processSelectingRestaurant(long ID) {
+        Output temp = manager.selectRestaurant(ID);
+        outputPrinter(temp);
+        return temp == Output.SUCCESSFUL_SELECT_RESTAURANT;
     }
     private void processAddingRestaurant(String name, String foodType) {
         outputPrinter(manager.addRestaurant(name, foodType));
     }
-    private void processAddRestoreQuestion() {
+    private void processAddingRestoreQuestion() {
         Output temp = manager.checkRestoreQuestion();
         outputPrinter(temp);
         if (temp == Output.ADD_RESTORE_QUESTION) {
@@ -113,6 +121,9 @@ public class RestaurantOwnerMenu extends Menu {
             manager.setRestore(question,answer);
             outputPrinter(Output.RESTORE_QUESTION_ADDED);
         }
+    }
+    private void processLoggingOut() {
+        outputPrinter(manager.logoutFromRestaurantOwnerMenu());
     }
 
 }

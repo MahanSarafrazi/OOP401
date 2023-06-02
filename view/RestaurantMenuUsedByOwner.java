@@ -1,11 +1,8 @@
 package view;
 
 import model.FoodType;
-import model.Restaurant;
-import model.RestaurantOwner;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.regex.Matcher;
 
 public class RestaurantMenuUsedByOwner extends Menu {
@@ -23,8 +20,6 @@ public class RestaurantMenuUsedByOwner extends Menu {
     //in Menu
     @Override
     public RunOrders openMenu() {
-        RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
-
         String input;
         boolean inThisMenu = true;
         RunOrders runOrders = null;
@@ -35,22 +30,27 @@ public class RestaurantMenuUsedByOwner extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if(matchers[6].find()) {
-                runOrders = RunOrders.LOGIN_MENU;
-                outputPrinter(Output.LOGOUT);
-                manager.logout();
-                inThisMenu = false;
-            } else if(matchers[11].find()) {
+            if(matchers[10].find()) {
                 processShowFoodType();
+            } else if(matchers[11].find()) {
+                processEditFoodType(matchers[11].group(1), matchers[11].group(2));
             } else if(matchers[12].find()) {
-                processEditFoodType(matchers[12].group(1), matchers[12].group(2));
+                processAddFoodType(matchers[12].group(1));
             } else if(matchers[13].find()) {
-                processAddFoodType(matchers[13].group(1));
-            } else if(matchers[14].find()) {
-                processAddFood(matchers[14].group(1), Double.parseDouble(matchers[14].group(2)), matchers[14].group(3));
+                processAddFood(matchers[13].group(1), Double.parseDouble(matchers[13].group(2)), matchers[13].group(3));
+            } else if (input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
+                processLoggingOut();
+                runOrders = RunOrders.LOGIN_MENU;
+                inThisMenu = false;
+            } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
+                processBack();
+                runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
+                inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
+            }  else {
+                System.out.println("invalid command");
             }
         }
 
@@ -63,7 +63,23 @@ public class RestaurantMenuUsedByOwner extends Menu {
         switch (output) {
             case SUCCESSFUL_SELECT_RESTAURANT -> System.out.println("Restaurant selected successfully");
             case INVALID_RESTAURANT_ID -> System.out.println("There is no restaurant with this ID!");
-
+            case NO_ACTIVE_RESTAURANT -> System.out.println("You haven't logged in in any restaurant!");
+            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> System.out.println("There is no such food type in this restaurant!");
+            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
+            case EQUAL_FOOD_TYPES -> System.out.println("These food types are the same!");
+            case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> System.out.println("There is still orders with this food type!");
+            case FOOD_TYPE_ALREADY_EXIST -> System.out.println("This food type already exist in this restaurant!");
+            case FOOD_TYPE_ADDED -> System.out.println("Food type added successfully");
+            case FOOD_TYPE_EDITED -> System.out.println("Food type edited successfully");
+            case SURE_EDIT_FOOD_TYPE -> System.out.println("Are you sure you want to change your restaurant food type?");
+            case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
+            case FOOD_ALREADY_EXIST -> System.out.println("This food already exist in this restaurant");
+            case FOOD_ADDED -> System.out.println("Food added successfully");
+            case LOGOUT -> System.out.println("Logged out successfully");
+            case ADD_RESTORE_QUESTION -> System.out.println("Please set your restore question");
+            case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
+            case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
+            case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
         }
     }
     private void processShowFoodType() {
@@ -85,5 +101,11 @@ public class RestaurantMenuUsedByOwner extends Menu {
     }
     private void processAddFood(String foodName, double foodPrice, String foodType) {
         outputPrinter(manager.addFood(foodName, foodPrice, foodType));
+    }
+    private void processLoggingOut () {
+        outputPrinter(manager.logoutFromRestaurantMenuUsedByOwner());
+    }
+    private void processBack() {
+        manager.backFromRestaurantMenuUsedByOwner();
     }
 }

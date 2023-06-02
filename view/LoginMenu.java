@@ -52,8 +52,8 @@ public class LoginMenu extends Menu {
                     runOrders = RunOrders.RESTAURANT_OWNER_MENU;
                     inThisMenu = false;
                 }
-            } else if(matchers[8].find()) {
-                processRestorePassword(matchers[8].group(1));
+            } else if(matchers[7].find()) {
+                processRestoringPassword(matchers[7].group(1));
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
@@ -91,7 +91,7 @@ public class LoginMenu extends Menu {
         outputPrinter(temp);
         return temp.equals(Output.SUCCESSFUL_LOGIN);
     }
-    private void processRestorePassword (String username) {
+    private void processRestoringPassword(String username) {
         Output temp = manager.getRestoreQuestion(username);
         outputPrinter(temp);
         if (temp == Output.SHOW_RESTORE_QUESTION) {

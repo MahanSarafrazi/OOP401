@@ -37,4 +37,5 @@ public class RestaurantOwner extends User {
     public void editActiveRestaurant(Restaurant restaurant) {
         this.activeRestaurant = restaurant;
     }
+    public void deActiveRestaurant() {activeRestaurant = null;}
 }

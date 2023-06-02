@@ -2,6 +2,8 @@ package controller;
 
 import model.*;
 import view.Output;
+import view.RestaurantOwnerMenu;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -20,7 +22,18 @@ public class Manager {
     public User getLoggedInUser() {
         return loggedInUser;
     }
-    public void logout () {loggedInUser = null;}
+    private User getUser (String username) {
+        for (Customer customer : UserList.getUserListInstance().getCustomers())
+            if (customer.getUserName().equals(username))
+                return customer;
+        for (Deliverer deliverer : UserList.getUserListInstance().getDeliverers())
+            if (deliverer.getUserName().equals(username))
+                return deliverer;
+        for (RestaurantOwner restaurantOwner : UserList.getUserListInstance().getRestaurantOwners())
+            if (restaurantOwner.getUserName().equals(username))
+                return restaurantOwner;
+        return null;
+    }
 
     public Output addCustomer(String username, String password) {
         if(getUser(username) != null) {
@@ -88,6 +101,36 @@ public class Manager {
         }
         return Output.INVALID_USER_NAME;
     }
+    public Output getRestoreQuestion(String username) {
+        if (getUser(username) == null) {
+            return Output.INVALID_USER_NAME;
+        }
+        else if (Objects.requireNonNull(getUser(username)).getRestoreQuestion() == null)
+            return Output.NO_RESTORE_QUESTION;
+        return Output.SHOW_RESTORE_QUESTION;
+    }
+    public Output getRestoreAnswer(String username, String restoreAnswer) {
+        if (Objects.requireNonNull(getUser(username)).getRestoreAnswer().equals(restoreAnswer)) {
+            return Output.CORRECT_ANSWER;
+        }
+        return Output.WRONG_ANSWER;
+    }
+    public void setRestore(String question,String answer) {
+        loggedInUser.setRestoreQuestion(question);
+        loggedInUser.setRestoreAnswer(answer);
+    }
+    public Output logoutFromRestaurantOwnerMenu() {
+        RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromRestaurantMenuUsedByOwner() {
+        RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
+        restaurantOwner.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
     public Output addRestaurant(String name, String foodType) {
         FoodType foodType1 = null;
         for (FoodType value : FoodType.values()) {
@@ -118,10 +161,6 @@ public class Manager {
     public Output processEditFoodType(String firstType, String secondType) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         FoodType changingType = null, replacingType = null;
-
-        if(owner.getActiveRestaurant() == null) {
-            return Output.NO_ACTIVE_RESTAURANT;
-        }
 
         for (FoodType foodType : owner.getActiveRestaurant().getFoodType()) {
             if(foodType.commandingPattern.matcher(firstType).find()) {
@@ -224,40 +263,16 @@ public class Manager {
         owner.getActiveRestaurant().AddFood(foodName, foodPrice, foodType1);
         return Output.FOOD_ADDED;
     }
-    public Output getRestoreQuestion(String username) {
-        if (getUser(username) == null) {
-            return Output.INVALID_USER_NAME;
-        }
-        else if (Objects.requireNonNull(getUser(username)).getRestoreQuestion() == null)
-            return Output.NO_RESTORE_QUESTION;
-        return Output.SHOW_RESTORE_QUESTION;
-    }
-    public Output getRestoreAnswer(String username, String restoreAnswer) {
-        if (Objects.requireNonNull(getUser(username)).getRestoreAnswer().equals(restoreAnswer)) {
-            return Output.CORRECT_ANSWER;
-        }
-        return Output.WRONG_ANSWER;
-    }
     public Output checkRestoreQuestion() {
         if (loggedInUser.getRestoreQuestion() == null) {
             return Output.ADD_RESTORE_QUESTION;
         }
         return Output.RESTORE_QUESTION_EXISTS;
     }
-    public void setRestore(String question,String answer) {
-        loggedInUser.setRestoreQuestion(question);
-        loggedInUser.setRestoreAnswer(answer);
+    public void backFromRestaurantMenuUsedByOwner() {
+        RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(false);
+        RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
+        restaurantOwner.deActiveRestaurant();
     }
-    private User getUser (String username) {
-        for (Customer customer : UserList.getUserListInstance().getCustomers())
-            if (customer.getUserName().equals(username))
-                return customer;
-        for (Deliverer deliverer : UserList.getUserListInstance().getDeliverers())
-            if (deliverer.getUserName().equals(username))
-                return deliverer;
-        for (RestaurantOwner restaurantOwner : UserList.getUserListInstance().getRestaurantOwners())
-            if (restaurantOwner.getUserName().equals(username))
-                return restaurantOwner;
-        return null;
-    }
+
 }
