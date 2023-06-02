@@ -22,7 +22,7 @@ public class Run {
     }
     //running the program from scratch
     public void running() {
-        DataBase dataBase = new DataBase("resources/graph.txt", "resources/data.txt");
+        DataBase dataBase = new DataBase("resources/graph.txt", "resources/user list.txt", "resources/restaurant list.txt");
         dataBase.load();
 
         setOpenMenu(LoginMenu.getLoginMenu());

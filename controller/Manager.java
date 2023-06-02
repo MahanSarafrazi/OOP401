@@ -274,6 +274,7 @@ public class Manager {
         owner.getActiveRestaurant().AddFood(foodName, foodPrice, foodType1);
         return Output.FOOD_ADDED;
     }
+    public ArrayList<Food> getActiveRestaurantFoods() {return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoods();}
     public Output checkRestoreQuestion() {
         if (loggedInUser.getRestoreQuestion() == null) {
             return Output.ADD_RESTORE_QUESTION;

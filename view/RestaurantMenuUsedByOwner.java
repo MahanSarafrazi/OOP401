@@ -1,5 +1,6 @@
 package view;
 
+import model.Food;
 import model.FoodType;
 
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 processAddFoodType(matchers[12].group(1));
             } else if(matchers[13].find()) {
                 processAddFood(matchers[13].group(1), Double.parseDouble(matchers[13].group(2)), matchers[13].group(3));
+            } else if(matchers[14].find()) {
+                processShowFoods();
             } else if (input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
@@ -101,6 +104,17 @@ public class RestaurantMenuUsedByOwner extends Menu {
     }
     private void processAddFood(String foodName, double foodPrice, String foodType) {
         outputPrinter(manager.addFood(foodName, foodPrice, foodType));
+    }
+    private void processShowFoods() {
+        ArrayList<Food> foods = manager.getActiveRestaurantFoods();
+        if(foods.isEmpty()) {
+            System.out.println("There is no food in your restaurant");
+        } else {
+            for (Food food : foods) {
+                System.out.print("food name:" + food.getName() + "  ID:" + food.getID() + "  price:" + food.getPrice() + "  active discount:" + food.getDiscount());
+                System.out.println("  food type:" + food.getType());
+            }
+        }
     }
     private void processLoggingOut () {
         outputPrinter(manager.logoutFromRestaurantMenuUsedByOwner());
