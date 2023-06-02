@@ -159,7 +159,7 @@ public class Manager {
         owner.AddRestaurant(name, foodType1);
         return Output.SUCCESSFUL_REGISTER;
     }
-    public Output selectRestaurant(long ID) {
+    public Output selectRestaurant(int ID) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         if(owner.editActiveRestaurant(ID)) {
             return Output.SUCCESSFUL_SELECT_RESTAURANT;
@@ -275,7 +275,7 @@ public class Manager {
         return Output.FOOD_ADDED;
     }
     public ArrayList<Food> getActiveRestaurantFoods() {return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoods();}
-    public Output editFoodName(long ID, String newName) {
+    public Output editFoodName(int ID, String newName) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
@@ -285,7 +285,7 @@ public class Manager {
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
-    public Output editFoodPrice(long ID, double newPrice) {
+    public Output editFoodPrice(int ID, double newPrice) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
@@ -295,7 +295,7 @@ public class Manager {
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
-    public Output deleteFood(long ID) {
+    public Output deleteFood(int ID) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {

@@ -42,15 +42,15 @@ public class RestaurantMenuUsedByOwner extends Menu {
             } else if(matchers[14].find()) {
                 processShowFoods();
             } else if(matchers[15].find()) {
-                processEditFoodName(Long.parseLong(matchers[15].group(1)), matchers[15].group(2));
+                processEditFoodName(Integer.parseInt(matchers[15].group(1)), matchers[15].group(2));
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if(matchers[16].find()) {
-                processEditFoodPrice(Long.parseLong(matchers[16].group(1)), Double.parseDouble(matchers[16].group(2)));
+                processEditFoodPrice(Integer.parseInt(matchers[16].group(1)), Double.parseDouble(matchers[16].group(2)));
             } else if(matchers[17].find()) {
-                processDeleteFood(Long.parseLong(matchers[17].group(1)));
+                processDeleteFood(Integer.parseInt(matchers[17].group(1)));
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
                 processBack();
                 runOrders = RunOrders.RESTAURANT_OWNER_MENU;
@@ -126,13 +126,13 @@ public class RestaurantMenuUsedByOwner extends Menu {
             }
         }
     }
-    private void processEditFoodName(long ID, String newName) {
+    private void processEditFoodName(int ID, String newName) {
         outputPrinter(manager.editFoodName(ID, newName));
     }
-    private void processEditFoodPrice(long ID, double newPrice) {
+    private void processEditFoodPrice(int ID, double newPrice) {
         outputPrinter(manager.editFoodPrice(ID, newPrice));
     }
-    private void processDeleteFood(long ID) {
+    private void processDeleteFood(int ID) {
         outputPrinter(manager.deleteFood(ID));
     }
     private void processLoggingOut () {

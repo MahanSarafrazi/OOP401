@@ -1,9 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Food {
     private double price;
     private final FoodType type;
-
+    private static final ArrayList<Integer> allIDs = new ArrayList<>();
+    public static ArrayList<Integer> getAllIDs() {
+        return allIDs;
+    }
     public FoodType getType() {
         return type;
     }
@@ -22,17 +27,17 @@ public class Food {
         this.activation = activation;
     }
     public boolean getActivation(){return activation;}
-
-    private long ID;
-    public long getID(){ return ID;}
+    private final int ID;
+    public int getID(){ return ID;}
     private double discount;
      public Food( String name, double price, FoodType type){
         this.name=name;
         this.price=price;
         this.discount = 0;
         this.type = type;
-         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
-         this.ID=randomIDGenerator.getLastNumber();
+        RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
+        allIDs.add(randomIDGenerator.getLastNumber());
+        this.ID=randomIDGenerator.getLastNumber();
     }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}

@@ -1,9 +1,6 @@
 package model;
 
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class RandomIDGenerator implements Iterator<Integer> {
     private Random random = new Random();
@@ -14,7 +11,7 @@ public class RandomIDGenerator implements Iterator<Integer> {
         return lastNumber;
     }
     public static int getSize() {return generated.size();}
-    private static Set<Integer> generated = new LinkedHashSet<>();
+    private static final Set<Integer> generated = new LinkedHashSet<>();
 
     public RandomIDGenerator(int size) {
         while (generated.size() < size + 1) {
@@ -24,6 +21,9 @@ public class RandomIDGenerator implements Iterator<Integer> {
         }
     }
 
+    public static void add(ArrayList<Integer> IDs) {
+        generated.addAll(IDs);
+    }
     @Override
     public boolean hasNext() {
         return false;

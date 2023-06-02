@@ -70,6 +70,8 @@ public class DataBase {
         }
         restaurantListScanner.close();
         RestaurantList.setRestaurantUserInstance(gson.fromJson(gsonData, RestaurantList.class));
+        RandomIDGenerator.add(Restaurant.getAllIDs());
+        RandomIDGenerator.add(Food.getAllIDs());
     }
 
     public void save() {
