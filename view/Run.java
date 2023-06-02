@@ -1,5 +1,7 @@
 package view;
 
+import controller.DataBase;
+
 public class Run {
     //making the program have just one Run object
     private Run() {}
@@ -20,12 +22,17 @@ public class Run {
     }
     //running the program from scratch
     public void running() {
+        DataBase dataBase = new DataBase("resources/graph.txt", "resources/user list.txt", "resources/restaurant list.txt");
+        dataBase.load();
+
         setOpenMenu(LoginMenu.getLoginMenu());
         RunOrders runOrders;
         while(!(runOrders = openedMenu.openMenu()).equals(RunOrders.EXIT)) {
             setOpenMenu(getMenuByEnum(runOrders));
         }
         System.out.println("thanks for trusting us!");
+
+        dataBase.save();
     }
 
     //a helping method for getting Menu by enum
@@ -33,6 +40,14 @@ public class Run {
         switch (runOrders) {
             case LOGIN_MENU -> {
                 return LoginMenu.getLoginMenu();
+            } case CUSTOMER_MENU -> {
+                return CustomerMenu.getCustomerMenuInstance();
+            } case DELIVERER_MENU -> {
+                return DelivererMenu.getDelivererMenuInstance();
+            } case RESTAURANT_OWNER_MENU -> {
+                return RestaurantOwnerMenu.getRestaurantOwnerMenuInstance();
+            } case RESTAURANT_MENU_USED_BY_OWNER -> {
+                return RestaurantMenuUsedByOwner.getRestaurantMenuUsedByOwnerInstance();
             }
         }
         //not used

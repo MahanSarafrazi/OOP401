@@ -1,14 +1,19 @@
 package model;
 
+import java.util.regex.Pattern;
+
 public enum FoodType {
-    IRANIAN_FOOD,
-    FAST_FOOD,
-    FRIED_FOOD,
-    SEA_FOOD,
-    INTERNATIONAL_FOOD,
-    DESSERT,
-    DRINK,
+    FAST_FOOD("^\\s*(?i)fastFood\\s*$"),
+    IRANIAN("^\\s*(?i)IRANIAN\\s*$"),
+    ITALIAN("^\\s*(?i)ITALIAN\\s*$"),
+    TURKISH("^\\s*(?i)TURKISH\\s*$"),
+    INTERNATIONAL_FOOD("^\\s*(?i)internationalFood\\s*$"),
+    DESSERT("^\\s*(?i)DESSERT\\s*$"),
+    DRINK("^\\s*(?i)DRINK\\s*$"),
     ;
+    public final Pattern commandingPattern;
 
-
+    FoodType(String s) {
+        this.commandingPattern = Pattern.compile(s);
+    }
 }

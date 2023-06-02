@@ -5,96 +5,79 @@ import java.util.ArrayList;
 public class Restaurant {
     //Location locate ;
     //Edit Location;
-     private String name;
-     public ArrayList<Food> order;
-     public Restaurant(String name) {this.name=name;}
+     private final String name;
+     public ArrayList<Order> orders;
+     private static int numberOfRestaurants = RestaurantList.restaurants.size();
+     public Restaurant(String name, FoodType foodType) {
+         this.name=name;
+         ++numberOfRestaurants;
+         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
+         this.ID=randomIDGenerator.getLastNumber();
+         foods = new ArrayList<>();
+         orders = new ArrayList<>();
+         foodTypes = new ArrayList<>();
+         foodTypes.add(foodType);
+     }
 
      public String getName(){return name;}
-     private long ID;
+     private final long ID;
      public long getID(){return ID;}
-     private ArrayList<FoodType> foodTypes ;
+     private final ArrayList<FoodType> foodTypes;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
-     public boolean editFoodType(FoodType FirstfoodType,FoodType SecondaryFoodType){
-         if (order.size()==0){
+
+    public void editFoodType(FoodType firstFoodType, FoodType secondFoodType) {
          for (int i = 0; i < foodTypes.size(); i++) {
-             if (foodTypes.get(i) == FirstfoodType){
-                 foodTypes.set(i , SecondaryFoodType);
-                 for (int j = foods.size()-1; j > 0; j--) {
-                     foods.remove(j);
-                 }
-                 return true;
+             if (foodTypes.get(i).equals(firstFoodType)) {
+                 foodTypes.set(i , secondFoodType);
+                 foods.removeIf(food -> food.getType().equals(firstFoodType));
              }
-         }}
-         return false;
+         }
      }
 
-     public ArrayList<FoodType> getFoodType (){return foodTypes;}
-     private ArrayList<Food> foods ;
-     public void AddFood(String NameFood, double PriceName){
-         Food food=new Food(NameFood,PriceName);
-         foods.add(food);
-     }
-     public boolean DeleteFood(long IDCode){
-         //اگر غذای مورد نظر در لیست سفارشات رستوران باشد false خروجی می دهد
-         boolean check=false;
-         for (int i = 0; i < order.size(); i++) {
-             if(order.get(i).getID()==IDCode) {
-                 check=true;
-             }
-         }
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
 
-         if(check){
-         for (int i = 0; i < foods.size(); i++) {
-             if(foods.get(i).getID()==IDCode){
-                 foods.remove(i);
-             }
-         }
-         return true;
-         }
-         return false;
+    public ArrayList<FoodType> getFoodType (){return foodTypes;}
+     private final ArrayList<Food> foods;
+     public void AddFood(String foodName, double foodPrice, FoodType foodType){
+         foods.add(new Food(foodName, foodPrice, foodType));
      }
-     public void EditFoodName( long IDCode,String newName){
-         for (int i = 0; i < foods.size(); i++) {
-             if (foods.get(i).getID()==IDCode){
-                 foods.get(i).setName(newName);
+     public void deleteFood(long ID){
+         for (Food food : foods) {
+             if(food.getID() == ID) {
+                 foods.remove(food);
+                 return;
              }
          }
      }
     public void EditFoodPrice( long IDCode,double newPrice){
-        for (int i = 0; i < foods.size(); i++) {
-            if (foods.get(i).getID()==IDCode){
-                foods.get(i).setPrice(newPrice);
+        for (Food food : foods) {
+            if (food.getID() == IDCode) {
+                food.setPrice(newPrice);
+            }
+        }
+    }
+    public void setActivationOrder(long IDCode, boolean activation){
+        for (Food food : foods) {
+            if (food.getID() == IDCode) {
+                food.setActivation(activation);
             }
         }
     }
 
-    public boolean setActivationOrder(long IDCode, boolean activation){
-         //اگر غذای مورد نظر در لیست سفارشات باشد این تابع false خروجی می دهد
-        boolean check=false;
-        for (int i = 0; i < order.size(); i++) {
-            if(order.get(i).getID()==IDCode) {
-                check=true;
+    public boolean isThereAnyOrderOfThisType(FoodType foodType) {
+         int count = 0;
+        for (Order order : orders) {
+            if(order.getType().equals(foodType)) {
+                ++count;
             }
         }
-        if(check){
-        for (int i = 0; i < foods.size(); i++) {
-            if (foods.get(i).getID()==IDCode){
-                foods.get(i).setActivation(activation);
-            }
-            return true;
-        }
-        }
-        return false;
+        return count != 0;
     }
-
-
-
-
-
 
 
      //ArrayList<FoodType> RestaurantFoodType = new ArrayList<>();
-
 
 
 

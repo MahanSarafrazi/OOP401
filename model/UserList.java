@@ -5,10 +5,13 @@ import java.util.ArrayList;
 public class UserList {
     private final ArrayList<Customer> customers = new ArrayList<>();
     private final ArrayList<Deliverer> deliverers = new ArrayList<>();
-    private final ArrayList<Admin> admins = new ArrayList<>();
     private final ArrayList<RestaurantOwner> restaurantOwners = new ArrayList<>();
     private UserList() {}
     private static UserList UserListInstance;
+
+    public static void setUserListInstance(UserList userListInstance) {
+        UserListInstance = userListInstance;
+    }
 
     public ArrayList<Customer> getCustomers() {
         return customers;
@@ -16,10 +19,6 @@ public class UserList {
 
     public ArrayList<Deliverer> getDeliverers() {
         return deliverers;
-    }
-
-    public ArrayList<Admin> getAdmins() {
-        return admins;
     }
 
     public ArrayList<RestaurantOwner> getRestaurantOwners() {
