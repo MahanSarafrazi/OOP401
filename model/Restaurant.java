@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Restaurant {
     //Location locate ;
     //Edit Location;
-     private final String name;
-     public ArrayList<Order> orders;
+    private final String name;
+    private ArrayList<Order> orders;
      private static int numberOfRestaurants = RestaurantList.restaurants.size();
      private static final ArrayList<Integer> allIDs = new ArrayList<>();
      public static ArrayList<Integer> getAllIDs() {
@@ -27,6 +27,9 @@ public class Restaurant {
      public String getName(){return name;}
      private final int ID;
      public int getID(){return ID;}
+     public ArrayList<Order> getOrders() {
+         return orders;
+     }
      private final ArrayList<FoodType> foodTypes;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
 
@@ -63,7 +66,7 @@ public class Restaurant {
             }
         }
     }
-    public void setActivationOrder(int IDCode, boolean activation){
+    public void setActivation(int IDCode, boolean activation) {
         for (Food food : foods) {
             if (food.getID() == IDCode) {
                 food.setActivation(activation);
@@ -81,6 +84,14 @@ public class Restaurant {
         return count != 0;
     }
 
+    public Food getFoodByID(int ID) {
+        for (Food food : foods) {
+            if(food.getID() == ID) {
+                return food;
+            }
+        }
+        return null;
+    }
 
      //ArrayList<FoodType> RestaurantFoodType = new ArrayList<>();
 

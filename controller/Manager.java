@@ -300,7 +300,37 @@ public class Manager {
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
                 owner.getActiveRestaurant().deleteFood(ID);
-                return Output.FOOD_PRICE_EDITED;
+                return Output.FOOD_DELETED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
+    public Output deActiveFood(int ID) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                boolean isThereFood = false;
+                for (Order order : owner.getActiveRestaurant().getOrders()) {
+                    if(order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID))) {
+                        isThereFood = true;
+                        break;
+                    }
+                }
+                if(isThereFood) {
+                    return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
+                }
+                owner.getActiveRestaurant().setActivation(ID, false);
+                return Output.FOOD_DEACTIVATED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
+    public Output activeFood(int ID) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                owner.getActiveRestaurant().setActivation(ID, true);
+                return Output.FOOD_ACTIVATED;
             }
         }
         return Output.NO_FOOD_WITH_THIS_ID;

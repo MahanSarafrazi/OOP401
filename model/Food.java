@@ -31,10 +31,11 @@ public class Food {
     public int getID(){ return ID;}
     private double discount;
      public Food( String name, double price, FoodType type){
-        this.name=name;
-        this.price=price;
+        this.name = name;
+        this.price = price;
         this.discount = 0;
         this.type = type;
+        this.activation = true;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
         allIDs.add(randomIDGenerator.getLastNumber());
         this.ID=randomIDGenerator.getLastNumber();
