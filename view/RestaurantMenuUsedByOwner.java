@@ -44,7 +44,7 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
                 processBack();
-                runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
+                runOrders = RunOrders.RESTAURANT_OWNER_MENU;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;

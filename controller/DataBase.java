@@ -4,7 +4,6 @@ import model.Map;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class DataBase {

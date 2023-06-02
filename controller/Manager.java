@@ -23,6 +23,15 @@ public class Manager {
     public User getLoggedInUser() {
         return loggedInUser;
     }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
     private User getUser (String username) {
         for (Customer customer : UserList.getUserListInstance().getCustomers())
             if (customer.getUserName().equals(username))
@@ -34,13 +43,6 @@ public class Manager {
             if (restaurantOwner.getUserName().equals(username))
                 return restaurantOwner;
         return null;
-    }
-    public Map getMap() {
-        return map;
-    }
-
-    public void setMap(Map map) {
-        this.map = map;
     }
 
 
