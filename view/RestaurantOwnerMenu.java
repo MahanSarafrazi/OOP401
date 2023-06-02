@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 public class RestaurantOwnerMenu extends Menu {
     private RestaurantOwnerMenu() {
         super();
-        assumption=true;
+        assumption = true;
     }
     private static RestaurantOwnerMenu restaurantOwnerMenu;
     public static RestaurantOwnerMenu getRestaurantOwnerMenuInstance() {
@@ -20,7 +20,7 @@ public class RestaurantOwnerMenu extends Menu {
     }
     private boolean assumption ;
     public void setAssumption(boolean value) {
-        assumption=value;
+        assumption = value;
     }
 
     //in Menu
