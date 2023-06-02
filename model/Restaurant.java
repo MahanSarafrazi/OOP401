@@ -42,9 +42,12 @@ public class Restaurant {
      public void AddFood(String foodName, double foodPrice, FoodType foodType){
          foods.add(new Food(foodName, foodPrice, foodType));
      }
-     public void DeleteFood(long IDCode){
-         for (int i = 0; i < foods.size(); i++) {
-             foods.removeIf(food -> food.getID() == IDCode);
+     public void deleteFood(long ID){
+         for (Food food : foods) {
+             if(food.getID() == ID) {
+                 foods.remove(food);
+                 return;
+             }
          }
      }
     public void EditFoodPrice( long IDCode,double newPrice){

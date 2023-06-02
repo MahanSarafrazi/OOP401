@@ -49,6 +49,8 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 inThisMenu = false;
             } else if(matchers[16].find()) {
                 processEditFoodPrice(Long.parseLong(matchers[16].group(1)), Double.parseDouble(matchers[16].group(2)));
+            } else if(matchers[17].find()) {
+                processDeleteFood(Long.parseLong(matchers[17].group(1)));
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
                 processBack();
                 runOrders = RunOrders.RESTAURANT_OWNER_MENU;
@@ -87,9 +89,10 @@ public class RestaurantMenuUsedByOwner extends Menu {
             case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
             case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
             case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
-            case NO_FOOD_WITH_THIS_ID -> System.out.println("There is no food with this name in your restaurant");
+            case NO_FOOD_WITH_THIS_ID -> System.out.println("There is no food with this ID in your restaurant");
             case FOOD_NAME_EDITED -> System.out.println("Food name edited successfully");
             case FOOD_PRICE_EDITED -> System.out.println("Food price edited successfully");
+            case FOOD_DELETED -> System.out.println("Food deleted successfully");
         }
     }
     private void processShowFoodType() {
@@ -128,6 +131,9 @@ public class RestaurantMenuUsedByOwner extends Menu {
     }
     private void processEditFoodPrice(long ID, double newPrice) {
         outputPrinter(manager.editFoodPrice(ID, newPrice));
+    }
+    private void processDeleteFood(long ID) {
+        outputPrinter(manager.deleteFood(ID));
     }
     private void processLoggingOut () {
         outputPrinter(manager.logoutFromRestaurantMenuUsedByOwner());

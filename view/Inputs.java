@@ -20,6 +20,7 @@ public enum Inputs {
     SHOW_FOODS("^\\s*show\\s+foods\\s*$"), //14
     EDIT_FOOD_NAME("^\\s*edit\\s+food\\s+(\\d+)\\s+name\\s+(\\S+)\\s*$"), //15
     EDIT_FOOD_PRICE("^\\s*edit\\s+food\\s+(\\d+)\\s+price\\s+(\\d*\\.?\\d+)\\s*$"), //16
+    DELETE_FOOD("^\\s*delete\\s+food\\s+(\\d+)\\s*$"), //17
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
