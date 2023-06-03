@@ -1,20 +1,15 @@
 package view;
 
-import model.Customer;
-
 import java.util.regex.Matcher;
 
-public class CustomerMenu extends Menu {
-    //making the program have just one LoginMenu object
-    private CustomerMenu() {
-        super();
-    }
-    private static CustomerMenu customerMenuInstance;
-    public static CustomerMenu getCustomerMenuInstance() {
-        if(customerMenuInstance == null) {
-            customerMenuInstance = new CustomerMenu();
+public class FoodMenuUsedByOwner extends Menu {
+    private FoodMenuUsedByOwner() {super();}
+    private static FoodMenuUsedByOwner foodMenuUsedByOwnerInstance;
+    public static FoodMenuUsedByOwner getFoodMenuUsedByOwnerInstance() {
+        if(foodMenuUsedByOwnerInstance == null) {
+            foodMenuUsedByOwnerInstance = new FoodMenuUsedByOwner();
         }
-        return customerMenuInstance;
+        return foodMenuUsedByOwnerInstance;
     }
 
 
@@ -33,13 +28,7 @@ public class CustomerMenu extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if (matchers[20].find()) {
-
-            } else if (matchers[8].find()) {
-
-            }
         }
-
         return runOrders;
     }
 }

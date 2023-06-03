@@ -35,7 +35,7 @@ public class RestaurantOwnerMenu extends Menu {
             }
         } else if(owner.getRestaurants().size() == 1) {
             System.out.println("Welcome to your restaurant!");
-            owner.editActiveRestaurant(owner.getRestaurants().get(0));
+            owner.setActiveRestaurant(owner.getRestaurants().get(0));
             return RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
         } else {
             System.out.println("Welcome! please register a restaurant");

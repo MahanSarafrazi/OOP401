@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Food {
     private double price;
     private final FoodType type;
@@ -32,10 +34,14 @@ public class Food {
         this.activation = true;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID=randomIDGenerator.getLastNumber();
+        this.comments = new ArrayList<>();
     }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}
     public void setName(String name) {
          this.name = name;
     }
+    private ArrayList<Comment> comments ;
+    public void addComment(User user ,String comment) {comments.add(new Comment(user,comment,false));}
+    public ArrayList<Comment> getComments() {return comments;}
 }
