@@ -69,11 +69,11 @@ public class LoginMenu extends Menu {
     }
     private void outputPrinter(Output output, User user) {
         switch (output) {
-            case INVALID_USER_NAME -> System.out.println("user name is invalid");
-            case NO_RESTORE_QUESTION -> System.out.println("you didn't set any question!");
-            case SHOW_RESTORE_QUESTION -> System.out.println(user.getRestoreQuestion()+"?");
-            case CORRECT_ANSWER -> System.out.println("Your password is : \n"+user.getPassword());
-            case WRONG_ANSWER -> System.out.println("wrong answer!");
+            case INVALID_USER_NAME : System.out.println("user name is invalid");
+            case NO_RESTORE_QUESTION : System.out.println("you didn't set any question!");
+            case SHOW_RESTORE_QUESTION : System.out.println(user.getRestoreQuestion()+"?");
+            case CORRECT_ANSWER : System.out.println("Your password is : \n"+user.getPassword());
+            case WRONG_ANSWER : System.out.println("wrong answer!");
         }
     }
 
