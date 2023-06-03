@@ -33,11 +33,13 @@ public class RestaurantOwnerMenu extends Menu {
             for (Restaurant restaurant : owner.getRestaurants()) {
                 System.out.println(restaurant.getName()+" "+restaurant.getID());
             }
-        } else if(owner.getRestaurants().size() == 1) {
+        }
+        else if(owner.getRestaurants().size() == 1) {
             System.out.println("Welcome to your restaurant!");
             owner.setActiveRestaurant(owner.getRestaurants().get(0));
             return RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
-        } else {
+        }
+        else {
             System.out.println("Welcome! please register a restaurant");
         }
 
@@ -53,7 +55,8 @@ public class RestaurantOwnerMenu extends Menu {
             }
             if(matchers[6].find()) {
                 processAddingRestoreQuestion();
-            } else if(owner.getActiveRestaurant() == null && matchers[8].find()) {
+            }
+            else if(owner.getActiveRestaurant() == null && matchers[8].find()) {
                 if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
                     System.out.println("Welcome to your restaurant!");
                     runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
@@ -80,16 +83,16 @@ public class RestaurantOwnerMenu extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case SUCCESSFUL_REGISTER -> {
+            case SUCCESSFUL_REGISTER : {
                 RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
                 owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
                 for (Restaurant restaurant : owner.getRestaurants()) {
                     System.out.println(restaurant.getName()+" "+restaurant.getID());
                 }}
-            case SUCCESSFUL_SELECT_RESTAURANT -> System.out.println("Restaurant selected successfully");
-            case INVALID_RESTAURANT_ID -> System.out.println("There is no restaurant with this ID!");
-            case NO_ACTIVE_RESTAURANT -> System.out.println("You haven't logged in in any restaurant!");
-            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> System.out.println("There is no such food type in this restaurant!");
+            case SUCCESSFUL_SELECT_RESTAURANT : System.out.println("Restaurant selected successfully");
+            case INVALID_RESTAURANT_ID : System.out.println("There is no restaurant with this ID!");
+            case NO_ACTIVE_RESTAURANT : System.out.println("You haven't logged in in any restaurant!");
+            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT : System.out.println("There is no such food type in this restaurant!");
             case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
             case EQUAL_FOOD_TYPES -> System.out.println("These food types are the same!");
             case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> System.out.println("There is still orders with this food type!");
