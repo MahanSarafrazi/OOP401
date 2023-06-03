@@ -112,6 +112,12 @@ public class Manager {
         }
         return Output.INVALID_USER_NAME;
     }
+    public Output checkRestoreQuestion() {
+        if (loggedInUser.getRestoreQuestion() == null) {
+            return Output.ADD_RESTORE_QUESTION;
+        }
+        return Output.RESTORE_QUESTION_EXISTS;
+    }
     public Output getRestoreQuestion(String username) {
         if (getUser(username) == null) {
             return Output.INVALID_USER_NAME;
@@ -159,7 +165,7 @@ public class Manager {
         owner.AddRestaurant(name, foodType1);
         return Output.SUCCESSFUL_REGISTER;
     }
-    public Output selectRestaurant(long ID) {
+    public Output selectRestaurant(int ID) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         if(owner.editActiveRestaurant(ID)) {
             return Output.SUCCESSFUL_SELECT_RESTAURANT;
@@ -275,7 +281,12 @@ public class Manager {
         return Output.FOOD_ADDED;
     }
     public ArrayList<Food> getActiveRestaurantFoods() {return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoods();}
-    public Output editFoodName(long ID, String newName) {
+    public Output showFoods() {
+        if (getActiveRestaurantFoods().isEmpty())
+            return Output.NO_FOOD_IN_RESTAURANT;
+        return Output.SHOW_FOODS;
+    }
+    public Output editFoodName(int ID, String newName) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
@@ -285,7 +296,7 @@ public class Manager {
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
-    public Output editFoodPrice(long ID, double newPrice) {
+    public Output editFoodPrice(int ID, double newPrice) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
@@ -295,21 +306,45 @@ public class Manager {
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
-    public Output deleteFood(long ID) {
+    public Output deleteFood(int ID) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
                 owner.getActiveRestaurant().deleteFood(ID);
-                return Output.FOOD_PRICE_EDITED;
+                return Output.FOOD_DELETED;
             }
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
-    public Output checkRestoreQuestion() {
-        if (loggedInUser.getRestoreQuestion() == null) {
-            return Output.ADD_RESTORE_QUESTION;
+    public Output deActiveFood(int ID) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                boolean isThereFood = false;
+                for (Order order : owner.getActiveRestaurant().getOrders()) {
+                    if(order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID))) {
+                        isThereFood = true;
+                        break;
+                    }
+                }
+                if(isThereFood) {
+                    return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
+                }
+                owner.getActiveRestaurant().setActivation(ID, false);
+                return Output.FOOD_DEACTIVATED;
+            }
         }
-        return Output.RESTORE_QUESTION_EXISTS;
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
+    public Output activeFood(int ID) {
+        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                owner.getActiveRestaurant().setActivation(ID, true);
+                return Output.FOOD_ACTIVATED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
     }
     public void backFromRestaurantMenuUsedByOwner() {
         RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(false);

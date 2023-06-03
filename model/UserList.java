@@ -31,10 +31,4 @@ public class UserList {
         }
         return UserListInstance;
     }
-    public static void setDataBase () {
-        System.out.println("Set successfully !");
-    }
-    public static void getDatabase () {
-        System.out.println("Got successfully !");
-    }
 }

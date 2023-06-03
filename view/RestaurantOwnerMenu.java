@@ -54,7 +54,7 @@ public class RestaurantOwnerMenu extends Menu {
             if(matchers[6].find()) {
                 processAddingRestoreQuestion();
             } else if(owner.getActiveRestaurant() == null && matchers[8].find()) {
-                if(processSelectingRestaurant(Long.parseLong(matchers[8].group(1)))) {
+                if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
                     System.out.println("Welcome to your restaurant!");
                     runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
                     inThisMenu = false;
@@ -80,6 +80,12 @@ public class RestaurantOwnerMenu extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
+            case SUCCESSFUL_REGISTER -> {
+                RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
+                owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
+                for (Restaurant restaurant : owner.getRestaurants()) {
+                    System.out.println(restaurant.getName()+" "+restaurant.getID());
+                }}
             case SUCCESSFUL_SELECT_RESTAURANT -> System.out.println("Restaurant selected successfully");
             case INVALID_RESTAURANT_ID -> System.out.println("There is no restaurant with this ID!");
             case NO_ACTIVE_RESTAURANT -> System.out.println("You haven't logged in in any restaurant!");
@@ -103,7 +109,7 @@ public class RestaurantOwnerMenu extends Menu {
     }
 
     //passing to manager
-    private boolean processSelectingRestaurant(long ID) {
+    private boolean processSelectingRestaurant(int ID) {
         Output temp = manager.selectRestaurant(ID);
         outputPrinter(temp);
         return temp == Output.SUCCESSFUL_SELECT_RESTAURANT;

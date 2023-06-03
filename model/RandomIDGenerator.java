@@ -1,25 +1,23 @@
 package model;
 
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class RandomIDGenerator implements Iterator<Integer> {
-    private Random random = new Random();
-    private Integer lastNumber ;
     public Integer getLastNumber() {
+        int lastNumber = 0;
         for (Integer x : generated)
             lastNumber = x;
         return lastNumber;
     }
-    public static int getSize() {return generated.size();}
-    private static Set<Integer> generated = new LinkedHashSet<>();
+    private static final Set<Integer> generated = new LinkedHashSet<>();
 
-    public RandomIDGenerator(int size) {
-        while (generated.size() < size + 1) {
+    public static Set<Integer> getGenerated() {return generated;}
+
+    public RandomIDGenerator() {
+        int newSize = generated.size() + 1;
+        while (generated.size() < newSize) {
+            Random random = new Random();
             Integer next = random.nextInt(899999)+100000;
-            System.out.println(next);
             generated.add(next);
         }
     }

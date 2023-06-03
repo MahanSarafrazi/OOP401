@@ -3,7 +3,6 @@ package model;
 public class Food {
     private double price;
     private final FoodType type;
-
     public FoodType getType() {
         return type;
     }
@@ -22,17 +21,17 @@ public class Food {
         this.activation = activation;
     }
     public boolean getActivation(){return activation;}
-
-    private long ID;
-    public long getID(){ return ID;}
+    private final int ID;
+    public int getID(){ return ID;}
     private double discount;
      public Food( String name, double price, FoodType type){
-        this.name=name;
-        this.price=price;
+        this.name = name;
+        this.price = price;
         this.discount = 0;
         this.type = type;
-         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
-         this.ID=randomIDGenerator.getLastNumber();
+        this.activation = true;
+        RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
+        this.ID=randomIDGenerator.getLastNumber();
     }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}

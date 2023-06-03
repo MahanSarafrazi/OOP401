@@ -5,14 +5,12 @@ import java.util.ArrayList;
 public class Restaurant {
     //Location locate ;
     //Edit Location;
-     private final String name;
-     public ArrayList<Order> orders;
-     private static int numberOfRestaurants = RestaurantList.restaurants.size();
+    private final String name;
+    private final ArrayList<Order> orders;
      public Restaurant(String name, FoodType foodType) {
          this.name=name;
-         ++numberOfRestaurants;
-         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
-         this.ID=randomIDGenerator.getLastNumber();
+         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
+         this.ID = randomIDGenerator.getLastNumber();
          foods = new ArrayList<>();
          orders = new ArrayList<>();
          foodTypes = new ArrayList<>();
@@ -20,8 +18,11 @@ public class Restaurant {
      }
 
      public String getName(){return name;}
-     private final long ID;
-     public long getID(){return ID;}
+     private final int ID;
+     public int getID(){return ID;}
+     public ArrayList<Order> getOrders() {
+         return orders;
+     }
      private final ArrayList<FoodType> foodTypes;
      public void setFoodType(FoodType foodType){foodTypes.add(foodType);}
 
@@ -43,7 +44,7 @@ public class Restaurant {
      public void AddFood(String foodName, double foodPrice, FoodType foodType){
          foods.add(new Food(foodName, foodPrice, foodType));
      }
-     public void deleteFood(long ID){
+     public void deleteFood(int ID){
          for (Food food : foods) {
              if(food.getID() == ID) {
                  foods.remove(food);
@@ -51,14 +52,7 @@ public class Restaurant {
              }
          }
      }
-    public void EditFoodPrice( long IDCode,double newPrice){
-        for (Food food : foods) {
-            if (food.getID() == IDCode) {
-                food.setPrice(newPrice);
-            }
-        }
-    }
-    public void setActivationOrder(long IDCode, boolean activation){
+    public void setActivation(int IDCode, boolean activation) {
         for (Food food : foods) {
             if (food.getID() == IDCode) {
                 food.setActivation(activation);
@@ -76,6 +70,14 @@ public class Restaurant {
         return count != 0;
     }
 
+    public Food getFoodByID(int ID) {
+        for (Food food : foods) {
+            if(food.getID() == ID) {
+                return food;
+            }
+        }
+        return null;
+    }
 
      //ArrayList<FoodType> RestaurantFoodType = new ArrayList<>();
 

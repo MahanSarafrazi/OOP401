@@ -43,15 +43,19 @@ RestaurantMenuUsedByOwner extends Menu {
             } else if(matchers[14].find()) {
                 processShowFoods();
             } else if(matchers[15].find()) {
-                processEditFoodName(Long.parseLong(matchers[15].group(1)), matchers[15].group(2));
+                processEditFoodName(Integer.parseInt(matchers[15].group(1)), matchers[15].group(2));
+            }else if(matchers[16].find()) {
+                processEditFoodPrice(Integer.parseInt(matchers[16].group(1)), Double.parseDouble(matchers[16].group(2)));
+            } else if(matchers[17].find()) {
+                processDeleteFood(Integer.parseInt(matchers[17].group(1)));
+            } else if(matchers[18].find()) {
+                processDeActiveFood(Integer.parseInt(matchers[18].group(1)));
+            } else if(matchers[19].find()) {
+                processActiveFood(Integer.parseInt(matchers[19].group(1)));
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
-            } else if(matchers[16].find()) {
-                processEditFoodPrice(Long.parseLong(matchers[16].group(1)), Double.parseDouble(matchers[16].group(2)));
-            } else if(matchers[17].find()) {
-                processDeleteFood(Long.parseLong(matchers[17].group(1)));
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
                 processBack();
                 runOrders = RunOrders.RESTAURANT_OWNER_MENU;
@@ -94,6 +98,22 @@ RestaurantMenuUsedByOwner extends Menu {
             case FOOD_NAME_EDITED -> System.out.println("Food name edited successfully");
             case FOOD_PRICE_EDITED -> System.out.println("Food price edited successfully");
             case FOOD_DELETED -> System.out.println("Food deleted successfully");
+            case FOOD_ACTIVATED -> System.out.println("Food activated successfully");
+            case FOOD_DEACTIVATED -> System.out.println("Food deactivated successfully");
+            case THERE_ARE_FOODS_IN_ORDER -> System.out.println("There are still foods in orders with this ID");
+        }
+    }
+    private void outputPrinter(Output output,ArrayList<Food> foods) {
+        switch (output) {
+            case NO_FOOD_IN_RESTAURANT -> System.out.println("There is no food in your restaurant");
+            case SHOW_FOODS -> {
+                for (Food food : foods) {
+                    System.out.print("food name: " + food.getName() + "  ID: " + food.getID() + "  price: " + food.getPrice() + "  active discount: " + food.getDiscount());
+                    if (food.getDiscount() != 0)
+                        System.out.print(" discounted price: "+food.getDiscountedPrice());
+                    System.out.println("  food type:" + food.getType());
+                }
+            }
         }
     }
     private void processShowFoodType() {
@@ -115,26 +135,25 @@ RestaurantMenuUsedByOwner extends Menu {
     }
     private void processAddFood(String foodName, double foodPrice, String foodType) {
         outputPrinter(manager.addFood(foodName, foodPrice, foodType));
+        processShowFoods();
     }
     private void processShowFoods() {
-        ArrayList<Food> foods = manager.getActiveRestaurantFoods();
-        if(foods.isEmpty()) {
-            System.out.println("There is no food in your restaurant");
-        } else {
-            for (Food food : foods) {
-                System.out.print("food name:" + food.getName() + "  ID:" + food.getID() + "  price:" + food.getPrice() + "  active discount:" + food.getDiscount());
-                System.out.println("  food type:" + food.getType());
-            }
-        }
+        outputPrinter(manager.showFoods(),manager.getActiveRestaurantFoods());
     }
-    private void processEditFoodName(long ID, String newName) {
+    private void processEditFoodName(int ID, String newName) {
         outputPrinter(manager.editFoodName(ID, newName));
     }
-    private void processEditFoodPrice(long ID, double newPrice) {
+    private void processEditFoodPrice(int ID, double newPrice) {
         outputPrinter(manager.editFoodPrice(ID, newPrice));
     }
-    private void processDeleteFood(long ID) {
+    private void processDeleteFood(int ID) {
         outputPrinter(manager.deleteFood(ID));
+    }
+    private void processDeActiveFood(int ID) {
+        outputPrinter(manager.deActiveFood(ID));
+    }
+    private void processActiveFood(int ID) {
+        outputPrinter(manager.activeFood(ID));
     }
     private void processLoggingOut () {
         outputPrinter(manager.logoutFromRestaurantMenuUsedByOwner());

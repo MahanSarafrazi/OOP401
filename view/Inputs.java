@@ -21,6 +21,8 @@ public enum Inputs {
     EDIT_FOOD_NAME("^\\s*edit\\s+food\\s+(\\d+)\\s+name\\s+(\\S+)\\s*$"), //15
     EDIT_FOOD_PRICE("^\\s*edit\\s+food\\s+(\\d+)\\s+price\\s+(\\d*\\.?\\d+)\\s*$"), //16
     DELETE_FOOD("^\\s*delete\\s+food\\s+(\\d+)\\s*$"), //17
+    DE_ACTIVE_FOOD("^\\s*(?i)deActive\\s+food\\s+(\\d+)\\s*$"), //18
+    ACTIVE_FOOD("^\\s*active\\s+food\\s+(\\d+)\\s*$"), //19
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
