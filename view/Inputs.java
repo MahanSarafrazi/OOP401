@@ -26,6 +26,12 @@ public enum Inputs {
     SEARCH_RESTAURANT("^\\s*search\\s+restaurant\\s+(\\S+)\\s*$"), //20
     SEARCH_FOOD("^\\s*search\\s+food\\s+(\\S+)\\s*$"), //21
     SELECT_FOOD("^\\s*select\\s+food\\s+(\\d+)\\s*$"), //22
+    DISPLAY_COMMENTS("^\\s*display\\s+comments\\s*$"), //23
+    ADD_COMMENT("^\\s*add\\s+comment\\s*$"), //24
+    EDIT_COMMENT("^\\s*edit\\s+comment\\s+(\\d+)\\s*$"), //25
+    DISPLAY_RATING("^\\s*display\\s+rating\\s*$"), //26
+    SUBMIT_RATING("^\\s*submit\\s+rating\\s+(\\d+)\\s*$"), //27
+    EDIT_RATING("^\\s*edit\\s+rating\\s+(\\d+)\\s*$"), //28
 
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),

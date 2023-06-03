@@ -29,7 +29,15 @@ public class CustomerMenu extends Menu {
         Matcher[] matchers = new Matcher[Inputs.values().length];
         //in Menu
         while(inThisMenu) {
+            input = scanner.nextLine();
+            for(int i = 0; i < Inputs.values().length; ++i) {
+                matchers[i] = Inputs.getPatterns()[i].matcher(input);
+            }
+            if (matchers[20].find()) {
 
+            } else if (matchers[8].find()) {
+
+            }
         }
 
         return runOrders;

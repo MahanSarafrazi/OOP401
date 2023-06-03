@@ -43,7 +43,7 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 processShowFoods();
             } else if(matchers[15].find()) {
                 processEditFoodName(Integer.parseInt(matchers[15].group(1)), matchers[15].group(2));
-            }else if(matchers[16].find()) {
+            } else if(matchers[16].find()) {
                 processEditFoodPrice(Integer.parseInt(matchers[16].group(1)), Double.parseDouble(matchers[16].group(2)));
             } else if(matchers[17].find()) {
                 processDeleteFood(Integer.parseInt(matchers[17].group(1)));
