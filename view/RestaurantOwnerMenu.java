@@ -80,6 +80,12 @@ public class RestaurantOwnerMenu extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
+            case SUCCESSFUL_REGISTER -> {
+                RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
+                owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
+                for (Restaurant restaurant : owner.getRestaurants()) {
+                    System.out.println(restaurant.getName()+" "+restaurant.getID());
+                }}
             case SUCCESSFUL_SELECT_RESTAURANT -> System.out.println("Restaurant selected successfully");
             case INVALID_RESTAURANT_ID -> System.out.println("There is no restaurant with this ID!");
             case NO_ACTIVE_RESTAURANT -> System.out.println("You haven't logged in in any restaurant!");

@@ -6,7 +6,7 @@ public class Restaurant {
     //Location locate ;
     //Edit Location;
     private final String name;
-    private ArrayList<Order> orders;
+    private final ArrayList<Order> orders;
      public Restaurant(String name, FoodType foodType) {
          this.name=name;
          RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
@@ -52,13 +52,6 @@ public class Restaurant {
              }
          }
      }
-    public void EditFoodPrice( int IDCode,double newPrice){
-        for (Food food : foods) {
-            if (food.getID() == IDCode) {
-                food.setPrice(newPrice);
-            }
-        }
-    }
     public void setActivation(int IDCode, boolean activation) {
         for (Food food : foods) {
             if (food.getID() == IDCode) {

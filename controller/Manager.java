@@ -112,6 +112,12 @@ public class Manager {
         }
         return Output.INVALID_USER_NAME;
     }
+    public Output checkRestoreQuestion() {
+        if (loggedInUser.getRestoreQuestion() == null) {
+            return Output.ADD_RESTORE_QUESTION;
+        }
+        return Output.RESTORE_QUESTION_EXISTS;
+    }
     public Output getRestoreQuestion(String username) {
         if (getUser(username) == null) {
             return Output.INVALID_USER_NAME;
@@ -275,6 +281,11 @@ public class Manager {
         return Output.FOOD_ADDED;
     }
     public ArrayList<Food> getActiveRestaurantFoods() {return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoods();}
+    public Output showFoods() {
+        if (getActiveRestaurantFoods().isEmpty())
+            return Output.NO_FOOD_IN_RESTAURANT;
+        return Output.SHOW_FOODS;
+    }
     public Output editFoodName(int ID, String newName) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
@@ -334,12 +345,6 @@ public class Manager {
             }
         }
         return Output.NO_FOOD_WITH_THIS_ID;
-    }
-    public Output checkRestoreQuestion() {
-        if (loggedInUser.getRestoreQuestion() == null) {
-            return Output.ADD_RESTORE_QUESTION;
-        }
-        return Output.RESTORE_QUESTION_EXISTS;
     }
     public void backFromRestaurantMenuUsedByOwner() {
         RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(false);
