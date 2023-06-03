@@ -1,14 +1,8 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Food {
     private double price;
     private final FoodType type;
-    private static final ArrayList<Integer> allIDs = new ArrayList<>();
-    public static ArrayList<Integer> getAllIDs() {
-        return allIDs;
-    }
     public FoodType getType() {
         return type;
     }
@@ -37,7 +31,6 @@ public class Food {
         this.type = type;
         this.activation = true;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
-        allIDs.add(randomIDGenerator.getLastNumber());
         this.ID=randomIDGenerator.getLastNumber();
     }
     public void setDiscount(double discount){ this.discount=discount;}

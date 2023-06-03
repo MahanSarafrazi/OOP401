@@ -9,7 +9,9 @@ public class RandomIDGenerator implements Iterator<Integer> {
             lastNumber = x;
         return lastNumber;
     }
-    public static final Set<Integer> generated = new LinkedHashSet<>();
+    private static final Set<Integer> generated = new LinkedHashSet<>();
+
+    public static Set<Integer> getGenerated() {return generated;}
 
     public RandomIDGenerator() {
         int newSize = generated.size() + 1;
@@ -21,7 +23,9 @@ public class RandomIDGenerator implements Iterator<Integer> {
     }
 
     @Override
-    public boolean hasNext() {return false;}
+    public boolean hasNext() {
+        return false;
+    }
     public Integer next() {
         Iterator<Integer> iterator = generated.iterator();
         Integer next = iterator.next();
