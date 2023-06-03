@@ -54,7 +54,7 @@ public class RestaurantOwnerMenu extends Menu {
             if(matchers[6].find()) {
                 processAddingRestoreQuestion();
             } else if(owner.getActiveRestaurant() == null && matchers[8].find()) {
-                if(processSelectingRestaurant(Long.parseLong(matchers[8].group(1)))) {
+                if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
                     System.out.println("Welcome to your restaurant!");
                     runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
                     inThisMenu = false;
@@ -103,7 +103,7 @@ public class RestaurantOwnerMenu extends Menu {
     }
 
     //passing to manager
-    private boolean processSelectingRestaurant(long ID) {
+    private boolean processSelectingRestaurant(int ID) {
         Output temp = manager.selectRestaurant(ID);
         outputPrinter(temp);
         return temp == Output.SUCCESSFUL_SELECT_RESTAURANT;
