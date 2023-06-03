@@ -6,7 +6,8 @@ import model.FoodType;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 
-public class RestaurantMenuUsedByOwner extends Menu {
+public class
+RestaurantMenuUsedByOwner extends Menu {
     private RestaurantMenuUsedByOwner() {
         super();
     }
