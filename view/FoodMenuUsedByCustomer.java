@@ -29,7 +29,7 @@ public class FoodMenuUsedByCustomer extends Menu {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
             if (matchers[23].find()) {
-                processDisplayComments()
+                //processDisplayComments();
             } else if (matchers[24].find()) {
 
             } else if (matchers[25].find()) {

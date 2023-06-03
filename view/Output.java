@@ -38,4 +38,6 @@ public enum Output {
     THERE_ARE_FOODS_IN_ORDER,
     NO_FOOD_IN_RESTAURANT,
     SHOW_FOODS,
+    WRONG_ID,
+    CORRECT_ID,
 }

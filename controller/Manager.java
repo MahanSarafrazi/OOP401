@@ -166,14 +166,13 @@ public class Manager {
         return Output.SUCCESSFUL_REGISTER;
     }
     public Output selectRestaurant(int ID) {
-        RestaurantOwner owner = (RestaurantOwner) loggedInUser;
-        if(owner.editActiveRestaurant(ID)) {
+        if(loggedInUser.setActiveRestaurant(ID)) {
             return Output.SUCCESSFUL_SELECT_RESTAURANT;
         }
         return Output.INVALID_RESTAURANT_ID;
     }
     public ArrayList<FoodType> showFoodType() {
-        return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoodType();
+        return loggedInUser.getActiveRestaurant().getFoodType();
     }
     public Output processEditFoodType(String firstType, String secondType) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
@@ -280,7 +279,7 @@ public class Manager {
         owner.getActiveRestaurant().AddFood(foodName, foodPrice, foodType1);
         return Output.FOOD_ADDED;
     }
-    public ArrayList<Food> getActiveRestaurantFoods() {return ((RestaurantOwner) loggedInUser).getActiveRestaurant().getFoods();}
+    public ArrayList<Food> getActiveRestaurantFoods() {return loggedInUser.getActiveRestaurant().getFoods();}
     public Output showFoods() {
         if (getActiveRestaurantFoods().isEmpty())
             return Output.NO_FOOD_IN_RESTAURANT;
@@ -351,5 +350,24 @@ public class Manager {
         RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
         restaurantOwner.deActiveRestaurant();
     }
-
+    public ArrayList<Comment> displayRestaurantsComments() {return loggedInUser.getActiveRestaurant().getComments();}
+    public void addComment(String comment) {loggedInUser.getActiveRestaurant().addComment(comment,loggedInUser);}
+    public Output checkCommentID(int ID) {
+        for (Comment comment : loggedInUser.getActiveRestaurant().getComments())
+            if (comment.getID() == ID)
+                return Output.CORRECT_ID;
+        return Output.WRONG_ID;
+    }
+    public void editComment(int ID,String commentString) {
+        for (Comment comment : loggedInUser.getActiveRestaurant().getComments())
+            if (comment.getID() == ID)
+                comment.editComment(commentString);
+    }
+    public int averageRestaurantRating() {
+        int average = 0;
+        for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
+            average+=rate.getRating();
+        return average/loggedInUser.getActiveRestaurant().getRates().size();
+    }
+    public ArrayList<Rate> displayRestaurantsRatings() {return loggedInUser.getActiveRestaurant().getRates();}
 }

@@ -1,10 +1,12 @@
 package model;
 
 public class Rate {
-    User user ;
-    double rate;
-    Rate(User user,double rate) {
-        this.rate=rate;
+    private User user ;
+    public User getUser() {return user;}
+    private double rating;
+    public double getRating() {return rating;}
+    Rate(User user,double rating) {
+        this.rating=rating;
         this.user=user;
     }
 }
