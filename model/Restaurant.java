@@ -7,15 +7,13 @@ public class Restaurant {
     //Edit Location;
     private final String name;
     private ArrayList<Order> orders;
-     private static int numberOfRestaurants = RestaurantList.restaurants.size();
      private static final ArrayList<Integer> allIDs = new ArrayList<>();
      public static ArrayList<Integer> getAllIDs() {
          return allIDs;
      }
      public Restaurant(String name, FoodType foodType) {
          this.name=name;
-         ++numberOfRestaurants;
-         RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
+         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
          allIDs.add(randomIDGenerator.getLastNumber());
          this.ID = randomIDGenerator.getLastNumber();
          foods = new ArrayList<>();

@@ -14,14 +14,11 @@ public class DataBase {
 
     private final Scanner graphScanner;
     private final Scanner userListFileScanner;
-    private final Scanner restaurantListScanner;
     private final File graphFile;
     private final File userListFile;
-    private final File restaurantListFile;
-    public DataBase(String graphFilePath, String userListFilePath, String restaurantListFilePath) {
+    public DataBase(String graphFilePath, String userListFilePath) {
         graphFile = new File(graphFilePath);
         userListFile = new File(userListFilePath);
-        restaurantListFile = new File(restaurantListFilePath);
         if(!userListFile.exists()) {
             try {
                 userListFile.createNewFile();
@@ -29,17 +26,9 @@ public class DataBase {
                 throw new RuntimeException(e);
             }
         }
-        if(!restaurantListFile.exists()) {
-            try {
-                restaurantListFile.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
         try {
             graphScanner = new Scanner(graphFile);
             userListFileScanner = new Scanner(userListFile);
-            restaurantListScanner = new Scanner(restaurantListFile);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -63,13 +52,8 @@ public class DataBase {
         Gson gson = builder.create();
         UserList.setUserListInstance(gson.fromJson(gsonData, UserList.class));
 
-        // loading restaurant list
-        gsonData = "";
-        while (restaurantListScanner.hasNextLine()) {
-            gsonData = gsonData + restaurantListScanner.nextLine();
-        }
-        restaurantListScanner.close();
-        RestaurantList.setRestaurantUserInstance(gson.fromJson(gsonData, RestaurantList.class));
+
+        for (RestaurantOwner re)
         RandomIDGenerator.add(Restaurant.getAllIDs());
         RandomIDGenerator.add(Food.getAllIDs());
     }
@@ -82,17 +66,6 @@ public class DataBase {
             String userListText = gson.toJson(UserList.getUserListInstance());
             FileWriter fileWriter = new FileWriter(userListFile);
             fileWriter.write(userListText);
-            fileWriter.close();
-        } catch (Exception e) {
-            throw new RuntimeException();
-        }
-        // saving restaurant list
-        try {
-            GsonBuilder builder = new GsonBuilder().setPrettyPrinting();
-            Gson gson = builder.create();
-            String restaurantListText = gson.toJson(RestaurantList.getRestaurantUserInstance());
-            FileWriter fileWriter = new FileWriter(restaurantListFile);
-            fileWriter.write(restaurantListText);
             fileWriter.close();
         } catch (Exception e) {
             throw new RuntimeException();

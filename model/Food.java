@@ -36,7 +36,7 @@ public class Food {
         this.discount = 0;
         this.type = type;
         this.activation = true;
-        RandomIDGenerator randomIDGenerator = new RandomIDGenerator(RandomIDGenerator.getSize());
+        RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         allIDs.add(randomIDGenerator.getLastNumber());
         this.ID=randomIDGenerator.getLastNumber();
     }
