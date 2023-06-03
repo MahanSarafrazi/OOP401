@@ -23,6 +23,10 @@ public enum Inputs {
     DELETE_FOOD("^\\s*delete\\s+food\\s+(\\d+)\\s*$"), //17
     DE_ACTIVE_FOOD("^\\s*(?i)deActive\\s+food\\s+(\\d+)\\s*$"), //18
     ACTIVE_FOOD("^\\s*active\\s+food\\s+(\\d+)\\s*$"), //19
+    SEARCH_RESTAURANT("^\\s*search\\s+restaurant\\s+(\\S+)\\s*$"), //20
+    SEARCH_FOOD("^\\s*search\\s+food\\s+(\\S+)\\s*$"), //21
+    SELECT_FOOD("^\\s*select\\s+food\\s+(\\d+)\\s*$"), //22
+
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
