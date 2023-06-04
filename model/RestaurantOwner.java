@@ -13,8 +13,8 @@ public class RestaurantOwner extends User {
         super(userName, pass);
         restaurants = new ArrayList<>();
     }
-    public void AddRestaurant(String name, FoodType foodType) {
-        restaurants.add(new Restaurant(name, foodType));
+    public void AddRestaurant(String name, FoodType foodType, int location) {
+        restaurants.add(new Restaurant(name, foodType, location));
     }
     public ArrayList<Restaurant> getRestaurants() {
         return restaurants;

@@ -45,4 +45,5 @@ public enum Output {
     RESPONSE_ADDED,
     NO_RESPONSE,
     RESPONSE_EDITED,
+    LOCATION_NOT_IN_THE_MAP,
 }

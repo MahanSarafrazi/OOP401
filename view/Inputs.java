@@ -12,7 +12,7 @@ public enum Inputs {
     ADD_RESTORE_QUESTION("^\\s*add\\s+restore\\s+question\\s*$"), //6
     RESTORE_PASSWORD("^\\s*restore\\s+password\\s+(\\S+)\\s*$"), //7
     SELECT_RESTAURANT("^\\s*select\\s+restaurant\\s+(\\d+)\\s*$"), //8
-    ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s+(\\S+)\\s*$"), //9
+    ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s+(\\S+)\\s+(\\d+)\\s*$"), //9
     SHOW_FOOD_TYPE("^\\s*show\\s+food\\s+type\\s*$"), //10
     EDIT_FOOD_TYPE("^\\s*edit\\s+food\\s+type\\s+(\\S+)\\s+(\\S+)\\s*$"), //11
     ADD_FOOD_TYPE("^\\s*add\\s+food\\s+type(\\S+)\\s*$"), //12

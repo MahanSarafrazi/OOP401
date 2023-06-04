@@ -176,7 +176,7 @@ public class Manager {
         loggedInUser = null;
         return Output.LOGOUT;
     }
-    public Output addRestaurant(String name, String foodType) {
+    public Output addRestaurant(String name, String foodType, int location) {
         FoodType foodType1 = null;
         for (FoodType value : FoodType.values()) {
             if(value.commandingPattern.matcher(foodType).find()) {
@@ -189,8 +189,12 @@ public class Manager {
             return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
         }
 
+        if(location < 1 || location > 1000) {
+            return Output.LOCATION_NOT_IN_THE_MAP;
+        }
+
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
-        owner.AddRestaurant(name, foodType1);
+        owner.AddRestaurant(name, foodType1, location);
         return Output.SUCCESSFUL_REGISTER;
     }
     public Output selectRestaurant(int ID) {

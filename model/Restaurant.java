@@ -8,7 +8,7 @@ public class Restaurant {
     private final String name;
     private final ArrayList<Order> orders;
 
-    public Restaurant(String name, FoodType foodType) {
+    public Restaurant(String name, FoodType foodType, int location) {
         this.name = name;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();
@@ -18,6 +18,7 @@ public class Restaurant {
         foodTypes.add(foodType);
         comments = new ArrayList<>();
         rates = new ArrayList<>();
+        this.location = location;
     }
 
     public String getName() {
@@ -25,6 +26,7 @@ public class Restaurant {
     }
 
     private final int ID;
+    private final int location;
 
     public int getID() {
         return ID;

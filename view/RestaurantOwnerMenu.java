@@ -60,7 +60,7 @@ public class RestaurantOwnerMenu extends Menu {
                     inThisMenu = false;
                 }
             } else if(matchers[9].find()) {
-                processAddingRestaurant(matchers[9].group(1), matchers[9].group(2));
+                processAddingRestaurant(matchers[9].group(1), matchers[9].group(2), Integer.parseInt(matchers[9].group(1)));
             } else if (input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
@@ -105,6 +105,7 @@ public class RestaurantOwnerMenu extends Menu {
             case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
             case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
             case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
+            case LOCATION_NOT_IN_THE_MAP -> System.out.println("This location is not in the map!");
         }
     }
 
@@ -114,8 +115,8 @@ public class RestaurantOwnerMenu extends Menu {
         outputPrinter(temp);
         return temp == Output.SUCCESSFUL_SELECT_RESTAURANT;
     }
-    private void processAddingRestaurant(String name, String foodType) {
-        outputPrinter(manager.addRestaurant(name, foodType));
+    private void processAddingRestaurant(String name, String foodType, int location) {
+        outputPrinter(manager.addRestaurant(name, foodType, location));
     }
     private void processAddingRestoreQuestion() {
         Output temp = manager.checkRestoreQuestion();
