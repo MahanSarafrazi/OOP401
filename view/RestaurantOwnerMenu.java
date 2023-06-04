@@ -120,7 +120,7 @@ public class RestaurantOwnerMenu extends Menu {
     private void processAddingRestaurant(String name, String foodType) {
         outputPrinter(manager.addRestaurant(name, foodType));
     }
-    private void processAddingRestoreQuestion() {
+    private void processAd dingRestoreQuestion() {
         Output temp = manager.checkRestoreQuestion();
         outputPrinter(temp);
         if (temp == Output.ADD_RESTORE_QUESTION) {

@@ -5,13 +5,16 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class Order {
-    private FoodType type;
-    private LinkedHashMap<Food, Integer> foods;
-    public FoodType getType() {
-        return type;
-    }
+
+
+    private LinkedHashMap< Food, Integer> foods;
 
     public LinkedHashMap<Food, Integer> getFoods() {
         return foods;
     }
+
+    public void setFoods(LinkedHashMap<Food, Integer> foods) {
+        this.foods = foods;
+    }
+    
 }
