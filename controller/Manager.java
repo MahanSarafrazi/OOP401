@@ -157,6 +157,12 @@ public class Manager {
         loggedInUser = null;
         return Output.LOGOUT;
     }
+    public Output logoutFromFoodsMenuUsedByOwner() {
+        RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        loggedInUser.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
     public Output logoutFromFoodMenuUsedByOwner() {
         RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
         loggedInUser.getActiveRestaurant().deActiveFood();
@@ -369,6 +375,7 @@ public class Manager {
     }
     public void backFromRestaurantMenuUsedByCustomer() {loggedInUser.deActiveRestaurant();}
     public void backFromFoodMenuUsedByOwner() {loggedInUser.getActiveRestaurant().deActiveFood();}
+
 
     public void backFromFoodMenuUsedByCustomer() {loggedInUser.getActiveRestaurant().deActiveFood();}
 

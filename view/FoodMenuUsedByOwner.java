@@ -51,10 +51,10 @@ public class FoodMenuUsedByOwner extends Menu {
         super.outputPrinter(output);
     }
 
-    private void processLoggingOut() {
-
+    private void processLoggingOut () {
+        outputPrinter(manager.logoutFromFoodMenuUsedByOwner());
     }
     private void processBack() {
-
+        manager.backFromFoodMenuUsedByOwner();
     }
 }

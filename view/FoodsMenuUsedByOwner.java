@@ -55,6 +55,8 @@ public class FoodsMenuUsedByOwner extends Menu {
                 processDeActiveFood(Integer.parseInt(matchers[18].group(1)));
             } else if(matchers[19].find()) {
                 processActiveFood(Integer.parseInt(matchers[19].group(1)));
+            } else if (matchers[22].find()) {
+
             } else if(matchers[29].find()) {
 
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
@@ -62,7 +64,6 @@ public class FoodsMenuUsedByOwner extends Menu {
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
-                processBack();
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -113,9 +114,6 @@ public class FoodsMenuUsedByOwner extends Menu {
 
     }
     private void processLoggingOut () {
-        outputPrinter(manager.logoutFromFoodMenuUsedByOwner());
-    }
-    private void processBack() {
-        manager.backFromFoodMenuUsedByOwner();
+        outputPrinter(manager.logoutFromFoodsMenuUsedByOwner());
     }
 }
