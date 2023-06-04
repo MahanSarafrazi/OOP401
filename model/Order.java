@@ -17,6 +17,8 @@ public class Order {
         foods.add(food);
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID=randomIDGenerator.getLastNumber();
+
+        
     }
 
 
