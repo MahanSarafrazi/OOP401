@@ -1,7 +1,6 @@
 package view;
 
 import model.Comment;
-import model.Rate;
 
 import java.util.regex.Matcher;
 
@@ -44,11 +43,11 @@ public class FoodMenuUsedByCustomer extends Menu {
             } else if (matchers[28].find()) {
                 processEditRating(Double.parseDouble(matchers[28].group(1)));
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
-                processLoggingOut();
+                processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
-                processBack();
+                manager.back();
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -62,60 +61,11 @@ public class FoodMenuUsedByCustomer extends Menu {
         return runOrders;
     }
     private void processDisplayComments() {
-        for (Comment comment :manager.getFoodComments()) {
+        for (Comment comment :manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments()) {
             System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" ID : "+comment.getID());
             if (comment.hasResponse)
                 System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
                         " has responded : "+comment.getResponse().getComment());
         }
-    }
-    private void processAddComment() {
-        System.out.println("please write your comment : ");
-        String comment = scanner.nextLine();
-        manager.addFoodComment(comment);
-        System.out.println("commented!");
-    }
-    private void processEditComment(int ID) {
-        if (manager.checkFoodCommentID(ID) == Output.WRONG_ID)
-            System.out.println("wrong id!");
-        else {
-            System.out.println("please write new comment :");
-            String comment = scanner.nextLine();
-            manager.editFoodComment(ID,comment);
-            System.out.println("edited!");
-        }
-    }
-    private void processDisplayRatings() {
-        if (manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getRates().size() == 0)
-            System.out.println("there is no rating");
-        else {
-            System.out.println("average rating is : " + manager.averageFoodRating());
-            for (Rate rate : manager.getFoodRating())
-                System.out.println(rate.getUser().getUserName() + " : " + rate.getRating());
-        }
-    }
-    private void processAddRating(double rating) {
-        if (rating>5 || rating<0)
-            System.out.println("rating should be between 0 and 5");
-        else if (manager.addFoodRating(rating))
-            System.out.println("already rated!");
-        else {
-            System.out.println("rated successfully!");
-        }
-    }
-    private void processEditRating(double rating) {
-        if (rating>5 || rating<0)
-            System.out.println("rating should be between 0 and 5");
-        else if (!manager.editFoodRating(rating))
-            System.out.println("you didn't rate!");
-        else {
-            System.out.println("edited successfully!");
-        }
-    }
-    private void processLoggingOut () {
-        outputPrinter(manager.logoutFromFoodMenuUsedByCustomer());
-    }
-    private void processBack() {
-        manager.backFromFoodMenuUsedByCustomer();
     }
 }

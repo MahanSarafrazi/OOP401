@@ -3,8 +3,6 @@ package model;
 import java.util.ArrayList;
 
 public class Restaurant {
-    //Location locate ;
-    //Edit Location;
     private final String name;
     private final ArrayList<Order> orders;
 
@@ -27,6 +25,7 @@ public class Restaurant {
 
     private final int ID;
     private final int location;
+    public int getLocation() {return location;}
 
     public int getID() {
         return ID;
@@ -101,30 +100,25 @@ public class Restaurant {
         return null;
     }
 
-    private ArrayList<Comment> comments;
+    private final ArrayList<Comment> comments;
     public ArrayList<Comment> getComments() {return comments;}
     public void addComment(String comment, User user) {comments.add(new Comment(user,comment,false));}
-    private String ownerName;
-    public String getOwnerName() {return ownerName;}
-    private ArrayList<Rate> rates ;
+    private final ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
     public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
     private Food openedFood = null;
     public Food getOpenedFood() {
         return openedFood;
     }
-
     public boolean setOpenedFood(int ID) {
         for (Food food : foods) {
-            if(food.getID() == ID) {
+            if(food.getID() == ID && food.getActivation()) {
                 openedFood = food;
                 return true;
             }
         }
         return false;
     }
-    public void setOpenedFood(Food food) {
-        this.openedFood = food;
-    }
     public void closeFood() {openedFood = null;}
+
 }

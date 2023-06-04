@@ -1,9 +1,5 @@
 package view;
 
-import model.Food;
-import model.FoodType;
-
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class RestaurantMenuUsedByOwner extends Menu {
@@ -32,20 +28,20 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
             if(matchers[10].find()) {
-                processShowFoodType();
+                System.out.println(manager.getLoggedInUser().getActiveRestaurant().getFoodType().toString());
             } else if(matchers[11].find()) {
                 processEditFoodType(matchers[11].group(1), matchers[11].group(2));
             } else if(matchers[12].find()) {
-                processAddFoodType(matchers[12].group(1));
+                outputPrinter(manager.addFoodType(matchers[12].group(1)));
             } else if(matchers[13].find()) {
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
-                processLoggingOut();
+                processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
-                processBack();
+                manager.back();
                 runOrders = RunOrders.RESTAURANT_OWNER_MENU;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -63,9 +59,6 @@ public class RestaurantMenuUsedByOwner extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case SUCCESSFUL_SELECT_RESTAURANT -> System.out.println("Restaurant selected successfully");
-            case INVALID_RESTAURANT_ID -> System.out.println("There is no restaurant with this ID!");
-            case NO_ACTIVE_RESTAURANT -> System.out.println("You haven't logged in in any restaurant!");
             case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> System.out.println("There is no such food type in this restaurant!");
             case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
             case EQUAL_FOOD_TYPES -> System.out.println("These food types are the same!");
@@ -75,17 +68,6 @@ public class RestaurantMenuUsedByOwner extends Menu {
             case FOOD_TYPE_EDITED -> System.out.println("Food type edited successfully");
             case SURE_EDIT_FOOD_TYPE -> System.out.println("Are you sure you want to change your restaurant food type?");
             case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
-            case ADD_RESTORE_QUESTION -> System.out.println("Please set your restore question");
-            case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
-            case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
-            case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
-        }
-    }
-    private void processShowFoodType() {
-        ArrayList<FoodType> foodTypes = manager.showFoodType();
-        System.out.println("food types are:");
-        for (FoodType foodType : foodTypes) {
-            System.out.println(foodType);
         }
     }
     private void processEditFoodType(String firstType, String secondType) {
@@ -94,14 +76,5 @@ public class RestaurantMenuUsedByOwner extends Menu {
         if(temp.equals(Output.SURE_EDIT_FOOD_TYPE)) {
             outputPrinter(manager.editFoodType(firstType, secondType, scanner.nextLine()));
         }
-    }
-    private void processAddFoodType(String foodType) {
-        outputPrinter(manager.addFoodType(foodType));
-    }
-    private void processLoggingOut () {
-        outputPrinter(manager.logoutFromRestaurantMenuUsedByOwner());
-    }
-    private void processBack() {
-        manager.backFromRestaurantMenuUsedByOwner();
     }
 }

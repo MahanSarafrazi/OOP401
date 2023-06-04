@@ -1,7 +1,10 @@
 package view;
 
-import model.Customer;
+import model.FoodType;
+import model.Restaurant;
+import model.RestaurantList;
 
+import java.util.Comparator;
 import java.util.regex.Matcher;
 
 public class CustomerMenu extends Menu {
@@ -22,6 +25,11 @@ public class CustomerMenu extends Menu {
 
     @Override
     public RunOrders openMenu() {
+        System.out.println("Welcome! Here is the list of restaurants");
+        RestaurantList.restaurants.sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
+        for (Restaurant restaurant : RestaurantList.restaurants) {
+            System.out.println(restaurant.getName()+" "+restaurant.getID());
+        }
         String input;
         boolean inThisMenu = true;
         RunOrders runOrders = null;
@@ -33,12 +41,17 @@ public class CustomerMenu extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if (matchers[20].find()) {
-
+            if(matchers[6].find()) {
+                processAddingRestoreQuestion();
+            } else if (matchers[20].find()) {
+                processSearchingRestaurant(matchers[20].group(1));
             } else if (matchers[8].find()) {
-
+                if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
+                    runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
+                    inThisMenu = false;
+                }
             } else if (input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
-                processLoggingOut();
+                processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -51,8 +64,15 @@ public class CustomerMenu extends Menu {
 
         return runOrders;
     }
-    private void processLoggingOut() {
-        outputPrinter(manager.logoutFromCustomerMenu());
+    private void processSearchingRestaurant(String name) {
+        for (Restaurant restaurant : RestaurantList.restaurants)
+            if (restaurant.getName().equals(name)) {
+                System.out.print("ID : "+restaurant.getID()+" with food types:");
+                for (FoodType foodType : restaurant.getFoodType())
+                    System.out.print(" "+foodType);
+                System.out.println(" and location : "+restaurant.getLocation());
+            }
+        if (RestaurantList.restaurants.isEmpty())
+            System.out.println("there is no restaurant in city , lol!");
     }
-
 }

@@ -39,11 +39,12 @@ public class FoodMenuUsedByOwner extends Menu {
             } else if(matchers[32].find()) {
                 processEditResponse(Integer.parseInt(matchers[32].group(1)));
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
-                processLoggingOut();
+                processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if(input.matches(Inputs.BACK.commandingPattern.pattern())) {
-                processBack();
+                manager.back();
+                System.out.println("back to foods menu");
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -54,7 +55,7 @@ public class FoodMenuUsedByOwner extends Menu {
             }
         }
 
-        return runOrders;
+        return RunOrders.FOOD_MENU_USED_BY_OWNER;
     }
 
     @Override
@@ -105,11 +106,5 @@ public class FoodMenuUsedByOwner extends Menu {
         System.out.println("please write your response:");
         String comment = scanner.nextLine();
         outputPrinter(manager.editResponse(ID, comment));
-    }
-    private void processLoggingOut () {
-        outputPrinter(manager.logoutFromFoodMenuUsedByOwner());
-    }
-    private void processBack() {
-        manager.backFromFoodMenuUsedByOwner();
     }
 }

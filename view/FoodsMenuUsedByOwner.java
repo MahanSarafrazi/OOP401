@@ -20,7 +20,7 @@ public class FoodsMenuUsedByOwner extends Menu {
 
     @Override
     public RunOrders openMenu() {
-        ArrayList<Food> activeRestaurantFoods = manager.getActiveRestaurantFoods();
+        ArrayList<Food> activeRestaurantFoods = manager.getActiveRestaurantActiveFoods();
         if(activeRestaurantFoods.isEmpty()) {
             System.out.println("There is no food in your restaurant");
         } else {
@@ -64,10 +64,11 @@ public class FoodsMenuUsedByOwner extends Menu {
                 runOrders = RunOrders.FOOD_MENU_USED_BY_OWNER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
-                processLoggingOut();
+                processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
+                System.out.println("back to restaurant menu");
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -119,18 +120,15 @@ public class FoodsMenuUsedByOwner extends Menu {
 
     }
     private void processDisplayRatings() {
-        if(manager.getActiveRestaurantFoods().size() == 0) {
+        if(manager.getActiveRestaurantActiveFoods().size() == 0) {
             System.out.println("There is no food in your restaurant");
         } else {
-            for (Food activeRestaurantFood : manager.getActiveRestaurantFoods()) {
+            for (Food activeRestaurantFood : manager.getActiveRestaurantActiveFoods()) {
                 System.out.println("The rate of " + activeRestaurantFood.getName() + " is " + activeRestaurantFood.getRates());
             }
         }
     }
-    private void processSelectFood(int ID) {
+    protected void processSelectFood(int ID) {
         outputPrinter(manager.selectFood(ID));
-    }
-    private void processLoggingOut () {
-        outputPrinter(manager.logoutFromFoodsMenuUsedByOwner());
     }
 }

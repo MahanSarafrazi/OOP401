@@ -1,6 +1,6 @@
 package view;
 
-import model.User;
+import model.UserType;
 
 import java.util.regex.Matcher;
 
@@ -34,23 +34,23 @@ public class LoginMenu extends Menu {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
             if(matchers[0].find()) {
-                processAddCustomer(matchers[0].group(1), matchers[0].group(2));
+                processAddUser(matchers[0].group(1), matchers[0].group(2),UserType.CUSTOMER);
             } else if(matchers[1].find()) {
-                processAddDeliverer(matchers[1].group(1), matchers[1].group(2));
+                processAddUser(matchers[1].group(1), matchers[1].group(2),UserType.DELIVERER);
             } else if(matchers[2].find()) {
-                processAddRestaurantOwner(matchers[2].group(1), matchers[2].group(2));
+                processAddUser(matchers[2].group(1), matchers[2].group(2),UserType.RESTAURANT_OWNER);
             } else if(matchers[3].find()) {
-                if(processLoginCustomer(matchers[3].group(1), matchers[3].group(2))) {
+                if(processLogInUser(matchers[3].group(1), matchers[3].group(2),UserType.CUSTOMER)) {
                     runOrders = RunOrders.CUSTOMER_MENU;
                     inThisMenu = false;
                 }
             } else if(matchers[4].find()) {
-                if(processLoginDeliverer(matchers[4].group(1), matchers[4].group(2))) {
+                if(processLogInUser(matchers[4].group(1), matchers[4].group(2),UserType.DELIVERER)) {
                     runOrders = RunOrders.DELIVERER_MENU;
                     inThisMenu = false;
                 }
             } else if(matchers[5].find()) {
-                if(processLoginRestaurantOwner(matchers[5].group(1), matchers[5].group(2))) {
+                if(processLogInUser(matchers[5].group(1), matchers[5].group(2),UserType.RESTAURANT_OWNER)) {
                     runOrders = RunOrders.RESTAURANT_OWNER_MENU;
                     inThisMenu = false;
                 }
@@ -67,47 +67,36 @@ public class LoginMenu extends Menu {
         //changing conditions
         return runOrders;
     }
-    private void outputPrinter(Output output, User user) {
+    @Override
+    protected void outputPrinter(Output output) {
+        super.outputPrinter(output);
         switch (output) {
-            case INVALID_USER_NAME -> System.out.println("user name is invalid");
+            case INVALID_PASSWORD -> System.out.println("password is invalid");
+            case SUCCESSFUL_LOGIN -> System.out.println("logged in successfully");
             case NO_RESTORE_QUESTION -> System.out.println("you didn't set any question!");
-            case SHOW_RESTORE_QUESTION -> System.out.println(user.getRestoreQuestion()+"?");
-            case CORRECT_ANSWER -> System.out.println("Your password is : \n"+user.getPassword());
-            case WRONG_ANSWER -> System.out.println("wrong answer!");
         }
     }
 
     // passing to manager
-    private void processAddCustomer(String username, String password) {
-        outputPrinter(manager.addCustomer(username, password));
+    private void processAddUser (String username, String password, UserType userType) {
+        outputPrinter(manager.addUser(username,password,userType));
     }
-    private void processAddDeliverer(String username, String password) {
-        outputPrinter(manager.addDeliverer(username, password));
-    }
-    private void processAddRestaurantOwner(String username, String password) {
-        outputPrinter(manager.addRestaurantOwner(username, password));
-    }
-    private boolean processLoginCustomer(String username, String password) {
-        Output temp = manager.logInCustomer(username, password);
-        outputPrinter(temp);
-        return temp.equals(Output.SUCCESSFUL_LOGIN);
-    }
-    private boolean processLoginDeliverer(String username, String password) {
-        Output temp = manager.logInDeliverer(username, password);
-        outputPrinter(temp);
-        return temp.equals(Output.SUCCESSFUL_LOGIN);
-    }
-    private boolean processLoginRestaurantOwner(String username, String password) {
-        Output temp = manager.logInRestaurantOwner(username, password);
+    private boolean processLogInUser(String username, String password, UserType userType) {
+        Output temp = manager.logInUser(username,password,userType);
         outputPrinter(temp);
         return temp.equals(Output.SUCCESSFUL_LOGIN);
     }
     private void processRestoringPassword(String username) {
         Output temp = manager.getRestoreQuestion(username);
-        outputPrinter(temp,manager.getUser(username));
-        if (temp == Output.SHOW_RESTORE_QUESTION) {
-            outputPrinter(manager.getRestoreAnswer(username, scanner.nextLine()),manager.getUser(username));
+        if (temp != Output.SHOW_RESTORE_QUESTION)
+            outputPrinter(temp);
+        else  {
+            System.out.println(manager.getLoggedInUser().getRestoreQuestion()+"?");
+            if (!manager.getUser(username).getRestoreAnswer().equals(scanner.nextLine()))
+                System.out.println("wrong answer!");
+            else
+                System.out.println("Your password is : \n"+manager.getLoggedInUser().getPassword());
+
         }
     }
-
 }
