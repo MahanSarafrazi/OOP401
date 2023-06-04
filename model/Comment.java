@@ -11,6 +11,11 @@ public class Comment {
     public boolean isResponse;
     private Comment response;
     public Comment getResponse() {return response;}
+
+    public void addResponse(User owner, String responseText) {
+        this.response = new Comment(owner, responseText, true);
+    }
+
     Comment(User user, String comment, boolean isResponse) {
         this.comment = comment;
         this.user = user;

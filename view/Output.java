@@ -40,4 +40,7 @@ public enum Output {
     SHOW_FOODS,
     WRONG_ID,
     CORRECT_ID,
+    FOOD_SELECTED,
+    NO_COMMENT_WITH_ID,
+    RESPONSE_ADDED,
 }

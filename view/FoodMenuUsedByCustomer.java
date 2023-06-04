@@ -62,7 +62,7 @@ public class FoodMenuUsedByCustomer extends Menu {
         return runOrders;
     }
     private void processDisplayComments() {
-        for (Comment comment :manager.displayFoodComments()) {
+        for (Comment comment :manager.getFoodComments()) {
             System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" ID : "+comment.getID());
             if (comment.hasResponse)
                 System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
@@ -86,11 +86,11 @@ public class FoodMenuUsedByCustomer extends Menu {
         }
     }
     private void processDisplayRatings() {
-        if (manager.getLoggedInUser().getActiveRestaurant().getActiveFood().getRates().size() == 0)
+        if (manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getRates().size() == 0)
             System.out.println("there is no rating");
         else {
             System.out.println("average rating is : " + manager.averageFoodRating());
-            for (Rate rate : manager.displayFoodRatings())
+            for (Rate rate : manager.getFoodRating())
                 System.out.println(rate.getUser().getUserName() + " : " + rate.getRating());
         }
     }

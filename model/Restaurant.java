@@ -1,7 +1,5 @@
 package model;
 
-import view.Inputs;
-
 import java.util.ArrayList;
 
 public class Restaurant {
@@ -109,22 +107,22 @@ public class Restaurant {
     private ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
     public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
-    private Food activeFood = null;
-    public Food getActiveFood() {
-        return activeFood;
+    private Food openedFood = null;
+    public Food getOpenedFood() {
+        return openedFood;
     }
 
-    public boolean setActiveFood(int ID) {
+    public boolean setOpenedFood(int ID) {
         for (Food food : foods) {
             if(food.getID() == ID) {
-                activeFood = food;
+                openedFood = food;
                 return true;
             }
         }
         return false;
     }
-    public void setActiveFood(Food food) {
-        this.activeFood = food;
+    public void setOpenedFood(Food food) {
+        this.openedFood = food;
     }
-    public void deActiveFood() {activeFood = null;}
+    public void closeFood() {openedFood = null;}
 }

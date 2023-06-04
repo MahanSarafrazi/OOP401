@@ -1,5 +1,8 @@
 package view;
 
+import model.Comment;
+import model.Rate;
+
 import java.util.regex.Matcher;
 
 public class FoodMenuUsedByOwner extends Menu {
@@ -25,8 +28,14 @@ public class FoodMenuUsedByOwner extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if(matchers[30].find()) {
-
+            if(matchers[26].find()) {
+                processDisplayRating();
+            } else if(matchers[23].find()) {
+                processDisplayComment();
+            } else if(matchers[30].find()) {
+                processDisplayRatings();
+            } else if(matchers[31].find()) {
+                processAddResponse(Integer.parseInt(matchers[31].group(1)));
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
@@ -49,6 +58,44 @@ public class FoodMenuUsedByOwner extends Menu {
     @Override
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
+        switch (output) {
+            case NO_COMMENT_WITH_ID -> System.out.println("There is no comment with this ID!");
+            case RESPONSE_ADDED -> System.out.println("Response added successfully");
+        }
+    }
+    private void processDisplayComment() {
+        if(manager.getFoodComments().size() == 0) {
+            System.out.println("There is no comment for this food");
+        } else {
+            for (Comment comment : manager.getFoodComments()) {
+                System.out.println(comment.getUser().getUserName() + " said : " + comment.getComment() + " ID : " + comment.getID());
+                if (comment.hasResponse) {
+                    System.out.println("        You " + comment.getResponse().getUser().getUserName() +
+                            " have responded : " + comment.getResponse().getComment());
+                }
+            }
+        }
+    }
+    private void processDisplayRating() {
+        if(manager.getFoodRating().size() == 0) {
+            System.out.println("there is no rating");
+        } else {
+            System.out.println("rate of this food is: " + manager.averageFoodRating());
+        }
+    }
+    private void processDisplayRatings() {
+        if(manager.getFoodRating().size() == 0) {
+            System.out.println("there is no rating");
+        } else {
+            for (Rate rate : manager.getFoodRating()) {
+                System.out.println(rate.getUser().getUserName() + " : " + rate.getRating());
+            }
+        }
+    }
+    private void processAddResponse(int ID) {
+        System.out.println("please write your response:");
+        String comment = scanner.nextLine();
+        outputPrinter(manager.addResponse(ID, comment));
     }
 
     private void processLoggingOut () {

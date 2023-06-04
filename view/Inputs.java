@@ -33,6 +33,8 @@ public enum Inputs {
     SUBMIT_RATING("^\\s*submit\\s+rating\\s+(\\d+)\\s*$"), //27
     EDIT_RATING("^\\s*edit\\s+rating\\s+(\\d+)\\s*$"), //28
     SET_DISCOUNT("^\\s*discount\\s+food\\s+(\\d+)\\s+(\\d*\\.?\\d+)\\s+(\\d+)\\s+hours\\s*$"), //29
+    DISPLAY_RATINGS("^\\s*display\\s+ratings\\s*$"), //30
+    ADD_RESPONSE("^\\s*add\\s+new\\s+response\\s+(\\d+)\\s*$"), //31
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")

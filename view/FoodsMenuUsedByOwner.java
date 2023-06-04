@@ -55,10 +55,14 @@ public class FoodsMenuUsedByOwner extends Menu {
                 processDeActiveFood(Integer.parseInt(matchers[18].group(1)));
             } else if(matchers[19].find()) {
                 processActiveFood(Integer.parseInt(matchers[19].group(1)));
-            } else if (matchers[22].find()) {
+            } else if (matchers[29].find()) {
 
-            } else if(matchers[29].find()) {
-
+            } else if(matchers[30].find()) {
+                processDisplayRatings();
+            } else if(matchers[22].find()) {
+                processSelectFood(Integer.parseInt(matchers[22].group(1)));
+                runOrders = RunOrders.FOOD_MENU_USED_BY_OWNER;
+                inThisMenu = false;
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
@@ -89,6 +93,7 @@ public class FoodsMenuUsedByOwner extends Menu {
             case FOOD_ACTIVATED -> System.out.println("Food activated successfully");
             case FOOD_DEACTIVATED -> System.out.println("Food deactivated successfully");
             case THERE_ARE_FOODS_IN_ORDER -> System.out.println("There are still foods in orders with this ID");
+            case FOOD_SELECTED -> System.out.println("Food selected successfully");
         }
     }
 
@@ -110,8 +115,20 @@ public class FoodsMenuUsedByOwner extends Menu {
     private void processActiveFood(int ID) {
         outputPrinter(manager.activeFood(ID));
     }
-    private void processDiscount(int ID) {
+    private void processDiscount(int ID, double discountPercent) {
 
+    }
+    private void processDisplayRatings() {
+        if(manager.getActiveRestaurantFoods().size() == 0) {
+            System.out.println("There is no food in your restaurant");
+        } else {
+            for (Food activeRestaurantFood : manager.getActiveRestaurantFoods()) {
+                System.out.println("The rate of " + activeRestaurantFood.getName() + " is " + activeRestaurantFood.getRates());
+            }
+        }
+    }
+    private void processSelectFood(int ID) {
+        outputPrinter(manager.selectFood(ID));
     }
     private void processLoggingOut () {
         outputPrinter(manager.logoutFromFoodsMenuUsedByOwner());
