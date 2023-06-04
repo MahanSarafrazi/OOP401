@@ -36,6 +36,8 @@ public class FoodMenuUsedByOwner extends Menu {
                 processDisplayRatings();
             } else if(matchers[31].find()) {
                 processAddResponse(Integer.parseInt(matchers[31].group(1)));
+            } else if(matchers[32].find()) {
+                processEditResponse(Integer.parseInt(matchers[32].group(1)));
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
@@ -61,6 +63,8 @@ public class FoodMenuUsedByOwner extends Menu {
         switch (output) {
             case NO_COMMENT_WITH_ID -> System.out.println("There is no comment with this ID!");
             case RESPONSE_ADDED -> System.out.println("Response added successfully");
+            case NO_RESPONSE -> System.out.println("There in no response for this comment!");
+            case RESPONSE_EDITED -> System.out.println("Response edited successfully");
         }
     }
     private void processDisplayComment() {
@@ -97,7 +101,11 @@ public class FoodMenuUsedByOwner extends Menu {
         String comment = scanner.nextLine();
         outputPrinter(manager.addResponse(ID, comment));
     }
-
+    private void processEditResponse(int ID) {
+        System.out.println("please write your response:");
+        String comment = scanner.nextLine();
+        outputPrinter(manager.editResponse(ID, comment));
+    }
     private void processLoggingOut () {
         outputPrinter(manager.logoutFromFoodMenuUsedByOwner());
     }

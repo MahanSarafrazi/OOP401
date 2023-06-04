@@ -35,6 +35,7 @@ public enum Inputs {
     SET_DISCOUNT("^\\s*discount\\s+food\\s+(\\d+)\\s+(\\d*\\.?\\d+)\\s+(\\d+)\\s+hours\\s*$"), //29
     DISPLAY_RATINGS("^\\s*display\\s+ratings\\s*$"), //30
     ADD_RESPONSE("^\\s*add\\s+new\\s+response\\s+(\\d+)\\s*$"), //31
+    EDIT_RESPONSE("^\\s*edit\\s+response\\s+(\\d+)\\s*$"), //32
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")

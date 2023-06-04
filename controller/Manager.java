@@ -434,6 +434,18 @@ public class Manager {
         }
         return Output.NO_COMMENT_WITH_ID;
     }
+    public Output editResponse(int ID, String newComment) {
+        for (Comment comment1 : loggedInUser.getActiveRestaurant().getOpenedFood().getComments()) {
+            if(comment1.getID() == ID) {
+                if(!comment1.hasResponse) {
+                    return Output.NO_RESPONSE;
+                }
+                comment1.getResponse().editComment(newComment);
+                return Output.RESPONSE_EDITED;
+            }
+        }
+        return Output.NO_COMMENT_WITH_ID;
+    }
     public Output checkFoodCommentID(int ID) {
         for (Comment comment : loggedInUser.getActiveRestaurant().getOpenedFood().getComments())
             if (comment.getID() == ID)

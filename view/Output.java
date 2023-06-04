@@ -43,4 +43,6 @@ public enum Output {
     FOOD_SELECTED,
     NO_COMMENT_WITH_ID,
     RESPONSE_ADDED,
+    NO_RESPONSE,
+    RESPONSE_EDITED,
 }

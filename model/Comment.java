@@ -24,5 +24,5 @@ public class Comment {
         this.ID = randomIDGenerator.getLastNumber();
         hasResponse = false;
     }
-    public void editComment(String comment) {this.comment=comment;}
+    public void editComment(String comment) {this.comment = comment;}
 }
