@@ -302,11 +302,6 @@ public class Manager {
         return Output.FOOD_ADDED;
     }
     public ArrayList<Food> getActiveRestaurantFoods() {return loggedInUser.getActiveRestaurant().getFoods();}
-    public Output showFoods() {
-        if (getActiveRestaurantFoods().isEmpty())
-            return Output.NO_FOOD_IN_RESTAURANT;
-        return Output.SHOW_FOODS;
-    }
     public Output editFoodName(int ID, String newName) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
@@ -349,7 +344,7 @@ public class Manager {
                     }
                 }
                 if(isThereFood) {
-                    return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
+                    return Output.THERE_ARE_FOODS_IN_ORDER;
                 }
                 owner.getActiveRestaurant().setActivation(ID, false);
                 return Output.FOOD_DEACTIVATED;

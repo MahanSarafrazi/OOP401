@@ -12,9 +12,6 @@ public class FoodMenuUsedByOwner extends Menu {
         return foodMenuUsedByOwnerInstance;
     }
 
-
-    //Menu managing
-
     @Override
     public RunOrders openMenu() {
         String input;
@@ -23,18 +20,20 @@ public class FoodMenuUsedByOwner extends Menu {
 
         Matcher[] matchers = new Matcher[Inputs.values().length];
         //in Menu
-        while(inThisMenu) {
+        while (inThisMenu) {
             input = scanner.nextLine();
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
-            if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
+            if(matchers[30].find()) {
+
+            } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLoggingOut();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
-            } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
+            } else if(input.matches(Inputs.BACK.commandingPattern.pattern())) {
                 processBack();
-                runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
+                runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
                 runOrders = RunOrders.EXIT;
@@ -43,12 +42,19 @@ public class FoodMenuUsedByOwner extends Menu {
                 System.out.println("invalid command");
             }
         }
+
         return runOrders;
     }
-    private void processLoggingOut () {
-        outputPrinter(manager.logoutFromFoodMenuUsedByOwner());
+
+    @Override
+    protected void outputPrinter(Output output) {
+        super.outputPrinter(output);
+    }
+
+    private void processLoggingOut() {
+
     }
     private void processBack() {
-        manager.backFromFoodMenuUsedByOwner();
+
     }
 }

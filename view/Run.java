@@ -52,6 +52,8 @@ public class Run {
                 return RestaurantMenuUsedByCustomer.getRestaurantMenuUsedByCustomerInstance();
             } case FOOD_MENU_USED_BY_CUSTOMER -> {
                 return FoodMenuUsedByCustomer.getFoodMenuUsedByCustomerInstance();
+            } case FOODS_MENU_USED_BY_OWNER -> {
+                return FoodsMenuUsedByOwner.getFoodsMenuUsedByOwnerInstance();
             } case FOOD_MENU_USED_BY_OWNER -> {
                 return FoodMenuUsedByOwner.getFoodMenuUsedByOwnerInstance();
             }

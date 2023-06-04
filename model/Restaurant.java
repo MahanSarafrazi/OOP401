@@ -103,8 +103,8 @@ public class Restaurant {
 
     private ArrayList<Comment> comments;
     public ArrayList<Comment> getComments() {return comments;}
-    public void addComment(String comment,User user) {comments.add(new Comment(user,comment,false));}
-    private String ownerName ;
+    public void addComment(String comment, User user) {comments.add(new Comment(user,comment,false));}
+    private String ownerName;
     public String getOwnerName() {return ownerName;}
     private ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
