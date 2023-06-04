@@ -108,4 +108,23 @@ public class Restaurant {
     public String getOwnerName() {return ownerName;}
     private ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
+    public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
+    private Food activeFood = null;
+    public Food getActiveFood() {
+        return activeFood;
+    }
+
+    public boolean setActiveRestaurant(int ID) {
+        for (Food food : foods) {
+            if(food.getID() == ID) {
+                activeFood = food;
+                return true;
+            }
+        }
+        return false;
+    }
+    public void setActiveFood(Food food) {
+        this.activeFood = food;
+    }
+    public void deActiveFood() {activeFood = null;}
 }

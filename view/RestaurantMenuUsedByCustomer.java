@@ -3,7 +3,6 @@ package view;
 import model.Comment;
 import model.Rate;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class RestaurantMenuUsedByCustomer extends Menu {
@@ -49,16 +48,16 @@ public class RestaurantMenuUsedByCustomer extends Menu {
             } else if (matchers[26].find()) {
                 processDisplayRatings();
             } else if (matchers[27].find()) {
-                processAddRating(Integer.parseInt(matchers[27].group(1)));
+                processAddRating(Double.parseDouble(matchers[27].group(1)));
             } else if (matchers[28].find()) {
-
+                processEditRating(Double.parseDouble(matchers[28].group(1)));
             }
         }
 
         return runOrders;
     }
     private void processDisplayComments() {
-        for (Comment comment :manager.displayRestaurantsComments()) {
+        for (Comment comment :manager.displayRestaurantComments()) {
             System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" ID : "+comment.getID());
             if (comment.hasResponse)
                 System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
@@ -68,16 +67,16 @@ public class RestaurantMenuUsedByCustomer extends Menu {
     private void processAddComment() {
         System.out.println("please write your comment : ");
         String comment = scanner.nextLine();
-        manager.addComment(comment);
+        manager.addRestaurantComment(comment);
         System.out.println("commented!");
     }
     private void processEditComment(int ID) {
-        if (manager.checkCommentID(ID) == Output.WRONG_ID)
+        if (manager.checkRestaurantCommentID(ID) == Output.WRONG_ID)
             System.out.println("wrong id!");
         else {
             System.out.println("please write new comment :");
             String comment = scanner.nextLine();
-            manager.editComment(ID,comment);
+            manager.editRestaurantComment(ID,comment);
             System.out.println("edited!");
         }
     }
@@ -86,11 +85,26 @@ public class RestaurantMenuUsedByCustomer extends Menu {
             System.out.println("there is no rating");
         else {
             System.out.println("average rating is : " + manager.averageRestaurantRating());
-            for (Rate rate : manager.displayRestaurantsRatings())
+            for (Rate rate : manager.displayRestaurantRatings())
                 System.out.println(rate.getUser().getUserName() + " : " + rate.getRating());
         }
     }
-    private void processAddRating(int rating) {
-
+    private void processAddRating(double rating) {
+        if (rating>5 || rating<0)
+            System.out.println("rating should be between 0 and 5");
+        else if (manager.addRestaurantRating(rating))
+            System.out.println("already rated!");
+        else {
+            System.out.println("rated successfully!");
+        }
+    }
+    private void processEditRating(double rating) {
+        if (rating>5 || rating<0)
+            System.out.println("rating should be between 0 and 5");
+        else if (!manager.editRestaurantRating(rating))
+            System.out.println("you didn't rate!");
+        else {
+            System.out.println("edited successfully!");
+        }
     }
 }
