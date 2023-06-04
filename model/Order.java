@@ -16,5 +16,7 @@ public class Order {
     public void setFoods(LinkedHashMap<Food, Integer> foods) {
         this.foods = foods;
     }
-    
+
+
+
 }
