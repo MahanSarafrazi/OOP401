@@ -6,21 +6,20 @@ import java.util.LinkedHashMap;
 
 public class Order {
     private final int ID;
+    private int restaurantID;
     public int getID(){ return ID;}
-     private double timeFinishing=0;
+    // private double timeFinishing=0;
     private ArrayList<Food> foods=new ArrayList<>();
     public ArrayList<Food> getFoods(){
         return foods;
 
     }
-    public Order(Food food){
+    public Order(Food food,int restaurantID){
+        this.restaurantID=restaurantID;
         foods.add(food);
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID=randomIDGenerator.getLastNumber();
 
-
-
-        
     }
 
 
