@@ -37,9 +37,22 @@ public class CustomerMenu extends Menu {
 
             } else if (matchers[8].find()) {
 
+            } else if (input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
+                processLoggingOut();
+                runOrders = RunOrders.LOGIN_MENU;
+                inThisMenu = false;
+            } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
+                runOrders = RunOrders.EXIT;
+                inThisMenu = false;
+            }  else {
+                System.out.println("invalid command");
             }
         }
 
         return runOrders;
     }
+    private void processLoggingOut() {
+        outputPrinter(manager.logoutFromCustomerMenu());
+    }
+
 }

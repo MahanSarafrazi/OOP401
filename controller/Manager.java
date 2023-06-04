@@ -141,10 +141,32 @@ public class Manager {
         loggedInUser = null;
         return Output.LOGOUT;
     }
+    public Output logoutFromCustomerMenu() {
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
     public Output logoutFromRestaurantMenuUsedByOwner() {
         RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
         RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
         restaurantOwner.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromRestaurantMenuUsedByCustomer() {
+        loggedInUser.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromFoodMenuUsedByOwner() {
+        RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        loggedInUser.getActiveRestaurant().deActiveFood();
+        loggedInUser.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromFoodMenuUsedByCustomer() {
+        loggedInUser.getActiveRestaurant().deActiveFood();
+        loggedInUser.deActiveRestaurant();
         loggedInUser = null;
         return Output.LOGOUT;
     }
@@ -350,6 +372,11 @@ public class Manager {
         RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
         restaurantOwner.deActiveRestaurant();
     }
+    public void backFromRestaurantMenuUsedByCustomer() {loggedInUser.deActiveRestaurant();}
+    public void backFromFoodMenuUsedByOwner() {loggedInUser.getActiveRestaurant().deActiveFood();}
+
+    public void backFromFoodMenuUsedByCustomer() {loggedInUser.getActiveRestaurant().deActiveFood();}
+
     public ArrayList<Comment> displayRestaurantComments() {return loggedInUser.getActiveRestaurant().getComments();}
     public void addRestaurantComment(String comment) {loggedInUser.getActiveRestaurant().addComment(comment,loggedInUser);}
     public Output checkRestaurantCommentID(int ID) {

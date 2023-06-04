@@ -28,7 +28,27 @@ public class FoodMenuUsedByOwner extends Menu {
             for(int i = 0; i < Inputs.values().length; ++i) {
                 matchers[i] = Inputs.getPatterns()[i].matcher(input);
             }
+            if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
+                processLoggingOut();
+                runOrders = RunOrders.LOGIN_MENU;
+                inThisMenu = false;
+            } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
+                processBack();
+                runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
+                inThisMenu = false;
+            } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
+                runOrders = RunOrders.EXIT;
+                inThisMenu = false;
+            }  else {
+                System.out.println("invalid command");
+            }
         }
         return runOrders;
+    }
+    private void processLoggingOut () {
+        outputPrinter(manager.logoutFromFoodMenuUsedByOwner());
+    }
+    private void processBack() {
+        manager.backFromFoodMenuUsedByOwner();
     }
 }

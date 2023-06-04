@@ -88,7 +88,6 @@ public class RestaurantMenuUsedByOwner extends Menu {
             case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
             case FOOD_ALREADY_EXIST -> System.out.println("This food already exist in this restaurant");
             case FOOD_ADDED -> System.out.println("Food added successfully");
-            case LOGOUT -> System.out.println("Logged out successfully");
             case ADD_RESTORE_QUESTION -> System.out.println("Please set your restore question");
             case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
             case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");

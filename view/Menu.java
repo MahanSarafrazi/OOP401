@@ -23,6 +23,7 @@ public abstract class Menu {
             case SUCCESSFUL_LOGIN -> System.out.println("logged in successfully");
             case SUCCESSFUL_REGISTER -> System.out.println("registered successfully");
             case INVALID_COMMAND -> System.out.println("Invalid command!");
+            case LOGOUT -> System.out.println("Logged out successfully");
         }
     }
 

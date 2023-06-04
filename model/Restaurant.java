@@ -114,7 +114,7 @@ public class Restaurant {
         return activeFood;
     }
 
-    public boolean setActiveRestaurant(int ID) {
+    public boolean setActiveFood(int ID) {
         for (Food food : foods) {
             if(food.getID() == ID) {
                 activeFood = food;

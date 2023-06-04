@@ -43,6 +43,19 @@ public class FoodMenuUsedByCustomer extends Menu {
                 processAddRating(Double.parseDouble(matchers[27].group(1)));
             } else if (matchers[28].find()) {
                 processEditRating(Double.parseDouble(matchers[28].group(1)));
+            } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
+                processLoggingOut();
+                runOrders = RunOrders.LOGIN_MENU;
+                inThisMenu = false;
+            } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
+                processBack();
+                runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
+                inThisMenu = false;
+            } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
+                runOrders = RunOrders.EXIT;
+                inThisMenu = false;
+            }  else {
+                System.out.println("invalid command");
             }
         }
 
@@ -98,5 +111,11 @@ public class FoodMenuUsedByCustomer extends Menu {
         else {
             System.out.println("edited successfully!");
         }
+    }
+    private void processLoggingOut () {
+        outputPrinter(manager.logoutFromFoodMenuUsedByCustomer());
+    }
+    private void processBack() {
+        manager.backFromFoodMenuUsedByCustomer();
     }
 }
