@@ -19,6 +19,8 @@ public class Order {
         this.ID=randomIDGenerator.getLastNumber();
     }
 
+
+
     public ArrayList<FoodType> getType(){
         ArrayList<FoodType> foodTypes=new ArrayList<>();
         for (int i = 0; i < foods.size(); i++) {
