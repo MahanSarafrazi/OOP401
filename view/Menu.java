@@ -1,18 +1,19 @@
 package view;
 
 import controller.Manager;
+import model.Rate;
 
 import java.util.Scanner;
 
 public abstract class Menu {
     protected final Scanner scanner;
     protected final Manager manager = Manager.getManagerInstance();
+
     public Menu() {
         this.scanner = new Scanner(System.in);
     }
 
     public abstract RunOrders openMenu();
-
 
 
     //OutputPrinter
@@ -29,14 +30,23 @@ public abstract class Menu {
             case RATING_EXISTS -> System.out.println("rating already exists");
             case RATED -> System.out.println("rated successfully");
             case NO_RATING -> System.out.println("there is no rating");
+            case LOCATION_NOT_IN_THE_MAP -> System.out.println("This location is not in the map!");
+            case RESPONSE_EXISTS -> System.out.println("Response already exists");
+            case NO_COMMENT_WITH_ID -> System.out.println("There is no comment with this ID!");
+            case RESPONSE_ADDED -> System.out.println("Response added successfully");
+            case NO_RESPONSE -> System.out.println("There in no response for this comment!");
+            case RESPONSE_EDITED -> System.out.println("Response edited successfully");
+            case COMMENT_EDITED -> System.out.println("Comment edited successfully");
         }
     }
+
     protected boolean processSelectingRestaurant(int ID) {
         boolean selected = manager.getLoggedInUser().setActiveRestaurant(ID);
         if (!selected)
             System.out.println("There is no restaurant with this ID!");
         return selected;
     }
+
     protected void processAddingRestoreQuestion() {
         Output temp = manager.checkRestoreQuestion();
         outputPrinter(temp);
@@ -44,47 +54,70 @@ public abstract class Menu {
             String question = scanner.nextLine();
             outputPrinter(Output.ADD_RESTORE_ANSWER);
             String answer = scanner.nextLine();
-            manager.setRestore(question,answer);
+            manager.setRestore(question, answer);
             outputPrinter(Output.RESTORE_QUESTION_ADDED);
         }
     }
+
     protected void processLogout() {
         manager.logout();
         System.out.println("logged out");
     }
+
+    protected void processBack() {
+        manager.back();
+    }
+
     protected boolean processSelectingFood(int ID) {
         boolean selected = manager.getLoggedInUser().getActiveRestaurant().setOpenedFood(ID);
         if (!selected)
             System.out.println("There is no food with this ID or it is deActive!");
         return selected;
     }
+
     protected void processAddComment() {
         System.out.println("please write your comment : ");
-        String comment = scanner.nextLine();
-        manager.addComment(comment);
-        System.out.println("commented!");
+        manager.addComment(scanner.nextLine());
+        System.out.println("Comment added successfully!");
     }
 
     protected void processEditComment(int ID) {
-        if (!manager.checkCommentID(ID))
-            System.out.println("wrong id!");
-        else {
-            System.out.println("please write new comment :");
-            String comment = scanner.nextLine();
-            manager.editComment(ID,comment);
-            System.out.println("edited!");
-        }
+        System.out.println("please write new comment :");
+        outputPrinter(manager.editComment(ID, scanner.nextLine()));
     }
-    protected void processDisplayRatings() {
+
+    protected void processDisplayRating() {
         if (manager.isThereRating())
             System.out.println("there is no rating");
         else
             System.out.println("average rating is : " + manager.averageRating());
     }
-    protected void processAddRating(double ID) {
-        outputPrinter(manager.addRating(ID));
+
+    protected void processDisplayRatings() {
+        if (manager.isThereRating()) {
+            System.out.println("there is no rating");
+        } else {
+            for (Rate rate : manager.getRating()) {
+                System.out.println(rate.getUser().getUserName() + " : " + rate.getRating());
+            }
+        }
     }
-    protected void processEditRating(double ID) {
-        outputPrinter(manager.editRating(ID));
+
+    protected void processAddRating(double rating) {
+        outputPrinter(manager.addRating(rating));
+    }
+
+    protected void processEditRating(double rating) {
+        outputPrinter(manager.editRating(rating));
+    }
+
+    protected void processAddResponse(int ID) {
+        System.out.println("please write your response :");
+        outputPrinter(manager.addResponse(ID, scanner.nextLine()));
+    }
+
+    protected void processEditResponse(int ID) {
+        System.out.println("please write new response :");
+        outputPrinter(manager.editResponse(ID, scanner.nextLine()));
     }
 }

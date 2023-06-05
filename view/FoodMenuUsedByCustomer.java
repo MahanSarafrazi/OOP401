@@ -37,17 +37,19 @@ public class FoodMenuUsedByCustomer extends Menu {
             } else if (matchers[25].find()) {
                 processEditComment(Integer.parseInt(matchers[25].group()));
             } else if (matchers[26].find()) {
-                processDisplayRatings();
+                processDisplayRating();
             } else if (matchers[27].find()) {
                 processAddRating(Double.parseDouble(matchers[27].group(1)));
             } else if (matchers[28].find()) {
                 processEditRating(Double.parseDouble(matchers[28].group(1)));
+            } else if (matchers[30].find()){
+                processDisplayRatings();
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
-                manager.back();
+                processBack();
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -61,8 +63,10 @@ public class FoodMenuUsedByCustomer extends Menu {
         return runOrders;
     }
     private void processDisplayComments() {
+        if(manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments().isEmpty())
+            System.out.println("There is no comment for this food");
         for (Comment comment :manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments()) {
-            System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" ID : "+comment.getID());
+            System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" (comment ID : "+comment.getID()+" )");
             if (comment.hasResponse)
                 System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
                         " has responded : "+comment.getResponse().getComment());

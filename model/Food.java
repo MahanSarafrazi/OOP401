@@ -43,7 +43,7 @@ public class Food {
          this.name = name;
     }
     private final ArrayList<Comment> comments ;
-    public void addComment(User user ,String comment) {comments.add(new Comment(user,comment,false));}
+    public void addComment(User user ,String comment) {comments.add(new Comment(user,comment));}
     public ArrayList<Comment> getComments() {return comments;}
     private final ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}

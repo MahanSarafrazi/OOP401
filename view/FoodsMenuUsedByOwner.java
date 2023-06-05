@@ -3,6 +3,7 @@ package view;
 import model.Food;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 
 public class FoodsMenuUsedByOwner extends Menu {
@@ -20,7 +21,8 @@ public class FoodsMenuUsedByOwner extends Menu {
 
     @Override
     public RunOrders openMenu() {
-        ArrayList<Food> activeRestaurantFoods = manager.getActiveRestaurantActiveFoods();
+        manager.getLoggedInUser().getActiveRestaurant().getFoods().sort(Comparator.comparing(Food::getName).thenComparing(Food::getID));
+        ArrayList<Food> activeRestaurantFoods = manager.getLoggedInUser().getActiveRestaurant().getFoods();
         if(activeRestaurantFoods.isEmpty()) {
             System.out.println("There is no food in your restaurant");
         } else {
@@ -58,16 +60,19 @@ public class FoodsMenuUsedByOwner extends Menu {
             } else if (matchers[29].find()) {
 
             } else if(matchers[30].find()) {
-                processDisplayRatings();
+                processDisplayRating();
             } else if(matchers[22].find()) {
-                processSelectFood(Integer.parseInt(matchers[22].group(1)));
-                runOrders = RunOrders.FOOD_MENU_USED_BY_OWNER;
-                inThisMenu = false;
+                if(processSelectingFood(Integer.parseInt(matchers[22].group(1)))) {
+                    System.out.println("food selected");
+                    runOrders = RunOrders.FOOD_MENU_USED_BY_OWNER;
+                    inThisMenu = false;
+                }
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
+                //no process
                 System.out.println("back to restaurant menu");
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
                 inThisMenu = false;
@@ -94,7 +99,6 @@ public class FoodsMenuUsedByOwner extends Menu {
             case FOOD_ACTIVATED -> System.out.println("Food activated successfully");
             case FOOD_DEACTIVATED -> System.out.println("Food deactivated successfully");
             case THERE_ARE_FOODS_IN_ORDER -> System.out.println("There are still foods in orders with this ID");
-            case FOOD_SELECTED -> System.out.println("Food selected successfully");
         }
     }
 
@@ -118,17 +122,5 @@ public class FoodsMenuUsedByOwner extends Menu {
     }
     private void processDiscount(int ID, double discountPercent) {
 
-    }
-    private void processDisplayRatings() {
-        if(manager.getActiveRestaurantActiveFoods().size() == 0) {
-            System.out.println("There is no food in your restaurant");
-        } else {
-            for (Food activeRestaurantFood : manager.getActiveRestaurantActiveFoods()) {
-                System.out.println("The rate of " + activeRestaurantFood.getName() + " is " + activeRestaurantFood.getRates());
-            }
-        }
-    }
-    protected void processSelectFood(int ID) {
-        outputPrinter(manager.selectFood(ID));
     }
 }

@@ -86,9 +86,7 @@ public class RestaurantOwnerMenu extends Menu {
                 for (Restaurant restaurant : owner.getRestaurants()) {
                     System.out.println(restaurant.getName()+" "+restaurant.getID());
                 }}
-            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
-            case LOCATION_NOT_IN_THE_MAP -> System.out.println("This location is not in the map!");
-        }
+            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");}
     }
 
     //passing to manager

@@ -24,8 +24,9 @@ public class Restaurant {
     }
 
     private final int ID;
-    private final int location;
+    private int location;
     public int getLocation() {return location;}
+    public void setLocation(int location) {this.location=location;}
 
     public int getID() {
         return ID;
@@ -102,7 +103,7 @@ public class Restaurant {
 
     private final ArrayList<Comment> comments;
     public ArrayList<Comment> getComments() {return comments;}
-    public void addComment(String comment, User user) {comments.add(new Comment(user,comment,false));}
+    public void addComment(String comment, User user) {comments.add(new Comment(user,comment));}
     private final ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
     public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}

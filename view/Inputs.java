@@ -36,6 +36,8 @@ public enum Inputs {
     DISPLAY_RATINGS("^\\s*display\\s+ratings\\s*$"), //30
     ADD_RESPONSE("^\\s*add\\s+new\\s+response\\s+(\\d+)\\s*$"), //31
     EDIT_RESPONSE("^\\s*edit\\s+response\\s+(\\d+)\\s*$"), //32
+    SHOW_LOCATION("^\\s*show\\s+location\\s*$"), //33
+    EDIT_LOCATION("^\\s*edit\\s+location\\s+(\\d+)\\s*$"), //34
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")

@@ -49,11 +49,13 @@ public class RestaurantMenuUsedByCustomer extends Menu {
             } else if (matchers[25].find()) {
                 processEditComment(Integer.parseInt(matchers[25].group()));
             } else if (matchers[26].find()) {
-                processDisplayRatings();
+                processDisplayRating();
             } else if (matchers[27].find()) {
                 processAddRating(Double.parseDouble(matchers[27].group(1)));
             } else if (matchers[28].find()) {
                 processEditRating(Double.parseDouble(matchers[28].group(1)));
+            } else if (matchers[30].find()){
+                processDisplayRatings();
             } else if (matchers[22].find()) {
                 if(processSelectingFood(Integer.parseInt(matchers[22].group(1)))) {
                     System.out.println("food selected");
@@ -65,7 +67,7 @@ public class RestaurantMenuUsedByCustomer extends Menu {
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
-                manager.back();
+                processBack();
                 runOrders = RunOrders.CUSTOMER_MENU;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -87,6 +89,8 @@ public class RestaurantMenuUsedByCustomer extends Menu {
             System.out.println("there is no active food in this restaurant.");
     }
     private void processDisplayComments() {
+        if(manager.getLoggedInUser().getActiveRestaurant().getComments().isEmpty())
+            System.out.println("There is no comment for this food");
         for (Comment comment : manager.getLoggedInUser().getActiveRestaurant().getComments()) {
             System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" (comment ID : "+comment.getID()+" )");
             if (comment.hasResponse)

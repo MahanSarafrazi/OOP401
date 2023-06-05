@@ -1,7 +1,6 @@
 package view;
 
 import model.Comment;
-import model.Rate;
 
 import java.util.regex.Matcher;
 
@@ -43,7 +42,7 @@ public class FoodMenuUsedByOwner extends Menu {
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if(input.matches(Inputs.BACK.commandingPattern.pattern())) {
-                manager.back();
+                processBack();
                 System.out.println("back to foods menu");
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
                 inThisMenu = false;
@@ -55,7 +54,7 @@ public class FoodMenuUsedByOwner extends Menu {
             }
         }
 
-        return RunOrders.FOOD_MENU_USED_BY_OWNER;
+        return runOrders;
     }
 
     @Override
@@ -69,42 +68,16 @@ public class FoodMenuUsedByOwner extends Menu {
         }
     }
     private void processDisplayComment() {
-        if(manager.getFoodComments().size() == 0) {
+        if(manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments().isEmpty()) {
             System.out.println("There is no comment for this food");
         } else {
-            for (Comment comment : manager.getFoodComments()) {
-                System.out.println(comment.getUser().getUserName() + " said : " + comment.getComment() + " ID : " + comment.getID());
+            for (Comment comment : manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments()) {
+                System.out.println(comment.getUser().getUserName() + " said : " + comment.getComment() + " (comment ID : "+comment.getID()+" )");
                 if (comment.hasResponse) {
                     System.out.println("        You " + comment.getResponse().getUser().getUserName() +
                             " have responded : " + comment.getResponse().getComment());
                 }
             }
         }
-    }
-    private void processDisplayRating() {
-        if(manager.getFoodRating().size() == 0) {
-            System.out.println("there is no rating");
-        } else {
-            System.out.println("rate of this food is: " + manager.averageFoodRating());
-        }
-    }
-    private void processDisplayRatings() {
-        if(manager.getFoodRating().size() == 0) {
-            System.out.println("there is no rating");
-        } else {
-            for (Rate rate : manager.getFoodRating()) {
-                System.out.println(rate.getUser().getUserName() + " : " + rate.getRating());
-            }
-        }
-    }
-    private void processAddResponse(int ID) {
-        System.out.println("please write your response:");
-        String comment = scanner.nextLine();
-        outputPrinter(manager.addResponse(ID, comment));
-    }
-    private void processEditResponse(int ID) {
-        System.out.println("please write your response:");
-        String comment = scanner.nextLine();
-        outputPrinter(manager.editResponse(ID, comment));
     }
 }

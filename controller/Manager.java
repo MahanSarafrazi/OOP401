@@ -208,9 +208,6 @@ public class Manager {
 
     public Output addFood(String foodName, double foodPrice, String foodType) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
-        if (owner.getActiveRestaurant() == null) {
-            return Output.NO_ACTIVE_RESTAURANT;
-        }
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if (food.getName().equals(foodName)) {
                 return Output.FOOD_ALREADY_EXIST;
@@ -309,27 +306,20 @@ public class Manager {
         else
             loggedInUser.getActiveRestaurant().addComment(comment, loggedInUser);
     }
-    public boolean checkCommentID(int ID) {
-        ArrayList<Comment> comments;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
-            comments = loggedInUser.getActiveRestaurant().getComments();
-        else
-            comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
-        for (Comment comment : comments)
-            if (comment.getID() == ID)
-                return true;
-        return false;
-    }
 
-    public void editComment(int ID, String commentString) {
+    public Output editComment(int ID, String commentString) {
         ArrayList<Comment> comments;
         if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             comments = loggedInUser.getActiveRestaurant().getComments();
         else
             comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
-        for (Comment comment : comments)
-            if (comment.getID() == ID)
-                comment.editComment(commentString);
+        for (Comment comment : comments) {
+            if (comment.getID() == ID) {
+                comment.getResponse().editComment(commentString);
+                return Output.COMMENT_EDITED;
+            }
+        }
+        return Output.NO_COMMENT_WITH_ID;
     }
     public boolean isThereRating() {
         ArrayList<Rate> rates;
@@ -339,16 +329,24 @@ public class Manager {
             rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
         return rates.isEmpty();
     }
-    public int averageRating() {
+    public double averageRating() {
         ArrayList<Rate> rates;
         if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
-        int average = 0;
+        double average = 0;
         for (Rate rate : rates)
             average += rate.getRating();
         return average / rates.size();
+    }
+    public ArrayList<Rate> getRating() {
+        ArrayList<Rate> rates;
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+            rates = loggedInUser.getActiveRestaurant().getRates();
+        else
+            rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
+        return rates;
     }
     public Output addRating(double rating) {
         if (rating>5 || rating<0)
@@ -383,10 +381,18 @@ public class Manager {
             }
         return Output.RATED;
     }
-    public Output addResponse(int ID, String comment) {
-        for (Comment comment1 : loggedInUser.getActiveRestaurant().getOpenedFood().getComments()) {
-            if (comment1.getID() == ID) {
-                comment1.addResponse(loggedInUser, comment);
+    public Output addResponse(int ID, String responseText) {
+        ArrayList<Comment> comments;
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+            comments = loggedInUser.getActiveRestaurant().getComments();
+        else
+            comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
+        for (Comment comment : comments) {
+            if (comment.getID() == ID) {
+                if (comment.hasResponse) {
+                    return Output.RESPONSE_EXISTS;
+                }
+                comment.addResponse(loggedInUser, responseText);
                 return Output.RESPONSE_ADDED;
             }
         }
@@ -394,16 +400,30 @@ public class Manager {
     }
 
     public Output editResponse(int ID, String newComment) {
-        for (Comment comment1 : loggedInUser.getActiveRestaurant().getOpenedFood().getComments()) {
-            if (comment1.getID() == ID) {
-                if (!comment1.hasResponse) {
+        ArrayList<Comment> comments;
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+            comments = loggedInUser.getActiveRestaurant().getComments();
+        else
+            comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
+        for (Comment comment : comments) {
+            if (comment.getID() == ID) {
+                if (!comment.hasResponse) {
                     return Output.NO_RESPONSE;
                 }
-                comment1.getResponse().editComment(newComment);
+                comment.getResponse().editComment(newComment);
                 return Output.RESPONSE_EDITED;
             }
         }
         return Output.NO_COMMENT_WITH_ID;
+    }
+    public Output editLocation(int location) {
+        if (location>1000 || location<1)
+            return Output.LOCATION_NOT_IN_THE_MAP;
+        if (loggedInUser.getActiveRestaurant().getLocation() != location ) {
+            loggedInUser.getActiveRestaurant().setLocation(location);
+            return Output.LOCATION_SET;
+        }
+        return Output.EQUAL_LOCATION;
     }
 
     private Output addCustomer(String username, String password) {
