@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Food {
     private double price;
@@ -26,7 +28,9 @@ public class Food {
     private final int ID;
     public int getID(){ return ID;}
     private double discount;
-     public Food( String name, double price, FoodType type){
+    private Date expireDate = null;
+
+    public Food(String name, double price, FoodType type){
         this.name = name;
         this.price = price;
         this.discount = 0;
@@ -37,7 +41,23 @@ public class Food {
         this.comments = new ArrayList<>();
         this.rates=new ArrayList<>();
     }
-    public void setDiscount(double discount){ this.discount=discount;}
+    public void setDiscount(double discount, int hours) {
+        this.discount = discount;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, hours);
+        Date expireDate = new Date();
+        expireDate.setTime(calendar.getTimeInMillis());
+        setExpireDate(expireDate);
+    }
+    public void setExpireDate(Date expireDate) {
+        this.expireDate = expireDate;
+    }
+    public boolean isDiscounted() {
+        if(expireDate == null || new Date().getTime() < expireDate.getTime()) {
+            return false;
+        }
+        return true;
+    }
     public double getDiscount(){return discount;}
     public void setName(String name) {
          this.name = name;

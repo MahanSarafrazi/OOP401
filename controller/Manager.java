@@ -300,6 +300,22 @@ public class Manager {
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
+    public Output discountFood(int ID, double percent, int hours) {
+        for (Food food : loggedInUser.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                if(food.isDiscounted()) {
+                    return Output.FOOD_ALREADY_DISCOUNTED;
+                } if(percent < 0 || percent > 50) {
+                    return Output.WRONG_PERCENT_AMOUNT;
+                } if(hours < 0) {
+                    return Output.INVALID_TIME;
+                }
+                food.setDiscount(percent, hours);
+                return Output.FOOD_DISCOUNTED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
     public void addComment(String comment) {
         if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             loggedInUser.getActiveRestaurant().getOpenedFood().addComment(loggedInUser, comment);

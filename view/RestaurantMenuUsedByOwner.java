@@ -97,7 +97,7 @@ public class RestaurantMenuUsedByOwner extends Menu {
         outputPrinter(manager.addFoodType(foodType));
     }
     private void processShowLocation() {
-        System.out.println("restaurant is in the node"+manager.getLoggedInUser().getActiveRestaurant().getLocation());
+        System.out.println("Restaurant is in the node" + manager.getLoggedInUser().getActiveRestaurant().getLocation());
     }
     private void processEditLocation(int location) {
         outputPrinter(manager.editLocation(location));
