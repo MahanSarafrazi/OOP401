@@ -21,7 +21,7 @@ public class FoodsMenuUsedByOwner extends Menu {
 
     @Override
     public RunOrders openMenu() {
-        manager.getLoggedInUser().getActiveRestaurant().getFoods().sort(Comparator.comparing(Food::getName).thenComparing(Food::getID));
+        manager.getLoggedInUser().getActiveRestaurant().getFoods().sort(Comparator.comparing(Food->:getName).thenComparing(Food::getID));
         ArrayList<Food> activeRestaurantFoods = manager.getLoggedInUser().getActiveRestaurant().getFoods();
         if(activeRestaurantFoods.isEmpty()) {
             System.out.println("There is no food in your restaurant");
