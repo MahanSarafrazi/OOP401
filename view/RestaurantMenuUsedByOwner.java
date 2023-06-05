@@ -1,9 +1,9 @@
 package view;
 
-import model.Food;
-import model.FoodType;
+import model.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.regex.Matcher;
 
 public class
@@ -38,11 +38,31 @@ RestaurantMenuUsedByOwner extends Menu {
                 processEditFoodType(matchers[11].group(1), matchers[11].group(2));
             } else if(matchers[12].find()) {
                 processAddFoodType(matchers[12].group(1));
+            } else if(matchers[26].find()) {
+                processDisplayRating();
+            } else if(matchers[23].find()) {
+                processDisplayComment();
+            } else if(matchers[30].find()) {
+                processDisplayRatings();
+            } else if(matchers[31].find()) {
+                processAddResponse(Integer.parseInt(matchers[31].group(1)));
+            } else if(matchers[32].find()) {
+                processEditResponse(Integer.parseInt(matchers[32].group(1)));
+            } else if (matchers[33].find()) {
+                processShowLocation();
+            } else if (matchers[34].find()) {
+                processEditLocation(Integer.parseInt(matchers[34].group(1)));
+            } else if (matchers[35].find()) {
+                processShowOrderHistory();
+            } else if (matchers[44].find()) {
+                processShowOpenOrders();
             } else if(matchers[13].find()) {
+                //no process
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
+                System.out.println("menu opened");
                 inThisMenu = false;
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
-                processLoggingOut();
+                processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
@@ -64,30 +84,30 @@ RestaurantMenuUsedByOwner extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case SUCCESSFUL_SELECT_RESTAURANT : System.out.println("Restaurant selected successfully");
-            case INVALID_RESTAURANT_ID : System.out.println("There is no restaurant with this ID!");
-            case NO_ACTIVE_RESTAURANT : System.out.println("You haven't logged in in any restaurant!");
-            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT : System.out.println("There is no such food type in this restaurant!");
-            case NO_SUCH_FOOD_TYPE_IN_GENERAL : System.out.println("There is no food type with this name!");
-            case EQUAL_FOOD_TYPES : System.out.println("These food types are the same!");
-            case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE : System.out.println("There is still orders with this food type!");
-            case FOOD_TYPE_ALREADY_EXIST : System.out.println("This food type already exist in this restaurant!");
-            case FOOD_TYPE_ADDED : System.out.println("Food type added successfully");
-            case FOOD_TYPE_EDITED : System.out.println("Food type edited successfully");
-            case SURE_EDIT_FOOD_TYPE : System.out.println("Are you sure you want to change your restaurant food type?");
-            case EDIT_FOOD_TYPE_CANCELED : System.out.println("Edit food type canceled");
-            case ADD_RESTORE_QUESTION : System.out.println("Please set your restore question");
-            case ADD_RESTORE_ANSWER : System.out.println("Please set the answer");
-            case RESTORE_QUESTION_EXISTS : System.out.println("Restore question already exists");
-            case RESTORE_QUESTION_ADDED : System.out.println("Restore question added");
+            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> System.out.println("There is no such food type in this restaurant!");
+            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
+            case EQUAL_FOOD_TYPES -> System.out.println("These food types are the same!");
+            case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> System.out.println("There is still orders with this food type!");
+            case FOOD_TYPE_ALREADY_EXIST -> System.out.println("This food type already exist in this restaurant!");
+            case FOOD_TYPE_ADDED -> System.out.println("Food type added successfully");
+            case FOOD_TYPE_EDITED -> System.out.println("Food type edited successfully");
+            case SURE_EDIT_FOOD_TYPE -> System.out.println("Are you sure you want to change your restaurant food type?");
+            case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
+            case LOCATION_SET -> System.out.println("location changed");
+            case EQUAL_LOCATION -> System.out.println("restaurant is there right now!");
         }
     }
     private void processShowFoodType() {
-        ArrayList<FoodType> foodTypes = manager.showFoodType();
-        System.out.println("food types are:");
-        for (FoodType foodType : foodTypes) {
-            System.out.println(foodType);
-        }
+        System.out.println(manager.getLoggedInUser().getActiveRestaurant().getFoodType().toString());
+    }
+    private void processAddFoodType(String foodType) {
+        outputPrinter(manager.addFoodType(foodType));
+    }
+    private void processShowLocation() {
+        System.out.println("restaurant is in the node"+manager.getLoggedInUser().getActiveRestaurant().getLocation());
+    }
+    private void processEditLocation(int location) {
+        outputPrinter(manager.editLocation(location));
     }
     private void processEditFoodType(String firstType, String secondType) {
         Output temp = manager.processEditFoodType(firstType, secondType);
@@ -96,13 +116,51 @@ RestaurantMenuUsedByOwner extends Menu {
             outputPrinter(manager.editFoodType(firstType, secondType, scanner.nextLine()));
         }
     }
-    private void processAddFoodType(String foodType) {
-        outputPrinter(manager.addFoodType(foodType));
+    private void processDisplayComment() {
+        if(manager.getLoggedInUser().getActiveRestaurant().getComments().isEmpty()) {
+            System.out.println("There is no comment for this food");
+        } else {
+            for (Comment comment : manager.getLoggedInUser().getActiveRestaurant().getComments()) {
+                System.out.println(comment.getUser().getUserName() + " said : " + comment.getComment() + " (comment ID : "+comment.getID()+" )");
+                if (comment.hasResponse) {
+                    System.out.println("        You " + comment.getResponse().getUser().getUserName() +
+                            " have responded : " + comment.getResponse().getComment());
+                }
+            }
+        }
     }
-    private void processLoggingOut () {
-        outputPrinter(manager.logoutFromRestaurantMenuUsedByOwner());
+    private void processShowOrderHistory() {
+        Restaurant restaurant = manager.getLoggedInUser().getActiveRestaurant();
+        if (restaurant.getOrders().isEmpty())
+            System.out.println("no one ordered from you yet");
+        else {
+            for (Order order : restaurant.getOrders()) {
+                double totalPrice = 0;
+                System.out.println("order id : " + order.getID());
+                for (Map.Entry<Food, Integer> entry : order.getFoods().entrySet()) {
+                    System.out.println("Food name : " + entry.getKey().getName() + " food price : " + entry.getKey().getDiscountedPrice()
+                            + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
+                    totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
+                }
+                System.out.println("total price : "+totalPrice);
+            }
+        }
     }
-    private void processBack() {
-        manager.backFromRestaurantMenuUsedByOwner();
+    private void processShowOpenOrders() {
+        ArrayList<Order> orders = manager.getActiveOrders();
+        if (orders.isEmpty())
+            System.out.println("there is no active order");
+        else {
+            for (Order order : orders) {
+                double totalPrice = 0;
+                System.out.println("order id : " + order.getID());
+                for (Map.Entry<Food, Integer> entry : order.getFoods().entrySet()) {
+                    System.out.println("Food name : " + entry.getKey().getName() + " food price : " + entry.getKey().getDiscountedPrice()
+                            + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
+                    totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
+                }
+                System.out.println("total price : "+totalPrice);
+            }
+        }
     }
 }

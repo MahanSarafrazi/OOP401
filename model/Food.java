@@ -35,16 +35,27 @@ public class Food {
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID=randomIDGenerator.getLastNumber();
         this.comments = new ArrayList<>();
+        this.rates=new ArrayList<>();
+    }
+    public Food( String name, double price, FoodType type,int ID){
+        this.name = name;
+        this.price = price;
+        this.discount = 0;
+        this.type = type;
+        this.activation = true;
+        this.ID=ID;
+        this.comments = new ArrayList<>();
+        this.rates=new ArrayList<>();
     }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}
     public void setName(String name) {
          this.name = name;
     }
-    private ArrayList<Comment> comments ;
-    public void addComment(User user ,String comment) {comments.add(new Comment(user,comment,false));}
+    private final ArrayList<Comment> comments ;
+    public void addComment(User user ,String comment) {comments.add(new Comment(user,comment));}
     public ArrayList<Comment> getComments() {return comments;}
-    private ArrayList<Rate> rates ;
+    private final ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
     public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
 }

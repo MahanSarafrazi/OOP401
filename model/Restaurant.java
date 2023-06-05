@@ -1,16 +1,13 @@
 package model;
 
-import view.Inputs;
-
 import java.util.ArrayList;
 
 public class Restaurant {
-    //Location locate ;
-    //Edit Location;
     private final String name;
     private final ArrayList<Order> orders;
+    public void addOrder(Order order) {orders.add(order);}
 
-    public Restaurant(String name, FoodType foodType) {
+    public Restaurant(String name, FoodType foodType, int location) {
         this.name = name;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();
@@ -20,6 +17,7 @@ public class Restaurant {
         foodTypes.add(foodType);
         comments = new ArrayList<>();
         rates = new ArrayList<>();
+        this.location = location;
     }
 
     public String getName() {
@@ -27,6 +25,9 @@ public class Restaurant {
     }
 
     private final int ID;
+    private int location;
+    public int getLocation() {return location;}
+    public void setLocation(int location) {this.location=location;}
 
     public int getID() {
         return ID;
@@ -83,13 +84,12 @@ public class Restaurant {
     }
 
     public boolean isThereAnyOrderOfThisType(FoodType foodType) {
-        int count = 0;
         for (Order order : orders) {
-            if (order.getType().equals(foodType)) {
-                ++count;
+            if (order.getType().contains(foodType)) {
+                return true;
             }
         }
-        return count != 0;
+        return false;
     }
 
     public Food getFoodByID(int ID) {
@@ -101,30 +101,25 @@ public class Restaurant {
         return null;
     }
 
-    private ArrayList<Comment> comments;
+    private final ArrayList<Comment> comments;
     public ArrayList<Comment> getComments() {return comments;}
-    public void addComment(String comment, User user) {comments.add(new Comment(user,comment,false));}
-    private String ownerName;
-    public String getOwnerName() {return ownerName;}
-    private ArrayList<Rate> rates ;
+    public void addComment(String comment, User user) {comments.add(new Comment(user,comment));}
+    private final ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
     public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
-    private Food activeFood = null;
-    public Food getActiveFood() {
-        return activeFood;
+    private Food openedFood = null;
+    public Food getOpenedFood() {
+        return openedFood;
     }
-
-    public boolean setActiveFood(int ID) {
+    public boolean setOpenedFood(int ID) {
         for (Food food : foods) {
-            if(food.getID() == ID) {
-                activeFood = food;
+            if(food.getID() == ID && food.getActivation()) {
+                openedFood = food;
                 return true;
             }
         }
         return false;
     }
-    public void setActiveFood(Food food) {
-        this.activeFood = food;
-    }
-    public void deActiveFood() {activeFood = null;}
+    public void closeFood() {openedFood = null;}
+
 }

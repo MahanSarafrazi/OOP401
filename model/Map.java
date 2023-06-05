@@ -1,7 +1,5 @@
 package model;
 
-import view.Run;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,9 +15,9 @@ public class Map {
             }
         }
     }
-    private int numberOfNodes;
-    private int numberOfEdges;
-    private int[][] adjacencyMatrix;
+    private final int numberOfNodes;
+    private final int numberOfEdges;
+    private final int[][] adjacencyMatrix;
 
     public int[][] getAdjacencyMatrix() {
         return adjacencyMatrix;

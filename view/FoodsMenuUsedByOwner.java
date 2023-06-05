@@ -3,6 +3,7 @@ package view;
 import model.Food;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 
 public class FoodsMenuUsedByOwner extends Menu {
@@ -20,7 +21,8 @@ public class FoodsMenuUsedByOwner extends Menu {
 
     @Override
     public RunOrders openMenu() {
-        ArrayList<Food> activeRestaurantFoods = manager.getActiveRestaurantFoods();
+        manager.getLoggedInUser().getActiveRestaurant().getFoods().sort(Comparator.comparing(Food::getName).thenComparing(Food::getID));
+        ArrayList<Food> activeRestaurantFoods = manager.getLoggedInUser().getActiveRestaurant().getFoods();
         if(activeRestaurantFoods.isEmpty()) {
             System.out.println("There is no food in your restaurant");
         } else {
@@ -55,15 +57,23 @@ public class FoodsMenuUsedByOwner extends Menu {
                 processDeActiveFood(Integer.parseInt(matchers[18].group(1)));
             } else if(matchers[19].find()) {
                 processActiveFood(Integer.parseInt(matchers[19].group(1)));
-            } else if (matchers[22].find()) {
+            } else if (matchers[29].find()) {
 
-            } else if(matchers[29].find()) {
-
+            } else if(matchers[30].find()) {
+                processDisplayRating();
+            } else if(matchers[22].find()) {
+                if(processSelectingFood(Integer.parseInt(matchers[22].group(1)))) {
+                    System.out.println("food selected");
+                    runOrders = RunOrders.FOOD_MENU_USED_BY_OWNER;
+                    inThisMenu = false;
+                }
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
-                processLoggingOut();
+                processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if (input.matches(Inputs.BACK.commandingPattern.pattern())) {
+                //no process
+                System.out.println("back to restaurant menu");
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_OWNER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
@@ -110,10 +120,7 @@ public class FoodsMenuUsedByOwner extends Menu {
     private void processActiveFood(int ID) {
         outputPrinter(manager.activeFood(ID));
     }
-    private void processDiscount(int ID) {
+    private void processDiscount(int ID, double discountPercent) {
 
-    }
-    private void processLoggingOut () {
-        outputPrinter(manager.logoutFromFoodsMenuUsedByOwner());
     }
 }

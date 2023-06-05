@@ -8,16 +8,20 @@ public class Comment {
     private final int ID ;
     public int getID() {return ID;}
     public boolean hasResponse;
-    public boolean isResponse;
     private Comment response;
     public Comment getResponse() {return response;}
-    Comment(User user, String comment, boolean isResponse) {
+
+    public void addResponse(User owner, String responseText) {
+        hasResponse = true;
+        this.response = new Comment(owner, responseText);
+    }
+
+    Comment(User user, String comment) {
         this.comment = comment;
         this.user = user;
-        this.isResponse = isResponse;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();
         hasResponse = false;
     }
-    public void editComment(String comment) {this.comment=comment;}
+    public void editComment(String comment) {this.comment = comment;}
 }
