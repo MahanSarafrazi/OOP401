@@ -1,10 +1,13 @@
 package view;
 
-import model.Comment;
+import model.*;
 
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.regex.Matcher;
 
-public class RestaurantMenuUsedByOwner extends Menu {
+public class
+RestaurantMenuUsedByOwner extends Menu {
     private RestaurantMenuUsedByOwner() {
         super();
     }
@@ -49,6 +52,10 @@ public class RestaurantMenuUsedByOwner extends Menu {
                 processShowLocation();
             } else if (matchers[34].find()) {
                 processEditLocation(Integer.parseInt(matchers[34].group(1)));
+            } else if (matchers[35].find()) {
+                processShowOrderHistory();
+            } else if (matchers[44].find()) {
+                processShowOpenOrders();
             } else if(matchers[13].find()) {
                 //no process
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
@@ -119,6 +126,40 @@ public class RestaurantMenuUsedByOwner extends Menu {
                     System.out.println("        You " + comment.getResponse().getUser().getUserName() +
                             " have responded : " + comment.getResponse().getComment());
                 }
+            }
+        }
+    }
+    private void processShowOrderHistory() {
+        Restaurant restaurant = manager.getLoggedInUser().getActiveRestaurant();
+        if (restaurant.getOrders().isEmpty())
+            System.out.println("no one ordered from you yet");
+        else {
+            for (Order order : restaurant.getOrders()) {
+                double totalPrice = 0;
+                System.out.println("order id : " + order.getID());
+                for (Map.Entry<Food, Integer> entry : order.getFoods().entrySet()) {
+                    System.out.println("Food name : " + entry.getKey().getName() + " food price : " + entry.getKey().getDiscountedPrice()
+                            + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
+                    totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
+                }
+                System.out.println("total price : "+totalPrice);
+            }
+        }
+    }
+    private void processShowOpenOrders() {
+        ArrayList<Order> orders = manager.getActiveOrders();
+        if (orders.isEmpty())
+            System.out.println("there is no active order");
+        else {
+            for (Order order : orders) {
+                double totalPrice = 0;
+                System.out.println("order id : " + order.getID());
+                for (Map.Entry<Food, Integer> entry : order.getFoods().entrySet()) {
+                    System.out.println("Food name : " + entry.getKey().getName() + " food price : " + entry.getKey().getDiscountedPrice()
+                            + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
+                    totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
+                }
+                System.out.println("total price : "+totalPrice);
             }
         }
     }

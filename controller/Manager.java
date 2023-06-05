@@ -275,7 +275,7 @@ public class Manager {
             if (food.getID() == ID) {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
-                    if (order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID))) {
+                    if (order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID)) && order.isActive) {
                         isThereFood = true;
                         break;
                     }
@@ -440,6 +440,38 @@ public class Manager {
             return Output.LOCATION_SET;
         }
         return Output.EQUAL_LOCATION;
+    }
+    public Order selectOrder(int ID) {
+        Customer customer = (Customer) loggedInUser;
+        for (Order order : customer.getOrders()) {
+            if(order.getID() == ID) {
+                return order;
+            }
+        }
+        return null;
+    }
+    public Output confirmOrder(int customerLocation) {
+        Customer customer = (Customer) getLoggedInUser();
+        if (customer.getCart().isEmpty())
+            return Output.EMPTY_CART;
+        else {
+            double totalPrice=0;
+            for (java.util.Map.Entry<Food,Integer> entry : customer.getCart().entrySet())
+                totalPrice+=entry.getValue()*entry.getKey().getDiscountedPrice();
+            if (totalPrice > customer.getCharge())
+                return Output.NOT_ENOUGH_CHARGE;
+        }
+        Order order = new Order(customer.getCart(),loggedInUser.getActiveRestaurant(),customerLocation);
+        customer.addOrder(order);
+        customer.getActiveRestaurant().addOrder(order);
+        return Output.ORDER_CONFIRMED;
+    }
+    public ArrayList<Order> getActiveOrders() {
+        ArrayList<Order> orders = new ArrayList<>();
+        for (Order order : loggedInUser.getActiveRestaurant().getOrders())
+            if (order.isActive)
+                orders.add(order);
+        return orders;
     }
 
     private Output addCustomer(String username, String password) {

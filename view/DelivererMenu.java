@@ -5,6 +5,7 @@ import model.Deliverer;
 import java.util.regex.Matcher;
 
 public class DelivererMenu extends Menu {
+
     private DelivererMenu() {
         super();
     }
@@ -22,7 +23,6 @@ public class DelivererMenu extends Menu {
         String input;
         boolean inThisMenu = true;
         RunOrders runOrders = null;
-
         Matcher[] matchers = new Matcher[Inputs.values().length];
         //in Menu
         while(inThisMenu) {
