@@ -4,7 +4,8 @@ import model.Comment;
 
 import java.util.regex.Matcher;
 
-public class RestaurantMenuUsedByOwner extends Menu {
+public class
+RestaurantMenuUsedByOwner extends Menu {
     private RestaurantMenuUsedByOwner() {
         super();
     }
