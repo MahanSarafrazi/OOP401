@@ -44,4 +44,7 @@ public class Food {
     private ArrayList<Comment> comments ;
     public void addComment(User user ,String comment) {comments.add(new Comment(user,comment,false));}
     public ArrayList<Comment> getComments() {return comments;}
+    private ArrayList<Rate> rates ;
+    public ArrayList<Rate>  getRates() {return rates;}
+    public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
 }

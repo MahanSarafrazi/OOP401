@@ -141,10 +141,38 @@ public class Manager {
         loggedInUser = null;
         return Output.LOGOUT;
     }
+    public Output logoutFromCustomerMenu() {
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
     public Output logoutFromRestaurantMenuUsedByOwner() {
         RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
         RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
         restaurantOwner.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromRestaurantMenuUsedByCustomer() {
+        loggedInUser.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromFoodsMenuUsedByOwner() {
+        RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        loggedInUser.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromFoodMenuUsedByOwner() {
+        RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        loggedInUser.getActiveRestaurant().deActiveFood();
+        loggedInUser.deActiveRestaurant();
+        loggedInUser = null;
+        return Output.LOGOUT;
+    }
+    public Output logoutFromFoodMenuUsedByCustomer() {
+        loggedInUser.getActiveRestaurant().deActiveFood();
+        loggedInUser.deActiveRestaurant();
         loggedInUser = null;
         return Output.LOGOUT;
     }
@@ -280,11 +308,6 @@ public class Manager {
         return Output.FOOD_ADDED;
     }
     public ArrayList<Food> getActiveRestaurantFoods() {return loggedInUser.getActiveRestaurant().getFoods();}
-    public Output showFoods() {
-        if (getActiveRestaurantFoods().isEmpty())
-            return Output.NO_FOOD_IN_RESTAURANT;
-        return Output.SHOW_FOODS;
-    }
     public Output editFoodName(int ID, String newName) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
@@ -327,7 +350,7 @@ public class Manager {
                     }
                 }
                 if(isThereFood) {
-                    return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
+                    return Output.THERE_ARE_FOODS_IN_ORDER;
                 }
                 owner.getActiveRestaurant().setActivation(ID, false);
                 return Output.FOOD_DEACTIVATED;
@@ -350,15 +373,21 @@ public class Manager {
         RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
         restaurantOwner.deActiveRestaurant();
     }
-    public ArrayList<Comment> displayRestaurantsComments() {return loggedInUser.getActiveRestaurant().getComments();}
-    public void addComment(String comment) {loggedInUser.getActiveRestaurant().addComment(comment,loggedInUser);}
-    public Output checkCommentID(int ID) {
+    public void backFromRestaurantMenuUsedByCustomer() {loggedInUser.deActiveRestaurant();}
+    public void backFromFoodMenuUsedByOwner() {loggedInUser.getActiveRestaurant().deActiveFood();}
+
+
+    public void backFromFoodMenuUsedByCustomer() {loggedInUser.getActiveRestaurant().deActiveFood();}
+
+    public ArrayList<Comment> displayRestaurantComments() {return loggedInUser.getActiveRestaurant().getComments();}
+    public void addRestaurantComment(String comment) {loggedInUser.getActiveRestaurant().addComment(comment,loggedInUser);}
+    public Output checkRestaurantCommentID(int ID) {
         for (Comment comment : loggedInUser.getActiveRestaurant().getComments())
             if (comment.getID() == ID)
                 return Output.CORRECT_ID;
         return Output.WRONG_ID;
     }
-    public void editComment(int ID,String commentString) {
+    public void editRestaurantComment(int ID, String commentString) {
         for (Comment comment : loggedInUser.getActiveRestaurant().getComments())
             if (comment.getID() == ID)
                 comment.editComment(commentString);
@@ -369,5 +398,55 @@ public class Manager {
             average+=rate.getRating();
         return average/loggedInUser.getActiveRestaurant().getRates().size();
     }
-    public ArrayList<Rate> displayRestaurantsRatings() {return loggedInUser.getActiveRestaurant().getRates();}
+    public ArrayList<Rate> displayRestaurantRatings() {return loggedInUser.getActiveRestaurant().getRates();}
+    public boolean addRestaurantRating(double rating) {
+        for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
+            if (rate.getUser().getUserName().equals(loggedInUser.getUserName()))
+                return false;
+        loggedInUser.getActiveRestaurant().addRating(loggedInUser,rating);
+        return true;
+    }
+    public boolean editRestaurantRating(double rating) {
+        for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
+            if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                rate.editRating(rating);
+                return true;
+            }
+        return false;
+    }
+    public ArrayList<Comment> displayFoodComments() {return loggedInUser.getActiveRestaurant().getActiveFood().getComments();}
+    public void addFoodComment(String comment) {loggedInUser.getActiveRestaurant().getActiveFood().addComment(loggedInUser,comment);}
+    public Output checkFoodCommentID(int ID) {
+        for (Comment comment : loggedInUser.getActiveRestaurant().getActiveFood().getComments())
+            if (comment.getID() == ID)
+                return Output.CORRECT_ID;
+        return Output.WRONG_ID;
+    }
+    public void editFoodComment(int ID, String commentString) {
+        for (Comment comment : loggedInUser.getActiveRestaurant().getActiveFood().getComments())
+            if (comment.getID() == ID)
+                comment.editComment(commentString);
+    }
+    public int averageFoodRating() {
+        int average = 0;
+        for (Rate rate : loggedInUser.getActiveRestaurant().getActiveFood().getRates())
+            average+=rate.getRating();
+        return average/loggedInUser.getActiveRestaurant().getActiveFood().getRates().size();
+    }
+    public ArrayList<Rate> displayFoodRatings() {return loggedInUser.getActiveRestaurant().getActiveFood().getRates();}
+    public boolean addFoodRating(double rating) {
+        for (Rate rate : loggedInUser.getActiveRestaurant().getActiveFood().getRates())
+            if (rate.getUser().getUserName().equals(loggedInUser.getUserName()))
+                return false;
+        loggedInUser.getActiveRestaurant().getActiveFood().addRating(loggedInUser,rating);
+        return true;
+    }
+    public boolean editFoodRating(double rating) {
+        for (Rate rate : loggedInUser.getActiveRestaurant().getActiveFood().getRates())
+            if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                rate.editRating(rating);
+                return true;
+            }
+        return false;
+    }
 }

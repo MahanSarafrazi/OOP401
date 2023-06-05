@@ -9,15 +9,15 @@ public class Comment {
     public int getID() {return ID;}
     public boolean hasResponse;
     public boolean isResponse;
-    private Comment response ;
+    private Comment response;
     public Comment getResponse() {return response;}
-    Comment(User user,String comment,boolean isResponse) {
-        this.comment=comment;
-        this.user=user;
-        this.isResponse=isResponse;
+    Comment(User user, String comment, boolean isResponse) {
+        this.comment = comment;
+        this.user = user;
+        this.isResponse = isResponse;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();
-        hasResponse=false;
+        hasResponse = false;
     }
     public void editComment(String comment) {this.comment=comment;}
 }

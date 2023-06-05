@@ -103,9 +103,28 @@ public class Restaurant {
 
     private ArrayList<Comment> comments;
     public ArrayList<Comment> getComments() {return comments;}
-    public void addComment(String comment,User user) {comments.add(new Comment(user,comment,false));}
-    private String ownerName ;
+    public void addComment(String comment, User user) {comments.add(new Comment(user,comment,false));}
+    private String ownerName;
     public String getOwnerName() {return ownerName;}
     private ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
+    public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
+    private Food activeFood = null;
+    public Food getActiveFood() {
+        return activeFood;
+    }
+
+    public boolean setActiveFood(int ID) {
+        for (Food food : foods) {
+            if(food.getID() == ID) {
+                activeFood = food;
+                return true;
+            }
+        }
+        return false;
+    }
+    public void setActiveFood(Food food) {
+        this.activeFood = food;
+    }
+    public void deActiveFood() {activeFood = null;}
 }
