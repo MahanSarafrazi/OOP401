@@ -37,6 +37,16 @@ public class Food {
         this.comments = new ArrayList<>();
         this.rates=new ArrayList<>();
     }
+    public Food( String name, double price, FoodType type,int ID){
+        this.name = name;
+        this.price = price;
+        this.discount = 0;
+        this.type = type;
+        this.activation = true;
+        this.ID=ID;
+        this.comments = new ArrayList<>();
+        this.rates=new ArrayList<>();
+    }
     public void setDiscount(double discount){ this.discount=discount;}
     public double getDiscount(){return discount;}
     public void setName(String name) {

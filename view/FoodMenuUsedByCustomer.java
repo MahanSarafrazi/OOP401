@@ -1,6 +1,7 @@
 package view;
 
 import model.Comment;
+import model.Customer;
 
 import java.util.regex.Matcher;
 
@@ -44,6 +45,10 @@ public class FoodMenuUsedByCustomer extends Menu {
                 processEditRating(Double.parseDouble(matchers[28].group(1)));
             } else if (matchers[30].find()){
                 processDisplayRatings();
+            } else if (matchers[42].find()) {
+                processAddFoodToCart(Integer.parseInt(matchers[42].group(1)));
+            } else if (matchers[43].find()) {
+                processRemoveFoodFromCart();
             } else if(input.matches(Inputs.LOGOUT.commandingPattern.pattern())) {
                 processLogout();
                 runOrders = RunOrders.LOGIN_MENU;
@@ -71,5 +76,19 @@ public class FoodMenuUsedByCustomer extends Menu {
                 System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
                         " has responded : "+comment.getResponse().getComment());
         }
+    }
+    private void processAddFoodToCart(int count) {
+        Customer customer = (Customer) manager.getLoggedInUser();
+        customer.getCart().put(customer.getActiveRestaurant().getOpenedFood(), count);
+        System.out.println("added to cart");
+    }
+    private void processRemoveFoodFromCart() {
+        Customer customer = (Customer) manager.getLoggedInUser();
+        if(customer.getCart().containsKey(customer.getActiveRestaurant().getOpenedFood())) {
+            customer.getCart().remove(customer.getActiveRestaurant().getOpenedFood());
+            System.out.println("removed");
+        }
+        else
+            System.out.println("food is not in cart");
     }
 }

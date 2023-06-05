@@ -1,6 +1,7 @@
 package view;
 
 import controller.Manager;
+import model.Customer;
 import model.Rate;
 
 import java.util.Scanner;
@@ -76,9 +77,17 @@ public abstract class Menu {
     }
 
     protected void processAddComment() {
-        System.out.println("please write your comment : ");
-        manager.addComment(scanner.nextLine());
-        System.out.println("Comment added successfully!");
+        boolean canComment = true;
+        if (manager.getLoggedInUser() instanceof Customer customer) {
+            if (customer.getActiveRestaurant().getOpenedFood() != null &&
+                    !customer.orderedFood(customer.getActiveRestaurant().getOpenedFood()))
+                canComment=false;
+        }
+        if (canComment) {
+            System.out.println("please write your comment : ");
+            manager.addComment(scanner.nextLine());
+            System.out.println("Comment added successfully!");
+        }
     }
 
     protected void processEditComment(int ID) {

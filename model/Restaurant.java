@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Restaurant {
     private final String name;
     private final ArrayList<Order> orders;
+    public void addOrder(Order order) {orders.add(order);}
 
     public Restaurant(String name, FoodType foodType, int location) {
         this.name = name;
@@ -83,13 +84,12 @@ public class Restaurant {
     }
 
     public boolean isThereAnyOrderOfThisType(FoodType foodType) {
-        int count = 0;
         for (Order order : orders) {
-            if (order.getType().equals(foodType)) {
-                ++count;
+            if (order.getType().contains(foodType)) {
+                return true;
             }
         }
-        return count != 0;
+        return false;
     }
 
     public Food getFoodByID(int ID) {

@@ -38,6 +38,16 @@ public enum Inputs {
     EDIT_RESPONSE("^\\s*edit\\s+response\\s+(\\d+)\\s*$"), //32
     SHOW_LOCATION("^\\s*show\\s+location\\s*$"), //33
     EDIT_LOCATION("^\\s*edit\\s+location\\s+(\\d+)\\s*$"), //34
+    ORDER_HISTORY("^\\s*show\\s+order\\s+history\\s*$"), //35
+    SELECT_ORDER("^\\s*select\\s+order\\s+(\\d+)\\s*$"), //36
+    DISPLAY_CART("^\\s*show\\s+cart\\s*$"), //37
+    CONFIRM_ORDER("^\\s*confirm\\s+order\\s+(\\d+)\\s*$"), //38
+    SHOW_ESTIMATED_DELIVERY_TIME("^\\s*show\\s+estimated\\s+delivery\\s+time\\s*$"), //39
+    CHARGE_ACCOUNT("^\\s*charge\\s+account\\s+(\\d+)\\s*$"), //40
+    DISPLAY_ACCOUNT_CHARGE("^\\s*display\\s+account\\s+charge\\s*$"), //41
+    ADD_FOOD_TO_CART("^\\s*add\\s+(\\d+)\\s+foods\\s+to\\s+cart\\s*$"), //42
+    REMOVE_FOOD_FROM_CART("^\\s*remove\\s+food\\s+from\\s+cart\\s*$"), //43
+    OPEN_ORDERS("^\\s*show\\s+open\\s+orders\\s*$"), //44
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")

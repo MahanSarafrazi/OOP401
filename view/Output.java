@@ -44,4 +44,7 @@ public enum Output {
     EQUAL_LOCATION,
     LOCATION_SET,
     RESPONSE_EXISTS,
+    EMPTY_CART,
+    NOT_ENOUGH_CHARGE,
+    ORDER_CONFIRMED,
 }
