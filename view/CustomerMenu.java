@@ -81,9 +81,9 @@ public class CustomerMenu extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case ORDER_CONFIRMED -> System.out.println("order confirmed");
-            case NOT_ENOUGH_CHARGE -> System.out.println("you dont have enough charge to buy your cart");
-            case EMPTY_CART -> System.out.println("your cart is empty");
+            case ORDER_CONFIRMED : System.out.println("order confirmed");
+            case NOT_ENOUGH_CHARGE : System.out.println("you dont have enough charge to buy your cart");
+            case EMPTY_CART : System.out.println("your cart is empty");
         }
     }
     private void processSearchingRestaurant(String name) {

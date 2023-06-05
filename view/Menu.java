@@ -20,24 +20,24 @@ public abstract class Menu {
     //OutputPrinter
     protected void outputPrinter(Output output) {
         switch (output) {
-            case INVALID_USER_NAME -> System.out.println("user name is invalid");
-            case SUCCESSFUL_REGISTER -> System.out.println("registered successfully");
-            case INVALID_COMMAND -> System.out.println("Invalid command!");
-            case ADD_RESTORE_QUESTION -> System.out.println("Please set your restore question");
-            case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
-            case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
-            case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
-            case RATING_OUT_OUT_OF_RANGE -> System.out.println("rating should be between 0 and 5");
-            case RATING_EXISTS -> System.out.println("rating already exists");
-            case RATED -> System.out.println("rated successfully");
-            case NO_RATING -> System.out.println("there is no rating");
-            case LOCATION_NOT_IN_THE_MAP -> System.out.println("This location is not in the map!");
-            case RESPONSE_EXISTS -> System.out.println("Response already exists");
-            case NO_COMMENT_WITH_ID -> System.out.println("There is no comment with this ID!");
-            case RESPONSE_ADDED -> System.out.println("Response added successfully");
-            case NO_RESPONSE -> System.out.println("There in no response for this comment!");
-            case RESPONSE_EDITED -> System.out.println("Response edited successfully");
-            case COMMENT_EDITED -> System.out.println("Comment edited successfully");
+            case INVALID_USER_NAME : System.out.println("user name is invalid");
+            case SUCCESSFUL_REGISTER : System.out.println("registered successfully");
+            case INVALID_COMMAND : System.out.println("Invalid command!");
+            case ADD_RESTORE_QUESTION : System.out.println("Please set your restore question");
+            case ADD_RESTORE_ANSWER : System.out.println("Please set the answer");
+            case RESTORE_QUESTION_EXISTS : System.out.println("Restore question already exists");
+            case RESTORE_QUESTION_ADDED : System.out.println("Restore question added");
+            case RATING_OUT_OUT_OF_RANGE : System.out.println("rating should be between 0 and 5");
+            case RATING_EXISTS : System.out.println("rating already exists");
+            case RATED : System.out.println("rated successfully");
+            case NO_RATING : System.out.println("there is no rating");
+            case LOCATION_NOT_IN_THE_MAP : System.out.println("This location is not in the map!");
+            case RESPONSE_EXISTS : System.out.println("Response already exists");
+            case NO_COMMENT_WITH_ID : System.out.println("There is no comment with this ID!");
+            case RESPONSE_ADDED : System.out.println("Response added successfully");
+            case NO_RESPONSE : System.out.println("There in no response for this comment!");
+            case RESPONSE_EDITED : System.out.println("Response edited successfully");
+            case COMMENT_EDITED : System.out.println("Comment edited successfully");
         }
     }
 

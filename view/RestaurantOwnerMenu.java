@@ -80,13 +80,13 @@ public class RestaurantOwnerMenu extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case SUCCESSFUL_REGISTER -> {
+            case SUCCESSFUL_REGISTER : {
                 RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
                 owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
                 for (Restaurant restaurant : owner.getRestaurants()) {
                     System.out.println(restaurant.getName()+" "+restaurant.getID());
                 }}
-            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");}
+            case NO_SUCH_FOOD_TYPE_IN_GENERAL : System.out.println("There is no food type with this name!");}
     }
 
     //passing to manager
