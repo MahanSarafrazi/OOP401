@@ -56,6 +56,17 @@ public class FoodMenuUsedByOwner extends Menu {
 
         return runOrders;
     }
+
+    @Override
+    protected void outputPrinter(Output output) {
+        super.outputPrinter(output);
+        switch (output) {
+            case NO_COMMENT_WITH_ID -> System.out.println("There is no comment with this ID!");
+            case RESPONSE_ADDED -> System.out.println("Response added successfully");
+            case NO_RESPONSE -> System.out.println("There in no response for this comment!");
+            case RESPONSE_EDITED -> System.out.println("Response edited successfully");
+        }
+    }
     private void processDisplayComment() {
         if(manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments().isEmpty()) {
             System.out.println("There is no comment for this food");
