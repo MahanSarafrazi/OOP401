@@ -34,6 +34,9 @@ public class Restaurant {
     }
 
     public ArrayList<Order> getOrders() {
+        for (Order order : orders) {
+            order.correctOrderStatus();
+        }
         return orders;
     }
 

@@ -458,7 +458,7 @@ public class Manager {
         if (customer.getCart().isEmpty())
             return Output.EMPTY_CART;
         else {
-            double totalPrice=0;
+            double totalPrice = 0;
             for (java.util.Map.Entry<Food,Integer> entry : customer.getCart().entrySet())
                 totalPrice+=entry.getValue()*entry.getKey().getDiscountedPrice();
             if (totalPrice > customer.getCharge())
@@ -468,6 +468,14 @@ public class Manager {
         customer.addOrder(order);
         customer.getActiveRestaurant().addOrder(order);
         return Output.ORDER_CONFIRMED;
+    }
+    public ArrayList<String> estimateOrderTime() {
+        Customer customer = (Customer) getLoggedInUser();
+        ArrayList<String> estimateTimes = new ArrayList<>();
+        for (Order order : customer.getOrders()) {
+            estimateTimes.add(order.estimateTime());
+        }
+        return estimateTimes;
     }
     public ArrayList<Order> getActiveOrders() {
         ArrayList<Order> orders = new ArrayList<>();
@@ -488,10 +496,10 @@ public class Manager {
         return Output.SUCCESSFUL_REGISTER;
     }
 
-    public boolean editOrderStatus(int ID, OrderStatus status) {
+    public boolean editOrderStatus(int ID) {
         for (Order order : loggedInUser.getActiveRestaurant().getOrders()) {
             if(order.getID() == ID) {
-                order.setOrderStatus(status);
+                order.setOrderStatus(OrderStatus.SENT);
                 return true;
             }
         }

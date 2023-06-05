@@ -57,11 +57,7 @@ RestaurantMenuUsedByOwner extends Menu {
             } else if (matchers[44].find()) {
                 processShowOpenOrders();
             } else if(matchers[45].find()) {
-                processEditOrder(Integer.parseInt(matchers[45].group(1)), OrderStatus.SENT);
-            } else if(matchers[46].find()) {
-                processEditOrder(Integer.parseInt(matchers[46].group(1)), OrderStatus.ON_THE_WAY);
-            } else if(matchers[47].find()) {
-                processEditOrder(Integer.parseInt(matchers[47].group(1)), OrderStatus.NOT_READY);
+                processEditOrder(Integer.parseInt(matchers[45].group(1)));
             } else if(matchers[13].find()) {
                 //no process
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
@@ -169,8 +165,8 @@ RestaurantMenuUsedByOwner extends Menu {
             }
         }
     }
-    private void processEditOrder(int ID, OrderStatus status) {
-        if(manager.editOrderStatus(ID, status)) {
+    private void processEditOrder(int ID) {
+        if(manager.editOrderStatus(ID)) {
             System.out.println("order status edited");
         }
         System.out.println("There is no order with this ID");
