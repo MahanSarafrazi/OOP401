@@ -303,7 +303,7 @@ public class Manager {
     public Output discountFood(int ID, double percent, int hours) {
         for (Food food : loggedInUser.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
-                if(food.isDiscounted()) {
+                if(food.hasDiscounted()) {
                     return Output.FOOD_ALREADY_DISCOUNTED;
                 } if(percent < 0 || percent > 50) {
                     return Output.WRONG_PERCENT_AMOUNT;

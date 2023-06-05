@@ -28,7 +28,7 @@ public class FoodsMenuUsedByOwner extends Menu {
         } else {
             for (Food food : activeRestaurantFoods) {
                 System.out.print("food name: " + food.getName() + "  ID: " + food.getID() + "  price: " + food.getPrice() + "  active discount: " + food.getDiscount());
-                if (food.getDiscount() != 0)
+                if (food.hasDiscounted())
                     System.out.print(" discounted price: "+food.getDiscountedPrice());
                 System.out.println("  food type:" + food.getType());
             }

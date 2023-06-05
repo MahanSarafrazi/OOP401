@@ -15,7 +15,12 @@ public class Food {
         this.price = price;
     }
     public double getPrice(){return price;}
-    public double getDiscountedPrice() {return price - price * discount;}
+    public double getDiscountedPrice() {
+        if(!hasDiscounted()) {
+            discount = 0;
+        }
+        return price - price * (discount / 100);
+    }
     private String name;
     public String getName(){return name;}
     private boolean activation;
@@ -52,13 +57,18 @@ public class Food {
     public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
     }
-    public boolean isDiscounted() {
-        if(expireDate == null || new Date().getTime() < expireDate.getTime()) {
+    public boolean hasDiscounted() {
+        if(expireDate == null || new Date().getTime() > expireDate.getTime()) {
             return false;
         }
         return true;
     }
-    public double getDiscount(){return discount;}
+    public double getDiscount(){
+        if(!hasDiscounted()) {
+            discount = 0;
+        }
+        return discount;
+    }
     public void setName(String name) {
          this.name = name;
     }
