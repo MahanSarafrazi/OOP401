@@ -10,6 +10,7 @@ public enum Inputs {
     LOGIN_DELIVERER("^\\s*login\\s+deliverer\\s+(\\S+)\\s+(\\S+)\\s*$"), //4
     LOGIN_RESTAURANT_OWNER("^\\s*login\\s+restaurant owner\\s+(\\S+)\\s+(\\S+)\\s*$"), //5
     ADD_RESTORE_QUESTION("^\\s*add\\s+restore\\s+question\\s*$"), //6
+    
     RESTORE_PASSWORD("^\\s*restore\\s+password\\s+(\\S+)\\s*$"), //7
     SELECT_RESTAURANT("^\\s*select\\s+restaurant\\s+(\\d+)\\s*$"), //8
     ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s+(\\S+)\\s+(\\d+)\\s*$"), //9
