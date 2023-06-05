@@ -80,15 +80,15 @@ public class FoodsMenuUsedByOwner extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case FOOD_ALREADY_EXIST -> System.out.println("This food already exist in this restaurant");
-            case FOOD_ADDED -> System.out.println("Food added successfully");
-            case NO_FOOD_WITH_THIS_ID -> System.out.println("There is no food with this ID in your restaurant");
-            case FOOD_NAME_EDITED -> System.out.println("Food name edited successfully");
-            case FOOD_PRICE_EDITED -> System.out.println("Food price edited successfully");
-            case FOOD_DELETED -> System.out.println("Food deleted successfully");
-            case FOOD_ACTIVATED -> System.out.println("Food activated successfully");
-            case FOOD_DEACTIVATED -> System.out.println("Food deactivated successfully");
-            case THERE_ARE_FOODS_IN_ORDER -> System.out.println("There are still foods in orders with this ID");
+            case FOOD_ALREADY_EXIST : System.out.println("This food already exist in this restaurant");
+            case FOOD_ADDED : System.out.println("Food added successfully");
+            case NO_FOOD_WITH_THIS_ID : System.out.println("There is no food with this ID in your restaurant");
+            case FOOD_NAME_EDITED : System.out.println("Food name edited successfully");
+            case FOOD_PRICE_EDITED : System.out.println("Food price edited successfully");
+            case FOOD_DELETED : System.out.println("Food deleted successfully");
+            case FOOD_ACTIVATED : System.out.println("Food activated successfully");
+            case FOOD_DEACTIVATED : System.out.println("Food deactivated successfully");
+            case THERE_ARE_FOODS_IN_ORDER : System.out.println("There are still foods in orders with this ID");
         }
     }
 

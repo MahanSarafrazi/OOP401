@@ -93,21 +93,21 @@ public class RestaurantOwnerMenu extends Menu {
             case INVALID_RESTAURANT_ID : System.out.println("There is no restaurant with this ID!");
             case NO_ACTIVE_RESTAURANT : System.out.println("You haven't logged in in any restaurant!");
             case NO_SUCH_FOOD_TYPE_IN_RESTAURANT : System.out.println("There is no such food type in this restaurant!");
-            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
-            case EQUAL_FOOD_TYPES -> System.out.println("These food types are the same!");
-            case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> System.out.println("There is still orders with this food type!");
-            case FOOD_TYPE_ALREADY_EXIST -> System.out.println("This food type already exist in this restaurant!");
-            case FOOD_TYPE_ADDED -> System.out.println("Food type added successfully");
-            case FOOD_TYPE_EDITED -> System.out.println("Food type edited successfully");
-            case SURE_EDIT_FOOD_TYPE -> System.out.println("Are you sure you want to change your restaurant food type?");
-            case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
-            case FOOD_ALREADY_EXIST -> System.out.println("This food already exist in this restaurant");
-            case FOOD_ADDED -> System.out.println("Food added successfully");
-            case LOGOUT -> System.out.println("Logged out successfully");
-            case ADD_RESTORE_QUESTION -> System.out.println("Please set your restore question");
-            case ADD_RESTORE_ANSWER -> System.out.println("Please set the answer");
-            case RESTORE_QUESTION_EXISTS -> System.out.println("Restore question already exists");
-            case RESTORE_QUESTION_ADDED -> System.out.println("Restore question added");
+            case NO_SUCH_FOOD_TYPE_IN_GENERAL : System.out.println("There is no food type with this name!");
+            case EQUAL_FOOD_TYPES : System.out.println("These food types are the same!");
+            case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE : System.out.println("There is still orders with this food type!");
+            case FOOD_TYPE_ALREADY_EXIST : System.out.println("This food type already exist in this restaurant!");
+            case FOOD_TYPE_ADDED : System.out.println("Food type added successfully");
+            case FOOD_TYPE_EDITED : System.out.println("Food type edited successfully");
+            case SURE_EDIT_FOOD_TYPE : System.out.println("Are you sure you want to change your restaurant food type?");
+            case EDIT_FOOD_TYPE_CANCELED : System.out.println("Edit food type canceled");
+            case FOOD_ALREADY_EXIST : System.out.println("This food already exist in this restaurant");
+            case FOOD_ADDED : System.out.println("Food added successfully");
+            case LOGOUT : System.out.println("Logged out successfully");
+            case ADD_RESTORE_QUESTION : System.out.println("Please set your restore question");
+            case ADD_RESTORE_ANSWER : System.out.println("Please set the answer");
+            case RESTORE_QUESTION_EXISTS : System.out.println("Restore question already exists");
+            case RESTORE_QUESTION_ADDED : System.out.println("Restore question added");
         }
     }
 
@@ -120,7 +120,7 @@ public class RestaurantOwnerMenu extends Menu {
     private void processAddingRestaurant(String name, String foodType) {
         outputPrinter(manager.addRestaurant(name, foodType));
     }
-    private void processAd dingRestoreQuestion() {
+    private void processAddingRestoreQuestion() {
         Output temp = manager.checkRestoreQuestion();
         outputPrinter(temp);
         if (temp == Output.ADD_RESTORE_QUESTION) {

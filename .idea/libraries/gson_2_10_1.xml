@@ -5,8 +5,5 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <excluded>
-      <root url="jar://$PROJECT_DIR$/lib/gson-2.10.1.jar!/" />
-    </excluded>
   </library>
 </component>
