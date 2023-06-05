@@ -56,6 +56,8 @@ RestaurantMenuUsedByOwner extends Menu {
                 processShowOrderHistory();
             } else if (matchers[44].find()) {
                 processShowOpenOrders();
+            } else if(matchers[45].find()) {
+                processEditOrder(Integer.parseInt(matchers[45].group(1)));
             } else if(matchers[13].find()) {
                 //no process
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
@@ -104,7 +106,7 @@ RestaurantMenuUsedByOwner extends Menu {
         outputPrinter(manager.addFoodType(foodType));
     }
     private void processShowLocation() {
-        System.out.println("restaurant is in the node"+manager.getLoggedInUser().getActiveRestaurant().getLocation());
+        System.out.println("Restaurant is in the node" + manager.getLoggedInUser().getActiveRestaurant().getLocation());
     }
     private void processEditLocation(int location) {
         outputPrinter(manager.editLocation(location));
@@ -142,7 +144,7 @@ RestaurantMenuUsedByOwner extends Menu {
                             + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
                     totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
                 }
-                System.out.println("total price : "+totalPrice);
+                System.out.println("total price : " + totalPrice);
             }
         }
     }
@@ -162,5 +164,11 @@ RestaurantMenuUsedByOwner extends Menu {
                 System.out.println("total price : "+totalPrice);
             }
         }
+    }
+    private void processEditOrder(int ID) {
+        if(manager.editOrderStatus(ID)) {
+            System.out.println("order status edited");
+        }
+        System.out.println("There is no order with this ID");
     }
 }

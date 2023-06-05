@@ -1,6 +1,8 @@
 package controller;
 
 import model.*;
+import view.Inputs;
+import view.OrderStatus;
 import view.Output;
 import view.RestaurantOwnerMenu;
 
@@ -54,7 +56,8 @@ public class Manager {
         if (userType == UserType.CUSTOMER)
             temp = addCustomer(username, password);
         if (userType == UserType.DELIVERER)
-            temp = addDeliverer(username, password);
+            temp =
+                    addDeliverer(username, password);
         if (userType == UserType.RESTAURANT_OWNER)
             temp = addRestaurantOwner(username, password);
         return temp;
@@ -275,7 +278,7 @@ public class Manager {
             if (food.getID() == ID) {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
-                    if (order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID)) && order.isActive) {
+                    if (order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID)) && !order.getOrderStatus().equals(OrderStatus.SENT)) {
                         isThereFood = true;
                         break;
                     }
@@ -296,6 +299,22 @@ public class Manager {
             if (food.getID() == ID) {
                 owner.getActiveRestaurant().setActivation(ID, true);
                 return Output.FOOD_ACTIVATED;
+            }
+        }
+        return Output.NO_FOOD_WITH_THIS_ID;
+    }
+    public Output discountFood(int ID, double percent, int hours) {
+        for (Food food : loggedInUser.getActiveRestaurant().getFoods()) {
+            if(food.getID() == ID) {
+                if(food.hasDiscounted()) {
+                    return Output.FOOD_ALREADY_DISCOUNTED;
+                } if(percent < 0 || percent > 50) {
+                    return Output.WRONG_PERCENT_AMOUNT;
+                } if(hours < 0) {
+                    return Output.INVALID_TIME;
+                }
+                food.setDiscount(percent, hours);
+                return Output.FOOD_DISCOUNTED;
             }
         }
         return Output.NO_FOOD_WITH_THIS_ID;
@@ -439,7 +458,7 @@ public class Manager {
         if (customer.getCart().isEmpty())
             return Output.EMPTY_CART;
         else {
-            double totalPrice=0;
+            double totalPrice = 0;
             for (java.util.Map.Entry<Food,Integer> entry : customer.getCart().entrySet())
                 totalPrice+=entry.getValue()*entry.getKey().getDiscountedPrice();
             if (totalPrice > customer.getCharge())
@@ -450,10 +469,18 @@ public class Manager {
         customer.getActiveRestaurant().addOrder(order);
         return Output.ORDER_CONFIRMED;
     }
+    public ArrayList<String> estimateOrderTime() {
+        Customer customer = (Customer) getLoggedInUser();
+        ArrayList<String> estimateTimes = new ArrayList<>();
+        for (Order order : customer.getOrders()) {
+            estimateTimes.add(order.estimateTime());
+        }
+        return estimateTimes;
+    }
     public ArrayList<Order> getActiveOrders() {
         ArrayList<Order> orders = new ArrayList<>();
         for (Order order : loggedInUser.getActiveRestaurant().getOrders())
-            if (order.isActive)
+            if (!order.getOrderStatus().equals(OrderStatus.SENT))
                 orders.add(order);
         return orders;
     }
@@ -467,6 +494,16 @@ public class Manager {
             return Output.INVALID_PASSWORD;
         loggedInUser = Customer.newCustomer(username, password);
         return Output.SUCCESSFUL_REGISTER;
+    }
+
+    public boolean editOrderStatus(int ID) {
+        for (Order order : loggedInUser.getActiveRestaurant().getOrders()) {
+            if(order.getID() == ID) {
+                order.setOrderStatus(OrderStatus.SENT);
+                return true;
+            }
+        }
+        return false;
     }
 
     private Output addDeliverer(String username, String password) {

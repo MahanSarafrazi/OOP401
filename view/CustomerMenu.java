@@ -138,7 +138,15 @@ public class CustomerMenu extends Menu {
         outputPrinter(manager.confirmOrder(customerLocation));
     }
     private void processShowEstimatedTime() {
-        
+        ArrayList<String> estimations = manager.estimateOrderTime();
+        if(estimations.size() == 0) {
+            System.out.println("You have no order!");
+        } else {
+            System.out.println("Your orders will be delivered in these times:");
+            for (String estimation : estimations) {
+                System.out.println(estimation);
+            }
+        }
     }
     private void processChargeAccount(double charge) {
         if (charge<0)

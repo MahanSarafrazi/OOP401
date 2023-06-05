@@ -27,7 +27,7 @@ public class Map {
         adjacencyMatrix[secondNode - 1][firstNode - 1] = edgesWeight;
     }
 
-    public void findShortestPath(int origin, int destination) {
+    public int findShortestPath(int origin, int destination) {
         HashMap<Integer, Integer> nodeValues = new HashMap<>();
         HashMap<Integer, Integer> previousNodes = new HashMap<>();
         HashSet<Integer> checkedNodes = new HashSet<>();
@@ -73,7 +73,8 @@ public class Map {
             }
         }
 
-        System.out.println(nodeValues.get(destination));
+        return nodeValues.get(destination);
+        /*System.out.println(nodeValues.get(destination));
         int index = destination;
         ArrayList<Integer> path = new ArrayList<>();
         while(index != origin) {
@@ -86,6 +87,6 @@ public class Map {
             if(i != 0) {
                 System.out.print(" -> ");
             }
-        }
+        }*/
     }
 }
