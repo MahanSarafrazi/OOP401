@@ -444,6 +444,43 @@ public class Manager {
         }
         return Output.EQUAL_LOCATION;
     }
+    public ArrayList<Restaurant> searchForNearRestaurants(int location) {
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        for (Restaurant restaurant : RestaurantList.restaurants) {
+            if(map.findShortestPath(location, restaurant.getLocation()) < 30) {
+                restaurants.add(restaurant);
+            }
+        }
+        return restaurants;
+    }
+    public ArrayList<Restaurant> searchForNearRestaurants(int location, String foodType) {
+        FoodType foodType1 = null;
+        for (FoodType value : FoodType.values()) {
+            if(value.commandingPattern.matcher(foodType).find()) {
+                foodType1 = value;
+            }
+        }
+        if(foodType1 == null) {
+            return null;
+        }
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        for (Restaurant restaurant : RestaurantList.restaurants) {
+            boolean sameFoodType = false;
+            for (FoodType type : restaurant.getFoodType()) {
+                if(type.equals(foodType1)) {
+                    sameFoodType = true;
+                    break;
+                }
+            }
+            if(!sameFoodType) {
+                continue;
+            }
+            if(map.findShortestPath(location, restaurant.getLocation()) < 30) {
+                restaurants.add(restaurant);
+            }
+        }
+        return restaurants;
+    }
     public Order selectOrder(int ID) {
         Customer customer = (Customer) loggedInUser;
         for (Order order : customer.getOrders()) {

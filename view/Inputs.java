@@ -49,6 +49,8 @@ public enum Inputs {
     REMOVE_FOOD_FROM_CART("^\\s*remove\\s+food\\s+from\\s+cart\\s*$"), //43
     OPEN_ORDERS("^\\s*show\\s+open\\s+orders\\s*$"), //44
     EDIT_ORDER_STATUS_SENT("^\\s*edit\\s+order\\s+(\\d+)\\s+status\\s+sent\\s*$"), //45
+    OFFERING_SYSTEM("^\\s*search\\s+for\\s+close\\s+restaurants\\s+(\\d+)\\s*$"), //46
+    OFFERING_SYSTEM_FOOD("^\\s*search\\s+for\\s+close\\s+(\\S+)\\s+restaurants\\s+(\\d+)\\s*$"), //47
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
