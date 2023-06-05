@@ -1,6 +1,8 @@
 package controller;
 
 import model.*;
+import view.Inputs;
+import view.OrderStatus;
 import view.Output;
 import view.RestaurantOwnerMenu;
 
@@ -54,7 +56,8 @@ public class Manager {
         if (userType == UserType.CUSTOMER)
             temp = addCustomer(username, password);
         if (userType == UserType.DELIVERER)
-            temp = addDeliverer(username, password);
+            temp =
+                    addDeliverer(username, password);
         if (userType == UserType.RESTAURANT_OWNER)
             temp = addRestaurantOwner(username, password);
         return temp;
@@ -275,7 +278,7 @@ public class Manager {
             if (food.getID() == ID) {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
-                    if (order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID)) && order.isActive) {
+                    if (order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID)) && !order.getOrderStatus().equals(OrderStatus.SENT)) {
                         isThereFood = true;
                         break;
                     }
@@ -469,7 +472,7 @@ public class Manager {
     public ArrayList<Order> getActiveOrders() {
         ArrayList<Order> orders = new ArrayList<>();
         for (Order order : loggedInUser.getActiveRestaurant().getOrders())
-            if (order.isActive)
+            if (!order.getOrderStatus().equals(OrderStatus.SENT))
                 orders.add(order);
         return orders;
     }
@@ -483,6 +486,16 @@ public class Manager {
             return Output.INVALID_PASSWORD;
         loggedInUser = Customer.newCustomer(username, password);
         return Output.SUCCESSFUL_REGISTER;
+    }
+
+    public boolean editOrderStatus(int ID, OrderStatus status) {
+        for (Order order : loggedInUser.getActiveRestaurant().getOrders()) {
+            if(order.getID() == ID) {
+                order.setOrderStatus(status);
+                return true;
+            }
+        }
+        return false;
     }
 
     private Output addDeliverer(String username, String password) {

@@ -56,6 +56,12 @@ RestaurantMenuUsedByOwner extends Menu {
                 processShowOrderHistory();
             } else if (matchers[44].find()) {
                 processShowOpenOrders();
+            } else if(matchers[45].find()) {
+                processEditOrder(Integer.parseInt(matchers[45].group(1)), OrderStatus.SENT);
+            } else if(matchers[46].find()) {
+                processEditOrder(Integer.parseInt(matchers[46].group(1)), OrderStatus.ON_THE_WAY);
+            } else if(matchers[47].find()) {
+                processEditOrder(Integer.parseInt(matchers[47].group(1)), OrderStatus.NOT_READY);
             } else if(matchers[13].find()) {
                 //no process
                 runOrders = RunOrders.FOODS_MENU_USED_BY_OWNER;
@@ -142,7 +148,7 @@ RestaurantMenuUsedByOwner extends Menu {
                             + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
                     totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
                 }
-                System.out.println("total price : "+totalPrice);
+                System.out.println("total price : " + totalPrice);
             }
         }
     }
@@ -162,5 +168,11 @@ RestaurantMenuUsedByOwner extends Menu {
                 System.out.println("total price : "+totalPrice);
             }
         }
+    }
+    private void processEditOrder(int ID, OrderStatus status) {
+        if(manager.editOrderStatus(ID, status)) {
+            System.out.println("order status edited");
+        }
+        System.out.println("There is no order with this ID");
     }
 }
