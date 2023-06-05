@@ -59,6 +59,10 @@ public class CustomerMenu extends Menu {
                 processChargeAccount(Double.parseDouble(matchers[40].group(1)));
             } else if (matchers[41].find()) {
                 processDisplayAccountCharge();
+            } else if(matchers[46].find()) {
+                processSearchNearRestaurants(Integer.parseInt(matchers[46].group(1)));
+            } else if(matchers[47].find()) {
+                processSearchNearRestaurants(Integer.parseInt(matchers[47].group(1)), matchers[47].group(1));
             } else if (matchers[8].find()) {
                 if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
                     runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
@@ -160,5 +164,33 @@ public class CustomerMenu extends Menu {
     private void processDisplayAccountCharge() {
         Customer customer = (Customer)manager.getLoggedInUser();
         System.out.println(customer.getCharge());
+    }
+    private void processSearchNearRestaurants(int location) {
+        ArrayList<Restaurant> restaurants = manager.searchForNearRestaurants(location);
+        if(restaurants.size() == 0) {
+            System.out.println("There is no restaurant near you");
+        } else {
+            for (Restaurant restaurant : restaurants) {
+                System.out.print("ID : "+restaurant.getID()+" with food types:");
+                for (FoodType foodType : restaurant.getFoodType())
+                    System.out.print(" "+foodType);
+                System.out.println(" and location : "+restaurant.getLocation());
+            }
+        }
+    }
+    private void processSearchNearRestaurants(int location, String foodType) {
+        ArrayList<Restaurant> restaurants = manager.searchForNearRestaurants(location, foodType);
+        if(restaurants == null) {
+            System.out.println("This food type doesn't exist!");
+        } else if(restaurants.size() == 0) {
+            System.out.println("There is no restaurant near you");
+        } else {
+            for (Restaurant restaurant : restaurants) {
+                System.out.print("ID : "+restaurant.getID()+" with food types:");
+                for (FoodType foodType1 : restaurant.getFoodType())
+                    System.out.print(" "+foodType1);
+                System.out.println(" and location : "+restaurant.getLocation());
+            }
+        }
     }
 }
