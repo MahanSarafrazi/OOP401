@@ -25,3 +25,4 @@ public class Comment {
     }
     public void editComment(String comment) {this.comment = comment;}
 }
+

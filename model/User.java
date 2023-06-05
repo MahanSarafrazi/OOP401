@@ -35,3 +35,4 @@ public class User {
     }
     public void deActiveRestaurant() {activeRestaurant = null;}
 }
+

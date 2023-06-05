@@ -17,3 +17,4 @@ public enum FoodType {
         this.commandingPattern = Pattern.compile(s);
     }
 }
+
