@@ -501,8 +501,8 @@ public class Manager {
                 return Output.NOT_ENOUGH_CHARGE;
         }
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
+         customer.getOrderedRestaurant().addOrder(order);
         customer.addOrder(order);
-        customer.getOrderedRestaurant().addOrder(order);
         return Output.ORDER_CONFIRMED;
     }
     public ArrayList<String> estimateOrderTime() {

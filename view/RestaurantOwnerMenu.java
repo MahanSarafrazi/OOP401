@@ -88,7 +88,8 @@ public class RestaurantOwnerMenu extends Menu {
                 }
                 break;
             }
-            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");}
+            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
+        }
     }
 
     //passing to manager
