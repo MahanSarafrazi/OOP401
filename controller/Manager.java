@@ -1,7 +1,6 @@
 package controller;
 
 import model.*;
-import view.Inputs;
 import view.OrderStatus;
 import view.Output;
 import view.RestaurantOwnerMenu;
