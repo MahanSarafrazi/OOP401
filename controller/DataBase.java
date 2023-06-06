@@ -56,6 +56,9 @@ public class DataBase {
             RestaurantList.restaurants.addAll(restaurantOwner.getRestaurants());
         for (Restaurant restaurant : RestaurantList.restaurants) {
             RandomIDGenerator.getGenerated().add(restaurant.getID());
+            for (Order order : restaurant.getOrders()) {
+                RandomIDGenerator.getGenerated().add(order.getID());
+            }
             for (Comment comment : restaurant.getComments()) {
                 RandomIDGenerator.getGenerated().add(comment.getID());
             }

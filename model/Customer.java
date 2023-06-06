@@ -17,7 +17,12 @@ public class Customer extends User {
     }
 
     private final ArrayList<Order> orders ;
-    public ArrayList<Order> getOrders() {return orders;}
+    public ArrayList<Order> getOrders() {
+        for (Order order : orders) {
+            order.correctOrderStatus();
+        }
+        return orders;
+    }
     public void addOrder(Order order) {
         orders.add(order);
         this.cart.clear();
@@ -34,3 +39,4 @@ public class Customer extends User {
         return false;
     }
 }
+
