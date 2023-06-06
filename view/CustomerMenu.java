@@ -62,7 +62,7 @@ public class CustomerMenu extends Menu {
             } else if(matchers[46].find()) {
                 processSearchNearRestaurants(Integer.parseInt(matchers[46].group(1)));
             } else if(matchers[47].find()) {
-                processSearchNearRestaurants(Integer.parseInt(matchers[47].group(1)), matchers[47].group(1));
+                processSearchNearRestaurants(Integer.parseInt(matchers[47].group(2)), matchers[47].group(1));
             } else if (matchers[8].find()) {
                 if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
                     runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;

@@ -84,7 +84,7 @@ public class RestaurantOwnerMenu extends Menu {
                 RestaurantOwner owner = (RestaurantOwner) manager.getLoggedInUser();
                 owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
                 for (Restaurant restaurant : owner.getRestaurants()) {
-                    System.out.println(restaurant.getName()+" "+restaurant.getID());
+                    System.out.println(restaurant.getName() + " " + restaurant.getID());
                 }
                 break;
             }

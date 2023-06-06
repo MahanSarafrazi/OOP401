@@ -70,16 +70,16 @@ public class Order {
     public String estimateTime() {
         correctOrderStatus();
         if(!orderStatus.equals(OrderStatus.SENT)) {
-            long time = timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime());
+            long time = timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime()) / 1000;
             return "The time left for order " + ID + " is " + time / 60 + " minutes";
         }
         return "This order is delivered";
     }
     public void correctOrderStatus() {
         if(!orderStatus.equals(OrderStatus.SENT)) {
-            if(timeOfGettingReady - (new Date().getTime() - registerDate.getTime()) > 0) {
+            if(timeOfGettingReady - (new Date().getTime() - registerDate.getTime()) / 1000 > 0) {
                 orderStatus = OrderStatus.NOT_READY;
-            } else if(timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime()) > 0) {
+            } else if(timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime()) / 1000 > 0) {
                 orderStatus = OrderStatus.ON_THE_WAY;
             } else {
                 orderStatus = OrderStatus.SENT;
