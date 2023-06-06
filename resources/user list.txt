@@ -73,6 +73,36 @@
         "comments": [],
         "rates": []
       }
+    },
+    {
+      "restaurants": [
+        {
+          "name": "baradaran",
+          "orders": [],
+          "ID": 775216,
+          "location": 78,
+          "foodTypes": [
+            "TURKISH"
+          ],
+          "foods": [],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "resi",
+      "password": "Resi1425",
+      "activeRestaurant": {
+        "name": "baradaran",
+        "orders": [],
+        "ID": 775216,
+        "location": 78,
+        "foodTypes": [
+          "TURKISH"
+        ],
+        "foods": [],
+        "comments": [],
+        "rates": []
+      }
     }
   ]
 }
