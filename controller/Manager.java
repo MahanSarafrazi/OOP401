@@ -503,7 +503,7 @@ public class Manager {
         }
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
         customer.addOrder(order);
-        customer.getActiveRestaurant().addOrder(order);
+        customer.getOrderedRestaurant().addOrder(order);
         return Output.ORDER_CONFIRMED;
     }
     public ArrayList<String> estimateOrderTime() {
