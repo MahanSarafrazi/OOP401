@@ -43,7 +43,7 @@ public enum Inputs {
     DISPLAY_CART("^\\s*show\\s+cart\\s*$"), //37
     CONFIRM_ORDER("^\\s*confirm\\s+order\\s+(\\d+)\\s*$"), //38
     SHOW_ESTIMATED_DELIVERY_TIME("^\\s*show\\s+estimated\\s+delivery\\s+time\\s*$"), //39
-    CHARGE_ACCOUNT("^\\s*charge\\s+account\\s+(\\d+)\\s*$"), //40
+    CHARGE_ACCOUNT("^\\s*charge\\s+account\\s+(\\d*\\.?\\d+)\\s*$"), //40
     DISPLAY_ACCOUNT_CHARGE("^\\s*display\\s+account\\s+charge\\s*$"), //41
     ADD_FOOD_TO_CART("^\\s*add\\s+(\\d+)\\s+foods\\s+to\\s+cart\\s*$"), //42
     REMOVE_FOOD_FROM_CART("^\\s*remove\\s+food\\s+from\\s+cart\\s*$"), //43
