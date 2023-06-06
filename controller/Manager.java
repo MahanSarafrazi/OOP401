@@ -1,7 +1,6 @@
 package controller;
 
 import model.*;
-import view.Inputs;
 import view.OrderStatus;
 import view.Output;
 import view.RestaurantOwnerMenu;
@@ -503,7 +502,7 @@ public class Manager {
         }
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
         customer.addOrder(order);
-        customer.getActiveRestaurant().addOrder(order);
+        customer.getOrderedRestaurant().addOrder(order);
         return Output.ORDER_CONFIRMED;
     }
     public ArrayList<String> estimateOrderTime() {
