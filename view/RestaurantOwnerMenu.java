@@ -85,7 +85,9 @@ public class RestaurantOwnerMenu extends Menu {
                 owner.getRestaurants().sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
                 for (Restaurant restaurant : owner.getRestaurants()) {
                     System.out.println(restaurant.getName()+" "+restaurant.getID());
-                }}
+                }
+                break;
+            }
             case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");}
     }
 
