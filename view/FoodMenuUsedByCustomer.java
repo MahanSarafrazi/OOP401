@@ -79,8 +79,19 @@ public class FoodMenuUsedByCustomer extends Menu {
     }
     private void processAddFoodToCart(int count) {
         Customer customer = (Customer) manager.getLoggedInUser();
-        customer.getCart().put(customer.getActiveRestaurant().getOpenedFood(), count);
-        System.out.println("added to cart");
+        if (count<1)
+            System.out.println("ordered count should be positive");
+        else {
+            if (customer.getOrderedRestaurant() == null || customer.getOrderedRestaurant().getID() == customer.getActiveRestaurant().getID()) {
+                if (customer.getOrderedRestaurant() == null)
+                    customer.setOrderedRestaurant(customer.getActiveRestaurant());
+                customer.getCart().put(customer.getActiveRestaurant().getOpenedFood(), count);
+                System.out.println("added to cart");
+            }
+            else {
+                System.out.println("you can't order from two different restaurants.");
+            }
+        }
     }
     private void processRemoveFoodFromCart() {
         Customer customer = (Customer) manager.getLoggedInUser();

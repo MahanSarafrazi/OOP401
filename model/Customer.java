@@ -14,6 +14,7 @@ public class Customer extends User {
         super(userName, pass);
         orders=new ArrayList<>();
         cart=new LinkedHashMap<>();
+        charge=0;
     }
 
     private final ArrayList<Order> orders ;
@@ -26,6 +27,7 @@ public class Customer extends User {
     public void addOrder(Order order) {
         orders.add(order);
         this.cart.clear();
+        orderedRestaurant=null;
     }
     private final LinkedHashMap<Food,Integer> cart;
     public LinkedHashMap<Food,Integer> getCart() {return cart;}
@@ -38,5 +40,8 @@ public class Customer extends User {
                 return true;
         return false;
     }
+    private Restaurant orderedRestaurant ;
+    public void setOrderedRestaurant(Restaurant restaurant) {this.orderedRestaurant=restaurant;}
+    public Restaurant getOrderedRestaurant() {return orderedRestaurant;}
 }
 

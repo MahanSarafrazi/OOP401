@@ -501,7 +501,7 @@ public class Manager {
             if (totalPrice > customer.getCharge())
                 return Output.NOT_ENOUGH_CHARGE;
         }
-        Order order = new Order(customer.getCart(),loggedInUser.getActiveRestaurant(),customerLocation);
+        Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
         customer.addOrder(order);
         customer.getActiveRestaurant().addOrder(order);
         return Output.ORDER_CONFIRMED;
