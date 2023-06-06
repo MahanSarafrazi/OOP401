@@ -14,7 +14,9 @@ public class RestaurantOwner extends User {
         restaurants = new ArrayList<>();
     }
     public void AddRestaurant(String name, FoodType foodType, int location) {
-        restaurants.add(new Restaurant(name, foodType, location));
+        Restaurant restaurant = new Restaurant(name, foodType, location);
+        restaurants.add(restaurant);
+        RestaurantList.restaurants.add(restaurant);
     }
     public ArrayList<Restaurant> getRestaurants() {
         return restaurants;
