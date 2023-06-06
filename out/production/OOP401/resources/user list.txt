@@ -1,0 +1,78 @@
+{
+  "customers": [],
+  "deliverers": [],
+  "restaurantOwners": [
+    {
+      "restaurants": [
+        {
+          "name": "koskhone",
+          "orders": [],
+          "ID": 588229,
+          "location": 85,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [
+            {
+              "price": 85000.0,
+              "type": "IRANIAN",
+              "name": "mamepolo",
+              "activation": true,
+              "ID": 966172,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 96000.0,
+              "type": "IRANIAN",
+              "name": "kospolo",
+              "activation": true,
+              "ID": 241579,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "reza",
+      "password": "Reza2004",
+      "activeRestaurant": {
+        "name": "koskhone",
+        "orders": [],
+        "ID": 588229,
+        "location": 85,
+        "foodTypes": [
+          "IRANIAN"
+        ],
+        "foods": [
+          {
+            "price": 85000.0,
+            "type": "IRANIAN",
+            "name": "mamepolo",
+            "activation": true,
+            "ID": 966172,
+            "discount": 0.0,
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 96000.0,
+            "type": "IRANIAN",
+            "name": "kospolo",
+            "activation": true,
+            "ID": 241579,
+            "discount": 0.0,
+            "comments": [],
+            "rates": []
+          }
+        ],
+        "comments": [],
+        "rates": []
+      }
+    }
+  ]
+}
