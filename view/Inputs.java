@@ -15,7 +15,7 @@ public enum Inputs {
     ADD_RESTAURANT("^\\s*add\\s+restaurant\\s+(\\S+)\\s+(\\S+)\\s+(\\d+)\\s*$"), //9
     SHOW_FOOD_TYPE("^\\s*show\\s+food\\s+type\\s*$"), //10
     EDIT_FOOD_TYPE("^\\s*edit\\s+food\\s+type\\s+(\\S+)\\s+(\\S+)\\s*$"), //11
-    ADD_FOOD_TYPE("^\\s*add\\s+food\\s+type(\\S+)\\s*$"), //12
+    ADD_FOOD_TYPE("^\\s*add\\s+food\\s+type\\s+(\\S+)\\s*$"), //12
     OPEN_FOODS_MENU("^\\s*open\\s+foods\\s+menu\\s*$"), //13
     ADD_FOOD("^\\s*add\\s+food\\s+(\\S+)\\s+(\\d*\\.?\\d+)\\s+(\\S+)\\s*$"), //14
     EDIT_FOOD_NAME("^\\s*edit\\s+food\\s+(\\d+)\\s+name\\s+(\\S+)\\s*$"), //15

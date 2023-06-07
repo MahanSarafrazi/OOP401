@@ -1,5 +1,13 @@
 {
-  "customers": [],
+  "customers": [
+    {
+      "orders": [],
+      "cart": {},
+      "charge": 0.0,
+      "userName": "cusi",
+      "password": "Cusi1425"
+    }
+  ],
   "deliverers": [],
   "restaurantOwners": [
     {
@@ -84,6 +92,40 @@
           "foodTypes": [
             "TURKISH"
           ],
+          "foods": [
+            {
+              "price": 4900.0,
+              "type": "TURKISH",
+              "name": "koon",
+              "activation": false,
+              "ID": 474487,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 7500.0,
+              "type": "TURKISH",
+              "name": "kos",
+              "activation": true,
+              "ID": 825449,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        },
+        {
+          "name": "kodoni",
+          "orders": [],
+          "ID": 828478,
+          "location": 42,
+          "foodTypes": [
+            "DRINK",
+            "TURKISH"
+          ],
           "foods": [],
           "comments": [],
           "rates": []
@@ -92,17 +134,23 @@
       "userName": "resi",
       "password": "Resi1425",
       "activeRestaurant": {
-        "name": "baradaran",
+        "name": "kodoni",
         "orders": [],
-        "ID": 775216,
-        "location": 78,
+        "ID": 828478,
+        "location": 42,
         "foodTypes": [
+          "DRINK",
           "TURKISH"
         ],
         "foods": [],
         "comments": [],
         "rates": []
       }
+    },
+    {
+      "restaurants": [],
+      "userName": "rrr",
+      "password": "Reee1425"
     }
   ]
 }
