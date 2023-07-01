@@ -527,7 +527,9 @@ public class Manager {
         Customer customer = (Customer) getLoggedInUser();
         if (customer.getCart().getFoods().isEmpty())
             return Output.EMPTY_CART;
-        else {
+        else if(customerLocation > 1000) {
+            return Output.NO_LOCATION;
+        } else {
             double totalPrice = 0;
             Cart cart = customer.getCart();
             for (int i=0;i<cart.getFoodsCount().size();i++)
