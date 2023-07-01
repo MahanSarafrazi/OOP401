@@ -40,6 +40,7 @@ public abstract class Menu {
             case NO_RESPONSE -> System.out.println("There in no response for this comment!");
             case RESPONSE_EDITED -> System.out.println("Response edited successfully");
             case COMMENT_EDITED -> System.out.println("Comment edited successfully");
+            case NOT_YOUR_COMMENT -> System.out.println("this comment is not your comment!");
         }
     }
 

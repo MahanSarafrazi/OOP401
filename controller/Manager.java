@@ -347,6 +347,8 @@ public class Manager {
             comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
         for (Comment comment : comments) {
             if (comment.getID() == ID) {
+                if (!comment.getUser().getUserName().equals(loggedInUser.getUserName()))
+                    return Output.NOT_YOUR_COMMENT;
                 comment.editComment(commentString);
                 return Output.COMMENT_EDITED;
             }
@@ -415,7 +417,7 @@ public class Manager {
     }
     public Output addResponse(int ID, String responseText) {
         ArrayList<Comment> comments;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             comments = loggedInUser.getActiveRestaurant().getComments();
         else
             comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
