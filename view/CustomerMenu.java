@@ -179,7 +179,7 @@ public class CustomerMenu extends Menu {
             System.out.println("There is no restaurant near you");
         } else {
             for (Restaurant restaurant : restaurants) {
-                System.out.print("ID : "+restaurant.getID()+" with food types:");
+                System.out.print(restaurant.getName()+" "+restaurant.getID()+" with food types:");
                 for (FoodType foodType : restaurant.getFoodType())
                     System.out.print(" "+foodType);
                 System.out.println(" and location : "+restaurant.getLocation());
@@ -194,7 +194,7 @@ public class CustomerMenu extends Menu {
             System.out.println("There is no restaurant near you");
         } else {
             for (Restaurant restaurant : restaurants) {
-                System.out.print("ID : "+restaurant.getID()+" with food types:");
+                System.out.print(restaurant.getName()+" "+restaurant.getID()+" with food types:");
                 for (FoodType foodType1 : restaurant.getFoodType())
                     System.out.print(" "+foodType1);
                 System.out.println(" and location : "+restaurant.getLocation());
@@ -207,7 +207,7 @@ public class CustomerMenu extends Menu {
             System.out.println("you didn't order yet");
         for (Map.Entry<String ,Integer> entry : favoriteRestaurants.entrySet()) {
             Restaurant restaurant = RestaurantList.getRestaurant(entry.getKey());
-            System.out.println(Objects.requireNonNull(restaurant).getName()+" "+restaurant.getID()+" ordered "+
+            System.out.println(Objects.requireNonNull(restaurant).getName()+" "+restaurant.getID()+"        you ordered "+
                     entry.getValue()+" times from this restaurant");
         }
     }

@@ -508,6 +508,7 @@ public class Manager {
         }
         List<java.util.Map.Entry<String , Integer>> list = new ArrayList<>(restaurants.entrySet());
         list.sort(java.util.Map.Entry.comparingByValue());
+        Collections.reverse(list);
         restaurants.clear();
         for (java.util.Map.Entry<String ,Integer> map : list)
             restaurants.put(map.getKey(),map.getValue());
