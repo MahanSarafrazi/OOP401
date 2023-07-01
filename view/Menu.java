@@ -81,7 +81,9 @@ public abstract class Menu {
     protected void processAddComment() {
         boolean canComment = true;
         if (manager.getLoggedInUser() instanceof Customer customer) {
-            if (customer.getActiveRestaurant().getOpenedFood() != null &&
+            if (!customer.orderedFood(customer.getOrderedRestaurant()))
+                canComment =false;
+            else if (customer.getActiveRestaurant().getOpenedFood() != null &&
                     !customer.orderedFood(customer.getActiveRestaurant().getOpenedFood()))
                 canComment=false;
         }
@@ -91,7 +93,7 @@ public abstract class Menu {
             System.out.println("Comment added successfully!");
         }
         else
-            System.out.println("you have to order this food first!");
+            System.out.println("you have to order from this food/restaurant first!");
     }
 
     protected void processEditComment(int ID) {

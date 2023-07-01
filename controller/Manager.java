@@ -341,7 +341,7 @@ public class Manager {
 
     public Output editComment(int ID, String commentString) {
         ArrayList<Comment> comments;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             comments = loggedInUser.getActiveRestaurant().getComments();
         else
             comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
