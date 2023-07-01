@@ -11,12 +11,21 @@ public class Order {
     OrderStatus orderStatus;
     private final int customerLocation;
     public int getCustomerLocation() {return customerLocation;}
-    private final Restaurant restaurant;
+    private final String restaurantName;
+    public String getRestaurantName() {return restaurantName;}
+    private int restaurantLocation;
+    public int getRestaurantLocation() {return restaurantLocation;}
+    public void setRestaurantLocation(int newLocation) {
+        restaurantLocation = newLocation;
+        model.Map map = Manager.getManagerInstance().getMap();
+        int shortestPath = map.findShortestPath(customerLocation, restaurantLocation);
+        this.timeOfDelivery = shortestPath * 20;
+        this.timeOfGettingReady = numOfFoods * 300;
+    }
     private final Date registerDate;
-    int numOfFoods = 0;
-    int timeOfDelivery;
-    int timeOfGettingReady;
-    public Restaurant getRestaurant() {return restaurant;}
+    private int numOfFoods = 0;
+    private int timeOfDelivery;
+    private int timeOfGettingReady;
     public int getID() {
         return ID;
     }
@@ -33,7 +42,8 @@ public class Order {
         return foods;
     }
     public Order(LinkedHashMap<Food , Integer> cart, Restaurant restaurant, int customerLocation) {
-        this.restaurant = restaurant;
+        this.restaurantName = restaurant.getName();
+        this.restaurantLocation = restaurant.getLocation();
         this.foods = new LinkedHashMap<>();
         for (Map.Entry<Food,Integer> entry : cart.entrySet()) {
             this.foods.put(new Food(entry.getKey().getName(), entry.getKey().getDiscountedPrice(),
