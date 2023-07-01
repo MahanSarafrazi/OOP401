@@ -85,28 +85,15 @@ RestaurantMenuUsedByOwner extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> {System.out.println("There is no such food type in this restaurant!");
-            break;}
-            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> {System.out.println("There is no food type with this name!");
-            break;}
-            case EQUAL_FOOD_TYPES -> {System.out.println("These food types are the same!");
-            break;}
-            case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> {System.out.println("There is still orders with this food type!");
-            break;}
-            case FOOD_TYPE_ALREADY_EXIST -> {System.out.println("This food type already exist in this restaurant!");
-            break;}
-            case FOOD_TYPE_ADDED -> {System.out.println("Food type added successfully");
-            break;}
-            case FOOD_TYPE_EDITED ->{ System.out.println("Food type edited successfully");
-            break;}
-            case SURE_EDIT_FOOD_TYPE ->{ System.out.println("Are you sure you want to change your restaurant food type?");
-            break;}
-            case EDIT_FOOD_TYPE_CANCELED -> {System.out.println("Edit food type canceled");
-            break;}
-            case LOCATION_SET -> {System.out.println("location changed");
-            break;}
-            case EQUAL_LOCATION -> {System.out.println("restaurant is there right now!");
-            break;}
+            case EQUAL_FOOD_TYPES -> System.out.println("These food types are the same!");
+            case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> System.out.println("There is still orders with this food type!");
+            case FOOD_TYPE_ALREADY_EXIST -> System.out.println("This food type already exist in this restaurant!");
+            case FOOD_TYPE_ADDED -> System.out.println("Food type added successfully");
+            case FOOD_TYPE_EDITED -> System.out.println("Food type edited successfully");
+            case SURE_EDIT_FOOD_TYPE -> System.out.println("Are you sure you want to change your restaurant food type?");
+            case EDIT_FOOD_TYPE_CANCELED -> System.out.println("Edit food type canceled");
+            case LOCATION_SET -> System.out.println("location changed");
+            case EQUAL_LOCATION -> System.out.println("restaurant is there right now!");
         }
     }
     private void processShowFoodType() {
@@ -178,9 +165,9 @@ RestaurantMenuUsedByOwner extends Menu {
         }
     }
     private void processEditOrder(int ID) {
-        if(manager.editOrderStatus(ID)) {
+        if(manager.editOrderStatus(ID))
             System.out.println("order status edited");
-        }
-        System.out.println("There is no order with this ID");
+        else
+            System.out.println("There is no order with this ID");
     }
 }

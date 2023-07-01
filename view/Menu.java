@@ -20,6 +20,8 @@ public abstract class Menu {
     //OutputPrinter
     protected void outputPrinter(Output output) {
         switch (output) {
+            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> System.out.println("There is no such food type in this restaurant!");
+            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
             case INVALID_USER_NAME -> System.out.println("user name is invalid");
             case SUCCESSFUL_REGISTER -> System.out.println("registered successfully");
             case INVALID_COMMAND -> System.out.println("Invalid command!");
