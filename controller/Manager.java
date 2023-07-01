@@ -347,6 +347,8 @@ public class Manager {
             comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
         for (Comment comment : comments) {
             if (comment.getID() == ID) {
+                if (!comment.getUser().getUserName().equals(loggedInUser.getUserName()))
+                    return Output.NOT_YOUR_COMMENT;
                 comment.editComment(commentString);
                 return Output.COMMENT_EDITED;
             }

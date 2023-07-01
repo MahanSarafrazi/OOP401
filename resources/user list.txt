@@ -32,6 +32,16 @@
       },
       "userName": "nhjonjon",
       "password": "Aaaaaaaaaaaa5"
+    },
+    {
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 0.0,
+      "userName": "bgibhbhjb",
+      "password": "Aaaaaaaaaaaaaa7"
     }
   ],
   "deliverers": [],
