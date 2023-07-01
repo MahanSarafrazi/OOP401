@@ -117,7 +117,7 @@ public class CustomerMenu extends Menu {
         if (order == null)
             System.out.println("There is no order with this ID!");
         else {
-            System.out.println("Restaurant name : " + order.getRestaurant().getName());
+            System.out.println("Restaurant name : " + order.getRestaurantName());
             for (Map.Entry<Food,Integer> entry : order.getFoods().entrySet())
                 System.out.println("Food name : "+entry.getKey().getName()+" food price : "+entry.getKey().getPrice()
                 +" food Id : "+entry.getKey().getID()+" count : "+entry.getValue());
