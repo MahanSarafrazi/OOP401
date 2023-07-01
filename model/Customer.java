@@ -35,13 +35,14 @@ public class Customer extends User {
     public void charge(double charge) {this.charge+=charge;}
     public boolean orderedFood(Food food) {
         for (Order order : orders)
-            if (order.getFoods().contains(food))
-                return true;
+            for (Food food1 : order.getFoods())
+                if (food1.getID() == food.getID())
+                    return true;
         return false;
     }
     public boolean orderedFood (Restaurant restaurant) {
         for (Order order : orders)
-            if (order.getRestaurantName().equals(restaurant.getName()))
+            if (order.getRestaurantID() == restaurant.getID())
                 return true;
         return false;
     }
