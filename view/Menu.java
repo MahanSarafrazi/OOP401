@@ -90,6 +90,8 @@ public abstract class Menu {
             manager.addComment(scanner.nextLine());
             System.out.println("Comment added successfully!");
         }
+        else
+            System.out.println("you have to order this food first!");
     }
 
     protected void processEditComment(int ID) {
