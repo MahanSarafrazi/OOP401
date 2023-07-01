@@ -54,7 +54,6 @@ public enum Inputs {
     OFFERING_SYSTEM_ORDER("^\\s*search\\s+for\\s+favorite\\s+restaurants\\s*$"), //48
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
-    
 
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
     ;
