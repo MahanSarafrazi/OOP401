@@ -530,7 +530,7 @@ public class Manager {
         else if(customerLocation > 1000) {
             return Output.NO_LOCATION;
         } else {
-            double totalPrice=0;
+            double totalPrice = 0;
             Cart cart = customer.getCart();
             for (int i=0;i<cart.getFoodsCount().size();i++)
                 totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
