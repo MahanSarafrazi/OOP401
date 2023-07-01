@@ -19,7 +19,6 @@ public class Order {
         model.Map map = Manager.getManagerInstance().getMap();
         int shortestPath = map.findShortestPath(customerLocation, restaurantLocation);
         this.timeOfDelivery = shortestPath * 20;
-        this.timeOfGettingReady = numOfFoods * 300;
     }
     private final Date registerDate;
     private final int numOfFoods = 0;
