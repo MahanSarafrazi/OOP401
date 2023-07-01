@@ -1,0 +1,242 @@
+{
+  "customers": [
+    {
+      "orders": [
+        {
+          "ID": 930444,
+          "orderStatus": "SENT",
+          "customerLocation": 40,
+          "restaurantName": "reza",
+          "restaurantLocation": 85,
+          "registerDate": "Jul 2, 2023, 12:10:19 AM",
+          "timeOfDelivery": 180,
+          "timeOfGettingReady": 900,
+          "foods": [
+            {
+              "price": 85222.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 759271,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            3
+          ]
+        },
+        {
+          "ID": 627776,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 22,
+          "restaurantName": "reza",
+          "restaurantLocation": 85,
+          "registerDate": "Jul 2, 2023, 12:19:50 AM",
+          "timeOfDelivery": 260,
+          "timeOfGettingReady": 2400,
+          "foods": [
+            {
+              "price": 85222.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 759271,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            8
+          ]
+        }
+      ],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 8.0E8,
+      "userName": "cusi",
+      "password": "Cusi7485",
+      "activeRestaurant": {
+        "name": "reza",
+        "orders": [
+          {
+            "ID": 930444,
+            "orderStatus": "SENT",
+            "customerLocation": 40,
+            "restaurantName": "reza",
+            "restaurantLocation": 85,
+            "registerDate": "Jul 2, 2023, 12:10:19 AM",
+            "timeOfDelivery": 180,
+            "timeOfGettingReady": 900,
+            "foods": [
+              {
+                "price": 85222.0,
+                "type": "IRANIAN",
+                "name": "kabab",
+                "activation": true,
+                "ID": 759271,
+                "discount": 0.0,
+                "comments": [],
+                "rates": []
+              }
+            ],
+            "foodsCount": [
+              3
+            ]
+          },
+          {
+            "ID": 627776,
+            "orderStatus": "NOT_READY",
+            "customerLocation": 22,
+            "restaurantName": "reza",
+            "restaurantLocation": 85,
+            "registerDate": "Jul 2, 2023, 12:19:50 AM",
+            "timeOfDelivery": 260,
+            "timeOfGettingReady": 2400,
+            "foods": [
+              {
+                "price": 85222.0,
+                "type": "IRANIAN",
+                "name": "kabab",
+                "activation": true,
+                "ID": 759271,
+                "discount": 0.0,
+                "comments": [],
+                "rates": []
+              }
+            ],
+            "foodsCount": [
+              8
+            ]
+          }
+        ],
+        "ID": 283589,
+        "location": 85,
+        "foodTypes": [
+          "IRANIAN"
+        ],
+        "foods": [
+          {
+            "price": 85222.0,
+            "type": "IRANIAN",
+            "name": "kabab",
+            "activation": true,
+            "ID": 759271,
+            "discount": 0.0,
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 566.0,
+            "type": "IRANIAN",
+            "name": "joje",
+            "activation": true,
+            "ID": 376333,
+            "discount": 0.0,
+            "comments": [],
+            "rates": []
+          }
+        ],
+        "comments": [],
+        "rates": []
+      }
+    }
+  ],
+  "deliverers": [],
+  "restaurantOwners": [
+    {
+      "restaurants": [
+        {
+          "name": "reza",
+          "orders": [
+            {
+              "ID": 930444,
+              "orderStatus": "SENT",
+              "customerLocation": 40,
+              "restaurantName": "reza",
+              "restaurantLocation": 85,
+              "registerDate": "Jul 2, 2023, 12:10:19 AM",
+              "timeOfDelivery": 180,
+              "timeOfGettingReady": 900,
+              "foods": [
+                {
+                  "price": 85222.0,
+                  "type": "IRANIAN",
+                  "name": "kabab",
+                  "activation": true,
+                  "ID": 759271,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                3
+              ]
+            },
+            {
+              "ID": 627776,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 22,
+              "restaurantName": "reza",
+              "restaurantLocation": 85,
+              "registerDate": "Jul 2, 2023, 12:19:50 AM",
+              "timeOfDelivery": 260,
+              "timeOfGettingReady": 2400,
+              "foods": [
+                {
+                  "price": 85222.0,
+                  "type": "IRANIAN",
+                  "name": "kabab",
+                  "activation": true,
+                  "ID": 759271,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                8
+              ]
+            }
+          ],
+          "ID": 283589,
+          "location": 85,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [
+            {
+              "price": 85222.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 759271,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 566.0,
+              "type": "IRANIAN",
+              "name": "joje",
+              "activation": true,
+              "ID": 376333,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "resi",
+      "password": "Resi7485"
+    }
+  ]
+}
