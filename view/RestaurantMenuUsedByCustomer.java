@@ -47,7 +47,7 @@ public class RestaurantMenuUsedByCustomer extends Menu {
             } else if (matchers[24].find()) {
                 processAddComment();
             } else if (matchers[25].find()) {
-                processEditComment(Integer.parseInt(matchers[25].group(2)));
+                processEditComment(Integer.parseInt(matchers[25].group(1)));
             } else if (matchers[26].find()) {
                 processDisplayRating();
             } else if (matchers[27].find()) {
