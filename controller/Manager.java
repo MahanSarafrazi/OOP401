@@ -157,7 +157,7 @@ public class Manager {
             return Output.EQUAL_FOOD_TYPES;
         }
 
-        if (loggedInUser.getActiveRestaurant().isThereAnyOrderOfThisType(changingType)) {
+        if (loggedInUser.getActiveRestaurant().isThereAnyOrderOfThisType(changingType) || cartChecker(changingType)) {
             return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
         }
 
@@ -210,11 +210,6 @@ public class Manager {
 
     public Output addFood(String foodName, double foodPrice, String foodType) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
-        for (Food food : owner.getActiveRestaurant().getFoods()) {
-            if (food.getName().equals(foodName)) {
-                return Output.FOOD_ALREADY_EXIST;
-            }
-        }
         FoodType foodType1 = null;
         for (FoodType value : FoodType.values()) {
             if (value.commandingPattern.matcher(foodType).find()) {
@@ -224,6 +219,13 @@ public class Manager {
         }
         if (foodType1 == null) {
             return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
+        }
+        if (!owner.getActiveRestaurant().getFoodType().contains(FoodType.valueOf(foodType)))
+            return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
+        for (Food food : owner.getActiveRestaurant().getFoods()) {
+            if (food.getName().equals(foodName)) {
+                return Output.FOOD_ALREADY_EXIST;
+            }
         }
 
         owner.getActiveRestaurant().AddFood(foodName, foodPrice, foodType1);
@@ -264,6 +266,17 @@ public class Manager {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if (food.getID() == ID) {
+                boolean isThereFood = false;
+                for (Order order : owner.getActiveRestaurant().getOrders()) {
+                    if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
+                            !order.getOrderStatus().equals(OrderStatus.SENT)) || cartChecker(ID)) {
+                        isThereFood = true;
+                        break;
+                    }
+                }
+                if (isThereFood) {
+                    return Output.THERE_ARE_FOODS_IN_ORDER;
+                }
                 owner.getActiveRestaurant().deleteFood(ID);
                 return Output.FOOD_DELETED;
             }
@@ -277,7 +290,8 @@ public class Manager {
             if (food.getID() == ID) {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
-                    if (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) && !order.getOrderStatus().equals(OrderStatus.SENT)) {
+                    if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
+                            !order.getOrderStatus().equals(OrderStatus.SENT)) || cartChecker(ID)) {
                         isThereFood = true;
                         break;
                     }
@@ -600,5 +614,25 @@ public class Manager {
             }
         }
         return Output.INVALID_USER_NAME;
+    }
+    private boolean cartChecker(FoodType foodType) {
+        ArrayList<Customer> customers = UserList.getUserListInstance().getCustomers();
+        for (Customer customer : customers) {
+            for (Food food : customer.getCart().getFoods()) {
+                if (food.getType().equals(foodType))
+                    return true;
+            }
+        }
+        return false;
+    }
+    private boolean cartChecker(int ID) {
+        ArrayList<Customer> customers = UserList.getUserListInstance().getCustomers();
+        for (Customer customer : customers) {
+            for (Food food : customer.getCart().getFoods()) {
+                if (food.getID() == ID)
+                    return true;
+            }
+        }
+        return false;
     }
 }

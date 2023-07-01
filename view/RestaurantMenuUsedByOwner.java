@@ -85,8 +85,6 @@ RestaurantMenuUsedByOwner extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case NO_SUCH_FOOD_TYPE_IN_RESTAURANT -> System.out.println("There is no such food type in this restaurant!");
-            case NO_SUCH_FOOD_TYPE_IN_GENERAL -> System.out.println("There is no food type with this name!");
             case EQUAL_FOOD_TYPES -> System.out.println("These food types are the same!");
             case THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE -> System.out.println("There is still orders with this food type!");
             case FOOD_TYPE_ALREADY_EXIST -> System.out.println("This food type already exist in this restaurant!");
@@ -167,9 +165,9 @@ RestaurantMenuUsedByOwner extends Menu {
         }
     }
     private void processEditOrder(int ID) {
-        if(manager.editOrderStatus(ID)) {
+        if(manager.editOrderStatus(ID))
             System.out.println("order status edited");
-        }
-        System.out.println("There is no order with this ID");
+        else
+            System.out.println("There is no order with this ID");
     }
 }
