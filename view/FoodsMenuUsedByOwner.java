@@ -28,7 +28,7 @@ public class FoodsMenuUsedByOwner extends Menu {
         } else {
             for (Food food : activeRestaurantFoods) {
                 System.out.print("food name: " + food.getName() + "  ID: " + food.getID() + "  price: " + food.getPrice() + "  active discount: " + food.getDiscount());
-                if (food.hasDiscounted())
+                if (food.getDiscount() != 0)
                     System.out.print(" discounted price: "+food.getDiscountedPrice());
                 System.out.println("  food type:" + food.getType());
             }
@@ -99,10 +99,6 @@ public class FoodsMenuUsedByOwner extends Menu {
             case FOOD_ACTIVATED -> System.out.println("Food activated successfully");
             case FOOD_DEACTIVATED -> System.out.println("Food deactivated successfully");
             case THERE_ARE_FOODS_IN_ORDER -> System.out.println("There are still foods in orders with this ID");
-            case FOOD_ALREADY_DISCOUNTED -> System.out.println("This food is already discounted");
-            case WRONG_PERCENT_AMOUNT -> System.out.println("wrong percent amount!");
-            case FOOD_DISCOUNTED -> System.out.println("Food discounted successfully");
-            case INVALID_TIME -> System.out.println("Invalid time!");
         }
     }
 

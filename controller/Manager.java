@@ -3,10 +3,10 @@ package controller;
 import model.*;
 import model.Map;
 import view.OrderStatus;
-import view.Output;
 import view.RestaurantOwnerMenu;
-
+import view.Output;
 import java.util.*;
+
 
 public class Manager {
     //only one Manager
@@ -220,7 +220,7 @@ public class Manager {
         if (foodType1 == null) {
             return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
         }
-        if (!owner.getActiveRestaurant().getFoodType().contains(FoodType.valueOf(foodType)))
+        if (!owner.getActiveRestaurant().getFoodType().contains(foodType1))
             return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if (food.getName().equals(foodName)) {

@@ -88,7 +88,7 @@ public abstract class Menu {
                 canComment=false;
         }
         if (canComment) {
-            System.out.println("please write your comment : ");
+            System.out.println("please write your comment -> ");
             manager.addComment(scanner.nextLine());
             System.out.println("Comment added successfully!");
         }
@@ -97,7 +97,7 @@ public abstract class Menu {
     }
 
     protected void processEditComment(int ID) {
-        System.out.println("please write new comment :");
+        System.out.println("please write new comment ->");
         outputPrinter(manager.editComment(ID, scanner.nextLine()));
     }
 
@@ -105,7 +105,7 @@ public abstract class Menu {
         if (manager.isThereRating())
             System.out.println("there is no rating");
         else
-            System.out.println("average rating is : " + manager.averageRating());
+            System.out.println("average rating is -> " + manager.averageRating());
     }
 
     protected void processDisplayRatings() {
@@ -113,7 +113,7 @@ public abstract class Menu {
             System.out.println("there is no rating");
         } else {
             for (Rate rate : manager.getRating()) {
-                System.out.println(rate.getUser().getUserName() + " : " + rate.getRating());
+                System.out.println(rate.getUser().getUserName() + " -> " + rate.getRating());
             }
         }
     }
@@ -127,12 +127,12 @@ public abstract class Menu {
     }
 
     protected void processAddResponse(int ID) {
-        System.out.println("please write your response :");
+        System.out.println("please write your response ->");
         outputPrinter(manager.addResponse(ID, scanner.nextLine()));
     }
 
     protected void processEditResponse(int ID) {
-        System.out.println("please write new response :");
+        System.out.println("please write new response ->");
         outputPrinter(manager.editResponse(ID, scanner.nextLine()));
     }
 }
