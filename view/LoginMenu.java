@@ -98,7 +98,7 @@ public class LoginMenu extends Menu {
             if (!manager.getUser(username).getRestoreAnswer().equals(scanner.nextLine()))
                 System.out.println("wrong answer!");
             else
-                System.out.println("Your password is : \n"+manager.getLoggedInUser().getPassword());
+                System.out.println("Your password is : \n"+manager.getUser(username).getPassword());
 
         }
     }
