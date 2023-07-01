@@ -81,7 +81,7 @@ public abstract class Menu {
     protected void processAddComment() {
         boolean canComment = true;
         if (manager.getLoggedInUser() instanceof Customer customer) {
-            if (!customer.orderedFood(customer.getOrderedRestaurant()))
+            if (!customer.orderedFood(customer.getActiveRestaurant()))
                 canComment =false;
             else if (customer.getActiveRestaurant().getOpenedFood() != null &&
                     !customer.orderedFood(customer.getActiveRestaurant().getOpenedFood()))
