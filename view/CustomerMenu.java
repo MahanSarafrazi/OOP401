@@ -2,8 +2,8 @@ package view;
 
 import model.*;
 
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.*;
+import java.util.Map;
 import java.util.regex.Matcher;
 
 public class CustomerMenu extends Menu {
@@ -62,6 +62,8 @@ public class CustomerMenu extends Menu {
                 processSearchNearRestaurants(Integer.parseInt(matchers[46].group(1)));
             } else if(matchers[47].find()) {
                 processSearchNearRestaurants(Integer.parseInt(matchers[47].group(2)), matchers[47].group(1));
+            } else if (matchers[48].find()) {
+                processSearchFavoriteRestaurants();
             } else if (matchers[8].find()) {
                 if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
                     runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
@@ -120,7 +122,7 @@ public class CustomerMenu extends Menu {
             for (int i=0; i<order.getFoods().size();i++)
                 System.out.println("Food name : "+order.getFoods().get(i).getName()+" food price : "+
                         order.getFoods().get(i).getPrice()+" food Id : "+order.getFoods().get(i).getID()+
-                        " count : "+order.getFoodsCount().get(i));
+                        " count : "+ order.getFoodsCount().get(i));
             System.out.println("total price : "+order.totalPrice());
         }
     }
@@ -193,6 +195,16 @@ public class CustomerMenu extends Menu {
                     System.out.print(" "+foodType1);
                 System.out.println(" and location : "+restaurant.getLocation());
             }
+        }
+    }
+    private void processSearchFavoriteRestaurants() {
+        LinkedHashMap<String , Integer> favoriteRestaurants = manager.favoriteRestaurants();
+        if (favoriteRestaurants.isEmpty())
+            System.out.println("you didn't order yet");
+        for (Map.Entry<String ,Integer> entry : favoriteRestaurants.entrySet()) {
+            Restaurant restaurant = RestaurantList.getRestaurant(entry.getKey());
+            System.out.println(Objects.requireNonNull(restaurant).getName()+" "+restaurant.getID()+" ordered "+
+                    entry.getValue()+" times from this restaurant");
         }
     }
 }

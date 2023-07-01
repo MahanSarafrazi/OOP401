@@ -134,33 +134,30 @@ RestaurantMenuUsedByOwner extends Menu {
             System.out.println("no one ordered from you yet");
         else {
             for (Order order : restaurant.getOrders()) {
-                double totalPrice = 0;
-                System.out.println("order id : " + order.getID());
-                for (int i=0; i<order.getFoods().size();i++) {
-                    System.out.println("Food name : " + order.getFoods().get(i).getName() + " food price : " +
-                            order.getFoods().get(i).getDiscountedPrice() + " food Id : " + order.getFoods().get(i).getID() +
-                            " count : " + order.getFoods().get(i));
-                    totalPrice += order.getFoodsCount().get(i) * order.getFoods().get(i).getDiscountedPrice();
-                }
-                System.out.println("total price : " + totalPrice);
+                orderPrinter(order);
             }
         }
     }
+
+    private void orderPrinter(Order order) {
+        double totalPrice = 0;
+        System.out.println("order id : " + order.getID());
+        for (int i=0; i<order.getFoods().size();i++) {
+            System.out.println("Food name : " + order.getFoods().get(i).getName() + " food price : " +
+                    order.getFoods().get(i).getDiscountedPrice() + " food Id : " + order.getFoods().get(i).getID() +
+                    " count : " + order.getFoodsCount().get(i));
+            totalPrice += order.getFoodsCount().get(i) * order.getFoods().get(i).getDiscountedPrice();
+        }
+        System.out.println("total price : " + totalPrice);
+    }
+
     private void processShowOpenOrders() {
         ArrayList<Order> orders = manager.getActiveOrders();
         if (orders.isEmpty())
             System.out.println("there is no active order");
         else {
             for (Order order : orders) {
-                double totalPrice = 0;
-                System.out.println("order id : " + order.getID());
-                for (int i=0; i<order.getFoods().size();i++) {
-                    System.out.println("Food name : " + order.getFoods().get(i).getName() + " food price : " +
-                            order.getFoods().get(i).getDiscountedPrice() + " food Id : " + order.getFoods().get(i).getID() +
-                            " count : " + order.getFoodsCount().get(i));
-                    totalPrice += order.getFoodsCount().get(i) * order.getFoods().get(i).getDiscountedPrice();
-                }
-                System.out.println("total price : "+totalPrice);
+                orderPrinter(order);
             }
         }
     }
