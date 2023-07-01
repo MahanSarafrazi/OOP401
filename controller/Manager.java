@@ -3,10 +3,10 @@ package controller;
 import model.*;
 import model.Map;
 import view.OrderStatus;
-import view.Output;
 import view.RestaurantOwnerMenu;
-
+import view.Output;
 import java.util.*;
+
 
 public class Manager {
     //only one Manager
