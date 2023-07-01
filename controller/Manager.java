@@ -277,7 +277,7 @@ public class Manager {
             if (food.getID() == ID) {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
-                    if (order.getFoods().containsKey(owner.getActiveRestaurant().getFoodByID(ID)) && !order.getOrderStatus().equals(OrderStatus.SENT)) {
+                    if (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) && !order.getOrderStatus().equals(OrderStatus.SENT)) {
                         isThereFood = true;
                         break;
                     }
@@ -491,12 +491,13 @@ public class Manager {
     }
     public Output confirmOrder(int customerLocation) {
         Customer customer = (Customer) getLoggedInUser();
-        if (customer.getCart().isEmpty())
+        if (customer.getCart().getFoods().isEmpty())
             return Output.EMPTY_CART;
         else {
             double totalPrice = 0;
-            for (java.util.Map.Entry<Food,Integer> entry : customer.getCart().entrySet())
-                totalPrice+=entry.getValue()*entry.getKey().getDiscountedPrice();
+            Cart cart = customer.getCart();
+            for (int i=0;i<cart.getFoodsCount().size();i++)
+                totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
             if (totalPrice > customer.getCharge())
                 return Output.NOT_ENOUGH_CHARGE;
         }

@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 public class Customer extends User {
     public static Customer newCustomer(String userName, String pass) {
@@ -13,7 +12,7 @@ public class Customer extends User {
     private Customer(String userName, String pass) {
         super(userName, pass);
         orders=new ArrayList<>();
-        cart=new LinkedHashMap<>();
+        cart=new Cart();
         charge=0;
     }
 
@@ -29,14 +28,14 @@ public class Customer extends User {
         this.cart.clear();
         orderedRestaurant=null;
     }
-    private final LinkedHashMap<Food,Integer> cart;
-    public LinkedHashMap<Food,Integer> getCart() {return cart;}
+    private final Cart cart;
+    public Cart getCart() {return cart;}
     private double charge;
     public double getCharge() {return charge;}
     public void charge(double charge) {this.charge+=charge;}
     public boolean orderedFood(Food food) {
         for (Order order : orders)
-            if (order.getFoods().containsKey(food))
+            if (order.getFoods().contains(food))
                 return true;
         return false;
     }

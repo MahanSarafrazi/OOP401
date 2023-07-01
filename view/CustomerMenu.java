@@ -4,7 +4,6 @@ import model.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Map;
 import java.util.regex.Matcher;
 
 public class CustomerMenu extends Menu {
@@ -118,22 +117,25 @@ public class CustomerMenu extends Menu {
             System.out.println("There is no order with this ID!");
         else {
             System.out.println("Restaurant name : " + order.getRestaurantName());
-            for (Map.Entry<Food,Integer> entry : order.getFoods().entrySet())
-                System.out.println("Food name : "+entry.getKey().getName()+" food price : "+entry.getKey().getPrice()
-                +" food Id : "+entry.getKey().getID()+" count : "+entry.getValue());
+            for (int i=0; i<order.getFoods().size();i++)
+                System.out.println("Food name : "+order.getFoods().get(i).getName()+" food price : "+
+                        order.getFoods().get(i).getPrice()+" food Id : "+order.getFoods().get(i).getID()+
+                        " count : "+order.getFoodsCount().get(i));
             System.out.println("total price : "+order.totalPrice());
         }
     }
     private void processDisplayCart() {
         Customer customer = (Customer) manager.getLoggedInUser();
-        if (customer.getCart().isEmpty())
+        if (customer.getCart().getFoods().isEmpty())
             System.out.println("cart is empty");
         else {
             double totalPrice = 0;
-            for (Map.Entry<Food,Integer> entry : customer.getCart().entrySet()) {
-                System.out.println("Food name : " + entry.getKey().getName() + " food price : " + entry.getKey().getDiscountedPrice()
-                        + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
-                totalPrice+=entry.getValue()*entry.getKey().getDiscountedPrice();
+            Cart cart = customer.getCart();
+            for (int i=0; i<cart.getFoods().size();i++) {
+                System.out.println("Food name : " + cart.getFoods().get(i).getName() + " food price : " +
+                        cart.getFoods().get(i).getDiscountedPrice() + " food Id : " + cart.getFoods().get(i).getID() +
+                        " count : " + cart.getFoodsCount().get(i));
+                totalPrice += cart.getFoodsCount().get(i) * cart.getFoods().get(i).getDiscountedPrice();
             }
             System.out.println("total price : "+totalPrice);
         }
