@@ -417,7 +417,7 @@ public class Manager {
     }
     public Output addResponse(int ID, String responseText) {
         ArrayList<Comment> comments;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             comments = loggedInUser.getActiveRestaurant().getComments();
         else
             comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
