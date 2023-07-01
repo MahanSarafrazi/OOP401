@@ -71,12 +71,9 @@ public class LoginMenu extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case INVALID_PASSWORD -> {System.out.println("password is invalid");
-            break;}
-            case SUCCESSFUL_LOGIN -> {System.out.println("logged in successfully");
-            break;}
-            case NO_RESTORE_QUESTION -> {System.out.println("you didn't set any question!");
-            break;}
+            case INVALID_PASSWORD -> System.out.println("password is invalid");
+            case SUCCESSFUL_LOGIN ->System.out.println("logged in successfully");
+            case NO_RESTORE_QUESTION -> System.out.println("you didn't set any question!");
         }
     }
 
