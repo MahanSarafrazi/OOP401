@@ -58,7 +58,7 @@ public class FoodsMenuUsedByOwner extends Menu {
             } else if(matchers[19].find()) {
                 processActiveFood(Integer.parseInt(matchers[19].group(1)));
             } else if (matchers[29].find()) {
-
+                processDiscount(Integer.parseInt(matchers[29].group(1)), Double.parseDouble(matchers[29].group(2)), Integer.parseInt(matchers[29].group(3)));
             } else if(matchers[30].find()) {
                 processDisplayRating();
             } else if(matchers[22].find()) {
@@ -120,7 +120,7 @@ public class FoodsMenuUsedByOwner extends Menu {
     private void processActiveFood(int ID) {
         outputPrinter(manager.activeFood(ID));
     }
-    private void processDiscount(int ID, double discountPercent) {
-
+    private void processDiscount(int ID, double discountPercent, int hours) {
+        outputPrinter(manager.discountFood(ID, discountPercent, hours));
     }
 }
