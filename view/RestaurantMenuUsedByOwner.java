@@ -3,7 +3,6 @@ package view;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.regex.Matcher;
 
 public class
@@ -150,10 +149,11 @@ RestaurantMenuUsedByOwner extends Menu {
             for (Order order : restaurant.getOrders()) {
                 double totalPrice = 0;
                 System.out.println("order id : " + order.getID());
-                for (Map.Entry<Food, Integer> entry : order.getFoods().entrySet()) {
-                    System.out.println("Food name : " + entry.getKey().getName() + " food price : " + entry.getKey().getDiscountedPrice()
-                            + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
-                    totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
+                for (int i=0; i<order.getFoods().size();i++) {
+                    System.out.println("Food name : " + order.getFoods().get(i).getName() + " food price : " +
+                            order.getFoods().get(i).getDiscountedPrice() + " food Id : " + order.getFoods().get(i).getID() +
+                            " count : " + order.getFoods().get(i));
+                    totalPrice += order.getFoodsCount().get(i) * order.getFoods().get(i).getDiscountedPrice();
                 }
                 System.out.println("total price : " + totalPrice);
             }
@@ -167,10 +167,11 @@ RestaurantMenuUsedByOwner extends Menu {
             for (Order order : orders) {
                 double totalPrice = 0;
                 System.out.println("order id : " + order.getID());
-                for (Map.Entry<Food, Integer> entry : order.getFoods().entrySet()) {
-                    System.out.println("Food name : " + entry.getKey().getName() + " food price : " + entry.getKey().getDiscountedPrice()
-                            + " food Id : " + entry.getKey().getID() + " count : " + entry.getValue());
-                    totalPrice += entry.getValue() * entry.getKey().getDiscountedPrice();
+                for (int i=0; i<order.getFoods().size();i++) {
+                    System.out.println("Food name : " + order.getFoods().get(i).getName() + " food price : " +
+                            order.getFoods().get(i).getDiscountedPrice() + " food Id : " + order.getFoods().get(i).getID() +
+                            " count : " + order.getFoodsCount().get(i));
+                    totalPrice += order.getFoodsCount().get(i) * order.getFoods().get(i).getDiscountedPrice();
                 }
                 System.out.println("total price : "+totalPrice);
             }

@@ -4,7 +4,6 @@ import controller.Manager;
 import view.OrderStatus;
 
 import java.util.*;
-import java.util.Map;
 
 public class Order {
     private final int ID;
@@ -23,7 +22,7 @@ public class Order {
         this.timeOfGettingReady = numOfFoods * 300;
     }
     private final Date registerDate;
-    private int numOfFoods = 0;
+    private final int numOfFoods = 0;
     private int timeOfDelivery;
     private int timeOfGettingReady;
     public int getID() {
@@ -37,19 +36,23 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    private final LinkedHashMap<Food , Integer> foods;
-    public LinkedHashMap<Food, Integer> getFoods() {
+    private final ArrayList<Food> foods;
+    private final ArrayList<Integer> foodsCount;
+    public ArrayList<Food> getFoods() {
         return foods;
     }
-    public Order(LinkedHashMap<Food , Integer> cart, Restaurant restaurant, int customerLocation) {
+    public ArrayList<Integer> getFoodsCount() {
+        return foodsCount;
+    }
+    public Order(Cart cart, Restaurant restaurant, int customerLocation) {
         this.restaurantName = restaurant.getName();
         this.restaurantLocation = restaurant.getLocation();
-        this.foods = new LinkedHashMap<>();
-        for (Map.Entry<Food,Integer> entry : cart.entrySet()) {
-            this.foods.put(new Food(entry.getKey().getName(), entry.getKey().getDiscountedPrice(),
-                    entry.getKey().getType(), entry.getKey().getID()), entry.getValue());
-            numOfFoods += entry.getValue();
+        this.foods = new ArrayList<>();
+        this.foodsCount = new ArrayList<>();
+        for (Food food : cart.getFoods()) {
+            this.foods.add(new Food(food.getName(), food.getDiscountedPrice(), food.getType(),food.getID()));
         }
+        this.foodsCount.addAll(cart.getFoodsCount());
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();
         orderStatus = OrderStatus.NOT_READY;
@@ -64,16 +67,16 @@ public class Order {
 
     public LinkedHashSet<FoodType> getType() {
         LinkedHashSet<FoodType> foodTypes = new LinkedHashSet<>();
-        for (Map.Entry<Food,Integer> entry : foods.entrySet()) {
-            foodTypes.add(entry.getKey().getType());
+        for (Food food : foods) {
+            foodTypes.add(food.getType());
         }
         return foodTypes;
     }
     public double totalPrice() {
         double price = 0;
-        for (Map.Entry<Food,Integer> entry : foods.entrySet()) {
-            double number = entry.getValue();
-            price += entry.getKey().getPrice() * number;
+        for (int i=0; i<foods.size();i++) {
+            double number = foodsCount.get(i);
+            price += foods.get(i).getPrice() * number;
         }
         return price;
     }

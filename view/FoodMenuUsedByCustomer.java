@@ -95,7 +95,7 @@ public class FoodMenuUsedByCustomer extends Menu {
     }
     private void processRemoveFoodFromCart() {
         Customer customer = (Customer) manager.getLoggedInUser();
-        if(customer.getCart().containsKey(customer.getActiveRestaurant().getOpenedFood())) {
+        if(customer.getCart().getFoods().contains(customer.getActiveRestaurant().getOpenedFood())) {
             customer.getCart().remove(customer.getActiveRestaurant().getOpenedFood());
             System.out.println("removed");
         }
