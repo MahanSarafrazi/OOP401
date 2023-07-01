@@ -38,23 +38,31 @@ public class Run {
     //a helping method for getting Menu by enum
     private Menu getMenuByEnum(RunOrders runOrders) {
         switch (runOrders) {
-            case LOGIN_MENU : {
+            case LOGIN_MENU -> {
                 return LoginMenu.getLoginMenu();
-            } case CUSTOMER_MENU : {
+            }
+            case CUSTOMER_MENU -> {
                 return CustomerMenu.getCustomerMenuInstance();
-            } case DELIVERER_MENU : {
+            }
+            case DELIVERER_MENU -> {
                 return DelivererMenu.getDelivererMenuInstance();
-            } case RESTAURANT_OWNER_MENU : {
+            }
+            case RESTAURANT_OWNER_MENU -> {
                 return RestaurantOwnerMenu.getRestaurantOwnerMenuInstance();
-            } case RESTAURANT_MENU_USED_BY_OWNER : {
+            }
+            case RESTAURANT_MENU_USED_BY_OWNER -> {
                 return RestaurantMenuUsedByOwner.getRestaurantMenuUsedByOwnerInstance();
-            } case RESTAURANT_MENU_USED_BY_CUSTOMER : {
+            }
+            case RESTAURANT_MENU_USED_BY_CUSTOMER -> {
                 return RestaurantMenuUsedByCustomer.getRestaurantMenuUsedByCustomerInstance();
-            } case FOOD_MENU_USED_BY_CUSTOMER : {
+            }
+            case FOOD_MENU_USED_BY_CUSTOMER -> {
                 return FoodMenuUsedByCustomer.getFoodMenuUsedByCustomerInstance();
-            } case FOODS_MENU_USED_BY_OWNER : {
+            }
+            case FOODS_MENU_USED_BY_OWNER -> {
                 return FoodsMenuUsedByOwner.getFoodsMenuUsedByOwnerInstance();
-            } case FOOD_MENU_USED_BY_OWNER : {
+            }
+            case FOOD_MENU_USED_BY_OWNER -> {
                 return FoodMenuUsedByOwner.getFoodMenuUsedByOwnerInstance();
             }
         }

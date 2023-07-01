@@ -86,12 +86,10 @@ public class CustomerMenu extends Menu {
     protected void outputPrinter(Output output) {
         super.outputPrinter(output);
         switch (output) {
-            case ORDER_CONFIRMED ->{ System.out.println("order confirmed");
-            break;}
-            case NOT_ENOUGH_CHARGE -> {System.out.println("you dont have enough charge to buy your cart");
-            break;}
-            case EMPTY_CART -> {System.out.println("your cart is empty");
-            break;}
+            case ORDER_CONFIRMED -> System.out.println("order confirmed");
+            case NOT_ENOUGH_CHARGE -> System.out.println("you dont have enough charge to buy your cart");
+            case EMPTY_CART -> System.out.println("your cart is empty");
+            case NO_LOCATION -> System.out.println("Your location is invalid!");
         }
     }
     private void processSearchingRestaurant(String name) {
@@ -202,10 +200,10 @@ public class CustomerMenu extends Menu {
         }
     }
     private void processSearchFavoriteRestaurants() {
-        LinkedHashMap<String , Integer> favoriteRestaurants = manager.favoriteRestaurants();
+        LinkedHashMap<Integer , Integer> favoriteRestaurants = manager.favoriteRestaurants();
         if (favoriteRestaurants.isEmpty())
             System.out.println("you didn't order yet");
-        for (Map.Entry<String ,Integer> entry : favoriteRestaurants.entrySet()) {
+        for (Map.Entry<Integer ,Integer> entry : favoriteRestaurants.entrySet()) {
             Restaurant restaurant = RestaurantList.getRestaurant(entry.getKey());
             System.out.println(Objects.requireNonNull(restaurant).getName()+" "+restaurant.getID()+"        you ordered "+
                     entry.getValue()+" times from this restaurant");

@@ -34,19 +34,16 @@ public class Customer extends User {
     public double getCharge() {return charge;}
     public void charge(double charge) {this.charge+=charge;}
     public boolean orderedFood(Food food) {
-        for (Order order : orders) {
-            System.out.println("madareto gaiidam");
-            if (order.getFoods().contains(food))
-                return true;
-        }
+        for (Order order : orders)
+            for (Food food1 : order.getFoods())
+                if (food1.getID() == food.getID())
+                    return true;
         return false;
     }
     public boolean orderedFood (Restaurant restaurant) {
-        for (Order order : orders) {
-            System.out.println("pedareto gaiidam");
-            if (order.getRestaurantName().equals(restaurant.getName()))
+        for (Order order : orders)
+            if (order.getRestaurantID() == restaurant.getID())
                 return true;
-        }
         return false;
     }
     private Restaurant orderedRestaurant = null;

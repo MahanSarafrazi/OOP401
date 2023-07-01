@@ -67,10 +67,7 @@ public class Food {
         this.expireDate = expireDate;
     }
     public boolean hasDiscounted() {
-        if(expireDate == null || new Date().getTime() > expireDate.getTime()) {
-            return false;
-        }
-        return true;
+        return expireDate != null && new Date().getTime() <= expireDate.getTime();
     }
     public double getDiscount() {
         if(!hasDiscounted()) {

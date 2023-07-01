@@ -1,7 +1,7 @@
 package model;
 
 public class Rate {
-    private User user;
+    private final User user;
     public User getUser() {
         return user;
     }
