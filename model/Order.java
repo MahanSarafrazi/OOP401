@@ -23,7 +23,7 @@ public class Order {
     private final Date registerDate;
     private final int numOfFoods = 0;
     private int timeOfDelivery;
-    private int timeOfGettingReady;
+    private final int timeOfGettingReady;
     public int getID() {
         return ID;
     }
