@@ -17,11 +17,10 @@ public class Order {
     public void setRestaurantLocation(int newLocation) {
         restaurantLocation = newLocation;
         model.Map map = Manager.getManagerInstance().getMap();
-        int shortestPath = map.findShortestPath(customerLocation, restaurantLocation);
+        int shortestPath = map.findShortestPath(customerLocation, restaurantLocation,false);
         this.timeOfDelivery = shortestPath * 20;
     }
     private final Date registerDate;
-    private final int numOfFoods = 0;
     private int timeOfDelivery;
     private final int timeOfGettingReady;
     public int getID() {
@@ -59,8 +58,11 @@ public class Order {
         registerDate = new Date();
         registerDate.setTime(Calendar.getInstance().getTimeInMillis());
         model.Map map = Manager.getManagerInstance().getMap();
-        int shortestPath = map.findShortestPath(customerLocation, restaurant.getLocation());
+        int shortestPath = map.findShortestPath(customerLocation, restaurant.getLocation(),false);
         this.timeOfDelivery = shortestPath * 20;
+        int numOfFoods = 0;
+        for (int i : foodsCount)
+            numOfFoods+=i;
         this.timeOfGettingReady = numOfFoods * 300;
     }
 
@@ -85,7 +87,7 @@ public class Order {
             long time = timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime()) / 1000;
             return "The time left for order " + ID + " is " + time / 60 + " minutes";
         }
-        return "This order is delivered";
+        return "The order "+ID+" is delivered";
     }
     public void correctOrderStatus() {
         if(!orderStatus.equals(OrderStatus.SENT)) {

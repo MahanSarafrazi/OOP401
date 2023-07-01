@@ -1,12 +1,12 @@
 package controller;
 
 import model.*;
+import model.Map;
 import view.OrderStatus;
 import view.Output;
 import view.RestaurantOwnerMenu;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
 
 public class Manager {
     //only one Manager
@@ -460,7 +460,7 @@ public class Manager {
     public ArrayList<Restaurant> searchForNearRestaurants(int location) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants) {
-            if(map.findShortestPath(location, restaurant.getLocation()) < 30) {
+            if(map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
                 restaurants.add(restaurant);
             }
         }
@@ -488,10 +488,29 @@ public class Manager {
             if(!sameFoodType) {
                 continue;
             }
-            if(map.findShortestPath(location, restaurant.getLocation()) < 30) {
+            if(map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
                 restaurants.add(restaurant);
             }
         }
+        return restaurants;
+    }
+    public LinkedHashMap<String, Integer> favoriteRestaurants() {
+        Customer customer = (Customer) loggedInUser;
+        ArrayList<Order> orders = customer.getOrders();
+        LinkedHashMap<String , Integer> restaurants = new LinkedHashMap<>();
+        for (Order order : orders) {
+            if (restaurants.containsKey(order.getRestaurantName())) {
+                int newValue = restaurants.get(order.getRestaurantName()) + 1;
+                restaurants.put(order.getRestaurantName(), newValue);
+            }
+            else
+                restaurants.put(order.getRestaurantName(), 1);
+        }
+        List<java.util.Map.Entry<String , Integer>> list = new ArrayList<>(restaurants.entrySet());
+        list.sort(java.util.Map.Entry.comparingByValue());
+        restaurants.clear();
+        for (java.util.Map.Entry<String ,Integer> map : list)
+            restaurants.put(map.getKey(),map.getValue());
         return restaurants;
     }
     public Order selectOrder(int ID) {

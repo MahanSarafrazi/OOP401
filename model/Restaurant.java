@@ -1,5 +1,7 @@
 package model;
 
+import view.OrderStatus;
+
 import java.util.ArrayList;
 
 public class Restaurant {
@@ -30,7 +32,8 @@ public class Restaurant {
     public void setLocation(int location) {
         this.location=location;
         for (Order order : orders) {
-            order.setRestaurantLocation(location);
+            if (order.orderStatus != OrderStatus.SENT)
+                order.setRestaurantLocation(location);
         }
     }
 
