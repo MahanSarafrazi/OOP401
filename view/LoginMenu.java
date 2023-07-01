@@ -94,7 +94,7 @@ public class LoginMenu extends Menu {
         if (temp != Output.SHOW_RESTORE_QUESTION)
             outputPrinter(temp);
         else  {
-            System.out.println(manager.getLoggedInUser().getRestoreQuestion()+"?");
+            System.out.println(manager.getUser(username).getRestoreQuestion()+"?");
             if (!manager.getUser(username).getRestoreAnswer().equals(scanner.nextLine()))
                 System.out.println("wrong answer!");
             else
