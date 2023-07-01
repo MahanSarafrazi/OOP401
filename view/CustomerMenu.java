@@ -199,10 +199,10 @@ public class CustomerMenu extends Menu {
         }
     }
     private void processSearchFavoriteRestaurants() {
-        LinkedHashMap<String , Integer> favoriteRestaurants = manager.favoriteRestaurants();
+        LinkedHashMap<Integer , Integer> favoriteRestaurants = manager.favoriteRestaurants();
         if (favoriteRestaurants.isEmpty())
             System.out.println("you didn't order yet");
-        for (Map.Entry<String ,Integer> entry : favoriteRestaurants.entrySet()) {
+        for (Map.Entry<Integer ,Integer> entry : favoriteRestaurants.entrySet()) {
             Restaurant restaurant = RestaurantList.getRestaurant(entry.getKey());
             System.out.println(Objects.requireNonNull(restaurant).getName()+" "+restaurant.getID()+"        you ordered "+
                     entry.getValue()+" times from this restaurant");

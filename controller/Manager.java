@@ -494,23 +494,23 @@ public class Manager {
         }
         return restaurants;
     }
-    public LinkedHashMap<String, Integer> favoriteRestaurants() {
+    public LinkedHashMap<Integer, Integer> favoriteRestaurants() {
         Customer customer = (Customer) loggedInUser;
         ArrayList<Order> orders = customer.getOrders();
-        LinkedHashMap<String , Integer> restaurants = new LinkedHashMap<>();
+        LinkedHashMap<Integer , Integer> restaurants = new LinkedHashMap<>();
         for (Order order : orders) {
-            if (restaurants.containsKey(order.getRestaurantName())) {
-                int newValue = restaurants.get(order.getRestaurantName()) + 1;
-                restaurants.put(order.getRestaurantName(), newValue);
+            if (restaurants.containsKey(order.getRestaurantID())) {
+                int newValue = restaurants.get(order.getRestaurantID()) + 1;
+                restaurants.put(order.getRestaurantID(), newValue);
             }
             else
-                restaurants.put(order.getRestaurantName(), 1);
+                restaurants.put(order.getRestaurantID(), 1);
         }
-        List<java.util.Map.Entry<String , Integer>> list = new ArrayList<>(restaurants.entrySet());
+        List<java.util.Map.Entry<Integer , Integer>> list = new ArrayList<>(restaurants.entrySet());
         list.sort(java.util.Map.Entry.comparingByValue());
         Collections.reverse(list);
         restaurants.clear();
-        for (java.util.Map.Entry<String ,Integer> map : list)
+        for (java.util.Map.Entry<Integer ,Integer> map : list)
             restaurants.put(map.getKey(),map.getValue());
         return restaurants;
     }

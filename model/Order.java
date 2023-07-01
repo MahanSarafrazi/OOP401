@@ -7,6 +7,12 @@ import java.util.*;
 
 public class Order {
     private final int ID;
+    private final int restaurantID;
+
+    public int getRestaurantID() {
+        return restaurantID;
+    }
+
     OrderStatus orderStatus;
     private final int customerLocation;
     public int getCustomerLocation() {return customerLocation;}
@@ -45,6 +51,7 @@ public class Order {
     public Order(Cart cart, Restaurant restaurant, int customerLocation) {
         this.restaurantName = restaurant.getName();
         this.restaurantLocation = restaurant.getLocation();
+        this.restaurantID=restaurant.getID();
         this.foods = new ArrayList<>();
         this.foodsCount = new ArrayList<>();
         for (Food food : cart.getFoods()) {
