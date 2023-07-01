@@ -124,6 +124,7 @@ public class CustomerMenu extends Menu {
                         order.getFoods().get(i).getPrice()+" food Id : "+order.getFoods().get(i).getID()+
                         " count : "+ order.getFoodsCount().get(i));
             System.out.println("total price : "+order.totalPrice());
+            manager.getMap().findShortestPath(order.getRestaurantLocation(), order.getCustomerLocation(), true);
         }
     }
     private void processDisplayCart() {

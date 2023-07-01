@@ -17,7 +17,7 @@ public class Order {
     public void setRestaurantLocation(int newLocation) {
         restaurantLocation = newLocation;
         model.Map map = Manager.getManagerInstance().getMap();
-        int shortestPath = map.findShortestPath(customerLocation, restaurantLocation);
+        int shortestPath = map.findShortestPath(customerLocation, restaurantLocation,false);
         this.timeOfDelivery = shortestPath * 20;
     }
     private final Date registerDate;
@@ -58,7 +58,7 @@ public class Order {
         registerDate = new Date();
         registerDate.setTime(Calendar.getInstance().getTimeInMillis());
         model.Map map = Manager.getManagerInstance().getMap();
-        int shortestPath = map.findShortestPath(customerLocation, restaurant.getLocation());
+        int shortestPath = map.findShortestPath(customerLocation, restaurant.getLocation(),false);
         this.timeOfDelivery = shortestPath * 20;
         int numOfFoods = 0;
         for (int i : foodsCount)

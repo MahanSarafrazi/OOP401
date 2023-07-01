@@ -460,7 +460,7 @@ public class Manager {
     public ArrayList<Restaurant> searchForNearRestaurants(int location) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants) {
-            if(map.findShortestPath(location, restaurant.getLocation()) < 30) {
+            if(map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
                 restaurants.add(restaurant);
             }
         }
@@ -488,7 +488,7 @@ public class Manager {
             if(!sameFoodType) {
                 continue;
             }
-            if(map.findShortestPath(location, restaurant.getLocation()) < 30) {
+            if(map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
                 restaurants.add(restaurant);
             }
         }
