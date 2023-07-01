@@ -39,6 +39,12 @@ public class Customer extends User {
                 return true;
         return false;
     }
+    public boolean orderedFood (Restaurant restaurant) {
+        for (Order order : orders)
+            if (order.getRestaurantName().equals(restaurant.getName()))
+                return true;
+        return false;
+    }
     private Restaurant orderedRestaurant = null;
     public void setOrderedRestaurant(Restaurant restaurant) {this.orderedRestaurant=restaurant;}
     public Restaurant getOrderedRestaurant() {return orderedRestaurant;}
