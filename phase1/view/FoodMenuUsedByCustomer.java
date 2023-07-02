@@ -58,6 +58,7 @@ public class FoodMenuUsedByCustomer extends Menu {
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
+                processExit();
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
             }  else {

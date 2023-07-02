@@ -92,6 +92,9 @@ public class Manager {
     public void logout() {
         if (loggedInUser instanceof RestaurantOwner)
             RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        if (loggedInUser instanceof Customer customer) {
+            customer.clearCart();
+        }
         if (loggedInUser.getActiveRestaurant() != null)
             loggedInUser.getActiveRestaurant().closeFood();
         loggedInUser.deActiveRestaurant();
@@ -157,7 +160,7 @@ public class Manager {
             return Output.EQUAL_FOOD_TYPES;
         }
 
-        if (loggedInUser.getActiveRestaurant().isThereAnyOrderOfThisType(changingType) || cartChecker(changingType)) {
+        if (loggedInUser.getActiveRestaurant().isThereAnyOrderOfThisType(changingType)) {
             return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
         }
 
@@ -269,7 +272,7 @@ public class Manager {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
                     if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
-                            !order.getOrderStatus().equals(OrderStatus.SENT)) || cartChecker(ID)) {
+                            !order.getOrderStatus().equals(OrderStatus.SENT))) {
                         isThereFood = true;
                         break;
                     }
@@ -291,7 +294,7 @@ public class Manager {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
                     if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
-                            !order.getOrderStatus().equals(OrderStatus.SENT)) || cartChecker(ID)) {
+                            !order.getOrderStatus().equals(OrderStatus.SENT))) {
                         isThereFood = true;
                         break;
                     }
@@ -638,25 +641,5 @@ public class Manager {
             }
         }
         return Output.INVALID_USER_NAME;
-    }
-    private boolean cartChecker(FoodType foodType) {
-        ArrayList<Customer> customers = UserList.getUserListInstance().getCustomers();
-        for (Customer customer : customers) {
-            for (Food food : customer.getCart().getFoods()) {
-                if (food.getType().equals(foodType))
-                    return true;
-            }
-        }
-        return false;
-    }
-    private boolean cartChecker(int ID) {
-        ArrayList<Customer> customers = UserList.getUserListInstance().getCustomers();
-        for (Customer customer : customers) {
-            for (Food food : customer.getCart().getFoods()) {
-                if (food.getID() == ID)
-                    return true;
-            }
-        }
-        return false;
     }
 }
