@@ -204,31 +204,52 @@
                   "hasResponse": false
                 }
               ],
-              "rates": []
+              "rates": [
+                {
+                  "user": {
+                    "orders": [
+                      {
+                        "ID": 652686,
+                        "restaurantID": 858562,
+                        "orderStatus": "SENT",
+                        "customerLocation": 55,
+                        "restaurantName": "reza",
+                        "restaurantLocation": 22,
+                        "registerDate": "Jul 2, 2023, 2:13:31 AM",
+                        "timeOfDelivery": 420,
+                        "timeOfGettingReady": 900,
+                        "foods": [
+                          {
+                            "price": 25000.0,
+                            "type": "IRANIAN",
+                            "name": "joj",
+                            "activation": true,
+                            "ID": 381510,
+                            "discount": 0.0,
+                            "comments": [],
+                            "rates": []
+                          }
+                        ],
+                        "foodsCount": [
+                          3
+                        ]
+                      }
+                    ],
+                    "cart": {
+                      "foods": [],
+                      "foodsCount": []
+                    },
+                    "charge": 5555555.0,
+                    "userName": "cusi",
+                    "password": "Cusi7485"
+                  },
+                  "rating": 4.0
+                }
+              ]
             }
           ],
           "comments": [],
-          "rates": [],
-          "openedFood": {
-            "price": 25000.0,
-            "type": "IRANIAN",
-            "name": "joj",
-            "activation": true,
-            "ID": 381510,
-            "discount": 0.0,
-            "comments": [
-              {
-                "user": {
-                  "userName": "cusi",
-                  "password": "Cusi7485"
-                },
-                "comment": "kosher",
-                "ID": 718237,
-                "hasResponse": false
-              }
-            ],
-            "rates": []
-          }
+          "rates": []
         }
       ],
       "userName": "resi",
