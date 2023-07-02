@@ -20,6 +20,7 @@ public class Main extends Application {
         ((RegisterAndLoginMenuController) loader.getController()).setStage(primaryStage);
         ((RegisterAndLoginMenuController) loader.getController()).setMainScene(scene);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Shahkar");
         primaryStage.show();
     }
 }
