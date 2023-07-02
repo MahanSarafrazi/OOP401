@@ -67,6 +67,10 @@ public abstract class Menu {
         manager.logout();
         System.out.println("logged out");
     }
+    protected void processExit() {
+        Customer customer = (Customer) manager.getLoggedInUser();
+        customer.clearCart();
+    }
 
     protected void processBack() {
         manager.back();

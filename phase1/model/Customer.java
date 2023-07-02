@@ -25,7 +25,7 @@ public class Customer extends User {
     }
     public void addOrder(Order order) {
         orders.add(order);
-        this.cart.clear();
+        clearCart();
         orderedRestaurant=null;
     }
     private final Cart cart;
@@ -49,5 +49,6 @@ public class Customer extends User {
     private Restaurant orderedRestaurant = null;
     public void setOrderedRestaurant(Restaurant restaurant) {this.orderedRestaurant=restaurant;}
     public Restaurant getOrderedRestaurant() {return orderedRestaurant;}
+    public void clearCart() {cart.clear();}
 }
 

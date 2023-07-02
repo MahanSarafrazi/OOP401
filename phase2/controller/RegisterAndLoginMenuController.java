@@ -10,30 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class RegisterAndLoginMenuController {
-
-    private Manager manager = Manager.getManagerInstance();
-
-    private Stage stage;
-
-    public Scene getMainScene() {
-        return mainScene;
-    }
-
-    public void setMainScene(Scene mainScene) {
-        this.mainScene = mainScene;
-    }
-
-    private Scene mainScene;
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
-    public Stage getStage() {
-        return stage;
-    }
-
+public class RegisterAndLoginMenuController extends MenuController {
     @FXML
     public Button exit;
     @FXML
@@ -51,7 +28,8 @@ public class RegisterAndLoginMenuController {
             throw new RuntimeException(e);
         }
         Scene loginScene = new Scene(loginLoader.getRoot());
-        stage.setScene(loginScene);
+        ((LoginMenuController) loginLoader.getController()).initialize(getStage(), loginScene, getMainScene());
+        super.getStage().setScene(loginScene);
     }
 
     @FXML

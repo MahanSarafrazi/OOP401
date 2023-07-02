@@ -26,6 +26,8 @@ public class CustomerMenu extends Menu {
     public RunOrders openMenu() {
         System.out.println("Welcome! Here is the list of restaurants");
         RestaurantList.restaurants.sort(Comparator.comparing(Restaurant::getName).thenComparing(Restaurant::getID));
+        if (RestaurantList.restaurants.isEmpty())
+            System.out.println("there is no restaurant in the city!");
         for (Restaurant restaurant : RestaurantList.restaurants) {
             System.out.println(restaurant.getName()+" "+restaurant.getID());
         }
@@ -44,7 +46,9 @@ public class CustomerMenu extends Menu {
                 processAddingRestoreQuestion();
             } else if (matchers[20].find()) {
                 processSearchingRestaurant(matchers[20].group(1));
-            } else if (matchers[35].find()) {
+            } else if (matchers[21].find()) {
+                processSearchingFood(matchers[21].group(1));
+            }else if (matchers[35].find()) {
                 processShowOrderHistory();
             } else if (matchers[36].find()) {
                 processSelectOrder(Integer.parseInt(matchers[36].group(1)));
@@ -74,6 +78,7 @@ public class CustomerMenu extends Menu {
                 runOrders = RunOrders.LOGIN_MENU;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
+                processExit();
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
             }  else {
@@ -92,8 +97,10 @@ public class CustomerMenu extends Menu {
         }
     }
     private void processSearchingRestaurant(String name) {
+        int count =0;
         for (Restaurant restaurant : RestaurantList.restaurants)
-            if (restaurant.getName().equals(name)) {
+            if (restaurant.getName().contains(name)) {
+                count ++;
                 System.out.print("ID : "+restaurant.getID()+" with food types:");
                 for (FoodType foodType : restaurant.getFoodType())
                     System.out.print(" "+foodType);
@@ -101,6 +108,22 @@ public class CustomerMenu extends Menu {
             }
         if (RestaurantList.restaurants.isEmpty())
             System.out.println("there is no restaurant in city , lol!");
+        else if (count == 0) {
+            System.out.println("there is no restaurant with this name");
+        }
+    }
+    private void processSearchingFood(String name) {
+        int count = 0;
+        for (Food food : manager.getActiveFoods())
+            if (food.getName().contains(name)) {
+                count++;
+                System.out.println("Restaurant name : "+food.getRestaurantName()+" with discounted price : "+food.getDiscountedPrice()+" and type : "+food.getType());
+            }
+        if (manager.getActiveRestaurantActiveFoods().isEmpty())
+            System.out.println("there is no active food in this restaurant.");
+        else if (count == 0) {
+            System.out.println("there is no food with this name");
+        }
     }
     private void processShowOrderHistory() {
         Customer customer = (Customer) manager.getLoggedInUser();

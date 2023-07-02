@@ -122,8 +122,8 @@ RestaurantMenuUsedByOwner extends Menu {
             for (Comment comment : manager.getLoggedInUser().getActiveRestaurant().getComments()) {
                 System.out.println(comment.getUser().getUserName() + " said : " + comment.getComment() + " (comment ID : "+comment.getID()+" )");
                 if (comment.hasResponse) {
-                    System.out.println("        You " + comment.getResponse().getUser().getUserName() +
-                            " have responded : " + comment.getResponse().getComment());
+                    System.out.println("        You " + comment.getResponderName() +
+                            " have responded : " + comment.getResponse()+" (comment ID : "+comment.getID()+" )");
                 }
             }
         }

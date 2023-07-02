@@ -74,7 +74,7 @@ public class Restaurant {
     private final ArrayList<Food> foods;
 
     public void AddFood(String foodName, double foodPrice, FoodType foodType) {
-        foods.add(new Food(foodName, foodPrice, foodType));
+        foods.add(new Food(foodName, foodPrice, foodType,name));
     }
 
     public void deleteFood(int ID) {
@@ -96,7 +96,7 @@ public class Restaurant {
 
     public boolean isThereAnyOrderOfThisType(FoodType foodType) {
         for (Order order : orders) {
-            if (order.getType().contains(foodType)) {
+            if (order.getType().contains(foodType) && !order.orderStatus.equals(OrderStatus.SENT)) {
                 return true;
             }
         }
