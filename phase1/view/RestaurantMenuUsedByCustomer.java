@@ -86,7 +86,8 @@ public class RestaurantMenuUsedByCustomer extends Menu {
         for (Food food : manager.getActiveRestaurantActiveFoods())
             if (food.getName().contains(name)) {
                 count++;
-                System.out.println("ID : "+food.getID()+" with discounted price : "+food.getDiscountedPrice()+" and type : "+food.getType());
+                System.out.println("Food name"+food.getName()+
+                        " ID : "+food.getID()+" with discounted price : "+food.getDiscountedPrice()+" and type : "+food.getType());
             }
         if (manager.getActiveRestaurantActiveFoods().isEmpty())
             System.out.println("there is no active food in this restaurant.");

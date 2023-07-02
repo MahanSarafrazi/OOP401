@@ -536,23 +536,26 @@ public class Manager {
         }
         return null;
     }
-    public Output confirmOrder(int customerLocation) {
+    public Output confirmOrder(int customerLocation,String discountToken) {
+        double totalPrice = 0;
         Customer customer = (Customer) getLoggedInUser();
+        if (!discountToken.equals("NO") && !customer.hasThisToken(discountToken))
+            return Output.WRONG_DISCOUNT_TOKEN;
         if (customer.getCart().getFoods().isEmpty())
             return Output.EMPTY_CART;
         else if(customerLocation > 1000) {
             return Output.LOCATION_NOT_IN_THE_MAP;
         } else {
-            double totalPrice = 0;
             Cart cart = customer.getCart();
             for (int i=0;i<cart.getFoodsCount().size();i++)
                 totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
-            if (totalPrice > customer.getCharge())
+            if (totalPrice > customer.getCharge(discountToken))
                 return Output.NOT_ENOUGH_CHARGE;
         }
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
         customer.getOrderedRestaurant().addOrder(order);
-        customer.addOrder(order);
+        if(customer.addOrder(order,totalPrice,discountToken))
+            return Output.ORDER_CONFIRMED2;
         return Output.ORDER_CONFIRMED;
     }
     public ArrayList<String> estimateOrderTime() {
