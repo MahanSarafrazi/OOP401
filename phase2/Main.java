@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import phase2.controller.RegisterAndLoginMenuController;
 
 import java.awt.*;
 
@@ -18,6 +19,8 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/RegisterAndLoginMenu.fxml"));
         loader.load();
         Scene scene = new Scene(loader.getRoot());
+        ((RegisterAndLoginMenuController) loader.getController()).setStage(primaryStage);
+        ((RegisterAndLoginMenuController) loader.getController()).setMainScene(scene);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
