@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.LoginMenuController">
+   <children>
+      <TextField fx:id="userName" layoutX="280.0" layoutY="117.0" />
+      <TextField fx:id="passWord" layoutX="280.0" layoutY="152.0" />
+      <Button fx:id="confirm" alignment="CENTER" layoutX="221.0" layoutY="212.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="confirm" AnchorPane.bottomAnchor="146.0" />
+      <Label layoutX="177.0" layoutY="117.0" text="username:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="179.0" layoutY="152.0" text="password:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Text layoutX="128.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter your information" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="135.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+         <fill>
+            <RadialGradient centerX="0.4888888888888889" centerY="0.5476190476190477" radius="0.5">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#0bd9d9" offset="0.9484536082474225" />
+                  <Stop color="#09dada" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Text>
+      <Button fx:id="reset" alignment="CENTER" layoutX="221.0" layoutY="268.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="reset" AnchorPane.bottomAnchor="90.0" />
+      <Button fx:id="forgetPassword" alignment="CENTER" layoutX="221.0" layoutY="323.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="forget password?" AnchorPane.bottomAnchor="35.0" />
+      <Button fx:id="back" alignment="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../resources/Pics/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
