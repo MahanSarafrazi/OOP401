@@ -16,7 +16,7 @@ public class Food {
     }
     public double getPrice(){return price;}
     public double getDiscountedPrice() {
-        if(!hasDiscounted()) {
+        if(!isDiscounted()) {
             discount = 0;
         }
         return price - price * (discount / 100);
@@ -69,11 +69,11 @@ public class Food {
     public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
     }
-    public boolean hasDiscounted() {
+    public boolean isDiscounted() {
         return expireDate != null && new Date().getTime() <= expireDate.getTime();
     }
     public double getDiscount() {
-        if(!hasDiscounted()) {
+        if(!isDiscounted()) {
             discount = 0;
         }
         return discount;

@@ -99,6 +99,10 @@ public class FoodsMenuUsedByOwner extends Menu {
             case FOOD_ACTIVATED -> System.out.println("Food activated successfully");
             case FOOD_DEACTIVATED -> System.out.println("Food deactivated successfully");
             case THERE_ARE_FOODS_IN_ORDER -> System.out.println("There are still foods in orders with this ID");
+            case FOOD_ALREADY_DISCOUNTED -> System.out.println("food already has discount!");
+            case WRONG_PERCENT_AMOUNT -> System.out.println("discount percent should be between 0 and 50");
+            case INVALID_TIME -> System.out.println("come on , it's not possible . Enter positive time");
+            case FOOD_DISCOUNTED -> System.out.println("food discounted successfully");
         }
     }
 
