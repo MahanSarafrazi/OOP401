@@ -19,8 +19,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/RegisterAndLoginMenu.fxml"));
         loader.load();
         Scene scene = new Scene(loader.getRoot());
-        ((RegisterAndLoginMenuController) loader.getController()).setStage(primaryStage);
-        ((RegisterAndLoginMenuController) loader.getController()).setMainScene(scene);
+        ((RegisterAndLoginMenuController) loader.getController()).initialize(primaryStage, scene, null);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
