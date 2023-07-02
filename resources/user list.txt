@@ -42,43 +42,6 @@
       "charge": 0.0,
       "userName": "bgibhbhjb",
       "password": "Aaaaaaaaaaaaaa7"
-    },
-    {
-      "orders": [
-        {
-          "ID": 652686,
-          "restaurantID": 858562,
-          "orderStatus": "SENT",
-          "customerLocation": 55,
-          "restaurantName": "reza",
-          "restaurantLocation": 22,
-          "registerDate": "Jul 2, 2023, 2:13:31 AM",
-          "timeOfDelivery": 420,
-          "timeOfGettingReady": 900,
-          "foods": [
-            {
-              "price": 25000.0,
-              "type": "IRANIAN",
-              "name": "joj",
-              "activation": true,
-              "ID": 381510,
-              "discount": 0.0,
-              "comments": [],
-              "rates": []
-            }
-          ],
-          "foodsCount": [
-            3
-          ]
-        }
-      ],
-      "cart": {
-        "foods": [],
-        "foodsCount": []
-      },
-      "charge": 5555555.0,
-      "userName": "cusi",
-      "password": "Cusi7485"
     }
   ],
   "deliverers": [],
@@ -151,188 +114,55 @@
     {
       "restaurants": [
         {
-          "name": "reza",
-          "orders": [
-            {
-              "ID": 652686,
-              "restaurantID": 858562,
-              "orderStatus": "SENT",
-              "customerLocation": 55,
-              "restaurantName": "reza",
-              "restaurantLocation": 22,
-              "registerDate": "Jul 2, 2023, 2:13:31 AM",
-              "timeOfDelivery": 420,
-              "timeOfGettingReady": 900,
-              "foods": [
-                {
-                  "price": 25000.0,
-                  "type": "IRANIAN",
-                  "name": "joj",
-                  "activation": true,
-                  "ID": 381510,
-                  "discount": 0.0,
-                  "comments": [],
-                  "rates": []
-                }
-              ],
-              "foodsCount": [
-                3
-              ]
-            }
-          ],
-          "ID": 858562,
-          "location": 22,
+          "name": "j",
+          "orders": [],
+          "ID": 906886,
+          "location": 50,
           "foodTypes": [
             "IRANIAN"
           ],
           "foods": [
             {
-              "price": 25000.0,
+              "price": 50.0,
               "type": "IRANIAN",
-              "name": "joj",
+              "name": "pashm",
               "activation": true,
-              "ID": 381510,
+              "ID": 200232,
               "discount": 0.0,
-              "comments": [
-                {
-                  "user": {
-                    "userName": "cusi",
-                    "password": "Cusi7485"
-                  },
-                  "comment": "kosher",
-                  "ID": 718237,
-                  "hasResponse": false
-                }
-              ],
-              "rates": [
-                {
-                  "user": {
-                    "orders": [
-                      {
-                        "ID": 652686,
-                        "restaurantID": 858562,
-                        "orderStatus": "SENT",
-                        "customerLocation": 55,
-                        "restaurantName": "reza",
-                        "restaurantLocation": 22,
-                        "registerDate": "Jul 2, 2023, 2:13:31 AM",
-                        "timeOfDelivery": 420,
-                        "timeOfGettingReady": 900,
-                        "foods": [
-                          {
-                            "price": 25000.0,
-                            "type": "IRANIAN",
-                            "name": "joj",
-                            "activation": true,
-                            "ID": 381510,
-                            "discount": 0.0,
-                            "comments": [],
-                            "rates": []
-                          }
-                        ],
-                        "foodsCount": [
-                          3
-                        ]
-                      }
-                    ],
-                    "cart": {
-                      "foods": [],
-                      "foodsCount": []
-                    },
-                    "charge": 5555555.0,
-                    "userName": "cusi",
-                    "password": "Cusi7485"
-                  },
-                  "rating": 4.0
-                }
-              ]
+              "restaurantName": "j",
+              "comments": [],
+              "rates": []
             }
           ],
           "comments": [],
           "rates": []
         }
       ],
-      "userName": "resi",
-      "password": "Resi7485",
+      "userName": "fariiii",
+      "password": "Fariiii5",
       "activeRestaurant": {
-        "name": "reza",
-        "orders": [
-          {
-            "ID": 652686,
-            "restaurantID": 858562,
-            "orderStatus": "SENT",
-            "customerLocation": 55,
-            "restaurantName": "reza",
-            "restaurantLocation": 22,
-            "registerDate": "Jul 2, 2023, 2:13:31 AM",
-            "timeOfDelivery": 420,
-            "timeOfGettingReady": 900,
-            "foods": [
-              {
-                "price": 25000.0,
-                "type": "IRANIAN",
-                "name": "joj",
-                "activation": true,
-                "ID": 381510,
-                "discount": 0.0,
-                "comments": [],
-                "rates": []
-              }
-            ],
-            "foodsCount": [
-              3
-            ]
-          }
-        ],
-        "ID": 858562,
-        "location": 22,
+        "name": "j",
+        "orders": [],
+        "ID": 906886,
+        "location": 50,
         "foodTypes": [
           "IRANIAN"
         ],
         "foods": [
           {
-            "price": 25000.0,
+            "price": 50.0,
             "type": "IRANIAN",
-            "name": "joj",
+            "name": "pashm",
             "activation": true,
-            "ID": 381510,
+            "ID": 200232,
             "discount": 0.0,
-            "comments": [
-              {
-                "user": {
-                  "userName": "cusi",
-                  "password": "Cusi7485"
-                },
-                "comment": "kosher",
-                "ID": 718237,
-                "hasResponse": false
-              }
-            ],
+            "restaurantName": "j",
+            "comments": [],
             "rates": []
           }
         ],
         "comments": [],
-        "rates": [],
-        "openedFood": {
-          "price": 25000.0,
-          "type": "IRANIAN",
-          "name": "joj",
-          "activation": true,
-          "ID": 381510,
-          "discount": 0.0,
-          "comments": [
-            {
-              "user": {
-                "userName": "cusi",
-                "password": "Cusi7485"
-              },
-              "comment": "kosher",
-              "ID": 718237,
-              "hasResponse": false
-            }
-          ],
-          "rates": []
-        }
+        "rates": []
       }
     }
   ]
