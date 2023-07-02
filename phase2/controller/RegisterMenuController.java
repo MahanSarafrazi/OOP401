@@ -4,9 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 
-public class LoginMenuController extends MenuController {
+public class RegisterMenuController extends MenuController {
 
     @FXML
     public TextField userName;
@@ -21,11 +20,7 @@ public class LoginMenuController extends MenuController {
     public Button reset;
 
     @FXML
-    public Button forgetPassword;
-
-    @FXML
     public Button back;
-
 
     public void backHandler(ActionEvent actionEvent) {
         back();
