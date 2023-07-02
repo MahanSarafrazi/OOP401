@@ -8,7 +8,6 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 public class RegisterAndLoginMenuController extends MenuController {
     @FXML
@@ -39,6 +38,14 @@ public class RegisterAndLoginMenuController extends MenuController {
 
     @FXML
     public void registerHandler(ActionEvent actionEvent) {
-        System.out.println("test");
+        FXMLLoader registerLoader = new FXMLLoader(this.getClass().getResource("../view/RegisterMenu.fxml"));
+        try {
+            registerLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene registerScene = new Scene(registerLoader.getRoot());
+        ((RegisterMenuController) registerLoader.getController()).initialize(getStage(), registerScene, getMainScene());
+        super.getStage().setScene(registerScene);
     }
 }
