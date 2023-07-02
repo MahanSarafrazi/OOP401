@@ -91,7 +91,20 @@ public class FoodsMenuUsedByOwner extends Menu {
         super.outputPrinter(output);
         switch (output) {
             case FOOD_ALREADY_EXIST -> System.out.println("This food already exist in this restaurant");
-            case FOOD_ADDED -> System.out.println("Food added successfully");
+            case FOOD_ADDED -> {
+                manager.getLoggedInUser().getActiveRestaurant().getFoods().sort(Comparator.comparing(Food::getName).thenComparing(Food::getID));
+                ArrayList<Food> activeRestaurantFoods = manager.getLoggedInUser().getActiveRestaurant().getFoods();
+                if(activeRestaurantFoods.isEmpty()) {
+                    System.out.println("There is no food in your restaurant");
+                } else {
+                    for (Food food : activeRestaurantFoods) {
+                        System.out.print("food name: " + food.getName() + "  ID: " + food.getID() + "  price: " + food.getPrice() + "  active discount: " + food.getDiscount());
+                        if (food.getDiscount() != 0)
+                            System.out.print(" discounted price: "+food.getDiscountedPrice());
+                        System.out.println("  food type:" + food.getType());
+                    }
+                }
+            }
             case NO_FOOD_WITH_THIS_ID -> System.out.println("There is no food with this ID in your restaurant");
             case FOOD_NAME_EDITED -> System.out.println("Food name edited successfully");
             case FOOD_PRICE_EDITED -> System.out.println("Food price edited successfully");

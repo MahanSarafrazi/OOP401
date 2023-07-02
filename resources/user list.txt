@@ -110,6 +110,60 @@
       ],
       "userName": "ghrbg",
       "password": "Aaaaaaaaaaaaaaa5"
+    },
+    {
+      "restaurants": [
+        {
+          "name": "j",
+          "orders": [],
+          "ID": 906886,
+          "location": 50,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "pashm",
+              "activation": true,
+              "ID": 200232,
+              "discount": 0.0,
+              "restaurantName": "j",
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "fariiii",
+      "password": "Fariiii5",
+      "activeRestaurant": {
+        "name": "j",
+        "orders": [],
+        "ID": 906886,
+        "location": 50,
+        "foodTypes": [
+          "IRANIAN"
+        ],
+        "foods": [
+          {
+            "price": 50.0,
+            "type": "IRANIAN",
+            "name": "pashm",
+            "activation": true,
+            "ID": 200232,
+            "discount": 0.0,
+            "restaurantName": "j",
+            "comments": [],
+            "rates": []
+          }
+        ],
+        "comments": [],
+        "rates": []
+      }
     }
   ]
 }
