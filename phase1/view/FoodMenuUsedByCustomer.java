@@ -58,6 +58,7 @@ public class FoodMenuUsedByCustomer extends Menu {
                 runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
                 inThisMenu = false;
             } else if(input.matches(Inputs.EXIT_PROGRAM.commandingPattern.pattern())) {
+                processExit();
                 runOrders = RunOrders.EXIT;
                 inThisMenu = false;
             }  else {
@@ -73,8 +74,8 @@ public class FoodMenuUsedByCustomer extends Menu {
         for (Comment comment :manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments()) {
             System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" (comment ID : "+comment.getID()+" )");
             if (comment.hasResponse)
-                System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
-                        " has responded : "+comment.getResponse().getComment());
+                System.out.println("        Owner "+comment.getResponderName()+
+                        " has responded : "+comment.getResponse()+" (comment ID : "+comment.getID()+" )");
         }
     }
     private void processAddFoodToCart(int count) {

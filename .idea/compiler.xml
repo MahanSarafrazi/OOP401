@@ -6,11 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="my-app" />
+        <module name="OOP401" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="my-app" target="16" />
       <module name="OOP401" target="16" />
     </bytecodeTargetLevel>
   </component>
