@@ -89,7 +89,6 @@ public class CustomerMenu extends Menu {
             case ORDER_CONFIRMED -> System.out.println("order confirmed");
             case NOT_ENOUGH_CHARGE -> System.out.println("you dont have enough charge to buy your cart");
             case EMPTY_CART -> System.out.println("your cart is empty");
-            case NO_LOCATION -> System.out.println("Your location is invalid!");
         }
     }
     private void processSearchingRestaurant(String name) {

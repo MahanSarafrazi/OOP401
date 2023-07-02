@@ -530,7 +530,7 @@ public class Manager {
         if (customer.getCart().getFoods().isEmpty())
             return Output.EMPTY_CART;
         else if(customerLocation > 1000) {
-            return Output.NO_LOCATION;
+            return Output.LOCATION_NOT_IN_THE_MAP;
         } else {
             double totalPrice = 0;
             Cart cart = customer.getCart();
