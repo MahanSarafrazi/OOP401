@@ -34,11 +34,14 @@ public class Food {
     private Date expireDate = null;
     public int getID(){ return ID;}
     private double discount;
-     public Food(String name, double price, FoodType type){
+    private String restaurantName;
+    public String getRestaurantName() {return restaurantName;}
+     public Food(String name, double price, FoodType type,String restaurantName){
         this.name = name;
         this.price = price;
         this.discount = 0;
         this.type = type;
+        this.restaurantName=restaurantName;
         this.activation = true;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();

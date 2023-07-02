@@ -46,7 +46,9 @@ public class CustomerMenu extends Menu {
                 processAddingRestoreQuestion();
             } else if (matchers[20].find()) {
                 processSearchingRestaurant(matchers[20].group(1));
-            } else if (matchers[35].find()) {
+            } else if (matchers[21].find()) {
+                processSearchingFood(matchers[21].group(1));
+            }else if (matchers[35].find()) {
                 processShowOrderHistory();
             } else if (matchers[36].find()) {
                 processSelectOrder(Integer.parseInt(matchers[36].group(1)));
@@ -108,6 +110,19 @@ public class CustomerMenu extends Menu {
             System.out.println("there is no restaurant in city , lol!");
         else if (count == 0) {
             System.out.println("there is no restaurant with this name");
+        }
+    }
+    private void processSearchingFood(String name) {
+        int count = 0;
+        for (Food food : manager.getActiveFoods())
+            if (food.getName().contains(name)) {
+                count++;
+                System.out.println("Restaurant name : "+food.getRestaurantName()+" with discounted price : "+food.getDiscountedPrice()+" and type : "+food.getType());
+            }
+        if (manager.getActiveRestaurantActiveFoods().isEmpty())
+            System.out.println("there is no active food in this restaurant.");
+        else if (count == 0) {
+            System.out.println("there is no food with this name");
         }
     }
     private void processShowOrderHistory() {

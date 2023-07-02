@@ -242,6 +242,14 @@ public class Manager {
                 activeFoods.add(food);
         return activeFoods;
     }
+    public ArrayList<Food> getActiveFoods() {
+        ArrayList<Food> activeFoods = new ArrayList<>();
+        for (Restaurant restaurant : RestaurantList.restaurants)
+            for (Food food : restaurant.getFoods())
+                if(food.getActivation())
+                    activeFoods.add(food);
+        return activeFoods;
+    }
 
     public Output editFoodName(int ID, String newName) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
@@ -360,7 +368,7 @@ public class Manager {
     }
     public boolean isThereRating() {
         ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
@@ -368,7 +376,7 @@ public class Manager {
     }
     public double averageRating() {
         ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
@@ -447,7 +455,7 @@ public class Manager {
                 if (!comment.hasResponse) {
                     return Output.NO_RESPONSE;
                 }
-                comment.getResponse().editComment(newComment);
+                comment.editResponse(newComment);
                 return Output.RESPONSE_EDITED;
             }
         }

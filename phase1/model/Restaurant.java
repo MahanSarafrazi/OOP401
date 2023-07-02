@@ -74,7 +74,7 @@ public class Restaurant {
     private final ArrayList<Food> foods;
 
     public void AddFood(String foodName, double foodPrice, FoodType foodType) {
-        foods.add(new Food(foodName, foodPrice, foodType));
+        foods.add(new Food(foodName, foodPrice, foodType,name));
     }
 
     public void deleteFood(int ID) {

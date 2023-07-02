@@ -82,12 +82,17 @@ public class RestaurantMenuUsedByCustomer extends Menu {
         return runOrders;
     }
     private void processSearchingFood(String name) {
+        int count = 0;
         for (Food food : manager.getActiveRestaurantActiveFoods())
-            if (food.getName().equals(name)) {
+            if (food.getName().contains(name)) {
+                count++;
                 System.out.println("ID : "+food.getID()+" with discounted price : "+food.getDiscountedPrice()+" and type : "+food.getType());
             }
         if (manager.getActiveRestaurantActiveFoods().isEmpty())
             System.out.println("there is no active food in this restaurant.");
+        else if (count == 0) {
+            System.out.println("there is no food with this name");
+        }
     }
     private void processDisplayComments() {
         if(manager.getLoggedInUser().getActiveRestaurant().getComments().isEmpty())
@@ -95,8 +100,8 @@ public class RestaurantMenuUsedByCustomer extends Menu {
         for (Comment comment : manager.getLoggedInUser().getActiveRestaurant().getComments()) {
             System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" (comment ID : "+comment.getID()+" )");
             if (comment.hasResponse)
-                System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
-                        " has responded : "+comment.getResponse().getComment());
+                System.out.println("        Owner "+comment.getResponderName()+
+                        " has responded : "+comment.getResponse()+" (comment ID : "+comment.getID()+" )");
         }
     }
 }

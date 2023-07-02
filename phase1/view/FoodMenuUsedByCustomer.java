@@ -74,8 +74,8 @@ public class FoodMenuUsedByCustomer extends Menu {
         for (Comment comment :manager.getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments()) {
             System.out.println(comment.getUser().getUserName()+" said : "+comment.getComment()+" (comment ID : "+comment.getID()+" )");
             if (comment.hasResponse)
-                System.out.println("        Owner "+comment.getResponse().getUser().getUserName()+
-                        " has responded : "+comment.getResponse().getComment());
+                System.out.println("        Owner "+comment.getResponderName()+
+                        " has responded : "+comment.getResponse()+" (comment ID : "+comment.getID()+" )");
         }
     }
     private void processAddFoodToCart(int count) {

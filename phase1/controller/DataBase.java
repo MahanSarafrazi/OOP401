@@ -61,11 +61,15 @@ public class DataBase {
             }
             for (Comment comment : restaurant.getComments()) {
                 RandomIDGenerator.getGenerated().add(comment.getID());
+                if (comment.hasResponse)
+                    RandomIDGenerator.getGenerated().add(comment.getResponseID());
             }
             for (Food food : restaurant.getFoods()) {
                 RandomIDGenerator.getGenerated().add(food.getID());
                 for (Comment comment : food.getComments()) {
                     RandomIDGenerator.getGenerated().add(comment.getID());
+                    if (comment.hasResponse)
+                        RandomIDGenerator.getGenerated().add(comment.getResponseID());
                 }
             }
         }
