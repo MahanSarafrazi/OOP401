@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.LoginMenuController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.LoginMenuController">
    <children>
       <TextField fx:id="userName" layoutX="280.0" layoutY="67.0" />
       <TextField fx:id="passWord" layoutX="280.0" layoutY="101.0" />
@@ -37,7 +39,7 @@
             </RadialGradient>
          </fill>
       </Text>
-      <Button fx:id="reset" alignment="CENTER" layoutX="221.0" layoutY="230.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="reset" AnchorPane.bottomAnchor="128.0" />
+      <Button fx:id="reset" alignment="CENTER" layoutX="221.0" layoutY="230.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="reset" AnchorPane.bottomAnchor="128.0" />
       <Button fx:id="forgetPassword" alignment="CENTER" layoutX="221.0" layoutY="281.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="forget password?" AnchorPane.bottomAnchor="77.0" />
       <Button fx:id="back" alignment="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backHandler" style="-fx-background-color: transparent;">
          <graphic>
@@ -53,7 +55,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="type" layoutX="280.0" layoutY="134.0" prefWidth="150.0">
+      <ChoiceBox layoutX="280.0" layoutY="134.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="customer" />

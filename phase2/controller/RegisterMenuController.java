@@ -74,4 +74,11 @@ public class RegisterMenuController extends MenuController {
         hitAnimation.setOnFinished(e -> error.setText(""));
         hitAnimation.playFromStart();
     }
+
+    @FXML
+    public void resetHandler(ActionEvent actionEvent) {
+        userName.setText("");
+        passWord.setText("");
+        type.setValue(null);
+    }
 }
