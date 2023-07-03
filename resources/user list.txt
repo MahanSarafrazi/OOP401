@@ -446,6 +446,11 @@
         "comments": [],
         "rates": []
       }
+    },
+    {
+      "restaurants": [],
+      "userName": "mahan",
+      "password": "Sarafrazi1"
     }
   ]
 }
