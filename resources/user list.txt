@@ -248,7 +248,7 @@
             {
               "ID": 660700,
               "restaurantID": 568357,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "SENT",
               "customerLocation": 55,
               "restaurantName": "pashmak",
               "restaurantLocation": 50,
@@ -304,7 +304,7 @@
             {
               "ID": 690923,
               "restaurantID": 906886,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "SENT",
               "customerLocation": 707,
               "restaurantName": "j",
               "restaurantLocation": 50,
@@ -382,7 +382,7 @@
             {
               "ID": 799853,
               "restaurantID": 906886,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "SENT",
               "customerLocation": 56,
               "restaurantName": "j",
               "restaurantLocation": 50,
