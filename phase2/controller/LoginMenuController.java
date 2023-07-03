@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -74,12 +76,12 @@ public class LoginMenuController extends MenuController {
 
         if(output.equals(Output.SUCCESSFUL_LOGIN)) {
             super.getStage().close();
-            FXMLLoader loader ;
+            FXMLLoader loader = null;
             if(type.getValue().equals("customer")) {
                 loader = new FXMLLoader(this.getClass().getResource("../view/CustomerMenu.fxml"));
             } else if(type.getValue().equals("restaurant owner")) {
-                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantOwnerMenu.fxml"));
-            } else {
+                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantOwner.fxml"));
+            } else if(type.getValue().equals("deliverer")) {
                 loader = new FXMLLoader(this.getClass().getResource("../view/DelivererMenu.fxml"));
             }
             try {
@@ -88,14 +90,8 @@ public class LoginMenuController extends MenuController {
                 throw new RuntimeException(e);
             }
             Scene scene = new Scene(loader.getRoot());
-            if(type.getValue().equals("customer")) {
-                ((CustomerMenuController) loader.getController()).initialize(getStage(), scene, getMainScene());
-            } else if(type.getValue().equals("restaurant owner")) {
-                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantOwnerMenu.fxml"));
-            } else {
-                loader = new FXMLLoader(this.getClass().getResource("../view/DelivererMenu.fxml"));
-            }
-            super.getStage().setScene(scene);
+            ((MenuController) loader.getController()).initialize(new Stage(), scene, null);
+            ((MenuController) loader.getController()).getStage().show();
 
         } else {
             PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));

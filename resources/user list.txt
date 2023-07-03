@@ -202,20 +202,11 @@
         "foodsCount": []
       },
       "charge": 0.0,
-      "userName": "fariman1",
-      "password": "Fariman1"
+      "userName": "mahanv",
+      "password": "Sarafrazi1"
     }
   ],
-  "deliverers": [
-    {
-      "userName": "eed",
-      "password": "abcdeFg1"
-    },
-    {
-      "userName": "abc",
-      "password": "abcdeFg1"
-    }
-  ],
+  "deliverers": [],
   "restaurantOwners": [
     {
       "restaurants": [
@@ -468,8 +459,8 @@
     },
     {
       "restaurants": [],
-      "userName": "fariman2",
-      "password": "Fariman1"
+      "userName": "mahan",
+      "password": "Sarafrazi1"
     }
   ]
 }
