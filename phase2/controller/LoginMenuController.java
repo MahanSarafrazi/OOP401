@@ -22,6 +22,7 @@ public class LoginMenuController extends MenuController {
 
     @FXML
     public TextField userName;
+    public static String userNameText;
 
     @FXML
     public TextField passWord;
@@ -52,6 +53,7 @@ public class LoginMenuController extends MenuController {
     @FXML
     public void confirmHandler(ActionEvent actionEvent) {
         String username = this.userName.getText();
+        userNameText = username;
         String password = this.passWord.getText();
         String answer = "";
         Output output = null;
@@ -105,5 +107,30 @@ public class LoginMenuController extends MenuController {
         userName.setText("");
         passWord.setText("");
         type.setValue(null);
+    }
+
+    @FXML
+    public void forgetHandler(ActionEvent actionEvent) {
+        String username = this.userName.getText();
+        String answer = "";
+        Output output = super.getManager().getRestoreQuestion(username);
+        answer = OutputChecker.outputString(output);
+        error.setText(answer);
+        if(output == Output.SHOW_RESTORE_QUESTION) {
+            super.getStage().close();
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestorePassword.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(loader.getRoot());
+            ((RestorePasswordController) loader.getController()).initialize(getStage(), scene, getMainScene());
+            super.getStage().setScene(scene);
+        } else {
+            PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
+            hitAnimation.setOnFinished(e -> error.setText(""));
+            hitAnimation.playFromStart();
+        }
     }
 }

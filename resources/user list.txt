@@ -1,6 +1,7 @@
 {
   "customers": [
     {
+      "spentMoney": 0.0,
       "orders": [],
       "cart": {
         "foods": [],
@@ -34,6 +35,7 @@
       "password": "Aaaaaaaaaaaa5"
     },
     {
+      "spentMoney": 0.0,
       "orders": [],
       "cart": {
         "foods": [],
@@ -44,10 +46,12 @@
       "password": "Aaaaaaaaaaaaaa7"
     },
     {
+      "spentMoney": 0.0,
       "orders": [
         {
           "ID": 660700,
           "restaurantID": 568357,
+          "hasDeliverer": false,
           "orderStatus": "NOT_READY",
           "customerLocation": 55,
           "restaurantName": "pashmak",
@@ -74,6 +78,7 @@
         {
           "ID": 690923,
           "restaurantID": 906886,
+          "hasDeliverer": false,
           "orderStatus": "NOT_READY",
           "customerLocation": 707,
           "restaurantName": "j",
@@ -100,6 +105,7 @@
         {
           "ID": 758122,
           "restaurantID": 906886,
+          "hasDeliverer": false,
           "orderStatus": "NOT_READY",
           "customerLocation": 55,
           "restaurantName": "j",
@@ -133,10 +139,12 @@
       "password": "Fariiii4"
     },
     {
+      "spentMoney": 0.0,
       "orders": [
         {
           "ID": 584198,
           "restaurantID": 906886,
+          "hasDeliverer": false,
           "orderStatus": "NOT_READY",
           "customerLocation": 56,
           "restaurantName": "j",
@@ -163,6 +171,7 @@
         {
           "ID": 799853,
           "restaurantID": 906886,
+          "hasDeliverer": false,
           "orderStatus": "NOT_READY",
           "customerLocation": 56,
           "restaurantName": "j",
@@ -196,6 +205,7 @@
       "password": "BHUBHBff55"
     },
     {
+      "spentMoney": 0.0,
       "orders": [],
       "cart": {
         "foods": [],
@@ -204,6 +214,19 @@
       "charge": 0.0,
       "userName": "mahanv",
       "password": "Sarafrazi1"
+    },
+    {
+      "spentMoney": 0.0,
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 0.0,
+      "userName": "fariman1",
+      "password": "Fariman1",
+      "restoreQuestion": "salam",
+      "restoreAnswer": "khodafez"
     }
   ],
   "deliverers": [],
@@ -252,6 +275,7 @@
             {
               "ID": 660700,
               "restaurantID": 568357,
+              "hasDeliverer": false,
               "orderStatus": "SENT",
               "customerLocation": 55,
               "restaurantName": "pashmak",
@@ -308,6 +332,7 @@
             {
               "ID": 690923,
               "restaurantID": 906886,
+              "hasDeliverer": false,
               "orderStatus": "SENT",
               "customerLocation": 707,
               "restaurantName": "j",
@@ -334,6 +359,7 @@
             {
               "ID": 758122,
               "restaurantID": 906886,
+              "hasDeliverer": false,
               "orderStatus": "NOT_READY",
               "customerLocation": 55,
               "restaurantName": "j",
@@ -360,6 +386,7 @@
             {
               "ID": 584198,
               "restaurantID": 906886,
+              "hasDeliverer": false,
               "orderStatus": "NOT_READY",
               "customerLocation": 56,
               "restaurantName": "j",
@@ -386,6 +413,7 @@
             {
               "ID": 799853,
               "restaurantID": 906886,
+              "hasDeliverer": false,
               "orderStatus": "SENT",
               "customerLocation": 56,
               "restaurantName": "j",
@@ -461,6 +489,11 @@
       "restaurants": [],
       "userName": "mahan",
       "password": "Sarafrazi1"
+    },
+    {
+      "restaurants": [],
+      "userName": "fariman2",
+      "password": "Fariman2"
     }
   ]
 }

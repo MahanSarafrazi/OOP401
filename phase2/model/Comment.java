@@ -8,12 +8,21 @@ public class Comment {
     private final int ID ;
     public int getID() {return ID;}
     public boolean hasResponse;
-    private Comment response;
-    public Comment getResponse() {return response;}
+    private String response;
+    private int responseID;
+    public int getResponseID() {
+        return responseID;
+    }
+    private String responderName;
+    public String getResponderName() {return responderName;}
+    public String  getResponse() {return response;}
 
     public void addResponse(User owner, String responseText) {
         hasResponse = true;
-        this.response = new Comment(owner, responseText);
+        response=responseText;
+        RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
+        responseID = randomIDGenerator.getLastNumber();
+        responderName=owner.getUserName();
     }
 
     Comment(User user, String comment) {
@@ -24,5 +33,6 @@ public class Comment {
         hasResponse = false;
     }
     public void editComment(String comment) {this.comment = comment;}
+    public void editResponse(String response) {this.response=response;}
 }
 
