@@ -64,6 +64,8 @@ public class RegisterMenuController extends MenuController {
 
             if(output.equals(Output.SUCCESSFUL_REGISTER)) {
                 error.setFill(Paint.valueOf("green"));
+            } else {
+                error.setFill(Paint.valueOf("red"));
             }
             error.setText(answer);
         }
