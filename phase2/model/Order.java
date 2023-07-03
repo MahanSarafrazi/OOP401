@@ -1,5 +1,6 @@
 package phase2.model;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import phase2.controller.Manager;
 import phase2.view.OrderStatus;
 
@@ -94,6 +95,7 @@ public class Order {
             long time = timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime()) / 1000;
             return "The time left for order " + ID + " is " + time / 60 + " minutes";
         }
+
         return "The order "+ID+" is delivered";
     }
     public void correctOrderStatus() {

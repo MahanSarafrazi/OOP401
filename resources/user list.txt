@@ -1,14 +1,14 @@
 {
   "customers": [
     {
-      "spentMoney": 200000.0,
+      "spentMoney": 300000.0,
       "discountTokens": [],
       "orders": [
         {
           "ID": 497938,
           "restaurantID": 448565,
           "hasDeliverer": true,
-          "orderStatus": "ON_THE_WAY",
+          "orderStatus": "SENT",
           "customerLocation": 45,
           "restaurantName": "reza",
           "restaurantLocation": 11,
@@ -31,13 +31,41 @@
           "foodsCount": [
             2
           ]
+        },
+        {
+          "ID": 529201,
+          "restaurantID": 448565,
+          "hasDeliverer": true,
+          "orderStatus": "ON_THE_WAY",
+          "customerLocation": 13,
+          "restaurantName": "reza",
+          "restaurantLocation": 11,
+          "registerDate": "Jul 4, 2023, 12:04:47 AM",
+          "deliveryDate": "Jul 4, 2023, 12:12:57 AM",
+          "timeOfDelivery": 340,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 100000.0,
+              "type": "IRANIAN",
+              "name": "joj",
+              "activation": true,
+              "ID": 519965,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 800000.0,
+      "charge": 700000.0,
       "userName": "cusi",
       "password": "Cusi7485"
     }
@@ -45,17 +73,17 @@
   "deliverers": [
     {
       "order": {
-        "ID": 497938,
+        "ID": 529201,
         "restaurantID": 448565,
         "hasDeliverer": true,
         "orderStatus": "ON_THE_WAY",
-        "customerLocation": 45,
+        "customerLocation": 13,
         "restaurantName": "reza",
         "restaurantLocation": 11,
-        "registerDate": "Jul 3, 2023, 6:54:09 PM",
-        "deliveryDate": "Jul 3, 2023, 7:12:42 PM",
-        "timeOfDelivery": 360,
-        "timeOfGettingReady": 600,
+        "registerDate": "Jul 4, 2023, 12:04:47 AM",
+        "deliveryDate": "Jul 4, 2023, 12:12:57 AM",
+        "timeOfDelivery": 340,
+        "timeOfGettingReady": 300,
         "foods": [
           {
             "price": 100000.0,
@@ -69,7 +97,7 @@
           }
         ],
         "foodsCount": [
-          2
+          1
         ]
       },
       "userName": "deli",
@@ -86,7 +114,7 @@
               "ID": 497938,
               "restaurantID": 448565,
               "hasDeliverer": true,
-              "orderStatus": "ON_THE_WAY",
+              "orderStatus": "SENT",
               "customerLocation": 45,
               "restaurantName": "reza",
               "restaurantLocation": 11,
@@ -108,6 +136,34 @@
               ],
               "foodsCount": [
                 2
+              ]
+            },
+            {
+              "ID": 529201,
+              "restaurantID": 448565,
+              "hasDeliverer": true,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 13,
+              "restaurantName": "reza",
+              "restaurantLocation": 11,
+              "registerDate": "Jul 4, 2023, 12:04:47 AM",
+              "deliveryDate": "Jul 4, 2023, 12:12:57 AM",
+              "timeOfDelivery": 340,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 100000.0,
+                  "type": "IRANIAN",
+                  "name": "joj",
+                  "activation": true,
+                  "ID": 519965,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
               ]
             }
           ],
