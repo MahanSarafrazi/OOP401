@@ -37,7 +37,6 @@ public class DataBase {
     public void load() {
         // loading map
         Map map = new Map(Integer.parseInt(graphScanner.next()), Integer.parseInt(graphScanner.next()));
-        Map mm = new Map(Integer.parseInt(graphScanner.next()), Integer.parseInt(graphScanner.next()));
         while (graphScanner.hasNext()) {
             map.addEdge(Integer.parseInt(graphScanner.next()), Integer.parseInt(graphScanner.next()), Integer.parseInt(graphScanner.next()));
         }

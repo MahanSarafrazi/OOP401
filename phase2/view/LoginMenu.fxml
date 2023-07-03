@@ -55,7 +55,7 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="280.0" layoutY="134.0" prefWidth="150.0">
+      <ChoiceBox fx:id="type" layoutX="280.0" layoutY="134.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="customer" />

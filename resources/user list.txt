@@ -1,7 +1,6 @@
 {
   "customers": [
     {
-      "spentMoney": 0.0,
       "orders": [],
       "cart": {
         "foods": [],
@@ -35,7 +34,6 @@
       "password": "Aaaaaaaaaaaa5"
     },
     {
-      "spentMoney": 0.0,
       "orders": [],
       "cart": {
         "foods": [],
@@ -46,8 +44,6 @@
       "password": "Aaaaaaaaaaaaaa7"
     },
     {
-      "spentMoney": 1.000555E7,
-      "discountTokens": [],
       "orders": [
         {
           "ID": 660700,
@@ -137,8 +133,6 @@
       "password": "Fariiii4"
     },
     {
-      "spentMoney": 1.000009E7,
-      "discountTokens": [],
       "orders": [
         {
           "ID": 584198,
@@ -419,7 +413,6 @@
               "activation": true,
               "ID": 200232,
               "discount": 0.0,
-              "restaurantName": "j",
               "comments": [],
               "rates": []
             }
@@ -446,7 +439,6 @@
             "activation": true,
             "ID": 200232,
             "discount": 0.0,
-            "restaurantName": "j",
             "comments": [],
             "rates": []
           }
