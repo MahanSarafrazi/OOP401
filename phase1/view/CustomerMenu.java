@@ -68,6 +68,8 @@ public class CustomerMenu extends Menu {
                 processSearchNearRestaurants(Integer.parseInt(matchers[47].group(2)), matchers[47].group(1));
             } else if (matchers[48].find()) {
                 processSearchFavoriteRestaurants();
+            } else if (matchers[49].find()) {
+                processShowTokens();
             } else if (matchers[8].find()) {
                 if(processSelectingRestaurant(Integer.parseInt(matchers[8].group(1)))) {
                     runOrders = RunOrders.RESTAURANT_MENU_USED_BY_CUSTOMER;
@@ -94,6 +96,8 @@ public class CustomerMenu extends Menu {
             case ORDER_CONFIRMED -> System.out.println("order confirmed");
             case NOT_ENOUGH_CHARGE -> System.out.println("you dont have enough charge to buy your cart");
             case EMPTY_CART -> System.out.println("your cart is empty");
+            case WRONG_DISCOUNT_TOKEN -> System.out.println("discount token is not valid !");
+            case ORDER_CONFIRMED2 -> System.out.println("order confirmed and you got a new discount token !");
         }
     }
     private void processSearchingRestaurant(String name) {
@@ -101,7 +105,7 @@ public class CustomerMenu extends Menu {
         for (Restaurant restaurant : RestaurantList.restaurants)
             if (restaurant.getName().contains(name)) {
                 count ++;
-                System.out.print("ID : "+restaurant.getID()+" with food types:");
+                System.out.print("Restaurant name : "+restaurant.getName()+" ID : "+restaurant.getID()+" with food types:");
                 for (FoodType foodType : restaurant.getFoodType())
                     System.out.print(" "+foodType);
                 System.out.println(" and location : "+restaurant.getLocation());
@@ -117,7 +121,8 @@ public class CustomerMenu extends Menu {
         for (Food food : manager.getActiveFoods())
             if (food.getName().contains(name)) {
                 count++;
-                System.out.println("Restaurant name : "+food.getRestaurantName()+" with discounted price : "+food.getDiscountedPrice()+" and type : "+food.getType());
+                System.out.println("Restaurant name : "+food.getRestaurantName()+" Food name : "+food.getName()+
+                        " with discounted price : "+food.getDiscountedPrice());
             }
         if (manager.getActiveRestaurantActiveFoods().isEmpty())
             System.out.println("there is no active food in this restaurant.");
@@ -167,7 +172,9 @@ public class CustomerMenu extends Menu {
         }
     }
     private void processConfirmOrder(int customerLocation) {
-        outputPrinter(manager.confirmOrder(customerLocation));
+        System.out.println("if you want to use discount token write it,else write NO");
+        String s = scanner.nextLine();
+        outputPrinter(manager.confirmOrder(customerLocation,s));
     }
     private void processShowEstimatedTime() {
         ArrayList<String> estimations = manager.estimateOrderTime();
@@ -229,6 +236,16 @@ public class CustomerMenu extends Menu {
             Restaurant restaurant = RestaurantList.getRestaurant(entry.getKey());
             System.out.println(Objects.requireNonNull(restaurant).getName()+" "+restaurant.getID()+"        you ordered "+
                     entry.getValue()+" times from this restaurant");
+        }
+    }
+    private void processShowTokens() {
+        Customer customer = (Customer) manager.getLoggedInUser();
+        ArrayList<String > tokens = customer.getDiscountTokens();
+        if (tokens.isEmpty())
+            System.out.println("you don't have any tokens");
+        else {
+            for (String s : tokens)
+                System.out.println(s);
         }
     }
 }
