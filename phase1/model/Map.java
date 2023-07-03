@@ -73,7 +73,6 @@ public class Map {
             }
         }
         if(showPath) {
-            System.out.println(nodeValues.get(destination));
             int index = destination;
             ArrayList<Integer> path = new ArrayList<>();
             while(index != origin) {

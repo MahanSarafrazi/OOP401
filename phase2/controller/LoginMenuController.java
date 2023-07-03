@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import phase2.model.UserType;
@@ -66,7 +64,6 @@ public class LoginMenuController extends MenuController {
             }
             error.setText(answer);
         }
-
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> error.setText(""));
         hitAnimation.playFromStart();
