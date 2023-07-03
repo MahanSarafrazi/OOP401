@@ -280,7 +280,7 @@ public class Manager {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
                     if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
-                            !order.getOrderStatus().equals(OrderStatus.SENT))) {
+                            order.getOrderStatus().equals(OrderStatus.NOT_READY))) {
                         isThereFood = true;
                         break;
                     }
@@ -302,7 +302,7 @@ public class Manager {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
                     if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
-                            !order.getOrderStatus().equals(OrderStatus.SENT))) {
+                            order.getOrderStatus().equals(OrderStatus.NOT_READY))) {
                         isThereFood = true;
                         break;
                     }
@@ -421,10 +421,9 @@ public class Manager {
         for (Rate rate : rates)
             if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
                 rate.editRating(rating);
-                return Output.NO_RATING;
-
+                return Output.RATED;
             }
-        return Output.RATED;
+        return Output.NO_RATING;
     }
     public Output addResponse(int ID, String responseText) {
         ArrayList<Comment> comments;
@@ -549,7 +548,9 @@ public class Manager {
             Cart cart = customer.getCart();
             for (int i=0;i<cart.getFoodsCount().size();i++)
                 totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
-            if (totalPrice > customer.getCharge(discountToken))
+            int shortestPath = map.findShortestPath(customerLocation, customer.getOrderedRestaurant().getLocation(),false)/30;
+            double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
+            if (totalDeliveryPrice > customer.getCharge(discountToken))
                 return Output.NOT_ENOUGH_CHARGE;
         }
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
@@ -569,8 +570,16 @@ public class Manager {
     public ArrayList<Order> getActiveOrders() {
         ArrayList<Order> orders = new ArrayList<>();
         for (Order order : loggedInUser.getActiveRestaurant().getOrders())
-            if (!order.getOrderStatus().equals(OrderStatus.SENT))
+            if (order.getOrderStatus().equals(OrderStatus.NOT_READY))
                 orders.add(order);
+        return orders;
+    }
+    public ArrayList<Order> getOrdersWithoutDeliverer() {
+        ArrayList<Order> orders = new ArrayList<>();
+        for (Restaurant restaurant : RestaurantList.restaurants)
+            for (Order order : restaurant.getOrders())
+                if (!order.hasDeliverer && order.getOrderStatus() == OrderStatus.ON_THE_WAY)
+                    orders.add(order);
         return orders;
     }
 

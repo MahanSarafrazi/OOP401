@@ -32,7 +32,7 @@ public class Restaurant {
     public void setLocation(int location) {
         this.location=location;
         for (Order order : orders) {
-            if (order.orderStatus != OrderStatus.SENT)
+            if (order.orderStatus == OrderStatus.NOT_READY)
                 order.setRestaurantLocation(location);
         }
     }
@@ -96,7 +96,7 @@ public class Restaurant {
 
     public boolean isThereAnyOrderOfThisType(FoodType foodType) {
         for (Order order : orders) {
-            if (order.getType().contains(foodType) && !order.orderStatus.equals(OrderStatus.SENT)) {
+            if (order.getType().contains(foodType) && order.orderStatus.equals(OrderStatus.NOT_READY)) {
                 return true;
             }
         }
