@@ -53,6 +53,7 @@ public enum Inputs {
     OFFERING_SYSTEM_FOOD("^\\s*search\\s+for\\s+close\\s+(\\S+)\\s+restaurants\\s+(\\d+)\\s*$"), //47
     OFFERING_SYSTEM_ORDER("^\\s*search\\s+for\\s+favorite\\s+restaurants\\s*$"), //48
     SHOW_DISCOUNT_TOKENS("^\\s*show\\s+my\\s+discount\\s+tokens\\s*$"), //49
+    SELECT_ORDER_By_Deliverer("^\\s*select\\s+order\\s+(\\d+)\\s+(\\d+)\\s*$"), //50
     BACK("^\\s*back\\s*$"),
     LOGOUT("^\\s*logout\\s*$"),
 

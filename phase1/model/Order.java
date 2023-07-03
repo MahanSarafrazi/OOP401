@@ -8,6 +8,7 @@ import java.util.*;
 public class Order {
     private final int ID;
     private final int restaurantID;
+    public boolean hasDeliverer;
 
     public int getRestaurantID() {
         return restaurantID;
@@ -27,6 +28,7 @@ public class Order {
         this.timeOfDelivery = shortestPath * 20;
     }
     private final Date registerDate;
+    private Date deliveryDate;
     private int timeOfDelivery;
     private final int timeOfGettingReady;
     public int getID() {
@@ -71,6 +73,7 @@ public class Order {
         for (int i : foodsCount)
             numOfFoods+=i;
         this.timeOfGettingReady = numOfFoods * 300;
+        hasDeliverer=false;
     }
 
     public LinkedHashSet<FoodType> getType() {
@@ -88,23 +91,45 @@ public class Order {
         }
         return price;
     }
+    public double totalDeliveryPrice() {
+        Map map = Manager.getManagerInstance().getMap();
+        int shortestPath = map.findShortestPath(customerLocation, restaurantLocation,false)/30;
+        return (0.1 + 0.1 * (double) shortestPath)*totalPrice();
+    }
     public String estimateTime() {
         correctOrderStatus();
-        if(!orderStatus.equals(OrderStatus.SENT)) {
-            long time = timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime()) / 1000;
-            return "The time left for order " + ID + " is " + time / 60 + " minutes";
+        if (orderStatus.equals(OrderStatus.SENT))
+            return "The order "+ID+" is delivered";
+        else if (orderStatus.equals(OrderStatus.ON_THE_WAY) && !hasDeliverer)
+            return "There isn't any deliverer for the order"+ ID;
+        else if (orderStatus.equals(OrderStatus.ON_THE_WAY)) {
+            long time = timeOfDelivery - (new Date().getTime() - deliveryDate.getTime()) / 1000;
+            return "The order " + ID + " will be delivered in " + time / 60 + "minutes";
         }
-        return "The order "+ID+" is delivered";
+        else {
+            long time = timeOfGettingReady - (new Date().getTime() - registerDate.getTime()) / 1000;
+            return "The order " + ID + " will be ready to be delivered in " + time / 60 + "minutes" ;
+        }
     }
     public void correctOrderStatus() {
         if(!orderStatus.equals(OrderStatus.SENT)) {
             if(timeOfGettingReady - (new Date().getTime() - registerDate.getTime()) / 1000 > 0) {
                 orderStatus = OrderStatus.NOT_READY;
-            } else if(timeOfGettingReady + timeOfDelivery - (new Date().getTime() - registerDate.getTime()) / 1000 > 0) {
+            } else if(!hasDeliverer || timeOfDelivery - (new Date().getTime() - deliveryDate.getTime()) / 1000 > 0) {
                 orderStatus = OrderStatus.ON_THE_WAY;
             } else {
                 orderStatus = OrderStatus.SENT;
             }
         }
+    }
+    public void setDeliverer(int location) {
+        Map map = Manager.getManagerInstance().getMap();
+        int shortestPathTime = map.findShortestPath(customerLocation, location,false)*20*1000;
+        deliveryDate = new Date();
+        deliveryDate.setTime(Calendar.getInstance().getTimeInMillis()+ shortestPathTime);
+        hasDeliverer=true;
+    }
+    public boolean reachedRestaurant() {
+        return new Date().getTime() - deliveryDate.getTime()> 0;
     }
 }
