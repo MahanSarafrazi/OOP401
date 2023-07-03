@@ -74,12 +74,12 @@ public class LoginMenuController extends MenuController {
 
         if(output.equals(Output.SUCCESSFUL_LOGIN)) {
             super.getStage().close();
-            FXMLLoader loader = null;
+            FXMLLoader loader ;
             if(type.getValue().equals("customer")) {
                 loader = new FXMLLoader(this.getClass().getResource("../view/CustomerMenu.fxml"));
             } else if(type.getValue().equals("restaurant owner")) {
                 loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantOwnerMenu.fxml"));
-            } else if(type.getValue().equals("deliverer")) {
+            } else {
                 loader = new FXMLLoader(this.getClass().getResource("../view/DelivererMenu.fxml"));
             }
             try {
@@ -88,7 +88,14 @@ public class LoginMenuController extends MenuController {
                 throw new RuntimeException(e);
             }
             Scene scene = new Scene(loader.getRoot());
-            ((MenuController) loader.getController()).initialize(new Stage(), scene, null);
+            if(type.getValue().equals("customer")) {
+                ((CustomerMenuController) loader.getController()).initialize(getStage(), scene, getMainScene());
+            } else if(type.getValue().equals("restaurant owner")) {
+                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantOwnerMenu.fxml"));
+            } else {
+                loader = new FXMLLoader(this.getClass().getResource("../view/DelivererMenu.fxml"));
+            }
+            super.getStage().setScene(scene);
 
         } else {
             PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
