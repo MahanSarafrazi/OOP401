@@ -206,7 +206,16 @@
       "password": "Fariman1"
     }
   ],
-  "deliverers": [],
+  "deliverers": [
+    {
+      "userName": "eed",
+      "password": "abcdeFg1"
+    },
+    {
+      "userName": "abc",
+      "password": "abcdeFg1"
+    }
+  ],
   "restaurantOwners": [
     {
       "restaurants": [
@@ -456,6 +465,11 @@
         "comments": [],
         "rates": []
       }
+    },
+    {
+      "restaurants": [],
+      "userName": "fariman2",
+      "password": "Fariman1"
     }
   ]
 }
