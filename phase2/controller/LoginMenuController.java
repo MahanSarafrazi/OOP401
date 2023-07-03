@@ -64,7 +64,6 @@ public class LoginMenuController extends MenuController {
             }
             error.setText(answer);
         }
-
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> error.setText(""));
         hitAnimation.playFromStart();
