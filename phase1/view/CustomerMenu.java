@@ -124,7 +124,7 @@ public class CustomerMenu extends Menu {
                 System.out.println("Restaurant name : "+food.getRestaurantName()+" Food name : "+food.getName()+
                         " with discounted price : "+food.getDiscountedPrice());
             }
-        if (manager.getActiveRestaurantActiveFoods().isEmpty())
+        if (manager.getActiveFoods().isEmpty())
             System.out.println("there is no active food in this restaurant.");
         else if (count == 0) {
             System.out.println("there is no food with this name");

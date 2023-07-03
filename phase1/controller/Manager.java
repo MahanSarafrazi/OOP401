@@ -414,7 +414,7 @@ public class Manager {
         if (rating>5 || rating<0)
             return Output.RATING_OUT_OUT_OF_RANGE;
         ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
