@@ -48,7 +48,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <ChoiceBox fx:id="type" layoutX="280.0" layoutY="163.0" prefWidth="150.0" value="">
+      <ChoiceBox fx:id="type" layoutX="280.0" layoutY="163.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="customer" />
@@ -62,5 +62,14 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <StackPane layoutX="44.0" layoutY="335.0" prefHeight="51.0" prefWidth="497.0">
+         <children>
+            <Text fx:id="error" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
