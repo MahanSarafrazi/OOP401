@@ -12,13 +12,14 @@ import phase2.model.UserList;
 public class Main extends Application {
     //this is for phase2
      public static void main(String[] args) {
-        launch(args);
+         DataBase dataBase = new DataBase("resources/graph.txt", "resources/user list.txt");
+         dataBase.load();
+         launch(args);
+         dataBase.save();
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        DataBase dataBase = new DataBase("resources/graph.txt", "resources/user list.txt");
-        dataBase.load();
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/RegisterAndLoginMenu.fxml"));
         loader.load();
         Scene scene = new Scene(loader.getRoot());

@@ -194,6 +194,16 @@
       "charge": 1.4607611065E10,
       "userName": "fsrhu",
       "password": "BHUBHBff55"
+    },
+    {
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 0.0,
+      "userName": "fariman1",
+      "password": "Fariman1"
     }
   ],
   "deliverers": [],
