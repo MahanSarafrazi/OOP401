@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.RestaurantOwnerMenuController">
+    <children>
+        <TabPane layoutX="272.0" prefHeight="400.0" prefWidth="328.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="reataurant's information">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                            <children>
+                                <Text layoutX="21.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="72.13671875" AnchorPane.leftAnchor="23.0">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="23.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" AnchorPane.leftAnchor="23.0">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Text>
+                                <Text layoutX="23.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="show and set location:" AnchorPane.leftAnchor="23.0">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Text>
+                                <Button fx:id="uploadPhoto" layoutX="111.0" layoutY="135.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Upload a Photo" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dde8f2" height="127.0" layoutX="34.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="251.0" />
+                                <ImageView fitHeight="125.0" fitWidth="245.0" layoutX="37.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+                                <Text layoutX="21.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score:" AnchorPane.leftAnchor="23.0">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Text>
+                                <Button layoutX="217.0" layoutY="242.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="location" />
+                                <Button fx:id="seeComments" layoutX="186.0" layoutY="272.0" mnemonicParsing="false" onAction="#seeCommentsHandler" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: orange;" text="see comments" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="81.0" layoutY="183.0" stroke="BLACK" strokeType="INSIDE" width="225.0" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="81.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" width="225.0" />
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="81.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="92.0" />
+                                <Label fx:id="restaurantNAme" layoutX="84.0" layoutY="183.0" prefHeight="26.0" prefWidth="220.0">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="restaurantid" layoutX="83.0" layoutY="211.0" prefHeight="26.0" prefWidth="223.0">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="score" layoutX="117.0" layoutY="270.0" prefHeight="26.0" prefWidth="50.0" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Label>
+                                <Button fx:id="confirm" layoutX="173.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: green;" text="confirm" AnchorPane.rightAnchor="45.0" />
+                                <Button fx:id="reset" layoutX="55.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: red;" text="reset" AnchorPane.leftAnchor="45.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="order history">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                    </content>
+                </Tab>
+                <Tab text="open orders">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Text fill="#e8e8e8" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FOODS MENU" textAlignment="CENTER" underline="true" wrappingWidth="279.095703125">
+            <font>
+                <Font name="Broadway" size="23.0" />
+            </font>
+        </Text>
+        <Button fx:id="back" layoutX="64.0" layoutY="373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="472.0" />
+        <ScrollBar layoutY="48.0" orientation="VERTICAL" prefHeight="361.0" prefWidth="14.0" />
+        <Button fx:id="logout" layoutX="140.0" layoutY="373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" />
+        <Button id="addFood" fx:id="addFood" layoutX="18.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="258.0" style="-fx-background-color: orange;" text="add food">
+            <font>
+                <Font name="Book Antiqua" size="15.0" />
+            </font>
+        </Button>
+    </children>
+</AnchorPane>
