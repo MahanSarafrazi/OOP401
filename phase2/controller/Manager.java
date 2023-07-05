@@ -1,10 +1,11 @@
 package phase2.controller;
 
-import phase2.model.*;
 import phase2.model.Map;
 import phase2.view.OrderStatus;
-//import phase2.view.RestaurantOwnerMenu;
 import phase2.view.Output;
+//import phase2.view.RestaurantOwnerMenu;
+import phase2.model.*;
+//import phase2.view.RestaurantOwnerMenu;
 import java.util.*;
 
 
@@ -90,15 +91,18 @@ public class Manager {
         loggedInUser.setRestoreAnswer(answer);
     }
     public void logout() {
-        if (loggedInUser instanceof RestaurantOwner)
+        //if (loggedInUser instanceof RestaurantOwner)
             //RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
+        if (loggedInUser instanceof Customer customer) {
+            customer.clearCart();
+        }
         if (loggedInUser.getActiveRestaurant() != null)
             loggedInUser.getActiveRestaurant().closeFood();
         loggedInUser.deActiveRestaurant();
         loggedInUser = null;
     }
     public void back() {
-        if (loggedInUser instanceof RestaurantOwner && loggedInUser.getActiveRestaurant().getOpenedFood() == null)
+        //if (loggedInUser instanceof RestaurantOwner && loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             //RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(false);
         if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             loggedInUser.getActiveRestaurant().closeFood();
@@ -157,7 +161,7 @@ public class Manager {
             return Output.EQUAL_FOOD_TYPES;
         }
 
-        if (loggedInUser.getActiveRestaurant().isThereAnyOrderOfThisType(changingType) || cartChecker(changingType)) {
+        if (loggedInUser.getActiveRestaurant().isThereAnyOrderOfThisType(changingType)) {
             return Output.THERE_IS_ORDERS_WITH_THIS_FOOD_TYPE;
         }
 
@@ -239,6 +243,14 @@ public class Manager {
                 activeFoods.add(food);
         return activeFoods;
     }
+    public ArrayList<Food> getActiveFoods() {
+        ArrayList<Food> activeFoods = new ArrayList<>();
+        for (Restaurant restaurant : RestaurantList.restaurants)
+            for (Food food : restaurant.getFoods())
+                if(food.getActivation())
+                    activeFoods.add(food);
+        return activeFoods;
+    }
 
     public Output editFoodName(int ID, String newName) {
         RestaurantOwner owner = (RestaurantOwner) loggedInUser;
@@ -269,7 +281,7 @@ public class Manager {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
                     if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
-                            !order.getOrderStatus().equals(OrderStatus.SENT)) || cartChecker(ID)) {
+                            order.getOrderStatus().equals(OrderStatus.NOT_READY))) {
                         isThereFood = true;
                         break;
                     }
@@ -291,7 +303,7 @@ public class Manager {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
                     if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
-                            !order.getOrderStatus().equals(OrderStatus.SENT)) || cartChecker(ID)) {
+                            order.getOrderStatus().equals(OrderStatus.NOT_READY))) {
                         isThereFood = true;
                         break;
                     }
@@ -319,7 +331,7 @@ public class Manager {
     public Output discountFood(int ID, double percent, int hours) {
         for (Food food : loggedInUser.getActiveRestaurant().getFoods()) {
             if(food.getID() == ID) {
-                if(food.hasDiscounted()) {
+                if(food.isDiscounted()) {
                     return Output.FOOD_ALREADY_DISCOUNTED;
                 } if(percent < 0 || percent > 50) {
                     return Output.WRONG_PERCENT_AMOUNT;
@@ -357,7 +369,7 @@ public class Manager {
     }
     public boolean isThereRating() {
         ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
@@ -365,7 +377,7 @@ public class Manager {
     }
     public double averageRating() {
         ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
@@ -392,28 +404,27 @@ public class Manager {
             loggedInUser.getActiveRestaurant().getOpenedFood().addRating(loggedInUser, rating);
         }
         else {
-                for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
-                    if (rate.getUser().getUserName().equals(loggedInUser.getUserName()))
-                        return Output.RATING_EXISTS;
-                loggedInUser.getActiveRestaurant().addRating(loggedInUser, rating);
-            }
+            for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
+                if (rate.getUser().getUserName().equals(loggedInUser.getUserName()))
+                    return Output.RATING_EXISTS;
+            loggedInUser.getActiveRestaurant().addRating(loggedInUser, rating);
+        }
         return Output.RATED;
     }
     public Output editRating(double rating) {
         if (rating>5 || rating<0)
             return Output.RATING_OUT_OUT_OF_RANGE;
         ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
         for (Rate rate : rates)
             if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
                 rate.editRating(rating);
-                return Output.NO_RATING;
-
+                return Output.RATED;
             }
-        return Output.RATED;
+        return Output.NO_RATING;
     }
     public Output addResponse(int ID, String responseText) {
         ArrayList<Comment> comments;
@@ -435,7 +446,7 @@ public class Manager {
 
     public Output editResponse(int ID, String newComment) {
         ArrayList<Comment> comments;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             comments = loggedInUser.getActiveRestaurant().getComments();
         else
             comments = loggedInUser.getActiveRestaurant().getOpenedFood().getComments();
@@ -444,7 +455,7 @@ public class Manager {
                 if (!comment.hasResponse) {
                     return Output.NO_RESPONSE;
                 }
-                comment.getResponse().editComment(newComment);
+                comment.editResponse(newComment);
                 return Output.RESPONSE_EDITED;
             }
         }
@@ -525,23 +536,28 @@ public class Manager {
         }
         return null;
     }
-    public Output confirmOrder(int customerLocation) {
+    public Output confirmOrder(int customerLocation, String discountToken) {
+        double totalPrice = 0;
         Customer customer = (Customer) getLoggedInUser();
+        if (!discountToken.equals("NO") && !customer.hasThisToken(discountToken))
+            return Output.WRONG_DISCOUNT_TOKEN;
         if (customer.getCart().getFoods().isEmpty())
             return Output.EMPTY_CART;
         else if(customerLocation > 1000) {
-            return Output.NO_LOCATION;
+            return Output.LOCATION_NOT_IN_THE_MAP;
         } else {
-            double totalPrice = 0;
             Cart cart = customer.getCart();
             for (int i=0;i<cart.getFoodsCount().size();i++)
                 totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
-            if (totalPrice > customer.getCharge())
+            int shortestPath = map.findShortestPath(customerLocation, customer.getOrderedRestaurant().getLocation(),false)/30;
+            double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
+            if (totalDeliveryPrice > customer.getCharge(discountToken))
                 return Output.NOT_ENOUGH_CHARGE;
         }
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
         customer.getOrderedRestaurant().addOrder(order);
-        customer.addOrder(order);
+        if(customer.addOrder(order,totalPrice,discountToken))
+            return Output.ORDER_CONFIRMED2;
         return Output.ORDER_CONFIRMED;
     }
     public ArrayList<String> estimateOrderTime() {
@@ -555,8 +571,16 @@ public class Manager {
     public ArrayList<Order> getActiveOrders() {
         ArrayList<Order> orders = new ArrayList<>();
         for (Order order : loggedInUser.getActiveRestaurant().getOrders())
-            if (!order.getOrderStatus().equals(OrderStatus.SENT))
+            if (order.getOrderStatus().equals(OrderStatus.NOT_READY))
                 orders.add(order);
+        return orders;
+    }
+    public ArrayList<Order> getOrdersWithoutDeliverer() {
+        ArrayList<Order> orders = new ArrayList<>();
+        for (Restaurant restaurant : RestaurantList.restaurants)
+            for (Order order : restaurant.getOrders())
+                if (!order.hasDeliverer && order.getOrderStatus() == OrderStatus.ON_THE_WAY)
+                    orders.add(order);
         return orders;
     }
 
@@ -638,25 +662,5 @@ public class Manager {
             }
         }
         return Output.INVALID_USER_NAME;
-    }
-    private boolean cartChecker(FoodType foodType) {
-        ArrayList<Customer> customers = UserList.getUserListInstance().getCustomers();
-        for (Customer customer : customers) {
-            for (Food food : customer.getCart().getFoods()) {
-                if (food.getType().equals(foodType))
-                    return true;
-            }
-        }
-        return false;
-    }
-    private boolean cartChecker(int ID) {
-        ArrayList<Customer> customers = UserList.getUserListInstance().getCustomers();
-        for (Customer customer : customers) {
-            for (Food food : customer.getCart().getFoods()) {
-                if (food.getID() == ID)
-                    return true;
-            }
-        }
-        return false;
     }
 }

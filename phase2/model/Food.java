@@ -16,7 +16,7 @@ public class Food {
     }
     public double getPrice(){return price;}
     public double getDiscountedPrice() {
-        if(!hasDiscounted()) {
+        if(!isDiscounted()) {
             discount = 0;
         }
         return price - price * (discount / 100);
@@ -34,11 +34,14 @@ public class Food {
     private Date expireDate = null;
     public int getID(){ return ID;}
     private double discount;
-     public Food(String name, double price, FoodType type){
+    private String restaurantName;
+    public String getRestaurantName() {return restaurantName;}
+    public Food(String name, double price, FoodType type,String restaurantName){
         this.name = name;
         this.price = price;
         this.discount = 0;
         this.type = type;
+        this.restaurantName=restaurantName;
         this.activation = true;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();
@@ -66,17 +69,17 @@ public class Food {
     public void setExpireDate(Date expireDate) {
         this.expireDate = expireDate;
     }
-    public boolean hasDiscounted() {
+    public boolean isDiscounted() {
         return expireDate != null && new Date().getTime() <= expireDate.getTime();
     }
     public double getDiscount() {
-        if(!hasDiscounted()) {
+        if(!isDiscounted()) {
             discount = 0;
         }
         return discount;
     }
     public void setName(String name) {
-         this.name = name;
+        this.name = name;
     }
     private final ArrayList<Comment> comments ;
     public void addComment(User user ,String comment) {comments.add(new Comment(user,comment));}

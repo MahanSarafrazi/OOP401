@@ -40,7 +40,7 @@
          </fill>
       </Text>
       <Button fx:id="reset" alignment="CENTER" layoutX="221.0" layoutY="230.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="reset" AnchorPane.bottomAnchor="128.0" />
-      <Button fx:id="forgetPassword" alignment="CENTER" layoutX="221.0" layoutY="281.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="forget password?" AnchorPane.bottomAnchor="77.0" />
+      <Button fx:id="forgetPassword" alignment="CENTER" layoutX="221.0" layoutY="281.0" mnemonicParsing="false" onAction="#forgetHandler" prefHeight="42.0" prefWidth="158.0" style="-fx-background-color: aqua;" text="forget password?" AnchorPane.bottomAnchor="77.0" />
       <Button fx:id="back" alignment="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backHandler" style="-fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">

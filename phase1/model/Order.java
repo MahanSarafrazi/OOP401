@@ -126,7 +126,7 @@ public class Order {
         Map map = Manager.getManagerInstance().getMap();
         int shortestPathTime = map.findShortestPath(customerLocation, location,false)*20*1000;
         deliveryDate = new Date();
-        deliveryDate.setTime(Calendar.getInstance().getTimeInMillis()+ shortestPathTime);
+        deliveryDate.setTime(Calendar.getInstance().getTimeInMillis() + shortestPathTime);
         hasDeliverer=true;
     }
     public boolean reachedRestaurant() {
