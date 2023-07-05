@@ -80,9 +80,9 @@ public class LoginMenuController extends MenuController {
             super.getStage().close();
             FXMLLoader loader = null;
             if(type.getValue().equals("customer")) {
-                loader = new FXMLLoader(this.getClass().getResource("../view/CustomerMenu.fxml"));
+                loader = new FXMLLoader(this.getClass().getResource("../view/CustomerpPanel.fxml"));
             } else if(type.getValue().equals("restaurant owner")) {
-                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantOwner.fxml"));
+                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantMenuByOwner.fxml"));
             } else if(type.getValue().equals("deliverer")) {
                 loader = new FXMLLoader(this.getClass().getResource("../view/DelivererMenu.fxml"));
             }
@@ -93,6 +93,7 @@ public class LoginMenuController extends MenuController {
             }
             Scene scene = new Scene(loader.getRoot());
             ((MenuController) loader.getController()).initialize(new Stage(), scene, null);
+            ((MenuController) loader.getController()).getStage().setScene(scene);
             ((MenuController) loader.getController()).getStage().show();
 
         } else {
