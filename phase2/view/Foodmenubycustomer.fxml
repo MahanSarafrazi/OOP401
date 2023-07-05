@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="back" layoutX="274.0" layoutY="374.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" />
+      <Text layoutX="30.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="food's name:" textAlignment="JUSTIFY" wrappingWidth="105.9140625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="30.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="food's price:" wrappingWidth="113.13671875">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="30.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="32.0" layoutX="174.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="32.0" layoutX="201.0" layoutY="119.0" stroke="BLACK" strokeType="INSIDE" width="95.0" AnchorPane.leftAnchor="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcfcfc" height="32.0" layoutX="174.0" layoutY="75.0" stroke="BLACK" strokeType="INSIDE" width="200.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" />
+      <ChoiceBox layoutX="288.0" layoutY="119.0" prefHeight="30.0" prefWidth="86.0" AnchorPane.rightAnchor="200.0" />
+      <Label fx:id="foodName" layoutX="207.0" layoutY="34.0" prefHeight="25.0" prefWidth="187.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="score" layoutX="205.0" layoutY="122.0" prefHeight="25.0" prefWidth="86.0" AnchorPane.leftAnchor="205.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="foodPrice" layoutX="204.0" layoutY="79.0" prefHeight="25.0" prefWidth="187.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="209.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="seeComments" layoutX="174.0" layoutY="168.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: orange;" text="see comments" AnchorPane.leftAnchor="200.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="plus" layoutX="377.0" layoutY="266.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="47.0" style="-fx-background-color: green;" text="+" AnchorPane.rightAnchor="176.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="32.0" layoutX="223.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" width="154.0" AnchorPane.leftAnchor="223.0" />
+      <Text layoutX="224.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add food to cart" textAlignment="CENTER" wrappingWidth="154.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Text>
+      <Button fx:id="minus" layoutX="177.0" layoutY="266.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="47.0" style="-fx-background-color: red;" text="-">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirm" layoutX="308.0" layoutY="325.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="86.0" style="-fx-background-color: green;" text="confirm" AnchorPane.rightAnchor="200.0" />
+      <Button fx:id="reset" layoutX="200.0" layoutY="325.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="86.0" style="-fx-background-color: red;" text="reset" AnchorPane.leftAnchor="200.0" />
+   </children>
+</AnchorPane>
