@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.RestaurantsMenuController" />
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.RestaurantsMenuController">
+   <content>
+      <GridPane fx:id="gridPane">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="255.0" prefWidth="255.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="230.0" minWidth="255.0" prefWidth="255.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="255.0" minWidth="255.0" prefWidth="255.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="85.4" minHeight="85.4" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="85.4" minHeight="85.4" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+   </content>
+</ScrollPane>

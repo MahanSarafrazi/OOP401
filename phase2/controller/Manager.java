@@ -473,7 +473,7 @@ public class Manager {
     public ArrayList<Restaurant> typeSearch(int location ,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)
-            if (restaurant.getFoodType().contains(foodType))
+            if (restaurant.getFoodType().contains(foodType) && map.findShortestPath(location, restaurant.getLocation(),false) < 30)
                 restaurants.add(restaurant);
         return restaurants;
     }
