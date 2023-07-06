@@ -28,12 +28,16 @@ public class RestaurantBoxController extends MenuController {
     @FXML
     public TextField foodType;
 
-    public void chooseRestaurant(String name, FoodType foodType) {
+    private int ID;
+
+    public void chooseRestaurant(String name, FoodType foodType, int ID) {
         this.name.setText(name);
         this.foodType.setText(foodType.name());
+        this.ID = ID;
     }
 
     public void buttonBOXHandler(ActionEvent actionEvent) {
+        getManager().getLoggedInUser().setActiveRestaurant(ID);
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Restaurantmenubyowner.fxml"));
         try {
             loader.load();

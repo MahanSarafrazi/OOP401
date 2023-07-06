@@ -196,6 +196,36 @@
       ],
       "userName": "fariman2",
       "password": "Fariman2"
+    },
+    {
+      "restaurants": [
+        {
+          "name": "jahan",
+          "orders": [],
+          "ID": 481816,
+          "location": 34,
+          "foodTypes": [
+            "FAST_FOOD"
+          ],
+          "foods": [],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "mahan",
+      "password": "Sarafrazi1",
+      "activeRestaurant": {
+        "name": "jahan",
+        "orders": [],
+        "ID": 481816,
+        "location": 34,
+        "foodTypes": [
+          "FAST_FOOD"
+        ],
+        "foods": [],
+        "comments": [],
+        "rates": []
+      }
     }
   ]
 }
