@@ -507,12 +507,13 @@ public class Manager {
         }
         return restaurants;
     }
-    public LinkedHashMap<Integer, Integer> favoriteRestaurants() {
+    public LinkedHashMap<Integer, Integer> favoriteRestaurants(FoodType foodType) {
         Customer customer = (Customer) loggedInUser;
         ArrayList<Order> orders = customer.getOrders();
         LinkedHashMap<Integer , Integer> restaurants = new LinkedHashMap<>();
         for (Order order : orders) {
-            if (restaurants.containsKey(order.getRestaurantID())) {
+            if (restaurants.containsKey(order.getRestaurantID()) && (foodType == null ||
+                    RestaurantList.getRestaurant(order.getRestaurantID()).)) {
                 int newValue = restaurants.get(order.getRestaurantID()) + 1;
                 restaurants.put(order.getRestaurantID(), newValue);
             }

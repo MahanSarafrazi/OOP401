@@ -22,7 +22,7 @@ public class CustomerMenuController extends MenuController {
 
     @FXML
     public void searchHandler() {
-        System.out.println("hi");
+        System.out.println(restaurantType.getValue());
     }
 }
 
