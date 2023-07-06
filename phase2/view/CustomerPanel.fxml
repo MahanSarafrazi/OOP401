@@ -34,7 +34,7 @@
                                      </FXCollections>
                                  </items>
                                </ComboBox>
-                                <ComboBox fx:id="RestaurantType" layoutX="45.0" layoutY="38.0" prefHeight="26.0" prefWidth="139" promptText="Restaurant type" AnchorPane.leftAnchor="45.0">
+                                <ComboBox fx:id="restaurantType" layoutX="45.0" layoutY="38.0" prefHeight="26.0" prefWidth="139" promptText="Restaurant type" AnchorPane.leftAnchor="45.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="a" />
@@ -43,9 +43,9 @@
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
-                                <TextField fx:id="searchLabel" layoutX="189.0" layoutY="25.0" prefHeight="26.0" prefWidth="327.0" style="-fx-background-color: white;" text="Search" />
+                                <TextField fx:id="searchField" layoutX="192.0" layoutY="24.0" prefHeight="26.0" prefWidth="321.0" promptText="Search" style="-fx-background-color: white;" />
                                 <Button fx:id="iranianFood" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" text="Button" AnchorPane.leftAnchor="100.0" />
-                                <Button fx:id="FastFood" layoutX="244.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="112.0" style="-fx-background-color: white;" text="Button" />
+                                <Button fx:id="fastFood" layoutX="244.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="112.0" style="-fx-background-color: white;" text="Button" />
                                 <Button fx:id="drink" layoutX="425.0" layoutY="68.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="110.0" style="-fx-background-color: white;" text="Button" AnchorPane.rightAnchor="100.0" />
                                 <Button fx:id="more" layoutX="102.0" layoutY="185.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="107.0" style="-fx-background-color: white;" textFill="#111111">
                                     <font>
@@ -58,9 +58,9 @@
                                     </font>
                                 </Text>
                                 <Button fx:id="logout" layoutX="363.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="200.0" />
-                                <Button id="cart" layoutX="556.0" layoutY="22.0" minWidth="31.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: white;" />
+                                <Button id="cart" fx:id="cart" layoutX="556.0" layoutY="22.0" minWidth="31.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: white;" />
                                 <Button fx:id="back" layoutX="205.0" layoutY="325.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 97.1564% 0.0% to 100.0% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" />
-                                  <ImageView fx:id="cart" fitHeight="33.0" fitWidth="61.0" layoutX="555.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                  <ImageView fitHeight="33.0" fitWidth="61.0" layoutX="555.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                                       <image>
                                           <Image url="@../../resources/Pics/cart.jpg" />
                                       </image>
@@ -80,12 +80,14 @@
                                           <Image url="@../../resources/Pics/Iranian.jpg" />
                                       </image>
                                   </ImageView>
-                        <Button id="cart" layoutX="517.0" layoutY="24.0" minWidth="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: white;" />
-                        <ImageView fx:id="cart1" fitHeight="26.0" fitWidth="26.0" layoutX="517.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../resources/Pics/search.jpg" />
-                           </image>
-                        </ImageView>
+                        <Button id="search" fx:id="search" layoutX="515.0" layoutY="24.0" maxHeight="26.0" minHeight="26.0" minWidth="26.0" mnemonicParsing="false" onAction="#searchHandler" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: white;">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/Pics/search.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                             </children>
                         </AnchorPane>
                     </content>
