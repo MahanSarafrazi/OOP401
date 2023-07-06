@@ -90,13 +90,17 @@ public class LoginMenuController extends MenuController {
                 CustomerMenuController controller = loader.getController();
                 controller.initialize(new Stage(), null, scene, null);
                 controller.accountCharge.setText(String.valueOf(customer.getCharge()));
+                controller.accountCharge.setEditable(false);
                 if (customer.getRestoreQuestion() != null) {
                     controller.restoreQuestion.setText(customer.getRestoreQuestion());
                     controller.restoreSolve.setText(customer.getRestoreAnswer());
                 }
                 controller.username.setText(customer.getUserName());
+                controller.username.setEditable(false);
                 controller.password.setText(customer.getPassword());
+                controller.password.setEditable(false);
                 controller.totalSpending.setText(String.valueOf(customer.getSpentMoney()));
+                controller.totalSpending.setEditable(false);
                 controller.getStage().setScene(scene);
                 controller.getStage().show();
             } else if(type.getValue().equals("restaurant owner")) {
@@ -156,6 +160,7 @@ public class LoginMenuController extends MenuController {
             ((RestorePasswordController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
             ((RestorePasswordController) loader.getController()).restoreQuestion.setText(getManager().getLoggedInUser().getRestoreQuestion()+" ?");
             ((RestorePasswordController) loader.getController()).restoreQuestion.setEditable(false);
+            ((RestorePasswordController) loader.getController()).user = getManager().getUser(username);
             super.getStage().setScene(scene);
             super.getStage().show();
         } else {

@@ -20,9 +20,11 @@
         "foods": [],
         "foodsCount": []
       },
-      "charge": 0.0,
+      "charge": 500000.0,
       "userName": "fariman1",
-      "password": "Fariman1"
+      "password": "Fariman1",
+      "restoreQuestion": "alo",
+      "restoreAnswer": "salam"
     }
   ],
   "deliverers": [],
