@@ -79,5 +79,10 @@
             </Text>
          </children>
       </StackPane>
+      <ScrollPane layoutX="7.0" layoutY="91.0" prefHeight="227.0" prefWidth="277.0">
+         <content>
+            <VBox fx:id="list" prefHeight="214.0" prefWidth="283.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
