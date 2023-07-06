@@ -27,7 +27,7 @@ public class RegisterAndLoginMenuController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene loginScene = new Scene(loginLoader.getRoot());
-        ((LoginMenuController) loginLoader.getController()).initialize(getStage(), loginScene, getMainScene());
+        ((LoginMenuController) loginLoader.getController()).initialize(getStage(), null, loginScene, getMainScene());
         super.getStage().setScene(loginScene);
     }
 
@@ -45,7 +45,7 @@ public class RegisterAndLoginMenuController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene registerScene = new Scene(registerLoader.getRoot());
-        ((RegisterMenuController) registerLoader.getController()).initialize(getStage(), registerScene, getMainScene());
+        ((RegisterMenuController) registerLoader.getController()).initialize(getStage(), null, registerScene, getMainScene());
         super.getStage().setScene(registerScene);
     }
 }

@@ -133,6 +133,6 @@ public class Order {
         //System.out.println(new Date().getTime());
        // System.out.println(deliveryDate.getTime());
 
-        return new Date().getTime() - deliveryDate.getTime()< 0;
+        return new Date().getTime() - deliveryDate.getTime() < 0;
     }
 }

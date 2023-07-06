@@ -10,8 +10,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import java.io.IOException;
-
 public class RestorePasswordController extends MenuController {
     @FXML
     public TextField restoreQuestion;
@@ -39,8 +37,6 @@ public class RestorePasswordController extends MenuController {
     @FXML
     public void confirmHandler(ActionEvent actionEvent) {
         String username = LoginMenuController.userNameText;
-        restoreQuestion.setText(getManager().getUser(username).getRestoreQuestion());
-        restoreQuestion.setEditable(false);
         String answer = restoreAnswer.getText();
         if (answer.equals(getManager().getUser(username).getRestoreAnswer())) {
             answer = getManager().getUser(username).getPassword();
@@ -58,6 +54,6 @@ public class RestorePasswordController extends MenuController {
 
     @FXML
     public void resetHandler(ActionEvent actionEvent) {
-        restoreQuestion.setText("");
+        restoreAnswer.setText("");
     }
 }
