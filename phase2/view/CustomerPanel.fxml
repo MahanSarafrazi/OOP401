@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -14,9 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<AnchorPane fx:controller="phase2.controller.CustomerMenuController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.CustomerMenuController">
     <children>
         <TabPane nodeOrientation="LEFT_TO_RIGHT" opacity="0.93" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
@@ -24,66 +25,67 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <ChoiceBox fx:id="searchType" layoutX="95.0" layoutY="27.0" prefHeight="25.0" prefWidth="139.0" AnchorPane.leftAnchor="95.0" >
+                                <ComboBox fx:id="searchType" layoutX="45.0" layoutY="12.0" prefHeight="26.0" prefWidth="139.0" promptText="Search type" AnchorPane.leftAnchor="45.0">
                                     <items>
                                       <FXCollections fx:factory="observableArrayList">
                                            <String fx:value="normal" />
                                           <String fx:value="near restaurants" />
-                                         <String fx:value="near restaurants by type" />
-                                          <String fx:value="favorite restaurants" />
+                                         <String fx:value="favorite restaurants" />
                                      </FXCollections>
                                  </items>
-                               </ChoiceBox>
-                                <TextField fx:id="searchLabel" layoutX="234.0" layoutY="27.0" prefHeight="25.0" prefWidth="279.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="87.0" />
-                                <Button id="restaurantnearyou" fx:id="restaurantNearYou" layoutX="145.0" layoutY="181.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="295.0" style="-fx-background-color: gray;" text="Restaurants near you" />
-                                <Button fx:id="iranianFood" layoutX="45.0" layoutY="68.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" text="Button">
-                                    <graphic>
-                                        <ImageView fitHeight="98.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../resources/Pics/Iranian.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="FastFood" layoutX="189.0" layoutY="68.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="112.0" style="-fx-background-color: white;" text="Button">
-                                    <graphic>
-                                        <ImageView fitHeight="95.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../resources/Pics/fastFood.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="drink" layoutX="329.0" layoutY="66.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="110.0" style="-fx-background-color: white;" text="Button">
-                                    <graphic>
-                                        <ImageView fitHeight="99.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../resources/Pics/drink.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="more" layoutX="465.0" layoutY="66.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="107.0" style="-fx-background-color: white;" textFill="#111111">
+                               </ComboBox>
+                                <ComboBox fx:id="RestaurantType" layoutX="45.0" layoutY="38.0" prefHeight="26.0" prefWidth="139" promptText="Restaurant type" AnchorPane.leftAnchor="45.0">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="a" />
+                                            <String fx:value="b" />
+                                            <String fx:value="c" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <TextField fx:id="searchLabel" layoutX="189.0" layoutY="25.0" prefHeight="26.0" prefWidth="327.0" style="-fx-background-color: white;" text="Search" />
+                                <Button fx:id="iranianFood" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" text="Button" AnchorPane.leftAnchor="100.0" />
+                                <Button fx:id="FastFood" layoutX="244.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="112.0" style="-fx-background-color: white;" text="Button" />
+                                <Button fx:id="drink" layoutX="425.0" layoutY="68.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="110.0" style="-fx-background-color: white;" text="Button" AnchorPane.rightAnchor="100.0" />
+                                <Button fx:id="more" layoutX="102.0" layoutY="185.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="107.0" style="-fx-background-color: white;" textFill="#111111">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
                                 </Button>
-                                <Text layoutX="483.0" layoutY="127.0" stroke="#eb4848" strokeType="OUTSIDE" strokeWidth="0.0" text=". . ." textAlignment="CENTER" wrappingWidth="71.9033203125">
+                                <Text layoutX="120.0" layoutY="243.0" stroke="#eb4848" strokeType="OUTSIDE" strokeWidth="0.0" text=". . ." textAlignment="CENTER" wrappingWidth="71.9033203125">
                                     <font>
                                         <Font size="55.0" />
                                     </font>
                                 </Text>
-                                <Button fx:id="logout" layoutX="293.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" AnchorPane.rightAnchor="250.0" />
-                                <Button id="cart" layoutX="18.0" layoutY="25.0" minWidth="31.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: white;">
-                                    <graphic>
-                                        <ImageView fx:id="cart" fitHeight="33.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../resources/Pics/cart.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic>
-                                </Button>
-                                <Button fx:id="back" layoutX="207.0" layoutY="298.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 97.1564% 0.0% to 100.0% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="230.0" />
+                                <Button fx:id="logout" layoutX="363.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="200.0" />
+                                <Button id="cart" layoutX="556.0" layoutY="22.0" minWidth="31.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="31.0" style="-fx-background-color: white;" />
+                                <Button fx:id="back" layoutX="205.0" layoutY="325.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 97.1564% 0.0% to 100.0% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" />
+                                  <ImageView fx:id="cart" fitHeight="33.0" fitWidth="61.0" layoutX="555.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../../resources/Pics/cart.jpg" />
+                                      </image>
+                                  </ImageView>
+                                  <ImageView fitHeight="99.0" fitWidth="114.0" layoutX="400.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../../resources/Pics/drink.jpg" />
+                                      </image>
+                                  </ImageView>
+                                  <ImageView fitHeight="95.0" fitWidth="99.0" layoutX="251.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../../resources/Pics/fastFood.jpg" />
+                                      </image>
+                                  </ImageView>
+                                  <ImageView fitHeight="98.0" fitWidth="97.0" layoutX="107.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                      <image>
+                                          <Image url="@../../resources/Pics/Iranian.jpg" />
+                                      </image>
+                                  </ImageView>
+                        <Button id="cart" layoutX="517.0" layoutY="24.0" minWidth="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="26.0" style="-fx-background-color: white;" />
+                        <ImageView fx:id="cart1" fitHeight="26.0" fitWidth="26.0" layoutX="517.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/Pics/search.jpg" />
+                           </image>
+                        </ImageView>
                             </children>
                         </AnchorPane>
                     </content>
