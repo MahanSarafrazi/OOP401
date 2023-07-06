@@ -28,7 +28,9 @@ public class CustomerMenuController extends MenuController {
     @FXML
     public void searchHandler() {
         ArrayList<Restaurant> restaurants ;
-        if (searchType.getValue().equals("near restaurants"))
+        if (searchType.getValue() == null)
+            restaurants = getManager().normalSearch(searchField.getText());
+        else if (searchType.getValue().equals("near restaurants"))
             restaurants = getManager().searchForNearRestaurants(location,restaurantType.getValue().toString(), searchField.getText());
         else if (searchType.getValue().equals("favorite restaurants"))
             restaurants = getManager().favoriteRestaurants(restaurantType.getValue().toString(), searchField.getText());
@@ -58,7 +60,9 @@ public class CustomerMenuController extends MenuController {
 
     @FXML
     public void logoutHandler() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/RegisterAndLoginMenu.fxml"));
+        getStage().close();
+        getManager().logout();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RegisterAndLoginMenu.fxml"));
         try {
             loader.load();
         } catch (IOException e) {
