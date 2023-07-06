@@ -470,38 +470,17 @@ public class Manager {
         }
         return Output.EQUAL_LOCATION;
     }
-    public ArrayList<Restaurant> searchForNearRestaurants(int location) {
+    public ArrayList<Restaurant> normalSearch() {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
-        for (Restaurant restaurant : RestaurantList.restaurants) {
-            if(map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
+        for (Restaurant restaurant : RestaurantList.restaurants)
                 restaurants.add(restaurant);
-            }
-        }
         return restaurants;
     }
     public ArrayList<Restaurant> searchForNearRestaurants(int location, String foodType) {
-        FoodType foodType1 = null;
-        for (FoodType value : FoodType.values()) {
-            if(value.commandingPattern.matcher(foodType).find()) {
-                foodType1 = value;
-            }
-        }
-        if(foodType1 == null) {
-            return null;
-        }
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants) {
-            boolean sameFoodType = false;
-            for (FoodType type : restaurant.getFoodType()) {
-                if(type.equals(foodType1)) {
-                    sameFoodType = true;
-                    break;
-                }
-            }
-            if(!sameFoodType) {
-                continue;
-            }
-            if(map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
+            if((foodType == null || restaurant.getFoodType().contains(foodType)) &&
+                    map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
                 restaurants.add(restaurant);
             }
         }
@@ -513,7 +492,7 @@ public class Manager {
         LinkedHashMap<Integer , Integer> restaurants = new LinkedHashMap<>();
         for (Order order : orders) {
             if (restaurants.containsKey(order.getRestaurantID()) && (foodType == null ||
-                    RestaurantList.getRestaurant(order.getRestaurantID()).)) {
+                    RestaurantList.getRestaurant(order.getRestaurantID()).getFoodType().contains(foodType))) {
                 int newValue = restaurants.get(order.getRestaurantID()) + 1;
                 restaurants.put(order.getRestaurantID(), newValue);
             }
