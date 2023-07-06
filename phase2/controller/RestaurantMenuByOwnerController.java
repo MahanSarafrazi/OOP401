@@ -123,6 +123,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
     }
 
     public void backHandler(ActionEvent actionEvent) {
+        getManager().getLoggedInUser().setActiveRestaurant(null);
         back();
     }
 }
