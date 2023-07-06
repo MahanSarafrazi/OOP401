@@ -121,7 +121,7 @@ public class CustomerMenuController extends MenuController {
                 throw new RuntimeException(e);
             }
             ((RestaurantBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), null, null);
-            ((RestaurantBoxController) foodLoader.getController()).chooseRestaurant(restaurants.get(i-3).getName(), restaurants.get(i-3).getFoodType().get(0));
+            ((RestaurantBoxController) foodLoader.getController()).chooseRestaurant(restaurants.get(i-3).getName(), restaurants.get(i-3).getFoodType().get(0), restaurants.get(i-3).getID());
             ((RestaurantsMenuController) loader.getController()).gridPane.add(foodLoader.getRoot(),i%3,i/3,1,1);
         }
         super.getStage().setScene(scene);
