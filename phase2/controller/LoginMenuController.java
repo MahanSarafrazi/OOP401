@@ -128,7 +128,7 @@ public class LoginMenuController extends MenuController {
             }
             Scene scene = new Scene(loader.getRoot());
             ((RestorePasswordController) loader.getController()).initialize(getStage(), scene, getMainScene());
-            ((RestorePasswordController) loader.getController()).restoreQuestion.setText(getManager().getUser(username).getRestoreQuestion());
+            ((RestorePasswordController) loader.getController()).restoreQuestion.setText(getManager().getUser(username).getRestoreQuestion()+" ?");
             ((RestorePasswordController) loader.getController()).restoreQuestion.setEditable(false);
             super.getStage().setScene(scene);
             super.getStage().show();

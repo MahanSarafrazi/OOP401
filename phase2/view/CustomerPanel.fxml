@@ -14,6 +14,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <AnchorPane fx:controller="phase2.controller.CustomerMenuController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <TabPane nodeOrientation="LEFT_TO_RIGHT" opacity="0.93" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -22,14 +24,23 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <ChoiceBox layoutX="95.0" layoutY="27.0" prefHeight="25.0" prefWidth="139.0" style="-fx-blend-mode: dd;" AnchorPane.leftAnchor="95.0" />
+                                <ChoiceBox fx:id="searchType" layoutX="95.0" layoutY="27.0" prefHeight="25.0" prefWidth="139.0" AnchorPane.leftAnchor="95.0" >
+                                    <items>
+                                      <FXCollections fx:factory="observableArrayList">
+                                           <String fx:value="normal" />
+                                          <String fx:value="near restaurants" />
+                                         <String fx:value="near restaurants by type" />
+                                          <String fx:value="favorite restaurants" />
+                                     </FXCollections>
+                                 </items>
+                               </ChoiceBox>
                                 <TextField fx:id="searchLabel" layoutX="234.0" layoutY="27.0" prefHeight="25.0" prefWidth="279.0" style="-fx-background-color: white;" text="Search" AnchorPane.rightAnchor="87.0" />
                                 <Button id="restaurantnearyou" fx:id="restaurantNearYou" layoutX="145.0" layoutY="181.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="295.0" style="-fx-background-color: gray;" text="Restaurants near you" />
                                 <Button fx:id="iranianFood" layoutX="45.0" layoutY="68.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" text="Button">
                                     <graphic>
                                         <ImageView fitHeight="98.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../Downloads/iranian.jpg" />
+                                                <Image url="@../../resources/Pics/Iranian.jpg" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -38,7 +49,7 @@
                                     <graphic>
                                         <ImageView fitHeight="95.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../Downloads/fastfood1.jpg" />
+                                                <Image url="@../../resources/Pics/fastFood.jpg" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -47,7 +58,7 @@
                                     <graphic>
                                         <ImageView fitHeight="99.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../Downloads/drinkk1.jpg" />
+                                                <Image url="@../../resources/Pics/drink.jpg" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -67,7 +78,7 @@
                                     <graphic>
                                         <ImageView fx:id="cart" fitHeight="33.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../Downloads/shopping-cart-Top.jpg" />
+                                                <Image url="@../../resources/Pics/cart.jpg" />
                                             </image>
                                         </ImageView>
                                     </graphic>

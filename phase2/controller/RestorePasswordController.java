@@ -54,6 +54,6 @@ public class RestorePasswordController extends MenuController {
 
     @FXML
     public void resetHandler(ActionEvent actionEvent) {
-        restoreQuestion.setText("");
+        restoreAnswer.setText("");
     }
 }
