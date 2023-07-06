@@ -82,7 +82,7 @@ public class LoginMenuController extends MenuController {
             if(type.getValue().equals("customer")) {
                 loader = new FXMLLoader(this.getClass().getResource("../view/CustomerPanel.fxml"));
             } else if(type.getValue().equals("restaurant owner")) {
-                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantMenuByOwner.fxml"));
+                loader = new FXMLLoader(this.getClass().getResource("../view/Restaurantownermenu.fxml"));
             } else {
                 loader = new FXMLLoader(this.getClass().getResource("../view/DelivererMenu.fxml"));
             }
@@ -92,7 +92,7 @@ public class LoginMenuController extends MenuController {
                 throw new RuntimeException(e);
             }
             Scene scene = new Scene(loader.getRoot());
-            ((MenuController) loader.getController()).initialize(new Stage(), scene, null);
+            ((MenuController) loader.getController()).initialize(new Stage(), null, scene, null);
             ((MenuController) loader.getController()).getStage().setScene(scene);
             ((MenuController) loader.getController()).getStage().show();
 
@@ -127,7 +127,7 @@ public class LoginMenuController extends MenuController {
                 throw new RuntimeException(e);
             }
             Scene scene = new Scene(loader.getRoot());
-            ((RestorePasswordController) loader.getController()).initialize(getStage(), scene, getMainScene());
+            ((RestorePasswordController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
             ((RestorePasswordController) loader.getController()).restoreQuestion.setText(getManager().getUser(username).getRestoreQuestion()+" ?");
             ((RestorePasswordController) loader.getController()).restoreQuestion.setEditable(false);
             super.getStage().setScene(scene);

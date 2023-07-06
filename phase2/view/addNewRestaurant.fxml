@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="251.0" prefWidth="308.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.addNewRestaurantController">
+   <children>
+      <TextField fx:id="restaurantName" layoutX="140.0" layoutY="28.0" />
+      <Label layoutX="14.0" layoutY="28.0" text="restaurant name:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="66.0" text="main food type:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="mainFoodType" layoutX="140.0" layoutY="66.0" />
+      <Label layoutX="14.0" layoutY="105.0" text="location:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Location" layoutX="140.0" layoutY="105.0" />
+      <Button fx:id="confirm" layoutX="169.0" layoutY="152.0" mnemonicParsing="false" onAction="#confirmHandler" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: green;" text="confirm" />
+      <Button fx:id="reset" layoutX="44.0" layoutY="152.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: red;" text="reset" />
+      <StackPane layoutX="6.0" layoutY="199.0" prefHeight="46.0" prefWidth="297.0">
+         <children>
+            <Text fx:id="error" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

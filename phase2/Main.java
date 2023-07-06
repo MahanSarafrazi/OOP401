@@ -23,7 +23,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/RegisterAndLoginMenu.fxml"));
         loader.load();
         Scene scene = new Scene(loader.getRoot());
-        ((RegisterAndLoginMenuController) loader.getController()).initialize(primaryStage, scene, null);
+        ((RegisterAndLoginMenuController) loader.getController()).initialize(primaryStage, null, scene, null);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Shahkar");
         primaryStage.setResizable(false);

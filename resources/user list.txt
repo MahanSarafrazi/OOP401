@@ -500,7 +500,9 @@
     {
       "restaurants": [],
       "userName": "mahan",
-      "password": "Sarafrazi1"
+      "password": "Sarafrazi1",
+      "restoreQuestion": "",
+      "restoreAnswer": ""
     },
     {
       "restaurants": [],

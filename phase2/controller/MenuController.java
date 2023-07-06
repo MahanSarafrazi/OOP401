@@ -10,6 +10,15 @@ public class MenuController {
     private Stage stage;
     private Scene mainScene;
     private Scene previousScene;
+    private MenuController fatherStageController;
+
+    public MenuController getFatherStageController() {
+        return fatherStageController;
+    }
+
+    public void setFatherStageController(MenuController fatherStageController) {
+        this.fatherStageController = fatherStageController;
+    }
 
     public Manager getManager() {
         return manager;
@@ -39,10 +48,11 @@ public class MenuController {
         this.previousScene = previousScene;
     }
 
-    public void initialize(Stage stage, Scene mainScene, Scene previousScene) {
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
         this.stage = stage;
         this.mainScene = mainScene;
         this.previousScene = previousScene;
+        this.fatherStageController = fatherStageController;
     }
 
     public void back() {

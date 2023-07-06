@@ -1,17 +1,18 @@
 package phase2.controller;
 
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import phase2.model.Comment;
+import javafx.util.Duration;
+import phase2.model.Restaurant;
+import phase2.model.RestaurantOwner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,19 +20,21 @@ import java.util.ArrayList;
 public class RestaurantOwnerMenuController extends MenuController {
 
     @FXML
-    public Button uploadPhoto;
+    public Button logout;
+    @FXML
+    public Button AddNewRestaurant;
 
     @FXML
-    public Button seeComments;
+    public TextField password;
 
     @FXML
-    public Label restaurantNAme;
+    public TextField username;
 
     @FXML
-    public Label restaurantid;
+    public TextField restoreQuestion;
 
     @FXML
-    public Label score;
+    public TextField restoreSolve;
 
     @FXML
     public Button confirm;
@@ -40,32 +43,65 @@ public class RestaurantOwnerMenuController extends MenuController {
     public Button reset;
 
     @FXML
-    public Button logout;
+    public TextField search;
 
     @FXML
-    public Button addFood;
+    public Text error;
+
+    @Override
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
+        super.initialize(stage, fatherStageController, mainScene, previousScene);
+        username.setText(getManager().getLoggedInUser().getUserName());
+        password.setText(getManager().getLoggedInUser().getPassword());
+        update();
+    }
+    
+    public void update() {
+       ArrayList<Restaurant> restaurants = ((RestaurantOwner) getManager().getLoggedInUser()).getRestaurants();
+        for (Restaurant restaurant : restaurants) {
+
+        }
+    }
 
     @FXML
-    public void seeCommentsHandler(ActionEvent actionEvent) {
-        FXMLLoader commentsLoader = new FXMLLoader(this.getClass().getResource("../view/Comments.fxml"));
+    public void confirmHandler(ActionEvent actionEvent) {
+        if(restoreQuestion.getText().equals("")) {
+            error.setFill(Paint.valueOf("red"));
+            error.setText("The restore question is empty");
+        } else if(restoreSolve.getText().equals("")) {
+            error.setFill(Paint.valueOf("red"));
+            error.setText("The restore solve is empty");
+        } else {
+            getManager().setRestore(restoreQuestion.getText(), restoreSolve.getText());
+            error.setFill(Paint.valueOf("green"));
+            error.setText("The restore question set successfully");
+            restoreQuestion.setText("");
+            restoreSolve.setText("");
+        }
+        PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
+        hitAnimation.setOnFinished(e -> error.setText(""));
+        hitAnimation.playFromStart();
+    }
+
+    @FXML
+    public void resetHandler(ActionEvent actionEvent) {
+        restoreQuestion.setText("");
+        restoreSolve.setText("");
+    }
+
+
+    public void addNewRestaurantHandler(ActionEvent actionEvent) {
+        FXMLLoader addLoader = new FXMLLoader(this.getClass().getResource("../view/addNewRestaurant.fxml"));
         try {
-            commentsLoader.load();
+            addLoader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene commentsScene = new Scene(commentsLoader.getRoot());
-        ArrayList<Comment> comments = getManager().getLoggedInUser().getActiveRestaurant().getComments();
-        for(int i = 0; i < getManager().getLoggedInUser().getActiveRestaurant().getComments().size(); ++i) {
-            HBox hBox = new HBox();
-            Text text = new Text(comments.get(i).getComment());
-            Button button = new Button("add response");
-            button.setId("button" + i);
-            hBox.getChildren().add(text);
-            hBox.getChildren().add(button);
-            ((VBox) commentsLoader.getRoot()).getChildren().add(hBox);
-        }
-        ((CommentsController) commentsLoader.getController()).initialize(new Stage(), commentsScene, null);
-        ((CommentsController) commentsLoader.getController()).getStage().setScene(commentsScene);
-        ((CommentsController) commentsLoader.getController()).getStage().show();
+        Scene scene = new Scene(addLoader.getRoot());
+        Stage stage = new Stage();
+        stage.setTitle("add restaurant");
+        stage.setScene(scene);
+        ((addNewRestaurantController) addLoader.getController()).initialize(stage, this, scene, null);
+        ((addNewRestaurantController) addLoader.getController()).getStage().show();
     }
 }
