@@ -24,7 +24,7 @@ public enum Inputs {
     DE_ACTIVE_FOOD("^\\s*(?i)deActive\\s+food\\s+(\\d+)\\s*$"), //18
     ACTIVE_FOOD("^\\s*active\\s+food\\s+(\\d+)\\s*$"), //19
     SEARCH_RESTAURANT("^\\s*search\\s+restaurant\\s+(\\S+)\\s*$"), //20
-    
+
     SEARCH_FOOD("^\\s*search\\s+food\\s+(\\S+)\\s*$"), //21
     SELECT_FOOD("^\\s*select\\s+food\\s+(\\d+)\\s*$"), //22
     DISPLAY_COMMENTS("^\\s*display\\s+comments\\s*$"), //23
