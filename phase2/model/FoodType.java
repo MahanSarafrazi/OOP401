@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public enum FoodType {
     FAST_FOOD("^\\s*(?i)fastFood\\s*$"),
-    
+
     IRANIAN("^\\s*(?i)IRANIAN\\s*$"),
     ITALIAN("^\\s*(?i)ITALIAN\\s*$"),
     TURKISH("^\\s*(?i)TURKISH\\s*$"),
