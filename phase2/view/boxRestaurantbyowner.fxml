@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Button fx:id="buttonBOX" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff7003ec 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Button fx:controller="phase2.controller.RestaurantBoxController" fx:id="buttonBOX" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff7003ec 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <graphic>
       <AnchorPane prefHeight="70.0" prefWidth="230.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff7003ec 0.0%, #ffffff 100.0%);">
          <children>
