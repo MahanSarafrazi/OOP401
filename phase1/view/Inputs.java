@@ -60,6 +60,7 @@ public enum Inputs {
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
     ;
+    
 
     final Pattern commandingPattern;
 
