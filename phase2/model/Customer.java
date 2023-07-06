@@ -19,6 +19,9 @@ public class Customer extends User {
         discountTokens=new ArrayList<>();
     }
     private double spentMoney;
+    public double getSpentMoney() {
+        return spentMoney;
+    }
     private final ArrayList<String> discountTokens;
     public ArrayList<String> getDiscountTokens() {return discountTokens;}
     private final ArrayList<Order> orders ;
