@@ -207,9 +207,32 @@
           "foodTypes": [
             "FAST_FOOD"
           ],
-          "foods": [],
+          "foods": [
+            {
+              "price": 500.0,
+              "type": "FAST_FOOD",
+              "name": "pizza",
+              "activation": true,
+              "ID": 840166,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            }
+          ],
           "comments": [],
-          "rates": []
+          "rates": [],
+          "openedFood": {
+            "price": 500.0,
+            "type": "FAST_FOOD",
+            "name": "pizza",
+            "activation": true,
+            "ID": 840166,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          }
         }
       ],
       "userName": "mahan",
@@ -222,9 +245,32 @@
         "foodTypes": [
           "FAST_FOOD"
         ],
-        "foods": [],
+        "foods": [
+          {
+            "price": 500.0,
+            "type": "FAST_FOOD",
+            "name": "pizza",
+            "activation": true,
+            "ID": 840166,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          }
+        ],
         "comments": [],
-        "rates": []
+        "rates": [],
+        "openedFood": {
+          "price": 500.0,
+          "type": "FAST_FOOD",
+          "name": "pizza",
+          "activation": true,
+          "ID": 840166,
+          "discount": 0.0,
+          "restaurantName": "jahan",
+          "comments": [],
+          "rates": []
+        }
       }
     }
   ]
