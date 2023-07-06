@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import phase2.model.Comment;
+import phase2.model.Food;
 import phase2.model.Restaurant;
 import phase2.model.RestaurantOwner;
 
@@ -100,23 +101,24 @@ public class RestaurantMenuByOwnerController extends MenuController {
         Stage stage = new Stage();
         stage.setTitle("add food");
         stage.setScene(scene);
-        ((addNewRestaurantController) addLoader.getController()).initialize(stage, this, scene, null);
-        ((addNewRestaurantController) addLoader.getController()).getStage().show();
+        ((addFoodController) addLoader.getController()).initialize(stage, this, scene, null);
+        ((addFoodController) addLoader.getController()).getStage().show();
     }
 
     public void update() {
-       /* FXMLLoader loader;
+        FXMLLoader loader;
         list.getChildren().clear();
-        ArrayList<Restaurant> restaurants = ((RestaurantOwner) getManager().getLoggedInUser()).getRestaurants();
-        for (int i = 0; i < restaurants.size(); ++i) {
-            loader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+        ArrayList<Food> foods = ((RestaurantOwner) getManager().getLoggedInUser()).getActiveRestaurant().getFoods();
+        for (Food food : foods) {
+            loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ((RestaurantBoxController) loader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
-            ((RestaurantBoxController) loader.getController()).chooseRestaurant(restaurants.get(i).getName(), restaurants.get(i).getFoodType().get(0), restaurants.get(i).getID());
-            list.getChildren().add(loader.getRoot());*/
+            ((FoodBoxController) loader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
+            ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID());
+            list.getChildren().add(loader.getRoot());
+        }
     }
 }

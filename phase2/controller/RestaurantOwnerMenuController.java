@@ -66,7 +66,7 @@ public class RestaurantOwnerMenuController extends MenuController {
         FXMLLoader loader;
         list.getChildren().clear();
         ArrayList<Restaurant> restaurants = ((RestaurantOwner) getManager().getLoggedInUser()).getRestaurants();
-        for (int i = 0; i < restaurants.size(); ++i) {
+        for (Restaurant restaurant : restaurants) {
             loader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
             try {
                 loader.load();
@@ -74,7 +74,7 @@ public class RestaurantOwnerMenuController extends MenuController {
                 throw new RuntimeException(e);
             }
             ((RestaurantBoxController) loader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
-            ((RestaurantBoxController) loader.getController()).chooseRestaurant(restaurants.get(i).getName(), restaurants.get(i).getFoodType().get(0), restaurants.get(i).getID());
+            ((RestaurantBoxController) loader.getController()).chooseRestaurant(restaurant.getName(), restaurant.getFoodType().get(0), restaurant.getID());
             list.getChildren().add(loader.getRoot());
         }
     }
