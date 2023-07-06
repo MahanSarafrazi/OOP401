@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import phase2.model.User;
 
 public class RestorePasswordController extends MenuController {
     @FXML
@@ -36,10 +37,10 @@ public class RestorePasswordController extends MenuController {
     }
     @FXML
     public void confirmHandler(ActionEvent actionEvent) {
-        String username = LoginMenuController.userNameText;
+        User user = getManager().getLoggedInUser();
         String answer = restoreAnswer.getText();
-        if (answer.equals(getManager().getUser(username).getRestoreAnswer())) {
-            answer = getManager().getUser(username).getPassword();
+        if (answer.equals(user.getRestoreAnswer())) {
+            answer = user.getPassword();
             error.setFill(Paint.valueOf("green"));
         } else {
             answer = "wrong answer!";

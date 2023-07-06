@@ -470,42 +470,53 @@ public class Manager {
         }
         return Output.EQUAL_LOCATION;
     }
-    public ArrayList<Restaurant> normalSearch() {
+    public ArrayList<Restaurant> typeSearch(int location ,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)
+            if (restaurant.getFoodType().contains(foodType) && map.findShortestPath(location, restaurant.getLocation(),false) < 30)
                 restaurants.add(restaurant);
         return restaurants;
     }
-    public ArrayList<Restaurant> searchForNearRestaurants(int location, String foodType) {
+    public ArrayList<Restaurant> normalSearch(String name) {
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        for (Restaurant restaurant : RestaurantList.restaurants)
+                if (restaurant.getName().contains(name))
+                    restaurants.add(restaurant);
+        return restaurants;
+    }
+    public ArrayList<Restaurant> searchForNearRestaurants(int location, String foodType,String name) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants) {
-            if((foodType == null || restaurant.getFoodType().contains(foodType)) &&
+            if(restaurant.getName().contains(name) && (foodType == null || restaurant.getFoodType().contains(FoodType.valueOf(foodType))) &&
                     map.findShortestPath(location, restaurant.getLocation(),false) < 30) {
                 restaurants.add(restaurant);
             }
         }
         return restaurants;
     }
-    public LinkedHashMap<Integer, Integer> favoriteRestaurants(FoodType foodType) {
+    public ArrayList<Restaurant> favoriteRestaurants(String foodType,String name) {
         Customer customer = (Customer) loggedInUser;
         ArrayList<Order> orders = customer.getOrders();
         LinkedHashMap<Integer , Integer> restaurants = new LinkedHashMap<>();
         for (Order order : orders) {
-            if (restaurants.containsKey(order.getRestaurantID()) && (foodType == null ||
-                    RestaurantList.getRestaurant(order.getRestaurantID()).getFoodType().contains(foodType))) {
+            if (Objects.requireNonNull(RestaurantList.getRestaurant(order.getRestaurantID())).getName().contains(name) &&
+                    restaurants.containsKey(order.getRestaurantID()) && (foodType == null || Objects.requireNonNull
+                    (RestaurantList.getRestaurant(order.getRestaurantID())).getFoodType().contains(FoodType.valueOf(foodType)))) {
                 int newValue = restaurants.get(order.getRestaurantID()) + 1;
                 restaurants.put(order.getRestaurantID(), newValue);
             }
-            else
+            else if (Objects.requireNonNull(RestaurantList.getRestaurant(order.getRestaurantID())).
+                    getName().contains(name) && (foodType == null || Objects.requireNonNull(RestaurantList.getRestaurant(order.getRestaurantID())).
+                    getFoodType().contains(FoodType.valueOf(foodType))))
                 restaurants.put(order.getRestaurantID(), 1);
         }
         List<java.util.Map.Entry<Integer , Integer>> list = new ArrayList<>(restaurants.entrySet());
         list.sort(java.util.Map.Entry.comparingByValue());
         Collections.reverse(list);
-        restaurants.clear();
+        ArrayList<Restaurant> list1 = new ArrayList<>();
         for (java.util.Map.Entry<Integer ,Integer> map : list)
-            restaurants.put(map.getKey(),map.getValue());
-        return restaurants;
+            list1.add(RestaurantList.getRestaurant(map.getKey()));
+        return list1;
     }
     public Order selectOrder(int ID) {
         Customer customer = (Customer) loggedInUser;
