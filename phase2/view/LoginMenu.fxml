@@ -64,7 +64,7 @@
             </FXCollections>
          </items>
       </ChoiceBox>
-      <StackPane layoutX="71.0" layoutY="338.0" prefHeight="42.0" prefWidth="442.0">
+      <StackPane layoutX="71.0" layoutY="338.0" prefHeight="42.0" prefWidth="442.0" >
          <children>
             <Text fx:id="error" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
                <font>
