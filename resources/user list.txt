@@ -1,5 +1,18 @@
 {
-  "customers": [],
+  "customers": [
+    {
+      "spentMoney": 0.0,
+      "discountTokens": [],
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 0.0,
+      "userName": "cusi",
+      "password": "Cusi7485"
+    }
+  ],
   "deliverers": [],
   "restaurantOwners": [
     {
