@@ -1,10 +1,12 @@
 package phase2.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import phase2.model.Food;
+import phase2.view.Output;
 
 public class FoodMenuByOwnerController extends MenuController {
 
@@ -56,5 +58,18 @@ public class FoodMenuByOwnerController extends MenuController {
         name.setText(openedFood.getName());
         type.setText(openedFood.getType().name());
         price.setText(Double.toString(openedFood.getPrice()));
+    }
+
+
+    public void backHandler(ActionEvent actionEvent) {
+        back();
+    }
+
+
+    public void confirmHandler(ActionEvent actionEvent) {
+        /*Food food = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood();
+        Output editNameResult = getManager().editFoodName(food.getID(), name.getText());
+        Output editPriceResult = getManager().editFoodPrice(food.getID(), Double.parseDouble(price.getText()));
+        Output editTypeResult = getManager().processEditFoodType(food.getType().name(), type.getText());*/
     }
 }

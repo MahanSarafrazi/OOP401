@@ -51,13 +51,13 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="confirm" layoutX="315.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: green;" text="confirm" />
+      <Button fx:id="confirm" layoutX="315.0" layoutY="281.0" onAction="#confirmHandler" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: green;" text="confirm" />
       <Button fx:id="reset" layoutX="226.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: red;" text="reset" />
       <Button fx:id="logout" layoutX="315.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(from 100.0% 100.0% to 100.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" />
-      <Button fx:id="login" layoutX="226.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 6.1611% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" />
+      <Button fx:id="back" layoutX="226.0" layoutY="374.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 6.1611% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" />
       <Button fx:id="selectFood" layoutX="225.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: red;" text="delete food" />
       <ChoiceBox fx:id="addtype" layoutX="395.0" layoutY="83.0" prefHeight="27.0" prefWidth="60.0" />
       <TextField fx:id="type" layoutX="225.0" layoutY="84.0" />
-      <TextField fx:id="score" layoutX="261.0" layoutY="119.0" prefHeight="25.0" prefWidth="77.0" />
+      <TextField fx:id="score" editable="false" layoutX="261.0" layoutY="119.0" prefHeight="25.0" prefWidth="77.0" />
    </children>
 </AnchorPane>

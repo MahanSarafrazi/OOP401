@@ -121,4 +121,8 @@ public class RestaurantMenuByOwnerController extends MenuController {
             list.getChildren().add(loader.getRoot());
         }
     }
+
+    public void backHandler(ActionEvent actionEvent) {
+        back();
+    }
 }
