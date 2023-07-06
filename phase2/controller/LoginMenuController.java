@@ -22,7 +22,6 @@ public class LoginMenuController extends MenuController {
 
     @FXML
     public TextField userName;
-    public static String userNameText;
 
     @FXML
     public TextField passWord;
@@ -53,7 +52,6 @@ public class LoginMenuController extends MenuController {
     @FXML
     public void confirmHandler(ActionEvent actionEvent) {
         String username = this.userName.getText();
-        userNameText = username;
         String password = this.passWord.getText();
         String answer = "";
         Output output = null;
@@ -113,7 +111,6 @@ public class LoginMenuController extends MenuController {
     @FXML
     public void forgetHandler(ActionEvent actionEvent) {
         String username = this.userName.getText();
-        userNameText = username;
         String answer ;
         Output output = super.getManager().getRestoreQuestion(username);
         answer = OutputChecker.outputString(output);
@@ -128,7 +125,7 @@ public class LoginMenuController extends MenuController {
             }
             Scene scene = new Scene(loader.getRoot());
             ((RestorePasswordController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
-            ((RestorePasswordController) loader.getController()).restoreQuestion.setText(getManager().getUser(username).getRestoreQuestion()+" ?");
+            ((RestorePasswordController) loader.getController()).restoreQuestion.setText(getManager().getLoggedInUser().getRestoreQuestion()+" ?");
             ((RestorePasswordController) loader.getController()).restoreQuestion.setEditable(false);
             super.getStage().setScene(scene);
             super.getStage().show();

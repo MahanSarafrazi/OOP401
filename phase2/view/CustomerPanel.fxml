@@ -44,7 +44,7 @@
                                     </items>
                                 </ComboBox>
                                 <TextField fx:id="searchField" layoutX="192.0" layoutY="24.0" prefHeight="26.0" prefWidth="321.0" promptText="Search" style="-fx-background-color: white;" />
-                                <Button fx:id="iranianFood" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" text="Button" AnchorPane.leftAnchor="100.0" />
+                                <Button fx:id="iranianFood" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" onAction="#iranianHandler" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" text="Button" AnchorPane.leftAnchor="100.0" />
                                 <Button fx:id="fastFood" layoutX="244.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="112.0" style="-fx-background-color: white;" text="Button" />
                                 <Button fx:id="drink" layoutX="425.0" layoutY="68.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="110.0" style="-fx-background-color: white;" text="Button" AnchorPane.rightAnchor="100.0" />
                                 <Button fx:id="more" layoutX="102.0" layoutY="185.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="107.0" style="-fx-background-color: white;" textFill="#111111">
@@ -57,8 +57,8 @@
                                         <Font size="55.0" />
                                     </font>
                                 </Text>
-                                <Button fx:id="logout" layoutX="363.0" layoutY="327.0" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="200.0" />
-                                <Button fx:id="back" layoutX="205.0" layoutY="325.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 97.1564% 0.0% to 100.0% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="reset" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" />
+                                <Button fx:id="logout" layoutX="363.0" layoutY="327.0" mnemonicParsing="false" onAction="#logoutHandler" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="200.0" />
+                                <Button fx:id="reset1" layoutX="205.0" layoutY="325.0" mnemonicParsing="false" onAction="#resetHandler1" prefHeight="29.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 97.1564% 0.0% to 100.0% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="reset" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" />
                                   <ImageView fitHeight="99.0" fitWidth="114.0" layoutX="400.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                                       <image>
                                           <Image url="@../../resources/Pics/drink.jpg" />
@@ -82,15 +82,29 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
+                        <Button layoutX="552.0" layoutY="20.0" maxHeight="33.0" maxWidth="33.0" minHeight="33.0" minWidth="33.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" style="-fx-background-color: white;">
+                           <graphic>
+                              <ImageView fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/Pics/cart.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                             </children>
                         </AnchorPane>
                     </content>
                 </Tab>
-            <Tab text="Cart">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
+                <Tab text="Orders">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab text="Order History">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
                 <Tab text="Account">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -139,16 +153,6 @@
                                 <Button fx:id="reset" layoutX="154.0" layoutY="267.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="75.0" style="-fx-background-color: red;" text="reset" />
                             </children>
                         </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab text="Orders">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-                <Tab text="Order History">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
             </tabs>

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import phase2.model.FoodType;
 import phase2.model.Restaurant;
 
 import java.io.IOException;
@@ -50,12 +51,23 @@ public class CustomerMenuController extends MenuController {
 
     @FXML
     public void resetHandler1() {
-
+        searchType.setValue(null);
+        restaurantType.setValue(null);
+        searchField.setText(null);
     }
 
     @FXML
     public void logoutHandler() {
-
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("view/RegisterAndLoginMenu.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        ((RegisterAndLoginMenuController) loader.getController()).initialize(getStage(), null, scene, null);
+        super.getStage().setScene(scene);
+        super.getStage().show();
     }
 
     @FXML
@@ -65,9 +77,21 @@ public class CustomerMenuController extends MenuController {
 
     @FXML
     public void iranianHandler() {
-
+        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.IRANIAN);
+        super.getStage().close();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantsMenu.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        ((RestaurantsMenuController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
+        ((RestaurantsMenuController) loader.getController()).restaurants = restaurants;
+        super.getStage().setScene(scene);
+        super.getStage().show();
     }
-    //....
+    //...
 
     @FXML
     public void resetHandler() {
