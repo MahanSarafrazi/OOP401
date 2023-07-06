@@ -227,6 +227,18 @@
       "password": "Fariman1",
       "restoreQuestion": "salam",
       "restoreAnswer": "khodafez"
+    },
+    {
+      "spentMoney": 0.0,
+      "discountTokens": [],
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 0.0,
+      "userName": "fari",
+      "password": "Fariman1"
     }
   ],
   "deliverers": [],
