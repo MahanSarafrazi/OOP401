@@ -14,6 +14,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -68,6 +69,9 @@ public class RestaurantMenuByOwnerController extends MenuController {
     @FXML
     public ImageView photo;
 
+    @FXML
+    public Rectangle photoPlace;
+
     final FileChooser fileChooser = new FileChooser();
 
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getID();
@@ -104,7 +108,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
         foodType.setText(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0).name());
         score.setText(Double.toString(getManager().averageRating()));
         if(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath() != null) {
-            Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath());
+            Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
             photo.setImage(image);
         }
         update();
@@ -173,7 +177,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
             final InputStream targetStream;
             try {
                 targetStream = new DataInputStream(new FileInputStream(selectedFile));
-                Image image = new Image(targetStream);
+                Image image = new Image(targetStream, photoPlace.getWidth(), photoPlace.getHeight(), false, false);
                 photo.setImage(image);
 
             } catch (FileNotFoundException fileNotFoundException) {

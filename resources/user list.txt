@@ -233,10 +233,33 @@
           "foodTypes": [
             "FAST_FOOD"
           ],
-          "foods": [],
+          "foods": [
+            {
+              "price": 200.0,
+              "type": "FAST_FOOD",
+              "name": "pizza",
+              "activation": true,
+              "ID": 608212,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            }
+          ],
           "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
-          "rates": []
+          "rates": [],
+          "openedFood": {
+            "price": 200.0,
+            "type": "FAST_FOOD",
+            "name": "pizza",
+            "activation": true,
+            "ID": 608212,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          }
         }
       ],
       "userName": "mahan",
@@ -249,10 +272,33 @@
         "foodTypes": [
           "FAST_FOOD"
         ],
-        "foods": [],
+        "foods": [
+          {
+            "price": 200.0,
+            "type": "FAST_FOOD",
+            "name": "pizza",
+            "activation": true,
+            "ID": 608212,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          }
+        ],
         "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
         "comments": [],
-        "rates": []
+        "rates": [],
+        "openedFood": {
+          "price": 200.0,
+          "type": "FAST_FOOD",
+          "name": "pizza",
+          "activation": true,
+          "ID": 608212,
+          "discount": 0.0,
+          "restaurantName": "jahan",
+          "comments": [],
+          "rates": []
+        }
       }
     }
   ]

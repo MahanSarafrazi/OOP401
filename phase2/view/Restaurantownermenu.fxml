@@ -8,8 +8,8 @@
 
 <AnchorPane fx:id="addNewRestaurantHandler" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.RestaurantOwnerMenuController">
    <children>
-      <Button fx:id="back" layoutX="226.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" textFill="#171717" />
-      <Button fx:id="logout" layoutX="323.0" layoutY="374.0" onAction="#logoutHandler" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 100.0% 100.0% to 100.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout">
+      <Button fx:id="back" layoutX="226.0" layoutY="374.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="25.0" prefWidth="51.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" textFill="#171717" />
+      <Button fx:id="logout" layoutX="323.0" layoutY="374.0" mnemonicParsing="false" onAction="#logoutHandler" style="-fx-background-color: linear-gradient(from 100.0% 100.0% to 100.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout">
          <textFill>
             <LinearGradient endX="1.0" startX="1.0" startY="1.0">
                <stops>
@@ -64,8 +64,8 @@
       <TextField fx:id="restoreSolve" layoutX="324.0" layoutY="209.0" prefHeight="25.0" prefWidth="249.0" />
       <Button fx:id="confirm" layoutX="466.0" layoutY="286.0" mnemonicParsing="false" onAction="#confirmHandler" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: green;" text="confirm" />
       <Button fx:id="reset" layoutX="367.0" layoutY="286.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: red;" text="reset" />
-      <TextField fx:id="search" layoutX="87.0" layoutY="18.0" prefHeight="25.0" prefWidth="178.0" />
-      <Text layoutX="31.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="search " underline="true">
+      <TextField fx:id="search" layoutX="63.0" layoutY="18.0" prefHeight="25.0" prefWidth="178.0" />
+      <Text layoutX="7.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="search " underline="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -84,5 +84,6 @@
             <VBox fx:id="list" prefHeight="214.0" prefWidth="283.0" />
          </content>
       </ScrollPane>
+      <Button fx:id="doSearch" layoutX="248.0" layoutY="18.0" mnemonicParsing="false" onAction="#searchHandler" prefHeight="24.0" prefWidth="34.0" style="-fx-background-color: orange;" />
    </children>
 </AnchorPane>

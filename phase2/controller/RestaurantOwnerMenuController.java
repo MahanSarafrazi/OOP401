@@ -53,6 +53,8 @@ public class RestaurantOwnerMenuController extends MenuController {
 
     @FXML
     public VBox list;
+    @FXML
+    public Button doSearch;
 
     @Override
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
@@ -124,6 +126,41 @@ public class RestaurantOwnerMenuController extends MenuController {
 
     @FXML
     public void logoutHandler(ActionEvent actionEvent) {
+        getStage().close();
+        getManager().logout();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RegisterAndLoginMenu.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        ((RegisterAndLoginMenuController) loader.getController()).initialize(getStage(), null, scene, null);
+        super.getStage().setScene(scene);
+        super.getStage().show();
+    }
+
+    @FXML
+    public void searchHandler(ActionEvent actionEvent) {
+        ArrayList<Restaurant> restaurants = getManager().normalSearch(search.getText(), null);
+        FXMLLoader loader;
+        list.getChildren().clear();
+        for (Restaurant restaurant : restaurants) {
+            loader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ((RestaurantBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+            ((RestaurantBoxController) loader.getController()).chooseRestaurant(restaurant.getName(), restaurant.getFoodType().get(0), restaurant.getID());
+            ((RestaurantBoxController) loader.getController()).choosePics();
+            list.getChildren().add(loader.getRoot());
+            search.setText("");
+        }
+    }
+
+    public void backHandler(ActionEvent actionEvent) {
         getStage().close();
         getManager().logout();
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RegisterAndLoginMenu.fxml"));

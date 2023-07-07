@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import phase2.model.Food;
 import phase2.model.FoodType;
@@ -30,6 +31,9 @@ public class RestaurantBoxController extends MenuController {
 
     @FXML
     public TextField foodType;
+
+    @FXML
+    public Rectangle photoPlace;
 
     private int ID;
 
@@ -71,7 +75,7 @@ public class RestaurantBoxController extends MenuController {
         for (Restaurant restaurant : ((RestaurantOwner) getManager().getLoggedInUser()).getRestaurants()) {
             if(restaurant.getID() == ID) {
                 if(restaurant.getPhotoPath() != null) {
-                    Image image = new Image(restaurant.getPhotoPath());
+                    Image image = new Image(restaurant.getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
                     imageView.setImage(image);
                 }
             }
