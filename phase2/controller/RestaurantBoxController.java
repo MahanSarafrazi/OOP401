@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import phase2.model.Food;
 import phase2.model.FoodType;
+import phase2.model.RestaurantOwner;
 
 import java.io.IOException;
 
@@ -38,15 +39,29 @@ public class RestaurantBoxController extends MenuController {
 
     public void buttonBOXHandler(ActionEvent actionEvent) {
         getManager().getLoggedInUser().setActiveRestaurant(ID);
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Restaurantmenubyowner.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Restaurantmenubyowner.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(loader.getRoot());
+            getStage().setScene(scene);
+            ((RestaurantMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
+            getStage().show();
         }
-        Scene scene = new Scene(loader.getRoot());
-        getStage().setScene(scene);
-        ((RestaurantMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
-        getStage().show();
+        else {
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantMenuByCustomer.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(loader.getRoot());
+            getStage().setScene(scene);
+            ((RestaurantMenuByCustomerController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
+            getStage().show();
+        }
     }
 }

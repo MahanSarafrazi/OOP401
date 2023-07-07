@@ -477,10 +477,10 @@ public class Manager {
                 restaurants.add(restaurant);
         return restaurants;
     }
-    public ArrayList<Restaurant> normalSearch(String name) {
+    public ArrayList<Restaurant> normalSearch(String name,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)
-                if (restaurant.getName().contains(name))
+                if (restaurant.getName().contains(name) && (foodType == null ||restaurant.getFoodType().contains(foodType)))
                     restaurants.add(restaurant);
         return restaurants;
     }

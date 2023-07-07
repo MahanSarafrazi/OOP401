@@ -197,7 +197,19 @@
         }
       ],
       "userName": "fariman2",
-      "password": "Fariman2"
+      "password": "Fariman2",
+      "activeRestaurant": {
+        "name": "ytrytry",
+        "orders": [],
+        "ID": 394831,
+        "location": 55,
+        "foodTypes": [
+          "IRANIAN"
+        ],
+        "foods": [],
+        "comments": [],
+        "rates": []
+      }
     },
     {
       "restaurants": [

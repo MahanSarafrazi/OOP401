@@ -19,7 +19,7 @@
             <RowConstraints maxHeight="85.4" minHeight="85.4" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button onAction="#backHandler" mnemonicParsing="false" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </content>

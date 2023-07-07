@@ -9,4 +9,7 @@ import java.util.ArrayList;
 public class RestaurantsMenuController extends MenuController{
     @FXML
     public GridPane gridPane;
+
+    @FXML
+    public void backHandler() {back();}
 }

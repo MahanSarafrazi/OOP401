@@ -3,7 +3,6 @@ package phase2.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -51,24 +50,14 @@ public class CustomerMenuController extends MenuController {
     public void searchHandler() {
         ArrayList<Restaurant> restaurants ;
         if (searchType.getValue() == null)
-            restaurants = getManager().normalSearch(searchField.getText());
+            restaurants = getManager().normalSearch(searchField.getText(),FoodType.valueOf(restaurantType.getValue()));
         else if (searchType.getValue().equals("near restaurants"))
             restaurants = getManager().searchForNearRestaurants(location,restaurantType.getValue(), searchField.getText());
         else if (searchType.getValue().equals("favorite restaurants"))
             restaurants = getManager().favoriteRestaurants(restaurantType.getValue(), searchField.getText());
         else
-            restaurants = getManager().normalSearch(searchField.getText());
-        super.getStage().close();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantsMenu.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Scene scene = new Scene(loader.getRoot());
-        ((RestaurantsMenuController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
-        super.getStage().setScene(scene);
-        super.getStage().show();
+            restaurants = getManager().normalSearch(searchField.getText(),FoodType.valueOf(restaurantType.getValue()));
+        openRestaurantsMenu(restaurants);
     }
 
 
@@ -103,6 +92,39 @@ public class CustomerMenuController extends MenuController {
     @FXML
     public void iranianHandler() {
         ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.IRANIAN);
+        openRestaurantsMenu(restaurants);
+    }
+
+    @FXML
+    public void fastHandler() {
+        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.FAST_FOOD);
+        openRestaurantsMenu(restaurants);
+    }
+
+    @FXML
+    public void drinkHandler() {
+        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.DRINK);
+        openRestaurantsMenu(restaurants);
+    }
+
+    @FXML
+    public void dessertHandler() {
+        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.DESSERT);
+        openRestaurantsMenu(restaurants);
+    }
+
+    @FXML
+    public void turkishHandler() {
+        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.TURKISH);
+        openRestaurantsMenu(restaurants);
+    }
+
+    @FXML
+    public void interNationalHandler() {
+        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.INTERNATIONAL_FOOD);
+        openRestaurantsMenu(restaurants);
+    }
+    private void openRestaurantsMenu(ArrayList<Restaurant> restaurants) {
         super.getStage().close();
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantsMenu.fxml"));
         try {
@@ -127,7 +149,6 @@ public class CustomerMenuController extends MenuController {
         super.getStage().setScene(scene);
         super.getStage().show();
     }
-    //...
 
     @FXML
     public void resetHandler() {
@@ -144,7 +165,10 @@ public class CustomerMenuController extends MenuController {
             String [] word = chargeBox.getValue().split(" ");
             charge = Integer.parseInt(word[0]);
         }
-        getManager().setRestore(restoreQuestion.getText(),restoreSolve.getText());
+        if (!restoreSolve.getText().isEmpty() && !restoreQuestion.getText().isEmpty() )
+            getManager().setRestore(restoreQuestion.getText(),restoreSolve.getText());
+        else
+            getManager().setRestore(null,null);
         customer.charge(charge);
         this.accountCharge.setText(String.valueOf(customer.getCharge()));
         chargeBox.setValue(null);
