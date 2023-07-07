@@ -386,18 +386,7 @@
             }
           ],
           "comments": [],
-          "rates": [],
-          "openedFood": {
-            "price": 50.0,
-            "type": "IRANIAN",
-            "name": "irani1",
-            "activation": true,
-            "ID": 961269,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          }
+          "rates": []
         }
       ],
       "userName": "farimaan2",
