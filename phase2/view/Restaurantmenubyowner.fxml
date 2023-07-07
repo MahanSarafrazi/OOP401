@@ -97,10 +97,18 @@
             <Font name="Book Antiqua" size="15.0" />
          </font>
       </Button>
-      <ScrollPane layoutX="23.0" layoutY="46.0" prefHeight="285.0" prefWidth="241.0">
-         <content>
-            <VBox fx:id="list" prefHeight="280.0" prefWidth="240.0" />
-         </content>
-      </ScrollPane>
+      <TabPane fx:id="tabPane" layoutX="22.0" layoutY="47.0" prefHeight="287.0" prefWidth="250.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="mainTab">
+               <content>
+                  <ScrollPane prefHeight="285.0" prefWidth="241.0">
+                     <content>
+                        <VBox prefHeight="280.0" prefWidth="240.0" />
+                     </content>
+                  </ScrollPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>
