@@ -95,6 +95,7 @@ public class Manager {
             //RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
         if (loggedInUser instanceof Customer customer) {
             customer.clearCart();
+            customer.setOrderedRestaurant(null);
         }
         if (loggedInUser !=null && loggedInUser.getActiveRestaurant() != null && loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             loggedInUser.getActiveRestaurant().closeFood();
@@ -381,23 +382,26 @@ public class Manager {
             return "No rating";
         return String.valueOf(average / rates.size());
     }
-    public void addRating(double rating) {
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null) {
-            for (Rate rate : loggedInUser.getActiveRestaurant().getOpenedFood().getRates())
-                if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
-                    rate.editRating(rating);
-                    return;
-                }
-            loggedInUser.getActiveRestaurant().getOpenedFood().addRating(loggedInUser, rating);
+    public boolean addRating(double rating) {
+        Customer customer = (Customer) loggedInUser;
+        for (Order order : customer.getOrders()) {
+            if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && order.contains(customer.getOrderedRestaurant().getOpenedFood())) {
+                for (Rate rate : loggedInUser.getActiveRestaurant().getOpenedFood().getRates())
+                    if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                        rate.editRating(rating);
+                        return true;
+                    }
+                loggedInUser.getActiveRestaurant().getOpenedFood().addRating(loggedInUser, rating);
+            } else if (loggedInUser.getActiveRestaurant().getOpenedFood() == null && order.getRestaurantID() == customer.getActiveRestaurant().getID()){
+                for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
+                    if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                        rate.editRating(rating);
+                        return true;
+                    }
+                loggedInUser.getActiveRestaurant().addRating(loggedInUser, rating);
+            }
         }
-        else {
-            for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
-                if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
-                    rate.editRating(rating);
-                    return;
-                }
-            loggedInUser.getActiveRestaurant().addRating(loggedInUser, rating);
-        }
+        return false;
     }
     public Output addResponse(int ID, String responseText) {
         ArrayList<Comment> comments;

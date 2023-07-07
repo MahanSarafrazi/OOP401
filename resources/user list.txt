@@ -13,6 +13,102 @@
       "password": "Cusi7485"
     },
     {
+      "spentMoney": 630.0,
+      "discountTokens": [],
+      "orders": [
+        {
+          "ID": 744604,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "ON_THE_WAY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 7, 2023, 8:01:47 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 1200,
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            4
+          ]
+        },
+        {
+          "ID": 213886,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 7, 2023, 8:19:58 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 600,
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            2
+          ]
+        },
+        {
+          "ID": 211982,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 7, 2023, 8:22:13 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 900,
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            3
+          ]
+        }
+      ],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 499370.0,
+      "userName": "fariman1",
+      "password": "Fariman1",
+      "restoreQuestion": "alo",
+      "restoreAnswer": "salam"
+    },
+    {
       "spentMoney": 0.0,
       "discountTokens": [],
       "orders": [],
@@ -20,11 +116,9 @@
         "foods": [],
         "foodsCount": []
       },
-      "charge": 500000.0,
-      "userName": "fariman1",
-      "password": "Fariman1",
-      "restoreQuestion": "alo",
-      "restoreAnswer": "salam"
+      "charge": 0.0,
+      "userName": "ft",
+      "password": "farimaN1"
     }
   ],
   "deliverers": [],
@@ -289,7 +383,89 @@
       "restaurants": [
         {
           "name": "pashmak",
-          "orders": [],
+          "orders": [
+            {
+              "ID": 744604,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 7, 2023, 8:01:47 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 1200,
+              "foods": [
+                {
+                  "price": 50.0,
+                  "type": "IRANIAN",
+                  "name": "irani1",
+                  "activation": true,
+                  "ID": 961269,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                4
+              ]
+            },
+            {
+              "ID": 213886,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 7, 2023, 8:19:58 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 600,
+              "foods": [
+                {
+                  "price": 50.0,
+                  "type": "IRANIAN",
+                  "name": "irani1",
+                  "activation": true,
+                  "ID": 961269,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                2
+              ]
+            },
+            {
+              "ID": 211982,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 7, 2023, 8:22:13 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 900,
+              "foods": [
+                {
+                  "price": 50.0,
+                  "type": "IRANIAN",
+                  "name": "irani1",
+                  "activation": true,
+                  "ID": 961269,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                3
+              ]
+            }
+          ],
           "ID": 641385,
           "location": 655,
           "foodTypes": [
@@ -373,7 +549,17 @@
               "discount": 0.0,
               "restaurantName": "pashmak",
               "comments": [],
-              "rates": []
+              "rates": [
+                {
+                  "user": {
+                    "userName": "fariman1",
+                    "password": "Fariman1",
+                    "restoreQuestion": "alo",
+                    "restoreAnswer": "salam"
+                  },
+                  "rating": 5.0
+                }
+              ]
             },
             {
               "price": 55.0,
@@ -388,7 +574,17 @@
             }
           ],
           "comments": [],
-          "rates": []
+          "rates": [
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "rating": 3.0
+            }
+          ]
         }
       ],
       "userName": "farimaan2",

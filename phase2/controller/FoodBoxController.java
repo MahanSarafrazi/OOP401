@@ -51,7 +51,7 @@ public class FoodBoxController extends MenuController {
             }
             Scene scene = new Scene(loader.getRoot());
             getStage().setScene(scene);
-            ((FoodMenuUsedByCustomerController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
+            ((FoodMenuUsedByCustomerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
             getStage().show();
         }
     }

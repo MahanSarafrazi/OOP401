@@ -25,6 +25,8 @@ public class CartController extends MenuController{
         int shortestPath=0;
         if (!customer.getCart().getFoods().isEmpty())
             shortestPath = getManager().getMap().findShortestPath(50, customer.getOrderedRestaurant().getLocation(),false)/30;
+        if (customer.getOrderedRestaurant() != null)
+            customer.setActiveRestaurant(customer.getOrderedRestaurant().getID());
         double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
         this.totalPrice.setText(String.valueOf(totalDeliveryPrice));
         this.totalPrice.setEditable(false);
@@ -39,7 +41,35 @@ public class CartController extends MenuController{
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ((FoodBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), null, null);
+            ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, getMainScene(), null);
+            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
+                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID());
+            this.vBox.getChildren().add(foodLoader.getRoot());
+        }
+    }
+    public void update() {
+        FXMLLoader foodLoader;
+        Customer customer = (Customer) getManager().getLoggedInUser();
+        double totalPrice = 0;
+        Cart cart = customer.getCart();
+        for (int i=0;i<cart.getFoodsCount().size();i++)
+            totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
+        int shortestPath=0;
+        if (!customer.getCart().getFoods().isEmpty())
+            shortestPath = getManager().getMap().findShortestPath(50, customer.getOrderedRestaurant().getLocation(),false)/30;
+        if (customer.getOrderedRestaurant() != null)
+            customer.setActiveRestaurant(customer.getOrderedRestaurant().getID());
+        double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
+        this.totalPrice.setText(String.valueOf(totalDeliveryPrice));
+        vBox.getChildren().clear();
+        for (int i = 0 ; i < customer.getCart().getFoods().size() ; ++i) {
+            foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxFoodByCustomer.fxml"));
+            try {
+                foodLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, null, null);
             ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
                     customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID());
             this.vBox.getChildren().add(foodLoader.getRoot());
@@ -65,13 +95,15 @@ public class CartController extends MenuController{
 
     @FXML
     public void backHandler() {
+        Customer customer = (Customer) getManager().getLoggedInUser();
+        customer.deActiveRestaurant();
         back();
     }
 
     @FXML
     public void confirmHandler() {
-        if ((useDiscountTokens.getValue() == null && Double.parseDouble(accountCharge.getText()) > Double.parseDouble(totalPrice.getText()))
-        || (useDiscountTokens.getValue() != null && Double.parseDouble(accountCharge.getText()) > 0.8*Double.parseDouble(totalPrice.getText()))
+        if ((useDiscountTokens.getValue() == null && Double.parseDouble(accountCharge.getText()) < Double.parseDouble(totalPrice.getText()))
+        || (useDiscountTokens.getValue() != null && Double.parseDouble(accountCharge.getText()) < 0.8*Double.parseDouble(totalPrice.getText()))
                 || vBox.getChildren().isEmpty())
             accountCharge.setStyle("-fx-text-fill: red");
         else {
@@ -84,7 +116,7 @@ public class CartController extends MenuController{
             Customer customer = (Customer) getManager().getLoggedInUser();
             customerMenuController.totalSpending.setText(String.valueOf(customer.getSpentMoney()));
             customerMenuController.accountCharge.setText(String.valueOf(customer.getCharge()));
-            back();
+            backHandler();
         }
     }
 }

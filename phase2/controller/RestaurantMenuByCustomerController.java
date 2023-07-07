@@ -75,9 +75,10 @@ public class RestaurantMenuByCustomerController extends MenuController {
         if (scoreBox.getValue() == null) {
             score.setText("NO RATING!");
             score.setStyle("-fx-text-fill: red");
-        }
-        else {
-            getManager().addRating(Double.parseDouble(scoreBox.getValue()));
+        } else if (!getManager().addRating(Double.parseDouble(scoreBox.getValue()))) {
+            score.setText("No order!");
+            score.setStyle("-fx-text-fill: red");
+        } else {
             score.setText(getManager().averageRating());
             score.setStyle("-fx-text-fill: black");
         }
