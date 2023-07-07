@@ -367,14 +367,6 @@ public class Manager {
         }
         return Output.NO_COMMENT_WITH_ID;
     }
-    public boolean isThereRating() {
-        ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
-            rates = loggedInUser.getActiveRestaurant().getRates();
-        else
-            rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
-        return rates.isEmpty();
-    }
     public String averageRating() {
         ArrayList<Rate> rates;
         if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)

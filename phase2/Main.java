@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import phase2.controller.DataBase;
 import phase2.controller.RegisterAndLoginMenuController;
-import phase2.model.Customer;
-import phase2.model.UserList;
 
 public class Main extends Application {
     //this is for phase2
