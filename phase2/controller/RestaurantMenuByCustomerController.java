@@ -1,16 +1,23 @@
 package phase2.controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import phase2.model.Comment;
 import phase2.model.Food;
 import phase2.model.FoodType;
 import phase2.model.Restaurant;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class RestaurantMenuByCustomerController extends MenuController {
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {

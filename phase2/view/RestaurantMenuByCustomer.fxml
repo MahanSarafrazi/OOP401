@@ -37,7 +37,7 @@
             </items>
         </ChoiceBox>
         <TabPane fx:id="tabPane" layoutX="306.0" prefHeight="400.0" prefWidth="298.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE" />
-        <Button fx:id="seecomments" layoutX="26.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: orange;" text="see comments">
+        <Button fx:id="seeComments" onAction="#commentHandler" layoutX="26.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: orange;" text="see comments">
             <font>
                 <Font size="15.0" />
             </font>
