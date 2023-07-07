@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -67,7 +65,7 @@ public class RestaurantOwnerMenuController extends MenuController {
         list.getChildren().clear();
         ArrayList<Restaurant> restaurants = ((RestaurantOwner) getManager().getLoggedInUser()).getRestaurants();
         for (Restaurant restaurant : restaurants) {
-            loader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+            loader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantByOwner.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

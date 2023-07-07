@@ -15,7 +15,7 @@ public class RestaurantsMenuController extends MenuController{
         super.initialize(stage,fatherStageController,mainScene,previousScene);
         FXMLLoader restaurantLoader;
         for (int i = 3; i < restaurants.size() + 3; ++i) {
-            restaurantLoader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+            restaurantLoader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantByOwner.fxml"));
             try {
                 restaurantLoader.load();
             } catch (IOException e) {
