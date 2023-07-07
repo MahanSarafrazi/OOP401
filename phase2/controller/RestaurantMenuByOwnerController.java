@@ -5,15 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -59,13 +58,22 @@ public class RestaurantMenuByOwnerController extends MenuController {
     public TextField score;
 
     @FXML
-    public VBox list;
+    public ArrayList<VBox> list;
 
     @FXML
     public Text error;
 
     @FXML
     public ImageView photo;
+
+    @FXML
+    public Rectangle photoPlace;
+
+    @FXML
+    public TabPane tabPane;
+
+    @FXML
+    public Button moreTypes;
 
     final FileChooser fileChooser = new FileChooser();
 
@@ -103,8 +111,13 @@ public class RestaurantMenuByOwnerController extends MenuController {
         foodType.setText(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0).name());
         score.setText(getManager().averageRating());
         if(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath() != null) {
-            Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath());
+            Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
             photo.setImage(image);
+        }
+        list = new ArrayList<>();
+        for (int i = 0; i < tabPane.getTabs().size(); ++i) {
+            list.add((VBox) (((ScrollPane)(tabPane.getTabs().get(i).getContent())).getContent()));
+            tabPane.getTabs().get(i).setText(String.valueOf(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(i)));
         }
         update();
     }
@@ -126,19 +139,38 @@ public class RestaurantMenuByOwnerController extends MenuController {
     }
 
     public void update() {
+
+        tabPane.getTabs().clear();
+        list.clear();
+        ArrayList<FoodType> foodTypes = getManager().getLoggedInUser().getActiveRestaurant().getFoodType();
+        for (int i = 0; i < foodTypes.size(); ++i) {
+            Tab tab = new Tab();
+            tab.setText(String.valueOf(foodTypes.get(i)));
+            ScrollPane scrollPane = new ScrollPane();
+            VBox vBox = new VBox();
+            scrollPane.setContent(vBox);
+            list.add(vBox);
+            tab.setContent(scrollPane);
+            tabPane.getTabs().add(tab);
+        }
+
         FXMLLoader loader;
-        list.getChildren().clear();
-        ArrayList<Food> foods = ((RestaurantOwner) getManager().getLoggedInUser()).getActiveRestaurant().getFoods();
-        for (Food food : foods) {
-            loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        for (int i = 0; i < list.size(); ++i) {
+            list.get(i).getChildren().clear();
+            ArrayList<Food> foods = ((RestaurantOwner) getManager().getLoggedInUser()).getActiveRestaurant().getFoods();
+            for (Food food : foods) {
+                if(food.getType().equals(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(i))) {
+                    loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID());
+                    list.get(i).getChildren().add(loader.getRoot());
+                }
             }
-            ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-            ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID());
-            list.getChildren().add(loader.getRoot());
         }
     }
 
@@ -172,7 +204,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
             final InputStream targetStream;
             try {
                 targetStream = new DataInputStream(new FileInputStream(selectedFile));
-                Image image = new Image(targetStream);
+                Image image = new Image(targetStream, photoPlace.getWidth(), photoPlace.getHeight(), false, false);
                 photo.setImage(image);
 
             } catch (FileNotFoundException fileNotFoundException) {
@@ -197,15 +229,41 @@ public class RestaurantMenuByOwnerController extends MenuController {
             }
         }
         if(replacingType != null) {
-            restaurant.editFoodType(restaurant.getFoodType().get(0), replacingType);
-            error.setFill(Paint.valueOf("green"));
-            error.setText("successful");
+            boolean isThereFoods = false;
+            for (Food food : getManager().getLoggedInUser().getActiveRestaurant().getFoods()) {
+                if(food.getType().equals(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0))) {
+                    isThereFoods = true;
+                    break;
+                }
+            }
+
+            if(!isThereFoods) {
+
+
+                for (FoodType type : getManager().getLoggedInUser().getActiveRestaurant().getFoodType()) {
+                    if(type.equals(replacingType)) {
+                        getManager().getLoggedInUser().getActiveRestaurant().getFoodType().remove(type);
+                        break;
+                    }
+                }
+
+                restaurant.editFoodType(restaurant.getFoodType().get(0), replacingType);
+                for (Food food : restaurant.getFoods()) {
+                    System.out.println(food.getType().name());
+                }
+                error.setFill(Paint.valueOf("green"));
+                error.setText("successful");
+            } else {
+                error.setFill(Paint.valueOf("red"));
+                error.setText("There is foods with this type");
+            }
         } else {
             error.setFill(Paint.valueOf("red"));
             error.setText("invalid food type");
         }
 
         foodType.setText(restaurant.getFoodType().get(0).name());
+        update();
 
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> error.setText(""));
@@ -216,5 +274,20 @@ public class RestaurantMenuByOwnerController extends MenuController {
         Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
         name.setText(restaurant.getName());
         foodType.setText(restaurant.getFoodType().get(0).name());
+    }
+
+    public void moreTypesHandler(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodTypes.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        Stage stage = new Stage();
+        stage.setTitle("food types");
+        stage.setScene(scene);
+        ((FoodTypesController) loader.getController()).initialize(stage, this, scene, null);
+        ((FoodTypesController) loader.getController()).getStage().show();
     }
 }

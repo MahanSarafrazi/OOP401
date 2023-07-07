@@ -132,4 +132,10 @@ public class Order {
     public boolean reachedRestaurant() {
         return new Date().getTime() - deliveryDate.getTime() < 0;
     }
+    public boolean contains(Food food) {
+        for (Food food1 : foods)
+            if (food1.getID() == food.getID())
+                return true;
+        return false;
+    }
 }

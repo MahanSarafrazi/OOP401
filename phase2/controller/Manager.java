@@ -95,6 +95,7 @@ public class Manager {
             //RestaurantOwnerMenu.getRestaurantOwnerMenuInstance().setAssumption(true);
         if (loggedInUser instanceof Customer customer) {
             customer.clearCart();
+            customer.setOrderedRestaurant(null);
         }
         if (loggedInUser !=null && loggedInUser.getActiveRestaurant() != null && loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             loggedInUser.getActiveRestaurant().closeFood();
@@ -225,8 +226,8 @@ public class Manager {
         if (foodType1 == null) {
             return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
         }
-        if (!owner.getActiveRestaurant().getFoodType().contains(foodType1))
-            return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
+        /*if (!owner.getActiveRestaurant().getFoodType().contains(foodType1))
+            return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;*/
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if (food.getName().equals(foodName)) {
                 return Output.FOOD_ALREADY_EXIST;
@@ -381,23 +382,26 @@ public class Manager {
             return "No rating";
         return String.valueOf(average / rates.size());
     }
-    public void addRating(double rating) {
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null) {
-            for (Rate rate : loggedInUser.getActiveRestaurant().getOpenedFood().getRates())
-                if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
-                    rate.editRating(rating);
-                    return;
-                }
-            loggedInUser.getActiveRestaurant().getOpenedFood().addRating(loggedInUser, rating);
+    public boolean addRating(double rating) {
+        Customer customer = (Customer) loggedInUser;
+        for (Order order : customer.getOrders()) {
+            if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && order.contains(customer.getOrderedRestaurant().getOpenedFood())) {
+                for (Rate rate : loggedInUser.getActiveRestaurant().getOpenedFood().getRates())
+                    if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                        rate.editRating(rating);
+                        return true;
+                    }
+                loggedInUser.getActiveRestaurant().getOpenedFood().addRating(loggedInUser, rating);
+            } else if (loggedInUser.getActiveRestaurant().getOpenedFood() == null && order.getRestaurantID() == customer.getActiveRestaurant().getID()){
+                for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
+                    if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                        rate.editRating(rating);
+                        return true;
+                    }
+                loggedInUser.getActiveRestaurant().addRating(loggedInUser, rating);
+            }
         }
-        else {
-            for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
-                if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
-                    rate.editRating(rating);
-                    return;
-                }
-            loggedInUser.getActiveRestaurant().addRating(loggedInUser, rating);
-        }
+        return false;
     }
     public Output addResponse(int ID, String responseText) {
         ArrayList<Comment> comments;
@@ -447,6 +451,14 @@ public class Manager {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)
             if (restaurant.getFoodType().contains(foodType) && map.findShortestPath(location, restaurant.getLocation(),false) < 30)
+                restaurants.add(restaurant);
+        return restaurants;
+    }
+    public ArrayList<Restaurant> normalSearch(String name) {
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
+        for (Restaurant restaurant : restaurantOwner.getRestaurants())
+            if (restaurant.getName().contains(name))
                 restaurants.add(restaurant);
         return restaurants;
     }

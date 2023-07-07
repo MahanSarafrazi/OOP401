@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import phase2.model.FoodType;
 import phase2.view.Output;
 
 public class addFoodController extends MenuController {
@@ -37,12 +38,34 @@ public class addFoodController extends MenuController {
             Output output = getManager().addFood(foodName.getText(), Double.parseDouble(foodPrice.getText()), foodType.getText());
             if(output.equals(Output.FOOD_ADDED)) {
                 error.setFill(Paint.valueOf("green"));
+
+                FoodType foodType1 = null;
+                for (FoodType value : FoodType.values()) {
+                    if (value.commandingPattern.matcher(foodType.getText()).find()) {
+                        foodType1 = value;
+                    }
+                }
+
+                boolean contains = false;
+                for (FoodType type : getManager().getLoggedInUser().getActiveRestaurant().getFoodType()) {
+                    if(type.equals(foodType1)) {
+                        contains = true;
+                        break;
+                    }
+                }
+
+                if(!contains) {
+                    getManager().getLoggedInUser().getActiveRestaurant().getFoodType().add(foodType1);
+                }
+
+                ((RestaurantMenuByOwnerController) getFatherStageController()).update();
+
             } else {
                 error.setFill(Paint.valueOf("red"));
             }
             error.setText(OutputChecker.outputString(output));
         } catch (Exception e) {
-            error.setFill(Paint.valueOf("green"));
+            error.setFill(Paint.valueOf("red"));
             error.setText("invalid price");
         }
 

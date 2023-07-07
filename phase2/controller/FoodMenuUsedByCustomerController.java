@@ -7,6 +7,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import phase2.model.Customer;
 import phase2.model.Food;
+import phase2.model.Restaurant;
+import phase2.model.RestaurantList;
 
 public class FoodMenuUsedByCustomerController extends MenuController{
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
@@ -23,7 +25,12 @@ public class FoodMenuUsedByCustomerController extends MenuController{
         Customer customer = (Customer) getManager().getLoggedInUser();
         if (customer.getCart().getFoods().contains(food))
             count.setText("add "+customer.getCart().foodCount(food)+" foods to cart");
+        restaurantName.setText(customer.getActiveRestaurant().getName());
+        rID=customer.getActiveRestaurant().getID();
     }
+    private int rID;
+    @FXML
+    public TextField restaurantName;
 
     @FXML
     public TextField name;
@@ -45,6 +52,10 @@ public class FoodMenuUsedByCustomerController extends MenuController{
 
     @FXML
     public void backHandler() {
+        if (getFatherStageController() instanceof CartController controller) {
+            controller.update();
+        }
+        getManager().getLoggedInUser().getActiveRestaurant().closeFood();
         back();
     }
 
@@ -57,7 +68,8 @@ public class FoodMenuUsedByCustomerController extends MenuController{
     @FXML
     public void minusHandler() {
         int count = Integer.parseInt(this.count.getText().substring(4,5));
-        count--;
+        if (count>0)
+            count--;
         this.count.setText("add "+count+" foods to cart");
     }
 
@@ -75,8 +87,23 @@ public class FoodMenuUsedByCustomerController extends MenuController{
 
     @FXML
     public void confirmHandler() {
-        if (scoreBox.getValue() != null)
-            getManager().addRating(Double.parseDouble(scoreBox.getValue()));
-        score.setText(getManager().averageRating());
+        Customer customer = (Customer) getManager().getLoggedInUser();
+        if (customer.getOrderedRestaurant() != null && customer.getOrderedRestaurant().getID() != rID)
+            restaurantName.setStyle("-fx-text-fill: red");
+        else {
+            customer.setOrderedRestaurant(RestaurantList.getRestaurant(rID));
+            if (scoreBox.getValue() != null) {
+                if (!getManager().addRating(Double.parseDouble(scoreBox.getValue()))) {
+                    score.setStyle("-fx-text-fill: red");
+                    score.setText("No order!");
+                } else
+                    score.setText(getManager().averageRating());
+            }
+            int count = Integer.parseInt(this.count.getText().substring(4, 5));
+            if (count == 0)
+                customer.getCart().remove(customer.getActiveRestaurant().getOpenedFood());
+            else
+                customer.getCart().put(customer.getOrderedRestaurant().getOpenedFood(), count);
+        }
     }
 }

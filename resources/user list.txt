@@ -13,6 +13,102 @@
       "password": "Cusi7485"
     },
     {
+      "spentMoney": 630.0,
+      "discountTokens": [],
+      "orders": [
+        {
+          "ID": 744604,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "ON_THE_WAY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 7, 2023, 8:01:47 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 1200,
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            4
+          ]
+        },
+        {
+          "ID": 213886,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 7, 2023, 8:19:58 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 600,
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            2
+          ]
+        },
+        {
+          "ID": 211982,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 7, 2023, 8:22:13 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 900,
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            3
+          ]
+        }
+      ],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 499370.0,
+      "userName": "fariman1",
+      "password": "Fariman1",
+      "restoreQuestion": "alo",
+      "restoreAnswer": "salam"
+    },
+    {
       "spentMoney": 0.0,
       "discountTokens": [],
       "orders": [],
@@ -20,11 +116,9 @@
         "foods": [],
         "foodsCount": []
       },
-      "charge": 500000.0,
-      "userName": "fariman1",
-      "password": "Fariman1",
-      "restoreQuestion": "alo",
-      "restoreAnswer": "salam"
+      "charge": 0.0,
+      "userName": "ft",
+      "password": "farimaN1"
     }
   ],
   "deliverers": [],
@@ -299,10 +393,65 @@
           "ID": 569095,
           "location": 7,
           "foodTypes": [
-            "FAST_FOOD"
+            "IRANIAN",
+            "IRANIAN"
           ],
-          "foods": [],
+          "foods": [
+            {
+              "price": 500.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 600952,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            }
+          ],
           "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "mahan",
+      "password": "Sarafrazi1"
+    },
+    {
+      "restaurants": [
+        {
+          "name": "jahan",
+          "orders": [],
+          "ID": 478900,
+          "location": 6,
+          "foodTypes": [
+            "IRANIAN",
+            "DRINK"
+          ],
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 20.0,
+              "type": "DRINK",
+              "name": "coca",
+              "activation": true,
+              "ID": 269918,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            }
+          ],
           "comments": [],
           "rates": [
             {
@@ -317,27 +466,96 @@
           ]
         }
       ],
-      "userName": "mahan",
-      "password": "Sarafrazi1",
-      "activeRestaurant": {
-        "name": "jahan",
-        "orders": [],
-        "ID": 569095,
-        "location": 7,
-        "foodTypes": [
-          "FAST_FOOD"
-        ],
-        "foods": [],
-        "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
-        "comments": [],
-        "rates": []
-      }
+      "userName": "Mahan",
+      "password": "Sarafrazi1"
     },
     {
       "restaurants": [
         {
           "name": "pashmak",
-          "orders": [],
+          "orders": [
+            {
+              "ID": 744604,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 7, 2023, 8:01:47 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 1200,
+              "foods": [
+                {
+                  "price": 50.0,
+                  "type": "IRANIAN",
+                  "name": "irani1",
+                  "activation": true,
+                  "ID": 961269,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                4
+              ]
+            },
+            {
+              "ID": 213886,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 7, 2023, 8:19:58 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 600,
+              "foods": [
+                {
+                  "price": 50.0,
+                  "type": "IRANIAN",
+                  "name": "irani1",
+                  "activation": true,
+                  "ID": 961269,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                2
+              ]
+            },
+            {
+              "ID": 211982,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 7, 2023, 8:22:13 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 900,
+              "foods": [
+                {
+                  "price": 50.0,
+                  "type": "IRANIAN",
+                  "name": "irani1",
+                  "activation": true,
+                  "ID": 961269,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                3
+              ]
+            }
+          ],
           "ID": 641385,
           "location": 655,
           "foodTypes": [
@@ -421,7 +639,17 @@
               "discount": 0.0,
               "restaurantName": "pashmak",
               "comments": [],
-              "rates": []
+              "rates": [
+                {
+                  "user": {
+                    "userName": "fariman1",
+                    "password": "Fariman1",
+                    "restoreQuestion": "alo",
+                    "restoreAnswer": "salam"
+                  },
+                  "rating": 5.0
+                }
+              ]
             },
             {
               "price": 55.0,
@@ -435,115 +663,288 @@
               "rates": []
             }
           ],
-          "comments": [],
-          "rates": []
+          "comments": [
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 949279,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 712751,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 689322,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 926840,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 736000,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 408126,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 115619,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 802092,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 765145,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 961247,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 762808,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 810431,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 384786,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 406134,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 246292,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 895364,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 187794,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 992705,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 676288,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 351453,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 609063,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 154622,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "ID": 546020,
+              "hasResponse": false,
+              "responseID": 0
+            },
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "comment": "hi",
+              "ID": 198867,
+              "hasResponse": false,
+              "responseID": 0
+            }
+          ],
+          "rates": [
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "rating": 3.0
+            }
+          ]
         }
       ],
       "userName": "farimaan2",
-      "password": "Farimaan2",
-      "activeRestaurant": {
-        "name": "pashmak",
-        "orders": [],
-        "ID": 641385,
-        "location": 655,
-        "foodTypes": [
-          "IRANIAN",
-          "TURKISH",
-          "DRINK"
-        ],
-        "foods": [
-          {
-            "price": 46.0,
-            "type": "DRINK",
-            "name": "drink1",
-            "activation": true,
-            "ID": 588336,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 77.0,
-            "type": "DRINK",
-            "name": "drink2",
-            "activation": true,
-            "ID": 113098,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 77.0,
-            "type": "DRINK",
-            "name": "drink3",
-            "activation": true,
-            "ID": 640538,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 77.0,
-            "type": "DRINK",
-            "name": "drink4",
-            "activation": true,
-            "ID": 462408,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 77.0,
-            "type": "DRINK",
-            "name": "drink5",
-            "activation": true,
-            "ID": 983317,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 77.0,
-            "type": "DRINK",
-            "name": "drink6",
-            "activation": true,
-            "ID": 746654,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 50.0,
-            "type": "IRANIAN",
-            "name": "irani1",
-            "activation": true,
-            "ID": 961269,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 55.0,
-            "type": "IRANIAN",
-            "name": "irani2",
-            "activation": true,
-            "ID": 353327,
-            "discount": 0.0,
-            "restaurantName": "pashmak",
-            "comments": [],
-            "rates": []
-          }
-        ],
-        "comments": [],
-        "rates": []
-      }
+      "password": "Farimaan2"
     }
   ]
 }
