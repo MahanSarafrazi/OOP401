@@ -6,9 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import phase2.model.Customer;
-import phase2.model.FoodType;
-import phase2.model.Restaurant;
+import phase2.model.*;
+import phase2.view.Output;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -94,11 +93,25 @@ public class CustomerMenuController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene scene = new Scene(loader.getRoot());
-        ((CartController) loader.getController()).initialize(getStage(), null, scene, getPreviousScene());
+        ((CartController) loader.getController()).initialize(getStage(), this, scene, getMainScene());
         FXMLLoader foodLoader;
         Customer customer = (Customer) getManager().getLoggedInUser();
+        double totalPrice = 0;
+        Cart cart = customer.getCart();
+        for (int i=0;i<cart.getFoodsCount().size();i++)
+            totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
+        int shortestPath=0;
+        if (!customer.getCart().getFoods().isEmpty())
+            shortestPath = getManager().getMap().findShortestPath(50, customer.getOrderedRestaurant().getLocation(),false)/30;
+        double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
+        ((CartController) loader.getController()).totalPrice.setText(String.valueOf(totalDeliveryPrice));
+        ((CartController) loader.getController()).totalPrice.setEditable(false);
+        ((CartController) loader.getController()).accountCharge.setText(String.valueOf(customer.getCharge()));
+        ((CartController) loader.getController()).accountCharge.setEditable(false);
+        for (String string : customer.getDiscountTokens())
+            ((CartController) loader.getController()).useDiscountTokens.getItems().add(string);
         for (int i = 0 ; i < customer.getCart().getFoods().size() ; ++i) {
-            foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+            foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxFoodByCustomer.fxml"));
             try {
                 foodLoader.load();
             } catch (IOException e) {
@@ -196,6 +209,9 @@ public class CustomerMenuController extends MenuController {
         customer.charge(charge);
         this.accountCharge.setText(String.valueOf(customer.getCharge()));
         chargeBox.setValue(null);
+    }
+    public static void update() {
+
     }
 }
 

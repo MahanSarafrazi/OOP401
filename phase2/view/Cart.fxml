@@ -24,31 +24,34 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Text layoutX="29.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total price:" AnchorPane.leftAnchor="29.0">
+      <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total price:" AnchorPane.leftAnchor="14.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="set location:" AnchorPane.leftAnchor="29.0">
+      <Button fx:id="back" onAction="#backHandler" layoutX="247.0" layoutY="368.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #000000 0.0%, #000000 0.6711%, #ffffff 100.0%);" text="back" />
+      <Text layoutX="17.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="use discount tokens:" AnchorPane.leftAnchor="17.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="back" layoutX="247.0" layoutY="368.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #000000 0.0%, #000000 0.6711%, #ffffff 100.0%);" text="back" />
-      <Text layoutX="31.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="use discount tokens:" AnchorPane.leftAnchor="29.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Button fx:id="showDiscount" layoutX="29.0" layoutY="251.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="253.0" style="-fx-background-color: orange;" text="show discount" />
-      <Button fx:id="confirm" layoutX="187.0" layoutY="301.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="95.0" style="-fx-background-color: green;" text="confirm" />
-      <Button fx:id="reset" layoutX="29.0" layoutY="301.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="95.0" style="-fx-background-color: red;" text="reset" />
-      <TextField fx:id="totalPrice" layoutX="31.0" layoutY="63.0" prefHeight="30.0" prefWidth="247.0">
+      <Button fx:id="confirm" onAction="#confirmHandler" layoutX="187.0" layoutY="301.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="95.0" style="-fx-background-color: green;" text="confirm" />
+      <Button fx:id="reset" onAction="#resetHandler" layoutX="29.0" layoutY="301.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="95.0" style="-fx-background-color: red;" text="reset" />
+      <TextField fx:id="totalPrice" layoutX="123.0" layoutY="23.0" prefHeight="30.0" prefWidth="149.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="seeLocation" layoutX="32.0" layoutY="132.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: orange;" text="set location" />
-      <ChoiceBox fx:id="useDiscountTokens" layoutX="27.0" layoutY="209.0" prefHeight="26.0" prefWidth="254.0" />
+      <ChoiceBox fx:id="useDiscountTokens" layoutX="28.0" layoutY="197.0" prefHeight="26.0" prefWidth="247.0" />
+      <Text layoutX="12.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="account charge:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="accountCharge" layoutX="123.0" layoutY="62.0" prefHeight="30.0" prefWidth="149.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
