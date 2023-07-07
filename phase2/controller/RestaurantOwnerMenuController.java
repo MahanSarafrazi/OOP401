@@ -140,11 +140,11 @@ public class RestaurantOwnerMenuController extends MenuController {
 
     @FXML
     public void searchHandler(ActionEvent actionEvent) {
-        ArrayList<Restaurant> restaurants = getManager().normalSearch(search.getText(), null);
+        ArrayList<Restaurant> restaurants = getManager().normalSearch(search.getText());
         FXMLLoader loader;
         list.getChildren().clear();
         for (Restaurant restaurant : restaurants) {
-            loader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+            loader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantByOwner.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

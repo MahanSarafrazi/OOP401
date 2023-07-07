@@ -454,6 +454,14 @@ public class Manager {
                 restaurants.add(restaurant);
         return restaurants;
     }
+    public ArrayList<Restaurant> normalSearch(String name) {
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        RestaurantOwner restaurantOwner = (RestaurantOwner) loggedInUser;
+        for (Restaurant restaurant : restaurantOwner.getRestaurants())
+            if (restaurant.getName().contains(name))
+                restaurants.add(restaurant);
+        return restaurants;
+    }
     public ArrayList<Restaurant> normalSearch(String name,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)
