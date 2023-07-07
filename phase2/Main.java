@@ -5,6 +5,7 @@ import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import phase2.controller.DataBase;
+import phase2.controller.Manager;
 import phase2.controller.RegisterAndLoginMenuController;
 
 public class Main extends Application {
@@ -13,6 +14,8 @@ public class Main extends Application {
          DataBase dataBase = new DataBase("resources/graph.txt", "resources/user list.txt");
          dataBase.load();
          launch(args);
+         Manager manager = Manager.getManagerInstance();
+         manager.logout();
          dataBase.save();
     }
 
