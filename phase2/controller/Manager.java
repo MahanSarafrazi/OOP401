@@ -556,7 +556,15 @@ public class Manager {
                     orders.add(order);
         return orders;
     }
-
+    public boolean editOrderStatus(int ID) {
+        for (Order order : loggedInUser.getActiveRestaurant().getOrders()) {
+            if(order.getID() == ID) {
+                order.setOrderStatus(OrderStatus.SENT);
+                return true;
+            }
+        }
+        return false;
+    }
     private Output addCustomer(String username, String password) {
         if (getUser(username) != null) {
             return Output.INVALID_USER_NAME;
@@ -566,16 +574,6 @@ public class Manager {
             return Output.INVALID_PASSWORD;
         loggedInUser = Customer.newCustomer(username, password);
         return Output.SUCCESSFUL_REGISTER;
-    }
-
-    public boolean editOrderStatus(int ID) {
-        for (Order order : loggedInUser.getActiveRestaurant().getOrders()) {
-            if(order.getID() == ID) {
-                order.setOrderStatus(OrderStatus.SENT);
-                return true;
-            }
-        }
-        return false;
     }
 
     private Output addDeliverer(String username, String password) {

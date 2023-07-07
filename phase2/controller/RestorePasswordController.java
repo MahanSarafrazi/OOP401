@@ -1,17 +1,24 @@
 package phase2.controller;
 
 import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import phase2.model.User;
 
 public class RestorePasswordController extends MenuController {
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene,User user) {
+        super.initialize(stage,fatherStageController,mainScene,previousScene);
+        this.user = user;
+        this.restoreQuestion.setText(user.getRestoreQuestion()+" ?");
+        this.restoreQuestion.setEditable(false);
+    }
     public User user;
 
     @FXML
@@ -34,11 +41,11 @@ public class RestorePasswordController extends MenuController {
     public Label kk;
 
     @FXML
-    public void backHandler(ActionEvent actionEvent) {
+    public void backHandler() {
         back();
     }
     @FXML
-    public void confirmHandler(ActionEvent actionEvent) {
+    public void confirmHandler() {
         String answer = restoreAnswer.getText();
         if (answer.equals(user.getRestoreAnswer())) {
             answer = user.getPassword();
@@ -55,7 +62,7 @@ public class RestorePasswordController extends MenuController {
     }
 
     @FXML
-    public void resetHandler(ActionEvent actionEvent) {
+    public void resetHandler() {
         restoreAnswer.setText("");
     }
 }
