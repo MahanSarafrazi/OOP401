@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.FoodMenuByOwnerController">
    <children>
       <Text layoutX="50.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="food's name:">
          <font>
@@ -47,19 +40,40 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="confirm" layoutX="315.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: green;" text="confirm" />
+      <Button fx:id="confirm" layoutX="315.0" layoutY="281.0" mnemonicParsing="false" onAction="#confirmHandler" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: green;" text="confirm" />
       <Button fx:id="reset" layoutX="226.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: red;" text="reset" />
       <Button fx:id="logout" layoutX="315.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(from 100.0% 100.0% to 100.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" />
-      <Button fx:id="login" layoutX="226.0" layoutY="374.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 6.1611% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" />
-      <Button fx:id="seleteFood" layoutX="225.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: red;" text="delete food" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ddd8d8" height="31.0" layoutX="260.0" layoutY="116.0" stroke="BLACK" strokeType="INSIDE" width="81.0" AnchorPane.topAnchor="120.0" />
-      <Label fx:id="score" layoutX="289.0" layoutY="120.0" prefHeight="31.0" prefWidth="52.0" textAlignment="CENTER">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ddd8d8" height="31.0" layoutX="226.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" width="149.0" AnchorPane.topAnchor="83.0" />
+      <Button fx:id="back" layoutX="226.0" layoutY="374.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 6.1611% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" />
+      <Button fx:id="selectFood" layoutX="225.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: red;" text="delete food" />
       <ChoiceBox fx:id="addtype" layoutX="395.0" layoutY="83.0" prefHeight="27.0" prefWidth="60.0" />
-      <Label fx:id="type" layoutX="230.0" layoutY="86.0" prefHeight="27.0" prefWidth="141.0" />
+      <TextField fx:id="type" layoutX="225.0" layoutY="84.0" editable="false" />
+      <TextField fx:id="score" editable="false" layoutX="261.0" layoutY="119.0" prefHeight="25.0" prefWidth="77.0" />
+      <StackPane layoutX="379.0" layoutY="225.0" prefHeight="42.0" prefWidth="217.0">
+         <children>
+            <Text fx:id="nameError" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
+      <StackPane layoutX="379.0" layoutY="285.0" prefHeight="42.0" prefWidth="217.0">
+         <children>
+            <Text fx:id="priceError" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
+      <StackPane layoutX="379.0" layoutY="338.0" prefHeight="42.0" prefWidth="217.0">
+         <children>
+            <Text fx:id="typeError" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

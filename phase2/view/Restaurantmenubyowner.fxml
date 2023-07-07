@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.RestaurantMenuByOwnerController">
    <children>
       <TabPane layoutX="272.0" prefHeight="400.0" prefWidth="328.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -44,21 +50,7 @@
                            </font>
                         </Text>
                         <Button layoutX="217.0" layoutY="242.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="location" />
-                        <Button fx:id="seeComments" layoutX="186.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: orange;" text="see comments" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="81.0" layoutY="183.0" stroke="BLACK" strokeType="INSIDE" width="96.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="210.0" layoutY="183.0" stroke="BLACK" strokeType="INSIDE" width="92.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="81.0" layoutY="271.0" stroke="BLACK" strokeType="INSIDE" width="92.0" />
-                        <Label fx:id="restaurantNAme" layoutX="86.0" layoutY="182.0" prefHeight="26.0" prefWidth="86.0" />
-                        <Label fx:id="restaurantid" layoutX="214.0" layoutY="183.0" prefHeight="26.0" prefWidth="84.0">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="score" layoutX="117.0" layoutY="270.0" prefHeight="26.0" prefWidth="50.0" textAlignment="CENTER">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
+                        <Button fx:id="seeComments" layoutX="186.0" layoutY="271.0" mnemonicParsing="false" onAction="#seeCommentsHandler" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: orange;" text="see comments" />
                         <Button fx:id="confirm" layoutX="173.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: green;" text="confirm" AnchorPane.rightAnchor="45.0" />
                         <Button fx:id="reset" layoutX="55.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: red;" text="reset" AnchorPane.leftAnchor="45.0" />
                         <Text layoutX="24.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food types:">
@@ -66,13 +58,11 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Label fx:id="foodtype" layoutX="109.0" layoutY="213.0" prefHeight="26.0" prefWidth="134.0">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Rectangle fx:id="foodTypes" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="26.0" layoutX="102.0" layoutY="213.0" stroke="BLACK" strokeType="INSIDE" width="146.0" />
                         <ChoiceBox fx:id="addfoodtype" layoutX="254.0" layoutY="212.0" prefHeight="25.0" prefWidth="47.0" />
+                        <TextField fx:id="name" layoutX="70.0" layoutY="183.0" prefHeight="26.0" prefWidth="110.0" />
+                        <TextField fx:id="restaurantID" editable="false" layoutX="205.0" layoutY="183.0" prefHeight="26.0" prefWidth="110.0" />
+                        <TextField fx:id="foodType" layoutX="101.0" layoutY="212.0" />
+                        <TextField fx:id="score" editable="false" layoutX="68.0" layoutY="271.0" prefHeight="26.0" prefWidth="115.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -94,13 +84,18 @@
             <Font name="Broadway" size="23.0" />
          </font>
       </Text>
-      <Button fx:id="back" layoutX="64.0" layoutY="373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="472.0" />
+      <Button fx:id="back" layoutX="64.0" layoutY="373.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="472.0" />
       <ScrollBar layoutX="1.0" layoutY="39.0" orientation="VERTICAL" prefHeight="361.0" prefWidth="14.0" />
       <Button fx:id="logout" layoutX="140.0" layoutY="373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" />
-      <Button id="addFood" fx:id="addFood" layoutX="18.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="258.0" style="-fx-background-color: orange;" text="add food">
+      <Button id="addFood" fx:id="addFood" layoutX="18.0" layoutY="340.0" mnemonicParsing="false" onAction="#addFoodHandler" prefHeight="25.0" prefWidth="258.0" style="-fx-background-color: orange;" text="add food">
          <font>
             <Font name="Book Antiqua" size="15.0" />
          </font>
       </Button>
+      <ScrollPane layoutX="23.0" layoutY="46.0" prefHeight="285.0" prefWidth="241.0">
+         <content>
+            <VBox fx:id="list" prefHeight="280.0" prefWidth="240.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

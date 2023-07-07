@@ -198,6 +198,60 @@
       ],
       "userName": "fariman2",
       "password": "Fariman2"
+    },
+    {
+      "restaurants": [
+        {
+          "name": "jahan",
+          "orders": [],
+          "ID": 569095,
+          "location": 7,
+          "foodTypes": [
+            "FAST_FOOD"
+          ],
+          "foods": [
+            {
+              "price": 500.0,
+              "type": "FAST_FOOD",
+              "name": "pizza",
+              "activation": true,
+              "ID": 756374,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "mahan",
+      "password": "Sarafrazi1",
+      "activeRestaurant": {
+        "name": "jahan",
+        "orders": [],
+        "ID": 569095,
+        "location": 7,
+        "foodTypes": [
+          "FAST_FOOD"
+        ],
+        "foods": [
+          {
+            "price": 500.0,
+            "type": "FAST_FOOD",
+            "name": "pizza",
+            "activation": true,
+            "ID": 756374,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          }
+        ],
+        "comments": [],
+        "rates": []
+      }
     }
   ]
 }
