@@ -73,8 +73,9 @@ public class RestaurantOwnerMenuController extends MenuController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ((RestaurantBoxController) loader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
+            ((RestaurantBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
             ((RestaurantBoxController) loader.getController()).chooseRestaurant(restaurant.getName(), restaurant.getFoodType().get(0), restaurant.getID());
+            ((RestaurantBoxController) loader.getController()).choosePics();
             list.getChildren().add(loader.getRoot());
         }
     }
@@ -119,5 +120,21 @@ public class RestaurantOwnerMenuController extends MenuController {
         stage.setScene(scene);
         ((addNewRestaurantController) addLoader.getController()).initialize(stage, this, scene, null);
         ((addNewRestaurantController) addLoader.getController()).getStage().show();
+    }
+
+    @FXML
+    public void logoutHandler(ActionEvent actionEvent) {
+        getStage().close();
+        getManager().logout();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RegisterAndLoginMenu.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        ((RegisterAndLoginMenuController) loader.getController()).initialize(getStage(), null, scene, null);
+        super.getStage().setScene(scene);
+        super.getStage().show();
     }
 }

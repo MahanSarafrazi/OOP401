@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import phase1.view.FoodMenuUsedByCustomer;
 import phase2.model.FoodType;
+import phase2.model.RestaurantOwner;
 
 import java.io.IOException;
 
@@ -29,16 +31,30 @@ public class FoodBoxController extends MenuController {
     @FXML
     public void buttonBOXHandler(ActionEvent actionEvent) {
         getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(ID);
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Foodmenubyowner.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Foodmenubyowner.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(loader.getRoot());
+            getStage().setScene(scene);
+            ((FoodMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
+            getStage().show();
         }
-        Scene scene = new Scene(loader.getRoot());
-        getStage().setScene(scene);
-        ((FoodMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
-        getStage().show();
+        else  {
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByCustomer.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(loader.getRoot());
+            getStage().setScene(scene);
+            ((FoodMenuUsedByCustomerController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
+            getStage().show();
+        }
     }
 
     @FXML

@@ -36,15 +36,25 @@
                                 <ComboBox fx:id="restaurantType" layoutX="45.0" layoutY="38.0" prefHeight="26.0" prefWidth="139" promptText="Restaurant type" AnchorPane.leftAnchor="45.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="a" />
-                                            <String fx:value="b" />
-                                            <String fx:value="c" />
+                                            <String fx:value="IRANIAN" />
+                                            <String fx:value="FAST_FOOD" />
+                                            <String fx:value="DRINK" />
+                                            <String fx:value="DESSERT" />
+                                            <String fx:value="TURKISH" />
+                                            <String fx:value="INTERNATIONAL_FOOD" />
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
                                 <TextField fx:id="searchField" layoutX="192.0" layoutY="24.0" prefHeight="26.0" prefWidth="321.0" promptText="Search" style="-fx-background-color: white;" />
-                                <Button fx:id="iranianFood" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" onAction="#iranianHandler" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="100.0" />
-                                <Button fx:id="fastFood" layoutX="244.0" layoutY="69.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="112.0" style="-fx-background-color: white;">
+                                <Button fx:id="iranianFood" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" onAction="#iranianHandler" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="100.0">
+                           <graphic>
+                                        <ImageView fitHeight="98.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../resources/Pics/Iranian.jpg" />
+                                            </image>
+                                        </ImageView>
+                           </graphic></Button>
+                                <Button fx:id="fastFood" layoutX="244.0" layoutY="69.0" mnemonicParsing="false" onAction="#fastHandler" prefHeight="102.0" prefWidth="112.0" style="-fx-background-color: white;">
                            <graphic>
                                         <ImageView fitHeight="95.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -52,7 +62,7 @@
                                             </image>
                                         </ImageView>
                            </graphic></Button>
-                                <Button fx:id="drink" layoutX="425.0" layoutY="68.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="110.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="100.0">
+                                <Button fx:id="drink" layoutX="425.0" layoutY="68.0" mnemonicParsing="false" onAction="#drinkHandler" prefHeight="105.0" prefWidth="110.0" style="-fx-background-color: white;" AnchorPane.rightAnchor="100.0">
                            <graphic>
                                         <ImageView fitHeight="99.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -60,7 +70,7 @@
                                             </image>
                                         </ImageView>
                            </graphic></Button>
-                                <Button fx:id="dessert" layoutX="102.0" layoutY="185.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="122.0" style="-fx-background-color: white;" textFill="#111111">
+                                <Button fx:id="dessert" layoutX="102.0" layoutY="185.0" mnemonicParsing="false" onAction="#dessertHandler" prefHeight="105.0" prefWidth="122.0" style="-fx-background-color: white;" textFill="#111111">
                                     <font>
                                         <Font size="14.0" />
                                     </font>
@@ -82,7 +92,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button layoutX="245.0" layoutY="186.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="121.0" style="-fx-background-color: white;">
+                        <Button layoutX="245.0" layoutY="186.0" mnemonicParsing="false" onAction="#turkishHandler" prefHeight="97.0" prefWidth="121.0" style="-fx-background-color: white;">
                            <graphic>
                               <ImageView fitHeight="98.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -91,7 +101,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="379.0" layoutY="185.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="113.0" style="-fx-background-color: white;">
+                        <Button layoutX="379.0" layoutY="185.0" mnemonicParsing="false" onAction="#interNationalHandler" prefHeight="101.0" prefWidth="113.0" style="-fx-background-color: white;">
                            <graphic>
                               <ImageView fitHeight="92.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -109,11 +119,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                                  <ImageView fitHeight="98.0" fitWidth="97.0" layoutX="107.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
-                                      <image>
-                                          <Image url="@../../resources/Pics/Iranian.jpg" />
-                                      </image>
-                                  </ImageView>
                             </children>
                         </AnchorPane>
                     </content>
@@ -159,7 +164,7 @@
                                         <Font size="16.0" />
                                     </font>
                                 </Text>
-                                <Label id="accountcharge" layoutX="158.0" layoutY="216.0" prefHeight="27.0" prefWidth="182.0" />
+                                <Label id="AccountCharge" layoutX="158.0" layoutY="216.0" prefHeight="27.0" prefWidth="182.0" />
                                 <TextField fx:id="password" layoutX="155.0" layoutY="55.0" prefHeight="26.0" prefWidth="187.0" style="-fx-background-color: white;" />
                                 <TextField fx:id="username" layoutX="155.0" layoutY="17.0" prefHeight="26.0" prefWidth="187.0" style="-fx-background-color: white;" />
                                 <ChoiceBox fx:id="chargeBox" layoutX="354.0" layoutY="171.0" prefHeight="26.0" prefWidth="65.0">

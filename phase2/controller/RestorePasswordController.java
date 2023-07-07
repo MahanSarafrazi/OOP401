@@ -12,6 +12,8 @@ import javafx.util.Duration;
 import phase2.model.User;
 
 public class RestorePasswordController extends MenuController {
+    public User user;
+
     @FXML
     public TextField restoreQuestion;
 
@@ -37,7 +39,6 @@ public class RestorePasswordController extends MenuController {
     }
     @FXML
     public void confirmHandler(ActionEvent actionEvent) {
-        User user = getManager().getLoggedInUser();
         String answer = restoreAnswer.getText();
         if (answer.equals(user.getRestoreAnswer())) {
             answer = user.getPassword();

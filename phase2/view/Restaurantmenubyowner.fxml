@@ -41,9 +41,9 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Button fx:id="uploadPhoto" layoutX="111.0" layoutY="135.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="Upload a Photo" />
+                        <Button fx:id="uploadPhoto" layoutX="111.0" layoutY="135.0" mnemonicParsing="false" onAction="#uploadPhotoHandler" style="-fx-background-color: orange;" text="Upload a Photo" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dde8f2" height="127.0" layoutX="34.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="251.0" />
-                        <ImageView fitHeight="125.0" fitWidth="245.0" layoutX="37.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="photo" fitHeight="125.0" fitWidth="245.0" layoutX="37.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
                         <Text layoutX="21.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score:" AnchorPane.leftAnchor="23.0">
                            <font>
                               <Font size="16.0" />
@@ -51,8 +51,8 @@
                         </Text>
                         <Button layoutX="217.0" layoutY="242.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="location" />
                         <Button fx:id="seeComments" layoutX="186.0" layoutY="271.0" mnemonicParsing="false" onAction="#seeCommentsHandler" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: orange;" text="see comments" />
-                        <Button fx:id="confirm" layoutX="173.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: green;" text="confirm" AnchorPane.rightAnchor="45.0" />
-                        <Button fx:id="reset" layoutX="55.0" layoutY="320.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: red;" text="reset" AnchorPane.leftAnchor="45.0" />
+                        <Button fx:id="confirm" layoutX="176.0" layoutY="308.0" mnemonicParsing="false" onAction="#confirmHandler" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: green;" text="confirm" AnchorPane.rightAnchor="44.0" />
+                        <Button fx:id="reset" layoutX="45.0" layoutY="308.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: red;" text="reset" AnchorPane.leftAnchor="45.0" />
                         <Text layoutX="24.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food types:">
                            <font>
                               <Font size="15.0" />
@@ -62,7 +62,12 @@
                         <TextField fx:id="name" layoutX="70.0" layoutY="183.0" prefHeight="26.0" prefWidth="110.0" />
                         <TextField fx:id="restaurantID" editable="false" layoutX="205.0" layoutY="183.0" prefHeight="26.0" prefWidth="110.0" />
                         <TextField fx:id="foodType" layoutX="101.0" layoutY="212.0" />
-                        <TextField fx:id="score" layoutX="68.0" layoutY="271.0" prefHeight="26.0" prefWidth="115.0" />
+                        <TextField fx:id="score" editable="false" layoutX="68.0" layoutY="271.0" prefHeight="26.0" prefWidth="115.0" />
+                        <StackPane layoutX="21.0" layoutY="344.0" prefHeight="15.0" prefWidth="279.0">
+                           <children>
+                              <Text fx:id="error" strokeType="OUTSIDE" strokeWidth="0.0" />
+                           </children>
+                        </StackPane>
                      </children>
                   </AnchorPane>
             </content>
@@ -84,9 +89,9 @@
             <Font name="Broadway" size="23.0" />
          </font>
       </Text>
-      <Button fx:id="back" layoutX="64.0" layoutY="373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="472.0" />
+      <Button fx:id="back" layoutX="64.0" layoutY="373.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="472.0" />
       <ScrollBar layoutX="1.0" layoutY="39.0" orientation="VERTICAL" prefHeight="361.0" prefWidth="14.0" />
-      <Button fx:id="logout" layoutX="140.0" layoutY="373.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" />
+      <Button fx:id="logout" layoutX="140.0" layoutY="373.0" mnemonicParsing="false" onAction="#logoutHandler" prefHeight="26.0" prefWidth="64.0" style="-fx-background-color: linear-gradient(from 0.0% 90.5213% to 0.0% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="logout" />
       <Button id="addFood" fx:id="addFood" layoutX="18.0" layoutY="340.0" mnemonicParsing="false" onAction="#addFoodHandler" prefHeight="25.0" prefWidth="258.0" style="-fx-background-color: orange;" text="add food">
          <font>
             <Font name="Book Antiqua" size="15.0" />

@@ -3,7 +3,7 @@ package phase2.model;
 import java.util.regex.Pattern;
 
 public enum FoodType {
-    FAST_FOOD("^\\s*(?i)fastFood\\s*$"),
+    FAST_FOOD("^\\s*(?i)fast(_*)Food\\s*$"),
 
     IRANIAN("^\\s*(?i)IRANIAN\\s*$"),
     ITALIAN("^\\s*(?i)ITALIAN\\s*$"),

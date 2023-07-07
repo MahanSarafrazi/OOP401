@@ -384,7 +384,9 @@ public class Manager {
         double average = 0;
         for (Rate rate : rates)
             average += rate.getRating();
-        return average / rates.size();
+        if(rates.size() != 0) {
+            return average / rates.size();
+        } else return 0;
     }
     public ArrayList<Rate> getRating() {
         ArrayList<Rate> rates;
@@ -477,10 +479,10 @@ public class Manager {
                 restaurants.add(restaurant);
         return restaurants;
     }
-    public ArrayList<Restaurant> normalSearch(String name) {
+    public ArrayList<Restaurant> normalSearch(String name,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)
-                if (restaurant.getName().contains(name))
+                if (restaurant.getName().contains(name) && (foodType == null ||restaurant.getFoodType().contains(foodType)))
                     restaurants.add(restaurant);
         return restaurants;
     }
@@ -527,29 +529,11 @@ public class Manager {
         }
         return null;
     }
-    public Output confirmOrder(int customerLocation, String discountToken) {
-        double totalPrice = 0;
-        Customer customer = (Customer) getLoggedInUser();
-        if (!discountToken.equals("NO") && !customer.hasThisToken(discountToken))
-            return Output.WRONG_DISCOUNT_TOKEN;
-        if (customer.getCart().getFoods().isEmpty())
-            return Output.EMPTY_CART;
-        else if(customerLocation > 1000) {
-            return Output.LOCATION_NOT_IN_THE_MAP;
-        } else {
-            Cart cart = customer.getCart();
-            for (int i=0;i<cart.getFoodsCount().size();i++)
-                totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
-            int shortestPath = map.findShortestPath(customerLocation, customer.getOrderedRestaurant().getLocation(),false)/30;
-            double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
-            if (totalDeliveryPrice > customer.getCharge(discountToken))
-                return Output.NOT_ENOUGH_CHARGE;
-        }
+    public void confirmOrder(int customerLocation,double totalPrice, String discountToken) {
+        Customer customer = (Customer) loggedInUser;
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
         customer.getOrderedRestaurant().addOrder(order);
-        if(customer.addOrder(order,totalPrice,discountToken))
-            return Output.ORDER_CONFIRMED2;
-        return Output.ORDER_CONFIRMED;
+        customer.addOrder(order,totalPrice,discountToken);
     }
     public ArrayList<String> estimateOrderTime() {
         Customer customer = (Customer) getLoggedInUser();

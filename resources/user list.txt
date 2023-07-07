@@ -20,9 +20,23 @@
         "foods": [],
         "foodsCount": []
       },
-      "charge": 0.0,
+      "charge": 500000.0,
       "userName": "fariman1",
-      "password": "Fariman1"
+      "password": "Fariman1",
+      "restoreQuestion": "alo",
+      "restoreAnswer": "salam",
+      "activeRestaurant": {
+        "name": "reza",
+        "orders": [],
+        "ID": 405336,
+        "location": 55,
+        "foodTypes": [
+          "IRANIAN"
+        ],
+        "foods": [],
+        "comments": [],
+        "rates": []
+      }
     }
   ],
   "deliverers": [],
@@ -243,44 +257,34 @@
         }
       ],
       "userName": "fariman2",
-      "password": "Fariman2"
+      "password": "Fariman2",
+      "activeRestaurant": {
+        "name": "ytrytry",
+        "orders": [],
+        "ID": 394831,
+        "location": 55,
+        "foodTypes": [
+          "IRANIAN"
+        ],
+        "foods": [],
+        "comments": [],
+        "rates": []
+      }
     },
     {
       "restaurants": [
         {
           "name": "jahan",
           "orders": [],
-          "ID": 481816,
-          "location": 34,
+          "ID": 569095,
+          "location": 7,
           "foodTypes": [
             "FAST_FOOD"
           ],
-          "foods": [
-            {
-              "price": 500.0,
-              "type": "FAST_FOOD",
-              "name": "pizza",
-              "activation": true,
-              "ID": 840166,
-              "discount": 0.0,
-              "restaurantName": "jahan",
-              "comments": [],
-              "rates": []
-            }
-          ],
+          "foods": [],
+          "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
-          "rates": [],
-          "openedFood": {
-            "price": 500.0,
-            "type": "FAST_FOOD",
-            "name": "pizza",
-            "activation": true,
-            "ID": 840166,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          }
+          "rates": []
         }
       ],
       "userName": "mahan",
@@ -288,37 +292,15 @@
       "activeRestaurant": {
         "name": "jahan",
         "orders": [],
-        "ID": 481816,
-        "location": 34,
+        "ID": 569095,
+        "location": 7,
         "foodTypes": [
           "FAST_FOOD"
         ],
-        "foods": [
-          {
-            "price": 500.0,
-            "type": "FAST_FOOD",
-            "name": "pizza",
-            "activation": true,
-            "ID": 840166,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          }
-        ],
+        "foods": [],
+        "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
         "comments": [],
-        "rates": [],
-        "openedFood": {
-          "price": 500.0,
-          "type": "FAST_FOOD",
-          "name": "pizza",
-          "activation": true,
-          "ID": 840166,
-          "discount": 0.0,
-          "restaurantName": "jahan",
-          "comments": [],
-          "rates": []
-        }
+        "rates": []
       }
     }
   ]
