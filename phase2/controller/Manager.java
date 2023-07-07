@@ -96,9 +96,10 @@ public class Manager {
         if (loggedInUser instanceof Customer customer) {
             customer.clearCart();
         }
-        if (loggedInUser.getActiveRestaurant() != null)
+        if (loggedInUser !=null && loggedInUser.getActiveRestaurant() != null && loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             loggedInUser.getActiveRestaurant().closeFood();
-        loggedInUser.deActiveRestaurant();
+        if (loggedInUser !=null && loggedInUser.getActiveRestaurant() != null)
+            loggedInUser.deActiveRestaurant();
         loggedInUser = null;
     }
     public void back() {
