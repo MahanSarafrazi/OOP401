@@ -345,21 +345,10 @@
           "ID": 569095,
           "location": 7,
           "foodTypes": [
-            "FAST_FOOD",
+            "IRANIAN",
             "IRANIAN"
           ],
           "foods": [
-            {
-              "price": 500.0,
-              "type": "FAST_FOOD",
-              "name": "pizza",
-              "activation": true,
-              "ID": 555524,
-              "discount": 0.0,
-              "restaurantName": "jahan",
-              "comments": [],
-              "rates": []
-            },
             {
               "price": 500.0,
               "type": "IRANIAN",
@@ -370,20 +359,51 @@
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
+            }
+          ],
+          "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "mahan",
+      "password": "Sarafrazi1"
+    },
+    {
+      "restaurants": [
+        {
+          "name": "jahan",
+          "orders": [],
+          "ID": 478900,
+          "location": 6,
+          "foodTypes": [
+            "IRANIAN",
+            "DRINK"
+          ],
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
             },
             {
-              "price": 100.0,
-              "type": "FAST_FOOD",
-              "name": "burgur",
+              "price": 20.0,
+              "type": "DRINK",
+              "name": "coca",
               "activation": true,
-              "ID": 758960,
+              "ID": 269918,
               "discount": 0.0,
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
             }
           ],
-          "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
           "rates": [
             {
@@ -398,56 +418,8 @@
           ]
         }
       ],
-      "userName": "mahan",
-      "password": "Sarafrazi1",
-      "activeRestaurant": {
-        "name": "jahan",
-        "orders": [],
-        "ID": 569095,
-        "location": 7,
-        "foodTypes": [
-          "FAST_FOOD",
-          "IRANIAN"
-        ],
-        "foods": [
-          {
-            "price": 500.0,
-            "type": "FAST_FOOD",
-            "name": "pizza",
-            "activation": true,
-            "ID": 555524,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 500.0,
-            "type": "IRANIAN",
-            "name": "kabab",
-            "activation": true,
-            "ID": 600952,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 100.0,
-            "type": "FAST_FOOD",
-            "name": "burgur",
-            "activation": true,
-            "ID": 758960,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          }
-        ],
-        "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
-        "comments": [],
-        "rates": []
-      }
+      "userName": "Mahan",
+      "password": "Sarafrazi1"
     },
     {
       "restaurants": [
@@ -899,96 +871,6 @@
             },
             {
               "user": {
-                "spentMoney": 630.0,
-                "discountTokens": [],
-                "orders": [
-                  {
-                    "ID": 744604,
-                    "restaurantID": 641385,
-                    "hasDeliverer": false,
-                    "orderStatus": "ON_THE_WAY",
-                    "customerLocation": 50,
-                    "restaurantName": "pashmak",
-                    "restaurantLocation": 655,
-                    "registerDate": "Jul 7, 2023, 8:01:47 PM",
-                    "timeOfDelivery": 1800,
-                    "timeOfGettingReady": 1200,
-                    "foods": [
-                      {
-                        "price": 50.0,
-                        "type": "IRANIAN",
-                        "name": "irani1",
-                        "activation": true,
-                        "ID": 961269,
-                        "discount": 0.0,
-                        "comments": [],
-                        "rates": []
-                      }
-                    ],
-                    "foodsCount": [
-                      4
-                    ]
-                  },
-                  {
-                    "ID": 213886,
-                    "restaurantID": 641385,
-                    "hasDeliverer": false,
-                    "orderStatus": "NOT_READY",
-                    "customerLocation": 50,
-                    "restaurantName": "pashmak",
-                    "restaurantLocation": 655,
-                    "registerDate": "Jul 7, 2023, 8:19:58 PM",
-                    "timeOfDelivery": 1800,
-                    "timeOfGettingReady": 600,
-                    "foods": [
-                      {
-                        "price": 50.0,
-                        "type": "IRANIAN",
-                        "name": "irani1",
-                        "activation": true,
-                        "ID": 961269,
-                        "discount": 0.0,
-                        "comments": [],
-                        "rates": []
-                      }
-                    ],
-                    "foodsCount": [
-                      2
-                    ]
-                  },
-                  {
-                    "ID": 211982,
-                    "restaurantID": 641385,
-                    "hasDeliverer": false,
-                    "orderStatus": "NOT_READY",
-                    "customerLocation": 50,
-                    "restaurantName": "pashmak",
-                    "restaurantLocation": 655,
-                    "registerDate": "Jul 7, 2023, 8:22:13 PM",
-                    "timeOfDelivery": 1800,
-                    "timeOfGettingReady": 900,
-                    "foods": [
-                      {
-                        "price": 50.0,
-                        "type": "IRANIAN",
-                        "name": "irani1",
-                        "activation": true,
-                        "ID": 961269,
-                        "discount": 0.0,
-                        "comments": [],
-                        "rates": []
-                      }
-                    ],
-                    "foodsCount": [
-                      3
-                    ]
-                  }
-                ],
-                "cart": {
-                  "foods": [],
-                  "foodsCount": []
-                },
-                "charge": 499370.0,
                 "userName": "fariman1",
                 "password": "Fariman1",
                 "restoreQuestion": "alo",

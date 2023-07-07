@@ -58,6 +58,8 @@ public class addFoodController extends MenuController {
                     getManager().getLoggedInUser().getActiveRestaurant().getFoodType().add(foodType1);
                 }
 
+                ((RestaurantMenuByOwnerController) getFatherStageController()).update();
+
             } else {
                 error.setFill(Paint.valueOf("red"));
             }
