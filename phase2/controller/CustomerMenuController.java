@@ -210,8 +210,5 @@ public class CustomerMenuController extends MenuController {
         this.accountCharge.setText(String.valueOf(customer.getCharge()));
         chargeBox.setValue(null);
     }
-    public static void update() {
-
-    }
 }
 

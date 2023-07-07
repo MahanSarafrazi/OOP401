@@ -24,7 +24,19 @@
       "userName": "fariman1",
       "password": "Fariman1",
       "restoreQuestion": "alo",
-      "restoreAnswer": "salam"
+      "restoreAnswer": "salam",
+      "activeRestaurant": {
+        "name": "reza",
+        "orders": [],
+        "ID": 405336,
+        "location": 55,
+        "foodTypes": [
+          "IRANIAN"
+        ],
+        "foods": [],
+        "comments": [],
+        "rates": []
+      }
     }
   ],
   "deliverers": [],
