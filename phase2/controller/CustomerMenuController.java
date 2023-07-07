@@ -65,7 +65,7 @@ public class CustomerMenuController extends MenuController {
     public void searchHandler() {
         ArrayList<Restaurant> restaurants ;
         if (searchType.getValue() == null)
-            restaurants = getManager().normalSearch(searchField.getText(),FoodType.valueOf(restaurantType.getValue()));
+            restaurants = getManager().normalSearch(searchField.getText(),null);
         else if (searchType.getValue().equals("near restaurants"))
             restaurants = getManager().searchForNearRestaurants(location,restaurantType.getValue(), searchField.getText());
         else if (searchType.getValue().equals("favorite restaurants"))
