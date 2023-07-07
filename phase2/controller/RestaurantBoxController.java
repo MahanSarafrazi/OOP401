@@ -6,8 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import phase2.model.FoodType;
+import phase2.model.Restaurant;
 import phase2.model.RestaurantOwner;
 
 import java.io.IOException;
@@ -57,8 +59,19 @@ public class RestaurantBoxController extends MenuController {
             }
             Scene scene = new Scene(loader.getRoot());
             getStage().setScene(scene);
-            ((RestaurantMenuByCustomerController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
+            ((RestaurantMenuByCustomerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
             getStage().show();
+        }
+    }
+
+    public void choosePics() {
+        for (Restaurant restaurant : ((RestaurantOwner) getManager().getLoggedInUser()).getRestaurants()) {
+            if(restaurant.getID() == ID) {
+                if(restaurant.getPhotoPath() != null) {
+                    Image image = new Image(restaurant.getPhotoPath());
+                    imageView.setImage(image);
+                }
+            }
         }
     }
 }

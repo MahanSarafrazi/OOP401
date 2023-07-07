@@ -43,7 +43,7 @@
                         </Text>
                         <Button fx:id="uploadPhoto" layoutX="111.0" layoutY="135.0" mnemonicParsing="false" onAction="#uploadPhotoHandler" style="-fx-background-color: orange;" text="Upload a Photo" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dde8f2" height="127.0" layoutX="34.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="251.0" />
-                        <ImageView fitHeight="125.0" fitWidth="245.0" layoutX="37.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="photo" fitHeight="125.0" fitWidth="245.0" layoutX="37.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
                         <Text layoutX="21.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score:" AnchorPane.leftAnchor="23.0">
                            <font>
                               <Font size="16.0" />

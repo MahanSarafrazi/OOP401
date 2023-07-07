@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
@@ -21,10 +22,7 @@ import phase2.model.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -66,6 +64,11 @@ public class RestaurantMenuByOwnerController extends MenuController {
     @FXML
     public Text error;
 
+    @FXML
+    public ImageView photo;
+
+    final FileChooser fileChooser = new FileChooser();
+
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getID();
 
     @FXML
@@ -98,7 +101,11 @@ public class RestaurantMenuByOwnerController extends MenuController {
         name.setText(getManager().getLoggedInUser().getActiveRestaurant().getName());
         restaurantID.setText(Integer.toString(ID));
         foodType.setText(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0).name());
-        score.setText(getManager().averageRating());
+        score.setText(Double.toString(getManager().averageRating()));
+        if(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath() != null) {
+            Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath());
+            photo.setImage(image);
+        }
         update();
     }
 
@@ -158,7 +165,24 @@ public class RestaurantMenuByOwnerController extends MenuController {
 
 
     public void uploadPhotoHandler(ActionEvent actionEvent) {
+        File selectedFile = fileChooser.showOpenDialog(getStage());
 
+        if (selectedFile != null) {
+
+            final InputStream targetStream;
+            try {
+                targetStream = new DataInputStream(new FileInputStream(selectedFile));
+                Image image = new Image(targetStream);
+                photo.setImage(image);
+
+            } catch (FileNotFoundException fileNotFoundException) {
+                fileNotFoundException.printStackTrace();
+            }
+
+            getManager().getLoggedInUser().getActiveRestaurant().setPhotoPath(selectedFile.getPath());
+            ((RestaurantOwnerMenuController) getFatherStageController()).update();
+
+        }
     }
 
     public void confirmHandler(ActionEvent actionEvent) {
