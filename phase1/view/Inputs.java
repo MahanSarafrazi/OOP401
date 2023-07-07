@@ -36,7 +36,7 @@ public enum Inputs {
 
     SET_DISCOUNT("^\\s*discount\\s+food\\s+(\\d+)\\s+(\\d*\\.?\\d+)\\s+(\\d+)\\s+hours\\s*$"), //29
     DISPLAY_RATINGS("^\\s*display\\s+ratings\\s*$"), //30
-    
+
     ADD_RESPONSE("^\\s*add\\s+new\\s+response\\s+(\\d+)\\s*$"), //31
     EDIT_RESPONSE("^\\s*edit\\s+response\\s+(\\d+)\\s*$"), //32
     SHOW_LOCATION("^\\s*show\\s+location\\s*$"), //33

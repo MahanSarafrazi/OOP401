@@ -125,17 +125,17 @@
                 </Tab>
                 <Tab text="Orders">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 53.0806% 100.0%, #1fafda 0.0%, #1fafda 0.6711%, #ffffff 100.0%);" />
                     </content>
                 </Tab>
                 <Tab text="Order History">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 53.0806% 100.0%, #1fafda 0.0%, #1fafda 0.6711%, #ffffff 100.0%);" />
                     </content>
                 </Tab>
                 <Tab text="Account">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 53.0806% 100.0%, #1fafda 0.0%, #1fafda 0.6711%, #ffffff 100.0%);">
                             <children>
                                 <TextField fx:id="restoreQuestion" layoutX="155.0" layoutY="93.0" prefHeight="26.0" prefWidth="187.0" style="-fx-background-color: white;" />
                                 <Text layoutX="24.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username:" wrappingWidth="87.16015243530273" AnchorPane.leftAnchor="25.0">
