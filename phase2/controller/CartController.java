@@ -1,6 +1,7 @@
 package phase2.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -9,7 +10,7 @@ public class CartController extends MenuController{
     public TextField totalPrice;
 
     @FXML
-    public TextField useDiscountTokens;
+    public ChoiceBox<String> useDiscountTokens;
 
     @FXML
     public VBox vBox;

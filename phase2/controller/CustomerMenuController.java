@@ -86,7 +86,31 @@ public class CustomerMenuController extends MenuController {
 
     @FXML
     public void cartHandler() {
-
+        getStage().close();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Cart.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        ((CartController) loader.getController()).initialize(getStage(), null, scene, getPreviousScene());
+        FXMLLoader foodLoader;
+        Customer customer = (Customer) getManager().getLoggedInUser();
+        for (int i = 0 ; i < customer.getCart().getFoods().size() ; ++i) {
+            foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+            try {
+                foodLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ((FoodBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), null, null);
+            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
+                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID());
+            ((CartController) loader.getController()).vBox.getChildren().add(foodLoader.getRoot());
+        }
+        super.getStage().setScene(scene);
+        super.getStage().show();
     }
 
     @FXML
@@ -134,17 +158,17 @@ public class CustomerMenuController extends MenuController {
         }
         Scene scene = new Scene(loader.getRoot());
         ((RestaurantsMenuController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
-        FXMLLoader foodLoader;
+        FXMLLoader restaurantLoader;
         for (int i = 3; i < restaurants.size() + 3; ++i) {
-            foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
+            restaurantLoader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
             try {
-                foodLoader.load();
+                restaurantLoader.load();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ((RestaurantBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), null, null);
-            ((RestaurantBoxController) foodLoader.getController()).chooseRestaurant(restaurants.get(i-3).getName(), restaurants.get(i-3).getFoodType().get(0), restaurants.get(i-3).getID());
-            ((RestaurantsMenuController) loader.getController()).gridPane.add(foodLoader.getRoot(),i%3,i/3,1,1);
+            ((RestaurantBoxController) restaurantLoader.getController()).initialize(getStage(), getFatherStageController(), null, null);
+            ((RestaurantBoxController) restaurantLoader.getController()).chooseRestaurant(restaurants.get(i-3).getName(), restaurants.get(i-3).getFoodType().get(0), restaurants.get(i-3).getID());
+            ((RestaurantsMenuController) loader.getController()).gridPane.add(restaurantLoader.getRoot(),i%3,i/3,1,1);
         }
         super.getStage().setScene(scene);
         super.getStage().show();
