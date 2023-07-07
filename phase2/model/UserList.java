@@ -1,6 +1,7 @@
 package phase2.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserList {
     private final ArrayList<Customer> customers = new ArrayList<>();

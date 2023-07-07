@@ -73,8 +73,9 @@ public class RestaurantOwnerMenuController extends MenuController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            ((RestaurantBoxController) loader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
+            ((RestaurantBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
             ((RestaurantBoxController) loader.getController()).chooseRestaurant(restaurant.getName(), restaurant.getFoodType().get(0), restaurant.getID());
+            ((RestaurantBoxController) loader.getController()).choosePics();
             list.getChildren().add(loader.getRoot());
         }
     }
