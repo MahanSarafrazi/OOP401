@@ -226,8 +226,8 @@ public class Manager {
         if (foodType1 == null) {
             return Output.NO_SUCH_FOOD_TYPE_IN_GENERAL;
         }
-        if (!owner.getActiveRestaurant().getFoodType().contains(foodType1))
-            return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;
+        /*if (!owner.getActiveRestaurant().getFoodType().contains(foodType1))
+            return Output.NO_SUCH_FOOD_TYPE_IN_RESTAURANT;*/
         for (Food food : owner.getActiveRestaurant().getFoods()) {
             if (food.getName().equals(foodName)) {
                 return Output.FOOD_ALREADY_EXIST;

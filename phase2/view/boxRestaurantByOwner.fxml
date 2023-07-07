@@ -13,8 +13,8 @@
          <children>
             <Text layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="main food type:" wrappingWidth="103.3726806640625" />
             <Text layoutX="-2.0" layoutY="11.0" strokeType="OUTSIDE" strokeWidth="0.0" text="name:" wrappingWidth="68.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5cbd0" height="82.0" layoutX="131.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="108.0" />
-            <ImageView fx:id="imageView" fitHeight="71.0" fitWidth="96.0" layoutX="137.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+            <Rectangle fx:id="photoPlace" arcHeight="5.0" arcWidth="5.0" fill="#c5cbd0" height="82.0" layoutX="131.0" layoutY="4.0" stroke="BLACK" strokeType="INSIDE" width="108.0" />
+            <ImageView fx:id="imageView" fitHeight="79.0" fitWidth="107.0" layoutX="132.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
             <TextField fx:id="name" editable="false" layoutX="4.0" layoutY="14.0" prefHeight="25.0" prefWidth="122.0" />
             <TextField fx:id="foodType" editable="false" layoutX="5.0" layoutY="59.0" prefHeight="25.0" prefWidth="122.0" />
          </children>

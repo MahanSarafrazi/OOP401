@@ -345,9 +345,44 @@
           "ID": 569095,
           "location": 7,
           "foodTypes": [
-            "FAST_FOOD"
+            "FAST_FOOD",
+            "IRANIAN"
           ],
-          "foods": [],
+          "foods": [
+            {
+              "price": 500.0,
+              "type": "FAST_FOOD",
+              "name": "pizza",
+              "activation": true,
+              "ID": 555524,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 500.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 600952,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 100.0,
+              "type": "FAST_FOOD",
+              "name": "burgur",
+              "activation": true,
+              "ID": 758960,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
+            }
+          ],
           "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
           "rates": [
@@ -371,9 +406,44 @@
         "ID": 569095,
         "location": 7,
         "foodTypes": [
-          "FAST_FOOD"
+          "FAST_FOOD",
+          "IRANIAN"
         ],
-        "foods": [],
+        "foods": [
+          {
+            "price": 500.0,
+            "type": "FAST_FOOD",
+            "name": "pizza",
+            "activation": true,
+            "ID": 555524,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 500.0,
+            "type": "IRANIAN",
+            "name": "kabab",
+            "activation": true,
+            "ID": 600952,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 100.0,
+            "type": "FAST_FOOD",
+            "name": "burgur",
+            "activation": true,
+            "ID": 758960,
+            "discount": 0.0,
+            "restaurantName": "jahan",
+            "comments": [],
+            "rates": []
+          }
+        ],
         "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
         "comments": [],
         "rates": []

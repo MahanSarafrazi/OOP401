@@ -64,7 +64,7 @@ public class FoodMenuByOwnerController extends MenuController {
     public Text priceError;
 
     @FXML
-    public Text typeError;
+    public Text discountError;
 
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getID();
 
@@ -75,6 +75,7 @@ public class FoodMenuByOwnerController extends MenuController {
         name.setText(openedFood.getName());
         type.setText(openedFood.getType().name());
         price.setText(Double.toString(openedFood.getPrice()));
+        discount.setText(Double.toString(getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getDiscount()));
         score.setText(getManager().averageRating());
     }
 
@@ -123,6 +124,9 @@ public class FoodMenuByOwnerController extends MenuController {
             typeError.setText(OutputChecker.outputString(editTypeResult));
         }
         type.setText(food.getType().name());*/
+
+        //getManager().discountFood()
+        //Output editDiscountResult = getManager().discountFood(ID, );
 
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> {
