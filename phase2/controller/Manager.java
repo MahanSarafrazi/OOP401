@@ -547,6 +547,7 @@ public class Manager {
         return Output.SUCCESSFUL_REGISTER;
     }
 
+
     private Output addDeliverer(String username, String password) {
         if (getUser(username) != null) {
             return Output.INVALID_USER_NAME;

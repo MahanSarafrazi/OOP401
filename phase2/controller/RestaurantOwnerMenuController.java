@@ -118,4 +118,20 @@ public class RestaurantOwnerMenuController extends MenuController {
         ((addNewRestaurantController) addLoader.getController()).initialize(stage, this, scene, null);
         ((addNewRestaurantController) addLoader.getController()).getStage().show();
     }
+
+    @FXML
+    public void logoutHandler(ActionEvent actionEvent) {
+        getStage().close();
+        getManager().logout();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RegisterAndLoginMenu.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        ((RegisterAndLoginMenuController) loader.getController()).initialize(getStage(), null, scene, null);
+        super.getStage().setScene(scene);
+        super.getStage().show();
+    }
 }

@@ -5,7 +5,8 @@ import phase2.view.OrderStatus;
 import java.util.ArrayList;
 
 public class Restaurant {
-    private final String name;
+
+    private String name;
     private final ArrayList<Order> orders;
     public void addOrder(Order order) {orders.add(order);}
 
@@ -133,4 +134,7 @@ public class Restaurant {
     }
     public void closeFood() {openedFood = null;}
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }
