@@ -384,7 +384,9 @@ public class Manager {
         double average = 0;
         for (Rate rate : rates)
             average += rate.getRating();
-        return average / rates.size();
+        if(rates.size() != 0) {
+            return average / rates.size();
+        } else return 0;
     }
     public ArrayList<Rate> getRating() {
         ArrayList<Rate> rates;

@@ -233,19 +233,7 @@
           "foodTypes": [
             "FAST_FOOD"
           ],
-          "foods": [
-            {
-              "price": 500.0,
-              "type": "FAST_FOOD",
-              "name": "pizza",
-              "activation": true,
-              "ID": 756374,
-              "discount": 0.0,
-              "restaurantName": "jahan",
-              "comments": [],
-              "rates": []
-            }
-          ],
+          "foods": [],
           "comments": [],
           "rates": []
         }
@@ -260,19 +248,7 @@
         "foodTypes": [
           "FAST_FOOD"
         ],
-        "foods": [
-          {
-            "price": 500.0,
-            "type": "FAST_FOOD",
-            "name": "pizza",
-            "activation": true,
-            "ID": 756374,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          }
-        ],
+        "foods": [],
         "comments": [],
         "rates": []
       }
