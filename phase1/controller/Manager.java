@@ -387,7 +387,7 @@ public class Manager {
     }
     public ArrayList<Rate> getRating() {
         ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
+        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
         else
             rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();

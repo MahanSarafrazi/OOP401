@@ -6,13 +6,29 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import phase2.model.*;
-import phase2.view.Output;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class CustomerMenuController extends MenuController {
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
+        super.initialize(stage,fatherStageController,mainScene,previousScene);
+        Customer customer = (Customer) getManager().getLoggedInUser();
+        this.accountCharge.setText(String.valueOf(customer.getCharge()));
+        this.accountCharge.setEditable(false);
+        if (customer.getRestoreQuestion() != null) {
+            this.restoreQuestion.setText(customer.getRestoreQuestion());
+            this.restoreSolve.setText(customer.getRestoreAnswer());
+        }
+        this.username.setText(customer.getUserName());
+        this.username.setEditable(false);
+        this.password.setText(customer.getPassword());
+        this.password.setEditable(false);
+        this.totalSpending.setText(String.valueOf(customer.getSpentMoney()));
+        this.totalSpending.setEditable(false);
+    }
     @FXML
     public ComboBox<String> searchType;
 
@@ -49,7 +65,7 @@ public class CustomerMenuController extends MenuController {
     public void searchHandler() {
         ArrayList<Restaurant> restaurants ;
         if (searchType.getValue() == null)
-            restaurants = getManager().normalSearch(searchField.getText(),FoodType.valueOf(restaurantType.getValue()));
+            restaurants = getManager().normalSearch(searchField.getText(),null);
         else if (searchType.getValue().equals("near restaurants"))
             restaurants = getManager().searchForNearRestaurants(location,restaurantType.getValue(), searchField.getText());
         else if (searchType.getValue().equals("favorite restaurants"))
@@ -94,34 +110,6 @@ public class CustomerMenuController extends MenuController {
         }
         Scene scene = new Scene(loader.getRoot());
         ((CartController) loader.getController()).initialize(getStage(), this, scene, getMainScene());
-        FXMLLoader foodLoader;
-        Customer customer = (Customer) getManager().getLoggedInUser();
-        double totalPrice = 0;
-        Cart cart = customer.getCart();
-        for (int i=0;i<cart.getFoodsCount().size();i++)
-            totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
-        int shortestPath=0;
-        if (!customer.getCart().getFoods().isEmpty())
-            shortestPath = getManager().getMap().findShortestPath(50, customer.getOrderedRestaurant().getLocation(),false)/30;
-        double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
-        ((CartController) loader.getController()).totalPrice.setText(String.valueOf(totalDeliveryPrice));
-        ((CartController) loader.getController()).totalPrice.setEditable(false);
-        ((CartController) loader.getController()).accountCharge.setText(String.valueOf(customer.getCharge()));
-        ((CartController) loader.getController()).accountCharge.setEditable(false);
-        for (String string : customer.getDiscountTokens())
-            ((CartController) loader.getController()).useDiscountTokens.getItems().add(string);
-        for (int i = 0 ; i < customer.getCart().getFoods().size() ; ++i) {
-            foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxFoodByCustomer.fxml"));
-            try {
-                foodLoader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            ((FoodBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), null, null);
-            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
-                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID());
-            ((CartController) loader.getController()).vBox.getChildren().add(foodLoader.getRoot());
-        }
         super.getStage().setScene(scene);
         super.getStage().show();
     }
@@ -170,19 +158,7 @@ public class CustomerMenuController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene scene = new Scene(loader.getRoot());
-        ((RestaurantsMenuController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
-        FXMLLoader restaurantLoader;
-        for (int i = 3; i < restaurants.size() + 3; ++i) {
-            restaurantLoader = new FXMLLoader(this.getClass().getResource("../view/boxRestaurantbyowner.fxml"));
-            try {
-                restaurantLoader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            ((RestaurantBoxController) restaurantLoader.getController()).initialize(getStage(), getFatherStageController(), null, null);
-            ((RestaurantBoxController) restaurantLoader.getController()).chooseRestaurant(restaurants.get(i-3).getName(), restaurants.get(i-3).getFoodType().get(0), restaurants.get(i-3).getID());
-            ((RestaurantsMenuController) loader.getController()).gridPane.add(restaurantLoader.getRoot(),i%3,i/3,1,1);
-        }
+        ((RestaurantsMenuController) loader.getController()).initialize(getStage(), null, scene, getMainScene(),restaurants);
         super.getStage().setScene(scene);
         super.getStage().show();
     }

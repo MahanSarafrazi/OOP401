@@ -1,7 +1,6 @@
 package phase2.controller;
 
 import javafx.animation.PauseTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import phase2.model.Customer;
 import phase2.model.UserType;
 import phase2.view.Output;
 
@@ -41,15 +39,15 @@ public class LoginMenuController extends MenuController {
     public Text error;
 
     @FXML
-    public ChoiceBox type;
+    public ChoiceBox<String> type;
 
     @FXML
-    public void backHandler(ActionEvent actionEvent) {
+    public void backHandler() {
         back();
     }
 
     @FXML
-    public void confirmHandler(ActionEvent actionEvent) {
+    public void confirmHandler() {
         String username = this.userName.getText();
         String password = this.passWord.getText();
         String answer = "";
@@ -78,52 +76,20 @@ public class LoginMenuController extends MenuController {
             FXMLLoader loader ;
             if(type.getValue().equals("customer")) {
                 loader = new FXMLLoader(this.getClass().getResource("../view/CustomerPanel.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Customer customer = (Customer) getManager().getLoggedInUser();
-                Scene scene = new Scene(loader.getRoot());
-                CustomerMenuController controller = loader.getController();
-                controller.initialize(new Stage(), null, scene, null);
-                controller.accountCharge.setText(String.valueOf(customer.getCharge()));
-                controller.accountCharge.setEditable(false);
-                if (customer.getRestoreQuestion() != null) {
-                    controller.restoreQuestion.setText(customer.getRestoreQuestion());
-                    controller.restoreSolve.setText(customer.getRestoreAnswer());
-                }
-                controller.username.setText(customer.getUserName());
-                controller.username.setEditable(false);
-                controller.password.setText(customer.getPassword());
-                controller.password.setEditable(false);
-                controller.totalSpending.setText(String.valueOf(customer.getSpentMoney()));
-                controller.totalSpending.setEditable(false);
-                controller.getStage().setScene(scene);
-                controller.getStage().show();
             } else if(type.getValue().equals("restaurant owner")) {
-                loader = new FXMLLoader(this.getClass().getResource("../view/Restaurantownermenu.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Scene scene = new Scene(loader.getRoot());
-                ((MenuController) loader.getController()).initialize(new Stage(), null, scene, null);
-                ((MenuController) loader.getController()).getStage().setScene(scene);
-                ((MenuController) loader.getController()).getStage().show();
+                loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantOwnerMenu.fxml"));
             } else {
                 loader = new FXMLLoader(this.getClass().getResource("../view/DelivererMenu.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Scene scene = new Scene(loader.getRoot());
-                ((MenuController) loader.getController()).initialize(new Stage(), null, scene, null);
-                ((MenuController) loader.getController()).getStage().setScene(scene);
-                ((MenuController) loader.getController()).getStage().show();
             }
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(loader.getRoot());
+            ((MenuController) loader.getController()).initialize(new Stage(), null, scene, null);
+            ((MenuController) loader.getController()).getStage().setScene(scene);
+            ((MenuController) loader.getController()).getStage().show();
 
         } else {
             PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
@@ -133,14 +99,14 @@ public class LoginMenuController extends MenuController {
     }
 
     @FXML
-    public void resetHandler(ActionEvent actionEvent) {
+    public void resetHandler() {
         userName.setText("");
         passWord.setText("");
         type.setValue(null);
     }
 
     @FXML
-    public void forgetHandler(ActionEvent actionEvent) {
+    public void forgetHandler() {
         String username = this.userName.getText();
         String answer ;
         Output output = super.getManager().getRestoreQuestion(username);
@@ -155,10 +121,7 @@ public class LoginMenuController extends MenuController {
                 throw new RuntimeException(e);
             }
             Scene scene = new Scene(loader.getRoot());
-            ((RestorePasswordController) loader.getController()).initialize(getStage(), null, scene, getMainScene());
-            ((RestorePasswordController) loader.getController()).restoreQuestion.setText(getManager().getUser(username).getRestoreQuestion()+" ?");
-            ((RestorePasswordController) loader.getController()).restoreQuestion.setEditable(false);
-            ((RestorePasswordController) loader.getController()).user = getManager().getUser(username);
+            ((RestorePasswordController) loader.getController()).initialize(getStage(), null, scene, getMainScene(),getManager().getUser(username));
             super.getStage().setScene(scene);
             super.getStage().show();
         } else {

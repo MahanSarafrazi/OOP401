@@ -5,12 +5,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import phase2.model.Food;
 import phase2.model.FoodType;
 import phase2.model.Restaurant;
 import phase2.model.RestaurantOwner;
@@ -42,7 +39,7 @@ public class RestaurantBoxController extends MenuController {
     public void buttonBOXHandler(ActionEvent actionEvent) {
         getManager().getLoggedInUser().setActiveRestaurant(ID);
         if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Restaurantmenubyowner.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantMenuByOwner.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

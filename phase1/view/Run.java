@@ -1,6 +1,7 @@
 package phase1.view;
 
 import phase1.controller.DataBase;
+import phase2.controller.Manager;
 
 public class Run {
     //making the program have just one Run object
@@ -31,7 +32,8 @@ public class Run {
             setOpenMenu(getMenuByEnum(runOrders));
         }
         System.out.println("thanks for trusting us!");
-
+        Manager manager = Manager.getManagerInstance();
+        manager.logout();
         dataBase.save();
     }
 

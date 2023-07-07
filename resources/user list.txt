@@ -24,19 +24,7 @@
       "userName": "fariman1",
       "password": "Fariman1",
       "restoreQuestion": "alo",
-      "restoreAnswer": "salam",
-      "activeRestaurant": {
-        "name": "reza",
-        "orders": [],
-        "ID": 405336,
-        "location": 55,
-        "foodTypes": [
-          "IRANIAN"
-        ],
-        "foods": [],
-        "comments": [],
-        "rates": []
-      }
+      "restoreAnswer": "salam"
     }
   ],
   "deliverers": [],
@@ -117,16 +105,60 @@
           "ID": 697570,
           "location": 55,
           "foodTypes": [
-            "IRANIAN"
+            "FAST_FOOD"
           ],
-          "foods": [],
+          "foods": [
+            {
+              "price": 66.0,
+              "type": "FAST_FOOD",
+              "name": "gfggfh",
+              "activation": true,
+              "ID": 645912,
+              "discount": 0.0,
+              "restaurantName": "hgfhfgh",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 66.0,
+              "type": "FAST_FOOD",
+              "name": "gfggfhgtrh",
+              "activation": true,
+              "ID": 607517,
+              "discount": 0.0,
+              "restaurantName": "hgfhfgh",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 66.0,
+              "type": "FAST_FOOD",
+              "name": "gfggf",
+              "activation": true,
+              "ID": 829662,
+              "discount": 0.0,
+              "restaurantName": "hgfhfgh",
+              "comments": [],
+              "rates": []
+            }
+          ],
           "comments": [],
-          "rates": []
+          "rates": [
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "rating": 4.0
+            }
+          ]
         },
         {
-          "name": "ytrytry",
+          "name": "tewtg",
           "orders": [],
-          "ID": 394831,
+          "ID": 520066,
           "location": 55,
           "foodTypes": [
             "IRANIAN"
@@ -136,9 +168,9 @@
           "rates": []
         },
         {
-          "name": "ytrytr",
+          "name": "tewtge",
           "orders": [],
-          "ID": 673061,
+          "ID": 930921,
           "location": 55,
           "foodTypes": [
             "IRANIAN"
@@ -148,9 +180,9 @@
           "rates": []
         },
         {
-          "name": "ytryt",
+          "name": "tewtgerr",
           "orders": [],
-          "ID": 216359,
+          "ID": 833836,
           "location": 55,
           "foodTypes": [
             "IRANIAN"
@@ -160,9 +192,9 @@
           "rates": []
         },
         {
-          "name": "tewtgerret",
+          "name": "tewtgerre",
           "orders": [],
-          "ID": 397793,
+          "ID": 571819,
           "location": 55,
           "foodTypes": [
             "IRANIAN"
@@ -198,6 +230,18 @@
         {
           "name": "tewtgerret",
           "orders": [],
+          "ID": 397793,
+          "location": 55,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [],
+          "comments": [],
+          "rates": []
+        },
+        {
+          "name": "tewtgerret",
+          "orders": [],
           "ID": 997200,
           "location": 55,
           "foodTypes": [
@@ -208,9 +252,9 @@
           "rates": []
         },
         {
-          "name": "tewtgerre",
+          "name": "ytryt",
           "orders": [],
-          "ID": 571819,
+          "ID": 216359,
           "location": 55,
           "foodTypes": [
             "IRANIAN"
@@ -220,9 +264,9 @@
           "rates": []
         },
         {
-          "name": "tewtgerr",
+          "name": "ytrytr",
           "orders": [],
-          "ID": 833836,
+          "ID": 673061,
           "location": 55,
           "foodTypes": [
             "IRANIAN"
@@ -232,21 +276,9 @@
           "rates": []
         },
         {
-          "name": "tewtge",
+          "name": "ytrytry",
           "orders": [],
-          "ID": 930921,
-          "location": 55,
-          "foodTypes": [
-            "IRANIAN"
-          ],
-          "foods": [],
-          "comments": [],
-          "rates": []
-        },
-        {
-          "name": "tewtg",
-          "orders": [],
-          "ID": 520066,
+          "ID": 394831,
           "location": 55,
           "foodTypes": [
             "IRANIAN"
@@ -257,19 +289,7 @@
         }
       ],
       "userName": "fariman2",
-      "password": "Fariman2",
-      "activeRestaurant": {
-        "name": "ytrytry",
-        "orders": [],
-        "ID": 394831,
-        "location": 55,
-        "foodTypes": [
-          "IRANIAN"
-        ],
-        "foods": [],
-        "comments": [],
-        "rates": []
-      }
+      "password": "Fariman2"
     },
     {
       "restaurants": [
@@ -284,7 +304,17 @@
           "foods": [],
           "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
-          "rates": []
+          "rates": [
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1",
+                "restoreQuestion": "alo",
+                "restoreAnswer": "salam"
+              },
+              "rating": 3.0
+            }
+          ]
         }
       ],
       "userName": "mahan",
@@ -299,6 +329,218 @@
         ],
         "foods": [],
         "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
+        "comments": [],
+        "rates": []
+      }
+    },
+    {
+      "restaurants": [
+        {
+          "name": "pashmak",
+          "orders": [],
+          "ID": 641385,
+          "location": 655,
+          "foodTypes": [
+            "IRANIAN",
+            "TURKISH",
+            "DRINK"
+          ],
+          "foods": [
+            {
+              "price": 46.0,
+              "type": "DRINK",
+              "name": "drink1",
+              "activation": true,
+              "ID": 588336,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 77.0,
+              "type": "DRINK",
+              "name": "drink2",
+              "activation": true,
+              "ID": 113098,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 77.0,
+              "type": "DRINK",
+              "name": "drink3",
+              "activation": true,
+              "ID": 640538,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 77.0,
+              "type": "DRINK",
+              "name": "drink4",
+              "activation": true,
+              "ID": 462408,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 77.0,
+              "type": "DRINK",
+              "name": "drink5",
+              "activation": true,
+              "ID": 983317,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 77.0,
+              "type": "DRINK",
+              "name": "drink6",
+              "activation": true,
+              "ID": 746654,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 55.0,
+              "type": "IRANIAN",
+              "name": "irani2",
+              "activation": true,
+              "ID": 353327,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "farimaan2",
+      "password": "Farimaan2",
+      "activeRestaurant": {
+        "name": "pashmak",
+        "orders": [],
+        "ID": 641385,
+        "location": 655,
+        "foodTypes": [
+          "IRANIAN",
+          "TURKISH",
+          "DRINK"
+        ],
+        "foods": [
+          {
+            "price": 46.0,
+            "type": "DRINK",
+            "name": "drink1",
+            "activation": true,
+            "ID": 588336,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 77.0,
+            "type": "DRINK",
+            "name": "drink2",
+            "activation": true,
+            "ID": 113098,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 77.0,
+            "type": "DRINK",
+            "name": "drink3",
+            "activation": true,
+            "ID": 640538,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 77.0,
+            "type": "DRINK",
+            "name": "drink4",
+            "activation": true,
+            "ID": 462408,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 77.0,
+            "type": "DRINK",
+            "name": "drink5",
+            "activation": true,
+            "ID": 983317,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 77.0,
+            "type": "DRINK",
+            "name": "drink6",
+            "activation": true,
+            "ID": 746654,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 50.0,
+            "type": "IRANIAN",
+            "name": "irani1",
+            "activation": true,
+            "ID": 961269,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          },
+          {
+            "price": 55.0,
+            "type": "IRANIAN",
+            "name": "irani2",
+            "activation": true,
+            "ID": 353327,
+            "discount": 0.0,
+            "restaurantName": "pashmak",
+            "comments": [],
+            "rates": []
+          }
+        ],
         "comments": [],
         "rates": []
       }

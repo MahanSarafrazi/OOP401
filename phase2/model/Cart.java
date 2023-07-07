@@ -37,4 +37,10 @@ public class Cart {
                 break;
             }
     }
+    public int foodCount(Food food) {
+        for (int i=0;i<foods.size();i++)
+            if (foods.get(i).getID() == food.getID())
+                return foodsCount.get(i);
+        return 0;
+    }
 }

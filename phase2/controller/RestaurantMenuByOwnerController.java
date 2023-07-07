@@ -24,7 +24,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 public class RestaurantMenuByOwnerController extends MenuController {
@@ -102,7 +101,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
         name.setText(getManager().getLoggedInUser().getActiveRestaurant().getName());
         restaurantID.setText(Integer.toString(ID));
         foodType.setText(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0).name());
-        score.setText(Double.toString(getManager().averageRating()));
+        score.setText(getManager().averageRating());
         if(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath() != null) {
             Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath());
             photo.setImage(image);

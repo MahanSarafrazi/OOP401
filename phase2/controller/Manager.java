@@ -96,9 +96,10 @@ public class Manager {
         if (loggedInUser instanceof Customer customer) {
             customer.clearCart();
         }
-        if (loggedInUser.getActiveRestaurant() != null)
+        if (loggedInUser !=null && loggedInUser.getActiveRestaurant() != null && loggedInUser.getActiveRestaurant().getOpenedFood() != null)
             loggedInUser.getActiveRestaurant().closeFood();
-        loggedInUser.deActiveRestaurant();
+        if (loggedInUser !=null && loggedInUser.getActiveRestaurant() != null)
+            loggedInUser.deActiveRestaurant();
         loggedInUser = null;
     }
     public void back() {
@@ -367,15 +368,7 @@ public class Manager {
         }
         return Output.NO_COMMENT_WITH_ID;
     }
-    public boolean isThereRating() {
-        ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
-            rates = loggedInUser.getActiveRestaurant().getRates();
-        else
-            rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
-        return rates.isEmpty();
-    }
-    public double averageRating() {
+    public String averageRating() {
         ArrayList<Rate> rates;
         if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
             rates = loggedInUser.getActiveRestaurant().getRates();
@@ -384,49 +377,27 @@ public class Manager {
         double average = 0;
         for (Rate rate : rates)
             average += rate.getRating();
-        if(rates.size() != 0) {
-            return average / rates.size();
-        } else return 0;
+        if (rates.isEmpty())
+            return "No rating";
+        return String.valueOf(average / rates.size());
     }
-    public ArrayList<Rate> getRating() {
-        ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
-            rates = loggedInUser.getActiveRestaurant().getRates();
-        else
-            rates  = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
-        return rates;
-    }
-    public Output addRating(double rating) {
-        if (rating>5 || rating<0)
-            return Output.RATING_OUT_OUT_OF_RANGE;
+    public void addRating(double rating) {
         if (loggedInUser.getActiveRestaurant().getOpenedFood() != null) {
             for (Rate rate : loggedInUser.getActiveRestaurant().getOpenedFood().getRates())
-                if (rate.getUser().getUserName().equals(loggedInUser.getUserName()))
-                    return Output.RATING_EXISTS;
+                if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                    rate.editRating(rating);
+                    return;
+                }
             loggedInUser.getActiveRestaurant().getOpenedFood().addRating(loggedInUser, rating);
         }
         else {
             for (Rate rate : loggedInUser.getActiveRestaurant().getRates())
-                if (rate.getUser().getUserName().equals(loggedInUser.getUserName()))
-                    return Output.RATING_EXISTS;
+                if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
+                    rate.editRating(rating);
+                    return;
+                }
             loggedInUser.getActiveRestaurant().addRating(loggedInUser, rating);
         }
-        return Output.RATED;
-    }
-    public Output editRating(double rating) {
-        if (rating>5 || rating<0)
-            return Output.RATING_OUT_OUT_OF_RANGE;
-        ArrayList<Rate> rates;
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() == null)
-            rates = loggedInUser.getActiveRestaurant().getRates();
-        else
-            rates = loggedInUser.getActiveRestaurant().getOpenedFood().getRates();
-        for (Rate rate : rates)
-            if (rate.getUser().getUserName().equals(loggedInUser.getUserName())) {
-                rate.editRating(rating);
-                return Output.RATED;
-            }
-        return Output.NO_RATING;
     }
     public Output addResponse(int ID, String responseText) {
         ArrayList<Comment> comments;
@@ -520,15 +491,6 @@ public class Manager {
             list1.add(RestaurantList.getRestaurant(map.getKey()));
         return list1;
     }
-    public Order selectOrder(int ID) {
-        Customer customer = (Customer) loggedInUser;
-        for (Order order : customer.getOrders()) {
-            if(order.getID() == ID) {
-                return order;
-            }
-        }
-        return null;
-    }
     public void confirmOrder(int customerLocation,double totalPrice, String discountToken) {
         Customer customer = (Customer) loggedInUser;
         Order order = new Order(customer.getCart(),customer.getOrderedRestaurant(),customerLocation);
@@ -558,7 +520,15 @@ public class Manager {
                     orders.add(order);
         return orders;
     }
-
+    public boolean editOrderStatus(int ID) {
+        for (Order order : loggedInUser.getActiveRestaurant().getOrders()) {
+            if(order.getID() == ID) {
+                order.setOrderStatus(OrderStatus.SENT);
+                return true;
+            }
+        }
+        return false;
+    }
     private Output addCustomer(String username, String password) {
         if (getUser(username) != null) {
             return Output.INVALID_USER_NAME;
@@ -570,15 +540,6 @@ public class Manager {
         return Output.SUCCESSFUL_REGISTER;
     }
 
-    public boolean editOrderStatus(int ID) {
-        for (Order order : loggedInUser.getActiveRestaurant().getOrders()) {
-            if(order.getID() == ID) {
-                order.setOrderStatus(OrderStatus.SENT);
-                return true;
-            }
-        }
-        return false;
-    }
 
     private Output addDeliverer(String username, String password) {
         if (getUser(username) != null) {
