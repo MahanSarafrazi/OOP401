@@ -98,7 +98,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
         name.setText(getManager().getLoggedInUser().getActiveRestaurant().getName());
         restaurantID.setText(Integer.toString(ID));
         foodType.setText(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0).name());
-        score.setText(Double.toString(getManager().averageRating()));
+        score.setText(getManager().averageRating());
         update();
     }
 

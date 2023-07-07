@@ -75,7 +75,7 @@ public class FoodMenuByOwnerController extends MenuController {
         name.setText(openedFood.getName());
         type.setText(openedFood.getType().name());
         price.setText(Double.toString(openedFood.getPrice()));
-        score.setText(Double.toString(getManager().averageRating()));
+        score.setText(getManager().averageRating());
     }
 
 
