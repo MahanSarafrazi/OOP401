@@ -167,16 +167,6 @@ public class FoodMenuByOwnerController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene commentsScene = new Scene(commentsLoader.getRoot());
-        ArrayList<Comment> comments = getManager().getLoggedInUser().getActiveRestaurant().getComments();
-        for(int i = 0; i < getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getComments().size(); ++i) {
-            HBox hBox = new HBox();
-            Text text = new Text(comments.get(i).getComment());
-            Button button = new Button("add response");
-            button.setId("button" + i);
-            hBox.getChildren().add(text);
-            hBox.getChildren().add(button);
-            ((VBox) commentsLoader.getRoot()).getChildren().add(hBox);
-        }
         ((CommentsController) commentsLoader.getController()).initialize(new Stage(), this, commentsScene, null);
         ((CommentsController) commentsLoader.getController()).getStage().setScene(commentsScene);
         ((CommentsController) commentsLoader.getController()).getStage().show();

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,8 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="599.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 0.0% 1.8957%, #01ffcc 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="599.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 0.0% 1.8957%, #01ffcc 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.CommentsBoxController">
    <children>
       <HBox layoutX="1.0" layoutY="8.0" prefHeight="64.0" prefWidth="599.0">
          <children>
@@ -17,18 +21,44 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="said:     ">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="said:     " wrappingWidth="33.2587890625">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="comment" prefHeight="48.0" prefWidth="437.0">
+            <TextField fx:id="commentText" prefHeight="48.0" prefWidth="437.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
          </children>
       </HBox>
-      <HBox layoutY="80.0" prefHeight="64.0" prefWidth="599.0" />
+      <HBox layoutY="80.0" prefHeight="64.0" prefWidth="599.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="29.0" text="you">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="answered:     " wrappingWidth="71.85791015625">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="response" prefHeight="48.0" prefWidth="437.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Button fx:id="tick" mnemonicParsing="false" onAction="#tickHandler" prefHeight="49.0" prefWidth="46.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/Pics/tick.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></HBox>
    </children>
 </AnchorPane>

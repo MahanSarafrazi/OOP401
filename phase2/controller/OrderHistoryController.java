@@ -88,7 +88,7 @@ public class OrderHistoryController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID());
+                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), false);
                     list.get(i).getChildren().add(loader.getRoot());
                 }
             }

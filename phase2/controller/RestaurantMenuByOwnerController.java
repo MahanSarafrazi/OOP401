@@ -100,16 +100,6 @@ public class RestaurantMenuByOwnerController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene commentsScene = new Scene(commentsLoader.getRoot());
-        ArrayList<Comment> comments = getManager().getLoggedInUser().getActiveRestaurant().getComments();
-        for(int i = 0; i < getManager().getLoggedInUser().getActiveRestaurant().getComments().size(); ++i) {
-            HBox hBox = new HBox();
-            Text text = new Text(comments.get(i).getComment());
-            Button button = new Button("add response");
-            button.setId("button" + i);
-            hBox.getChildren().add(text);
-            hBox.getChildren().add(button);
-            ((VBox) commentsLoader.getRoot()).getChildren().add(hBox);
-        }
         ((CommentsController) commentsLoader.getController()).initialize(new Stage(), this, commentsScene, null);
         ((CommentsController) commentsLoader.getController()).getStage().setScene(commentsScene);
         ((CommentsController) commentsLoader.getController()).getStage().show();
@@ -179,7 +169,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID());
+                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), true);
                     list.get(i).getChildren().add(loader.getRoot());
                 }
             }
