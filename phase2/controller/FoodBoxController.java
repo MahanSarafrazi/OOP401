@@ -25,42 +25,47 @@ public class FoodBoxController extends MenuController {
     @FXML
     public Button buttonBOX;
 
+    boolean isButton;
+
     private int ID;
 
     @FXML
     public void buttonBOXHandler(ActionEvent actionEvent) {
-        getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(ID);
-        if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByOwner.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        if(isButton) {
+            getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(ID);
+            if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByOwner.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene scene = new Scene(loader.getRoot());
+                getStage().setScene(scene);
+                ((FoodMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
+                getStage().show();
             }
-            Scene scene = new Scene(loader.getRoot());
-            getStage().setScene(scene);
-            ((FoodMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
-            getStage().show();
-        }
-        else  {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByCustomer.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            else  {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByCustomer.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene scene = new Scene(loader.getRoot());
+                getStage().setScene(scene);
+                ((FoodMenuUsedByCustomerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
+                getStage().show();
             }
-            Scene scene = new Scene(loader.getRoot());
-            getStage().setScene(scene);
-            ((FoodMenuUsedByCustomerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
-            getStage().show();
         }
     }
 
     @FXML
-    public void chooseFood(String name, FoodType foodType, double price, int ID) {
+    public void chooseFood(String name, FoodType foodType, double price, int ID, boolean isButton) {
         this.foodName.setText(name);
         this.foodType.setText(foodType.name());
         this.foodPrice.setText(Double.toString(price));
         this.ID = ID;
+        this.isButton = isButton;
     }
 }

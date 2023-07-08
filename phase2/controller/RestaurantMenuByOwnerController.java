@@ -2,13 +2,13 @@ package phase2.controller;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -18,12 +18,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import phase2.model.*;
+import phase2.view.OrderStatus;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 public class RestaurantMenuByOwnerController extends MenuController {
 
@@ -75,8 +73,22 @@ public class RestaurantMenuByOwnerController extends MenuController {
     @FXML
     public Button moreTypes;
 
-    final FileChooser fileChooser = new FileChooser();
+    @FXML
+    public Tab restaurantsInformation;
 
+    @FXML
+    public Tab orderHistory;
+
+    @FXML
+    public Tab openOrders;
+
+    @FXML
+    public VBox orderHistoryList;
+
+    @FXML
+    public VBox openOrdersList;
+
+    final FileChooser fileChooser = new FileChooser();
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getID();
 
     @FXML
@@ -88,16 +100,6 @@ public class RestaurantMenuByOwnerController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene commentsScene = new Scene(commentsLoader.getRoot());
-        ArrayList<Comment> comments = getManager().getLoggedInUser().getActiveRestaurant().getComments();
-        for(int i = 0; i < getManager().getLoggedInUser().getActiveRestaurant().getComments().size(); ++i) {
-            HBox hBox = new HBox();
-            Text text = new Text(comments.get(i).getComment());
-            Button button = new Button("add response");
-            button.setId("button" + i);
-            hBox.getChildren().add(text);
-            hBox.getChildren().add(button);
-            ((VBox) commentsLoader.getRoot()).getChildren().add(hBox);
-        }
         ((CommentsController) commentsLoader.getController()).initialize(new Stage(), this, commentsScene, null);
         ((CommentsController) commentsLoader.getController()).getStage().setScene(commentsScene);
         ((CommentsController) commentsLoader.getController()).getStage().show();
@@ -119,7 +121,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
             list.add((VBox) (((ScrollPane)(tabPane.getTabs().get(i).getContent())).getContent()));
             tabPane.getTabs().get(i).setText(String.valueOf(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(i)));
         }
-        update();
+        updateRestaurantInformation();
     }
 
 
@@ -138,7 +140,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
         ((addFoodController) addLoader.getController()).getStage().show();
     }
 
-    public void update() {
+    public void updateRestaurantInformation() {
 
         tabPane.getTabs().clear();
         list.clear();
@@ -167,9 +169,45 @@ public class RestaurantMenuByOwnerController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID());
+                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), true);
                     list.get(i).getChildren().add(loader.getRoot());
                 }
+            }
+        }
+    }
+
+    public void updateOrderHistory() {
+        orderHistoryList.getChildren().clear();
+        Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
+        for (Order order : restaurant.getOrders()) {
+            if(!order.getOrderStatus().equals(OrderStatus.NOT_READY)) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Boxorderhistory.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ((OrderHistoryBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                ((OrderHistoryBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice());
+                orderHistoryList.getChildren().add(loader.getRoot());
+            }
+        }
+    }
+
+    public void updateOpenOrders() {
+        openOrdersList.getChildren().clear();
+        Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
+        for (Order order : restaurant.getOrders()) {
+            if(order.getOrderStatus().equals(OrderStatus.NOT_READY)) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Boxopenorders.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                openOrdersList.getChildren().add(loader.getRoot());
             }
         }
     }
@@ -263,7 +301,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
         }
 
         foodType.setText(restaurant.getFoodType().get(0).name());
-        update();
+        updateRestaurantInformation();
 
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> error.setText(""));
@@ -289,5 +327,13 @@ public class RestaurantMenuByOwnerController extends MenuController {
         stage.setScene(scene);
         ((FoodTypesController) loader.getController()).initialize(stage, this, scene, null);
         ((FoodTypesController) loader.getController()).getStage().show();
+    }
+
+    public void orderHistoryHandler(Event event) {
+        updateOrderHistory();
+    }
+
+    public void openOrdersHandler(Event event) {
+        updateOpenOrders();
     }
 }

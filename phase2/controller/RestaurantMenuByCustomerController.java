@@ -42,7 +42,7 @@ public class RestaurantMenuByCustomerController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
-                    ((FoodBoxController) foodLoader.getController()).chooseFood(food.getName(), food.getType(), food.getDiscountedPrice(), food.getID());
+                    ((FoodBoxController) foodLoader.getController()).chooseFood(food.getName(), food.getType(), food.getDiscountedPrice(), food.getID(), true);
                     vBox.getChildren().add(foodLoader.getRoot());
 
                 }

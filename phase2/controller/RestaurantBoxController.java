@@ -46,7 +46,7 @@ public class RestaurantBoxController extends MenuController {
     public void buttonBOXHandler(ActionEvent actionEvent) {
         getManager().getLoggedInUser().setActiveRestaurant(ID);
         if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantMenuByOwner.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Restaurantmenubyowner.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
