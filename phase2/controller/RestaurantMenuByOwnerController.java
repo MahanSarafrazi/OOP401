@@ -2,13 +2,17 @@ package phase2.controller;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -22,10 +26,12 @@ import phase2.model.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class RestaurantMenuByOwnerController extends MenuController {
+public class RestaurantMenuByOwnerController extends MenuController implements Initializable {
 
     @FXML
     public Button uploadPhoto;
@@ -75,8 +81,16 @@ public class RestaurantMenuByOwnerController extends MenuController {
     @FXML
     public Button moreTypes;
 
-    final FileChooser fileChooser = new FileChooser();
+    @FXML
+    public Tab restaurantsInformation;
 
+    @FXML
+    public Tab orderHistory;
+
+    @FXML
+    public Tab openOrders;
+
+    final FileChooser fileChooser = new FileChooser();
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getID();
 
     @FXML
@@ -289,5 +303,44 @@ public class RestaurantMenuByOwnerController extends MenuController {
         stage.setScene(scene);
         ((FoodTypesController) loader.getController()).initialize(stage, this, scene, null);
         ((FoodTypesController) loader.getController()).getStage().show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        orderHistory.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Orderhistorybyowner.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene scene = new Scene(loader.getRoot());
+                TabPane tabPane = ((TabPane) ((AnchorPane) scene.getRoot()).getChildren().get(0));
+                SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+                selectionModel.select(1);
+                ((OrderHistoryController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getPreviousScene());
+                ((OrderHistoryController) loader.getController()).getStage().setScene(scene);
+            }
+        });
+
+        openOrders.setOnSelectionChanged(new EventHandler<Event>() {
+            @Override
+            public void handle(Event event) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Openordersbyowner.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene scene = new Scene(loader.getRoot());
+                TabPane tabPane = ((TabPane) ((AnchorPane) scene.getRoot()).getChildren().get(0));
+                SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+                selectionModel.select(2);
+                ((OpenOrdersController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getPreviousScene());
+                ((OpenOrdersController) loader.getController()).getStage().setScene(scene);
+            }
+        });
     }
 }

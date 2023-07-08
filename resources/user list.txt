@@ -452,6 +452,7 @@
               "rates": []
             }
           ],
+          "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
           "rates": [
             {
