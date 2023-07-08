@@ -34,5 +34,10 @@ public class Comment {
     }
     public void editComment(String comment) {this.comment = comment;}
     public void editResponse(String response) {this.response=response;}
+
+    public void removeResponse() {
+        hasResponse=false;
+        response=null;
+    }
 }
 
