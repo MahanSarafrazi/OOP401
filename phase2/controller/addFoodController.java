@@ -58,7 +58,7 @@ public class addFoodController extends MenuController {
                     getManager().getLoggedInUser().getActiveRestaurant().getFoodType().add(foodType1);
                 }
 
-                ((RestaurantMenuByOwnerController) getFatherStageController()).update();
+                ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
 
             } else {
                 error.setFill(Paint.valueOf("red"));
@@ -69,7 +69,7 @@ public class addFoodController extends MenuController {
             error.setText("invalid price");
         }
 
-        ((RestaurantMenuByOwnerController) getFatherStageController()).update();
+        ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
 
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> error.setText(""));

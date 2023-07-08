@@ -87,4 +87,7 @@ public class Food {
     private final ArrayList<Rate> rates ;
     public ArrayList<Rate>  getRates() {return rates;}
     public void addRating(User user,double rating) {rates.add(new Rate(user,rating));}
+    public long getTimeLeft() {
+        return expireDate.getTime() - new Date().getTime();
+    }
 }

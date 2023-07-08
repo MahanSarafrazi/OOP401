@@ -80,15 +80,23 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="orderHistory" text="order history">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
-            </content>
+          <Tab fx:id="orderHistory" onSelectionChanged="#orderHistoryHandler" text="order history">
+               <content>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="orderHistoryList" prefHeight="371.0" prefWidth="320.0" />
+                     </content>
+                  </ScrollPane>
+               </content>
           </Tab>
-            <Tab fx:id="openOrders" text="open orders">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
-              </content>
+            <Tab fx:id="openOrders" onSelectionChanged="#openOrdersHandler" text="open orders">
+               <content>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="openOrdersList" prefHeight="370.0" prefWidth="320.0" />
+                     </content>
+                  </ScrollPane>
+               </content>
             </Tab>
         </tabs>
       </TabPane>

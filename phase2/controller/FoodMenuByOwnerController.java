@@ -52,7 +52,7 @@ public class FoodMenuByOwnerController extends MenuController {
     public TextField score;
 
     @FXML
-    public ChoiceBox addtype;
+    public ChoiceBox discountTime;
 
     @FXML
     public TextField type;
@@ -66,6 +66,10 @@ public class FoodMenuByOwnerController extends MenuController {
     @FXML
     public Text discountError;
 
+    @FXML
+    public TextField timeLeft;
+
+
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getID();
 
     @Override
@@ -77,6 +81,7 @@ public class FoodMenuByOwnerController extends MenuController {
         price.setText(Double.toString(openedFood.getPrice()));
         discount.setText(Double.toString(getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getDiscount()));
         score.setText(getManager().averageRating());
+        startTimeLeft();
     }
 
 
@@ -99,7 +104,7 @@ public class FoodMenuByOwnerController extends MenuController {
         nameError.setText(OutputChecker.outputString(editNameResult));
 
         try {
-            Output editPriceResult = getManager().editFoodPrice(food.getID(), Double.parseDouble(price.getText()));
+            Output editPriceResult = getManager().editFoodPrice(ID, Double.parseDouble(price.getText()));
             if(editPriceResult.equals(Output.FOOD_PRICE_EDITED)) {
                 priceError.setFill(Paint.valueOf("green"));
             } else {
@@ -113,26 +118,26 @@ public class FoodMenuByOwnerController extends MenuController {
             price.setText(Double.toString(food.getPrice()));
         }
 
-
-        /*Output editTypeResult = getManager().processEditFoodType(food.getType().name(), type.getText());
-        if(editTypeResult.equals(Output.SURE_EDIT_FOOD_TYPE)) {
-            Output output = getManager().editFoodType(food.getType().name(), type.getText(), "yes");
-            typeError.setFill(Paint.valueOf("green"));
-            typeError.setText(OutputChecker.outputString(output));
-        } else {
-            typeError.setFill(Paint.valueOf("red"));
-            typeError.setText(OutputChecker.outputString(editTypeResult));
+        try {
+            Output setDiscountError = getManager().discountFood(ID, Double.parseDouble(discount.getText()), Integer.parseInt((String) discountTime.getValue()));
+            if(setDiscountError.equals(Output.FOOD_DISCOUNTED)) {
+                discountError.setFill(Paint.valueOf("green"));
+                discount.setText(Double.toString(food.getDiscount()));
+                startTimeLeft();
+            } else {
+                discountError.setFill(Paint.valueOf("red"));
+            }
+            OutputChecker.outputString(setDiscountError);
+        } catch (Exception e) {
+            discountError.setFill(Paint.valueOf("red"));
+            discountError.setText("invalid inputs");
         }
-        type.setText(food.getType().name());*/
-
-        //getManager().discountFood()
-        //Output editDiscountResult = getManager().discountFood(ID, );
 
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> {
             nameError.setText("");
             priceError.setText("");
-            //typeError.setText("");
+            discountError.setText("");
         });
         hitAnimation.playFromStart();
     }
@@ -190,7 +195,35 @@ public class FoodMenuByOwnerController extends MenuController {
         getManager().getLoggedInUser().getActiveRestaurant().closeFood();
         getManager().getLoggedInUser().getActiveRestaurant().deleteFood(food.getID());
 
-        ((RestaurantMenuByOwnerController) getFatherStageController()).update();
+        ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
         back();
+    }
+
+    public void startTimeLeft() {
+        Food food = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood();
+        Thread thread = new Thread(() -> {
+            while (food.isDiscounted()) {
+                long time = food.getTimeLeft();
+                long seconds = time / 1000;
+                long minutes = seconds / 60;
+                long hours = minutes / 60;
+                minutes %= 60;
+                seconds %= 60;
+                timeLeft.setText(hours + ":" + minutes + ":" + seconds);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                if(!getStage().isShowing()) {
+                    break;
+                }
+            }
+            if(getStage().isShowing()) {
+                discount.setText(Double.toString(0));
+                timeLeft.setText("");
+            }
+        });
+        thread.start();
     }
 }

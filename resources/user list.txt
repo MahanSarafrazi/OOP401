@@ -435,7 +435,8 @@
               "name": "kabab",
               "activation": true,
               "ID": 825113,
-              "discount": 0.0,
+              "expireDate": "Jul 8, 2023, 6:06:22 PM",
+              "discount": 20.0,
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
@@ -446,7 +447,8 @@
               "name": "coca",
               "activation": true,
               "ID": 269918,
-              "discount": 0.0,
+              "expireDate": "Jul 8, 2023, 6:13:11 PM",
+              "discount": 20.0,
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
