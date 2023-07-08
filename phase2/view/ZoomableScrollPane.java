@@ -137,7 +137,7 @@ public class ZoomableScrollPane extends ScrollPane {
         zoomableScrollPane.setMaxWidth(600);
         Scene scene = new Scene(zoomableScrollPane);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Shahkar");
+        primaryStage.setTitle("Map");
         primaryStage.show();
     }
 }
