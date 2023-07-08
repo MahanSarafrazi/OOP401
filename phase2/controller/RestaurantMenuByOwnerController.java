@@ -187,6 +187,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
     }
 
     public void updateOrderHistory() {
+        orderHistoryList.getChildren().clear();
         Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
         for (Order order : restaurant.getOrders()) {
             if(!order.getOrderStatus().equals(OrderStatus.NOT_READY)) {
@@ -204,6 +205,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
     }
 
     public void updateOpenOrders() {
+        openOrdersList.getChildren().clear();
         Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
         for (Order order : restaurant.getOrders()) {
             if(order.getOrderStatus().equals(OrderStatus.NOT_READY)) {

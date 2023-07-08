@@ -22,22 +22,22 @@
                </font>
             </Text>
             <Button fx:id="back" layoutX="276.0" layoutY="386.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #000000 0.0%, #000000 0.6711%, #ffffff 100.0%);" text="back" />
-            <Text layoutX="26.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="customer's name:" AnchorPane.leftAnchor="26.0">
+            <Text layoutX="26.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="order's ID:" AnchorPane.leftAnchor="26.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="totalPrice" layoutX="155.0" layoutY="19.0" prefHeight="30.0" prefWidth="129.0">
+            <TextField fx:id="totalPrice" editable="false" layoutX="155.0" layoutY="19.0" prefHeight="30.0" prefWidth="129.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="customerName" layoutX="155.0" layoutY="60.0" prefHeight="30.0" prefWidth="129.0">
+            <TextField fx:id="orderID" editable="false" layoutX="155.0" layoutY="60.0" prefHeight="30.0" prefWidth="129.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="showCustomerLocation" layoutX="43.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show customer location" />
+            <Button fx:id="showCustomerLocation" layoutX="43.0" layoutY="295.0" mnemonicParsing="false" onAction="#showCustomerLocationHandler" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show customer location" />
             <TextArea layoutX="59.0" layoutY="163.0" prefHeight="107.0" prefWidth="227.0" />
             <Text layoutX="22.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="estimate delivery time:">
                <font>
@@ -46,18 +46,27 @@
             </Text>
          </children>
       </AnchorPane>
-      <ScrollPane prefHeight="429.0" prefWidth="290.0">
-         <content>
-            <AnchorPane prefHeight="426.0" prefWidth="287.0">
+      <AnchorPane prefHeight="429.0" prefWidth="290.0">
+         <children>
+            <StackPane prefHeight="78.0" prefWidth="290.0">
                <children>
-                  <Text layoutX="98.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food list" underline="true">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Food list" underline="true">
                      <font>
                         <Font name="Bernard MT Condensed" size="24.0" />
                      </font>
                   </Text>
                </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
+            </StackPane>
+            <TabPane fx:id="tabPane" layoutY="74.0" prefHeight="355.0" prefWidth="290.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Untitled Tab 1">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

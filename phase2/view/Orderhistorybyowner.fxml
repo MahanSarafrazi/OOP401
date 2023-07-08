@@ -13,19 +13,6 @@
 
 <AnchorPane prefHeight="420.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.OrderHistoryController">
    <children>
-      <ScrollPane prefHeight="429.0" prefWidth="290.0">
-         <content>
-            <AnchorPane prefHeight="426.0" prefWidth="287.0">
-               <children>
-                  <Text layoutX="98.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food list" underline="true">
-                     <font>
-                        <Font name="Bernard MT Condensed" size="24.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-         </content>
-      </ScrollPane>
       <AnchorPane layoutX="290.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="345.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 53.0806% 100.0%, #1fafda 0.0%, #1fafda 0.6711%, #ffffff 100.0%);">
          <children>
             <Text layoutX="26.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="total price:" AnchorPane.leftAnchor="26.0">
@@ -34,22 +21,44 @@
                </font>
             </Text>
             <Button fx:id="back" layoutX="267.0" layoutY="380.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #000000 0.0%, #000000 0.6711%, #ffffff 100.0%);" text="back" />
-            <Text layoutX="26.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="customer's name:" AnchorPane.leftAnchor="26.0">
+            <Text layoutX="26.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="order's ID:" AnchorPane.leftAnchor="26.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="totalPrice" layoutX="155.0" layoutY="19.0" prefHeight="30.0" prefWidth="129.0">
+            <TextField fx:id="totalPrice" editable="false" layoutX="155.0" layoutY="19.0" prefHeight="30.0" prefWidth="129.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="customerName" layoutX="155.0" layoutY="60.0" prefHeight="30.0" prefWidth="129.0">
+            <TextField fx:id="orderID" editable="false" layoutX="155.0" layoutY="60.0" prefHeight="30.0" prefWidth="129.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="showCustomerLocation" layoutX="26.0" layoutY="149.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show customer location" />
+            <Button fx:id="showCustomerLocation" layoutX="26.0" layoutY="149.0" mnemonicParsing="false" onAction="#showCustomerLocationHandler" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show customer location" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="429.0" prefWidth="290.0">
+         <children>
+            <StackPane prefHeight="78.0" prefWidth="290.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Food list" underline="true">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </StackPane>
+            <TabPane fx:id="tabPane" layoutY="74.0" prefHeight="355.0" prefWidth="290.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Untitled Tab 1">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
          </children>
       </AnchorPane>
    </children>

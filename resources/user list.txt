@@ -119,6 +119,57 @@
       "charge": 0.0,
       "userName": "ft",
       "password": "farimaN1"
+    },
+    {
+      "spentMoney": 350.90000000000003,
+      "discountTokens": [],
+      "orders": [
+        {
+          "ID": 769455,
+          "restaurantID": 478900,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 50,
+          "restaurantName": "jahan",
+          "restaurantLocation": 6,
+          "registerDate": "Jul 8, 2023, 7:13:05 PM",
+          "timeOfDelivery": 340,
+          "timeOfGettingReady": 600,
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 20.0,
+              "type": "DRINK",
+              "name": "coca",
+              "activation": true,
+              "ID": 269918,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1,
+            1
+          ]
+        }
+      ],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 999649.1,
+      "userName": "far",
+      "password": "Sakaki12"
     }
   ],
   "deliverers": [],
@@ -421,7 +472,46 @@
       "restaurants": [
         {
           "name": "jahan",
-          "orders": [],
+          "orders": [
+            {
+              "ID": 769455,
+              "restaurantID": 478900,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 50,
+              "restaurantName": "jahan",
+              "restaurantLocation": 6,
+              "registerDate": "Jul 8, 2023, 7:13:05 PM",
+              "timeOfDelivery": 340,
+              "timeOfGettingReady": 600,
+              "foods": [
+                {
+                  "price": 299.0,
+                  "type": "IRANIAN",
+                  "name": "kabab",
+                  "activation": true,
+                  "ID": 825113,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                },
+                {
+                  "price": 20.0,
+                  "type": "DRINK",
+                  "name": "coca",
+                  "activation": true,
+                  "ID": 269918,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1,
+                1
+              ]
+            }
+          ],
           "ID": 478900,
           "location": 6,
           "foodTypes": [
@@ -436,7 +526,7 @@
               "activation": true,
               "ID": 825113,
               "expireDate": "Jul 8, 2023, 6:06:22 PM",
-              "discount": 20.0,
+              "discount": 0.0,
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
@@ -448,7 +538,7 @@
               "activation": true,
               "ID": 269918,
               "expireDate": "Jul 8, 2023, 6:13:11 PM",
-              "discount": 20.0,
+              "discount": 0.0,
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
