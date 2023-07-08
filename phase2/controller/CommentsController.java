@@ -2,22 +2,22 @@ package phase2.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import phase2.model.Comment;
 import phase2.model.RestaurantOwner;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class CommentsController extends MenuController {
 
     @FXML
     public VBox vBox;
 
+    @FXML
+    public GridPane gridPane;
 
     @Override
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
