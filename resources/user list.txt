@@ -41,7 +41,12 @@
       "password": "Cusi7485"
     }
   ],
-  "deliverers": [],
+  "deliverers": [
+    {
+      "userName": "deli",
+      "password": "Deli7485"
+    }
+  ],
   "restaurantOwners": [
     {
       "restaurants": [
