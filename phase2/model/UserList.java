@@ -7,6 +7,7 @@ public class UserList {
     private final ArrayList<Customer> customers = new ArrayList<>();
     private final ArrayList<Deliverer> deliverers = new ArrayList<>();
     private final ArrayList<RestaurantOwner> restaurantOwners = new ArrayList<>();
+    public int[][] coordinates = new int[1000][2];
     private UserList() {}
     private static UserList UserListInstance;
 
