@@ -33,7 +33,7 @@ public class RegisterAndLoginMenuController extends MenuController {
 
     @FXML
     public void exitHandler(ActionEvent actionEvent) {
-        System.exit(0);
+        getStage().close();
     }
 
     @FXML
