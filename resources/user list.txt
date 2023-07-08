@@ -47,7 +47,7 @@
           "ID": 213886,
           "restaurantID": 641385,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "pashmak",
           "restaurantLocation": 655,
@@ -74,7 +74,7 @@
           "ID": 211982,
           "restaurantID": 641385,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "pashmak",
           "restaurantLocation": 655,
@@ -764,128 +764,8 @@
                 "restoreQuestion": "alo",
                 "restoreAnswer": "salam"
               },
-              "ID": 949279,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 712751,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 689322,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
+              "comment": "gjgjj",
               "ID": 926840,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 736000,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 408126,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 115619,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 802092,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 765145,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 961247,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 762808,
-              "hasResponse": false,
-              "responseID": 0
-            },
-            {
-              "user": {
-                "userName": "fariman1",
-                "password": "Fariman1",
-                "restoreQuestion": "alo",
-                "restoreAnswer": "salam"
-              },
-              "ID": 810431,
               "hasResponse": false,
               "responseID": 0
             },
