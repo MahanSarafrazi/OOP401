@@ -136,12 +136,60 @@
           "foods": [],
           "comments": [],
           "rates": []
+        },
+        {
+          "name": "saeed",
+          "orders": [],
+          "ID": 364618,
+          "location": 11,
+          "foodTypes": [
+            "TURKISH"
+          ],
+          "foods": [
+            {
+              "price": 4444.0,
+              "type": "TURKISH",
+              "name": "kos",
+              "activation": true,
+              "ID": 309474,
+              "discount": 0.0,
+              "restaurantName": "saeed",
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
         }
       ],
       "userName": "resi",
       "password": "Resi7485",
-      "restoreQuestion": "jjj",
-      "restoreAnswer": "ok"
+      "restoreQuestion": "dsda",
+      "restoreAnswer": "no",
+      "activeRestaurant": {
+        "name": "saeed",
+        "orders": [],
+        "ID": 364618,
+        "location": 11,
+        "foodTypes": [
+          "TURKISH"
+        ],
+        "foods": [
+          {
+            "price": 4444.0,
+            "type": "TURKISH",
+            "name": "kos",
+            "activation": true,
+            "ID": 309474,
+            "discount": 0.0,
+            "restaurantName": "saeed",
+            "comments": [],
+            "rates": []
+          }
+        ],
+        "comments": [],
+        "rates": []
+      }
     },
     {
       "restaurants": [
@@ -345,21 +393,10 @@
           "ID": 569095,
           "location": 7,
           "foodTypes": [
-            "FAST_FOOD",
+            "IRANIAN",
             "IRANIAN"
           ],
           "foods": [
-            {
-              "price": 500.0,
-              "type": "FAST_FOOD",
-              "name": "pizza",
-              "activation": true,
-              "ID": 555524,
-              "discount": 0.0,
-              "restaurantName": "jahan",
-              "comments": [],
-              "rates": []
-            },
             {
               "price": 500.0,
               "type": "IRANIAN",
@@ -370,20 +407,51 @@
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
+            }
+          ],
+          "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "mahan",
+      "password": "Sarafrazi1"
+    },
+    {
+      "restaurants": [
+        {
+          "name": "jahan",
+          "orders": [],
+          "ID": 478900,
+          "location": 6,
+          "foodTypes": [
+            "IRANIAN",
+            "DRINK"
+          ],
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "restaurantName": "jahan",
+              "comments": [],
+              "rates": []
             },
             {
-              "price": 100.0,
-              "type": "FAST_FOOD",
-              "name": "burgur",
+              "price": 20.0,
+              "type": "DRINK",
+              "name": "coca",
               "activation": true,
-              "ID": 758960,
+              "ID": 269918,
               "discount": 0.0,
               "restaurantName": "jahan",
               "comments": [],
               "rates": []
             }
           ],
-          "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
           "rates": [
             {
@@ -398,56 +466,8 @@
           ]
         }
       ],
-      "userName": "mahan",
-      "password": "Sarafrazi1",
-      "activeRestaurant": {
-        "name": "jahan",
-        "orders": [],
-        "ID": 569095,
-        "location": 7,
-        "foodTypes": [
-          "FAST_FOOD",
-          "IRANIAN"
-        ],
-        "foods": [
-          {
-            "price": 500.0,
-            "type": "FAST_FOOD",
-            "name": "pizza",
-            "activation": true,
-            "ID": 555524,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 500.0,
-            "type": "IRANIAN",
-            "name": "kabab",
-            "activation": true,
-            "ID": 600952,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          },
-          {
-            "price": 100.0,
-            "type": "FAST_FOOD",
-            "name": "burgur",
-            "activation": true,
-            "ID": 758960,
-            "discount": 0.0,
-            "restaurantName": "jahan",
-            "comments": [],
-            "rates": []
-          }
-        ],
-        "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
-        "comments": [],
-        "rates": []
-      }
+      "userName": "Mahan",
+      "password": "Sarafrazi1"
     },
     {
       "restaurants": [

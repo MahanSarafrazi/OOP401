@@ -72,6 +72,9 @@ public class RestaurantMenuByOwnerController extends MenuController {
     @FXML
     public TabPane tabPane;
 
+    @FXML
+    public Button moreTypes;
+
     final FileChooser fileChooser = new FileChooser();
 
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getID();
@@ -137,10 +140,12 @@ public class RestaurantMenuByOwnerController extends MenuController {
 
     public void update() {
 
-        if(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().size() > list.size()) {
+        tabPane.getTabs().clear();
+        list.clear();
+        ArrayList<FoodType> foodTypes = getManager().getLoggedInUser().getActiveRestaurant().getFoodType();
+        for (int i = 0; i < foodTypes.size(); ++i) {
             Tab tab = new Tab();
-            ArrayList<FoodType> foodTypes = getManager().getLoggedInUser().getActiveRestaurant().getFoodType();
-            tab.setText(String.valueOf(foodTypes.get(foodTypes.size() - 1)));
+            tab.setText(String.valueOf(foodTypes.get(i)));
             ScrollPane scrollPane = new ScrollPane();
             VBox vBox = new VBox();
             scrollPane.setContent(vBox);
@@ -148,7 +153,6 @@ public class RestaurantMenuByOwnerController extends MenuController {
             tab.setContent(scrollPane);
             tabPane.getTabs().add(tab);
         }
-
 
         FXMLLoader loader;
         for (int i = 0; i < list.size(); ++i) {
@@ -225,15 +229,41 @@ public class RestaurantMenuByOwnerController extends MenuController {
             }
         }
         if(replacingType != null) {
-            restaurant.editFoodType(restaurant.getFoodType().get(0), replacingType);
-            error.setFill(Paint.valueOf("green"));
-            error.setText("successful");
+            boolean isThereFoods = false;
+            for (Food food : getManager().getLoggedInUser().getActiveRestaurant().getFoods()) {
+                if(food.getType().equals(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0))) {
+                    isThereFoods = true;
+                    break;
+                }
+            }
+
+            if(!isThereFoods) {
+
+
+                for (FoodType type : getManager().getLoggedInUser().getActiveRestaurant().getFoodType()) {
+                    if(type.equals(replacingType)) {
+                        getManager().getLoggedInUser().getActiveRestaurant().getFoodType().remove(type);
+                        break;
+                    }
+                }
+
+                restaurant.editFoodType(restaurant.getFoodType().get(0), replacingType);
+                for (Food food : restaurant.getFoods()) {
+                    System.out.println(food.getType().name());
+                }
+                error.setFill(Paint.valueOf("green"));
+                error.setText("successful");
+            } else {
+                error.setFill(Paint.valueOf("red"));
+                error.setText("There is foods with this type");
+            }
         } else {
             error.setFill(Paint.valueOf("red"));
             error.setText("invalid food type");
         }
 
         foodType.setText(restaurant.getFoodType().get(0).name());
+        update();
 
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> error.setText(""));
@@ -244,5 +274,20 @@ public class RestaurantMenuByOwnerController extends MenuController {
         Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
         name.setText(restaurant.getName());
         foodType.setText(restaurant.getFoodType().get(0).name());
+    }
+
+    public void moreTypesHandler(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodTypes.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        Stage stage = new Stage();
+        stage.setTitle("food types");
+        stage.setScene(scene);
+        ((FoodTypesController) loader.getController()).initialize(stage, this, scene, null);
+        ((FoodTypesController) loader.getController()).getStage().show();
     }
 }
