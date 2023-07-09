@@ -59,6 +59,7 @@ public enum Inputs {
     SELECT_ORDER_By_Deliverer("^\\s*select\\s+order\\s+(\\d+)\\s+(\\d+)\\s*$"), //50
     SHOW_PATH("^\\s*show\\s+path\\s*$"),
     BACK("^\\s*back\\s*$"),
+
     LOGOUT("^\\s*logout\\s*$"),
     EXIT_PROGRAM("^\\s*exit\\s+program\\s*$")
     ;

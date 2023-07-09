@@ -43,7 +43,7 @@ public class CartController extends MenuController{
             }
             ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, getMainScene(), null);
             ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
-                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID(), false);
+                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID(), true);
             this.vBox.getChildren().add(foodLoader.getRoot());
         }
     }
