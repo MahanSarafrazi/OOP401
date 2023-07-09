@@ -1,29 +1,31 @@
 package phase2.controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import phase2.model.*;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class OpenOrdersController extends MenuController {
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene,ArrayList<Order> orders) {
+        super.initialize(stage, fatherStageController, mainScene, previousScene);
+        this.orders=orders;
+
+    }
+
+    private ArrayList<Order> orders = new ArrayList<>();
 
     @FXML
     public TextField totalPrice;
 
     @FXML
-    public TextField orderID;
+    public TextField ID2;
 
     @FXML
     public Button showCustomerLocation;
@@ -44,24 +46,31 @@ public class OpenOrdersController extends MenuController {
 
     public void chooseOrder(int ID) {
         this.ID = ID;
-        orderID.setText(Integer.toString(ID));
+        ID2.setText(Integer.toString(ID));
         totalPrice.setText(Double.toString(getOrderByID().totalPrice()));
         list = new ArrayList<>();
         setFoods();
     }
 
     public Order getOrderByID() {
-        Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
-        for (Order order : restaurant.getOrders()) {
-            if(order.getID() == ID) {
-                return order;
+        if (getManager().getLoggedInUser() instanceof  RestaurantOwner) {
+            Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
+            for (Order order : restaurant.getOrders()) {
+                if (order.getID() == ID) {
+                    return order;
+                }
             }
         }
+        else
+            for (Order order : orders) {
+                if (order.getID() == ID) {
+                    return order;
+                }
+            }
         return null;
     }
 
     public void setFoods() {
-
         tabPane.getTabs().clear();
         list.clear();
         ArrayList<FoodType> foodTypes = getManager().getLoggedInUser().getActiveRestaurant().getFoodType();

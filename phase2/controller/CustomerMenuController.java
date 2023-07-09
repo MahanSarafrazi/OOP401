@@ -6,11 +6,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import phase2.model.*;
+import phase2.view.OrderStatus;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CustomerMenuController extends MenuController {
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
@@ -28,6 +31,21 @@ public class CustomerMenuController extends MenuController {
         this.password.setEditable(false);
         this.totalSpending.setText(String.valueOf(customer.getSpentMoney()));
         this.totalSpending.setEditable(false);
+        Collections.reverse(customer.getOrders());
+        for (Order order : customer.getOrders()) {
+            if (order.getOrderStatus() != OrderStatus.SENT) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Boxopenorders.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                openOrders.getChildren().add(loader.getRoot());
+            }
+        }
+        Collections.reverse(customer.getOrders());
     }
     @FXML
     public ComboBox<String> searchType;
@@ -62,6 +80,12 @@ public class CustomerMenuController extends MenuController {
     public ChoiceBox<String> chargeBox;
 
     @FXML
+    public VBox openOrders;
+
+    @FXML
+    public VBox sentOrders;
+
+    @FXML
     public void searchHandler() {
         ArrayList<Restaurant> restaurants ;
         if (searchType.getValue() == null)
@@ -70,8 +94,10 @@ public class CustomerMenuController extends MenuController {
             restaurants = getManager().searchForNearRestaurants(location,restaurantType.getValue(), searchField.getText());
         else if (searchType.getValue().equals("favorite restaurants"))
             restaurants = getManager().favoriteRestaurants(restaurantType.getValue(), searchField.getText());
-        else
+        else if (restaurantType.getValue() != null)
             restaurants = getManager().normalSearch(searchField.getText(),FoodType.valueOf(restaurantType.getValue()));
+        else
+            restaurants = getManager().normalSearch(searchField.getText(),null);
         openRestaurantsMenu(restaurants);
     }
 
