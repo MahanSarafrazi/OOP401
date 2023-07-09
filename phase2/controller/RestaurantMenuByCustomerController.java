@@ -33,7 +33,7 @@ public class RestaurantMenuByCustomerController extends MenuController {
         this.score.setEditable(false);
         for (FoodType foodType : restaurant.getFoodType()) {
             VBox vBox = new VBox();
-            for (Food food : restaurant.getFoods()) {
+            for (Food food : getManager().getActiveRestaurantActiveFoods()) {
                 if (food.getType() == foodType) {
                     FXMLLoader foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxFoodByCustomer.fxml"));
                     try {
@@ -42,9 +42,8 @@ public class RestaurantMenuByCustomerController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
-                    ((FoodBoxController) foodLoader.getController()).chooseFood(food.getName(), food.getType(), food.getDiscountedPrice(), food.getID(), true);
+                    ((FoodBoxController) foodLoader.getController()).chooseFood(food, true);
                     vBox.getChildren().add(foodLoader.getRoot());
-
                 }
             }
             ScrollPane scrollPane = new ScrollPane(vBox);

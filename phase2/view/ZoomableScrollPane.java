@@ -86,7 +86,7 @@ public class ZoomableScrollPane extends ScrollPane {
 
     public void baseMap(Stage primaryStage) {
         AnchorPane pane = new AnchorPane();
-        int[][] coordinates = UserList.getUserListInstance().coordinates;
+        int[][] coordinates = Manager.getManagerInstance().getMap().coordinates;
         Manager manager = Manager.getManagerInstance();
         int[][] adjacency = manager.getMap().getAdjacencyMatrix();
         for (int i = 0; i < 1000; i++) {

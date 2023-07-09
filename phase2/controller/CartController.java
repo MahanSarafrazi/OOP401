@@ -24,7 +24,7 @@ public class CartController extends MenuController{
             totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
         int shortestPath=0;
         if (!customer.getCart().getFoods().isEmpty())
-            shortestPath = getManager().getMap().findShortestPath(50, customer.getOrderedRestaurant().getLocation(),false)/30;
+            shortestPath = getManager().getMap().findShortestPath(((Customer) getManager().getLoggedInUser()).location, customer.getOrderedRestaurant().getLocation(),false)/30;
         if (customer.getOrderedRestaurant() != null)
             customer.setActiveRestaurant(customer.getOrderedRestaurant().getID());
         double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
@@ -42,8 +42,7 @@ public class CartController extends MenuController{
                 throw new RuntimeException(e);
             }
             ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, getMainScene(), null);
-            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
-                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID(), true);
+            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i), true);
             this.vBox.getChildren().add(foodLoader.getRoot());
         }
     }
@@ -56,7 +55,7 @@ public class CartController extends MenuController{
             totalPrice+=cart.getFoodsCount().get(i)*cart.getFoods().get(i).getDiscountedPrice();
         int shortestPath=0;
         if (!customer.getCart().getFoods().isEmpty())
-            shortestPath = getManager().getMap().findShortestPath(50, customer.getOrderedRestaurant().getLocation(),false)/30;
+            shortestPath = getManager().getMap().findShortestPath(((Customer) getManager().getLoggedInUser()).location, customer.getOrderedRestaurant().getLocation(),false)/30;
         if (customer.getOrderedRestaurant() != null)
             customer.setActiveRestaurant(customer.getOrderedRestaurant().getID());
         double totalDeliveryPrice = (1.1 + 0.1 * (double) shortestPath)*totalPrice;
@@ -70,8 +69,7 @@ public class CartController extends MenuController{
                 throw new RuntimeException(e);
             }
             ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, null, null);
-            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
-                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID(), true);
+            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i), true);
             this.vBox.getChildren().add(foodLoader.getRoot());
         }
     }
@@ -109,9 +107,9 @@ public class CartController extends MenuController{
         else {
             vBox.getChildren().clear();
             if (useDiscountTokens.getValue() == null)
-                getManager().confirmOrder(50,Double.parseDouble(totalPrice.getText()),"NO");
+                getManager().confirmOrder(((Customer) getManager().getLoggedInUser()).location,Double.parseDouble(totalPrice.getText()),"NO");
             else
-                getManager().confirmOrder(50,Double.parseDouble(totalPrice.getText()),useDiscountTokens.getValue());
+                getManager().confirmOrder(((Customer) getManager().getLoggedInUser()).location,Double.parseDouble(totalPrice.getText()),useDiscountTokens.getValue());
             CustomerMenuController customerMenuController = (CustomerMenuController) getFatherStageController();
             customerMenuController.update();
             backHandler();

@@ -9,9 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -19,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import phase2.model.*;
 import phase2.view.OrderStatus;
+import phase2.view.ZoomableScrollPane;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -88,6 +92,12 @@ public class RestaurantMenuByOwnerController extends MenuController {
     @FXML
     public VBox openOrdersList;
 
+    @FXML
+    public Button map;
+
+    @FXML
+    public TextField locationBugger;
+
     final FileChooser fileChooser = new FileChooser();
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getID();
 
@@ -116,6 +126,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
             Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
             photo.setImage(image);
         }
+        locationBugger.setText(Integer.toString(getManager().getLoggedInUser().getActiveRestaurant().getLocation()));
         list = new ArrayList<>();
         for (int i = 0; i < tabPane.getTabs().size(); ++i) {
             list.add((VBox) (((ScrollPane)(tabPane.getTabs().get(i).getContent())).getContent()));
@@ -169,7 +180,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), true);
+                    ((FoodBoxController) loader.getController()).chooseFood(food, true);
                     list.get(i).getChildren().add(loader.getRoot());
                 }
             }
@@ -212,6 +223,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
         }
     }
 
+    @FXML
     public void backHandler(ActionEvent actionEvent) {
         getManager().getLoggedInUser().setActiveRestaurant(null);
         back();
@@ -329,11 +341,59 @@ public class RestaurantMenuByOwnerController extends MenuController {
         ((FoodTypesController) loader.getController()).getStage().show();
     }
 
+
+    @FXML
     public void orderHistoryHandler(Event event) {
         updateOrderHistory();
     }
 
+
+    @FXML
     public void openOrdersHandler(Event event) {
         updateOpenOrders();
+    }
+
+
+    @FXML
+    public void mapHandler(ActionEvent actionEvent) {
+        Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
+        Stage primaryStage = new Stage();
+        AnchorPane pane = new AnchorPane();
+        int[][] coordinates = getManager().getMap().coordinates;
+        Manager manager = Manager.getManagerInstance();
+        int[][] adjacency = manager.getMap().getAdjacencyMatrix();
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if (adjacency[i][j] != 0) {
+                    Line line = new Line();
+                    line.setStartX(coordinates[i][0]);
+                    line.setEndX(coordinates[j][0]);
+                    line.setStartY(coordinates[i][1]);
+                    line.setEndY(coordinates[j][1]);
+                    pane.getChildren().add(line);
+                }
+            }
+        }
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if (adjacency[i][j] != 0) {
+                    Circle circle = new Circle(coordinates[i][0], coordinates[i][1], 25, Paint.valueOf("red"));
+                    int nodeLocation = i + 1;
+                    circle.setOnMouseClicked(mouseEvent -> {
+                        restaurant.setLocation(nodeLocation);
+                        locationBugger.setText(Integer.toString(restaurant.getLocation()));
+                        primaryStage.close();
+                    });
+                    pane.getChildren().add(circle);
+                }
+            }
+        }
+        ZoomableScrollPane zoomableScrollPane = new ZoomableScrollPane(pane);
+        zoomableScrollPane.setMaxHeight(400);
+        zoomableScrollPane.setMaxWidth(600);
+        Scene scene = new Scene(zoomableScrollPane);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Map");
+        primaryStage.show();
     }
 }

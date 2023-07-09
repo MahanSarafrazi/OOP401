@@ -14,11 +14,14 @@ public class DataBase {
 
     private final Scanner graphScanner;
     private final Scanner userListFileScanner;
+    private final Scanner coordinatesScanner;
     private final File graphFile;
     private final File userListFile;
-    public DataBase(String graphFilePath, String userListFilePath) {
+    private final File coordinatesFile;
+    public DataBase(String graphFilePath, String userListFilePath ,String coordinatesFilePath) {
         graphFile = new File(graphFilePath);
         userListFile = new File(userListFilePath);
+        coordinatesFile = new File(coordinatesFilePath);
         if(!userListFile.exists()) {
             try {
                 userListFile.createNewFile();
@@ -29,6 +32,7 @@ public class DataBase {
         try {
             graphScanner = new Scanner(graphFile);
             userListFileScanner = new Scanner(userListFile);
+            coordinatesScanner = new Scanner(coordinatesFile);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -39,6 +43,12 @@ public class DataBase {
         Map map = new Map(Integer.parseInt(graphScanner.next()), Integer.parseInt(graphScanner.next()));
         while (graphScanner.hasNext()) {
             map.addEdge(Integer.parseInt(graphScanner.next()), Integer.parseInt(graphScanner.next()), Integer.parseInt(graphScanner.next()));
+        }
+        int count=0;
+        while (coordinatesScanner.hasNext()) {
+            map.coordinates[count][0]=Integer.parseInt(coordinatesScanner.next());
+            map.coordinates[count][1]=Integer.parseInt(coordinatesScanner.next());
+            count++;
         }
         Manager.getManagerInstance().setMap(map);
         graphScanner.close();

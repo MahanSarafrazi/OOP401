@@ -343,7 +343,10 @@ public class Manager {
     public boolean addComment(String comment) {
         Customer customer = (Customer) loggedInUser;
         for (Order order : customer.getOrders()) {
-            if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && order.contains(customer.getOrderedRestaurant().getOpenedFood())) {
+            if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && customer.getOrderedRestaurant() != null && order.contains(customer.getOrderedRestaurant().getOpenedFood())) {
+                customer.getOrderedRestaurant().getOpenedFood().addComment(loggedInUser, comment);
+                return true;
+            } else if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && customer.getOrderedRestaurant() == null && order.getRestaurantID() == customer.getActiveRestaurant().getID()) {
                 customer.getActiveRestaurant().getOpenedFood().addComment(loggedInUser, comment);
                 return true;
             } else if (loggedInUser.getActiveRestaurant().getOpenedFood() == null && order.getRestaurantID() == customer.getActiveRestaurant().getID()){
@@ -386,15 +389,6 @@ public class Manager {
             }
         }
         return false;
-    }
-    public Output editLocation(int location) {
-        if (location>1000 || location<1)
-            return Output.LOCATION_NOT_IN_THE_MAP;
-        if (loggedInUser.getActiveRestaurant().getLocation() != location ) {
-            loggedInUser.getActiveRestaurant().setLocation(location);
-            return Output.LOCATION_SET;
-        }
-        return Output.EQUAL_LOCATION;
     }
     public ArrayList<Restaurant> typeSearch(int location ,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();

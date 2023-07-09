@@ -35,7 +35,6 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="showCustomerLocation" layoutX="26.0" layoutY="149.0" mnemonicParsing="false" onAction="#showCustomerLocationHandler" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show customer location" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="429.0" prefWidth="290.0">

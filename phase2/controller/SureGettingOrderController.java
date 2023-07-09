@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import phase2.model.Deliverer;
 import phase2.model.Order;
 
 import java.io.IOException;
@@ -29,8 +31,10 @@ public class SureGettingOrderController extends MenuController {
         }
         ((MyOrderController) loader.getController()).initialize(getFatherStageController().getStage(), getFatherStageController(), getFatherStageController().getMainScene(), null);
         ((MyOrderController) loader.getController()).chooseOrder(order);
-        ((DelivererMenuController) getFatherStageController()).update(loader);
-        //order.setDeliverer();
+        order.setDeliverer(((Deliverer) getManager().getLoggedInUser()).getLocation());
+        ((Deliverer) getManager().getLoggedInUser()).setOrder(order);
+        ((DelivererMenuController) getFatherStageController()).setMyOrder(loader.getRoot());
+        ((DelivererMenuController) getFatherStageController()).update();
         getStage().close();
     }
 

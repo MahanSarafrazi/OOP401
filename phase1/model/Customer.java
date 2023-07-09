@@ -89,5 +89,7 @@ public class Customer extends User {
     public boolean hasThisToken(String token) {
         return discountTokens.contains(token);
     }
+
+    public int location;
 }
 

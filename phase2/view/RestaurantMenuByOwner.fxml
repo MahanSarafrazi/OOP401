@@ -49,7 +49,7 @@
                               <Font size="16.0" />
                            </font>
                         </Text>
-                        <Button layoutX="217.0" layoutY="242.0" mnemonicParsing="false" style="-fx-background-color: orange;" text="location" />
+                        <Button fx:id="map" layoutX="186.0" layoutY="242.0" mnemonicParsing="false" onAction="#mapHandler" style="-fx-background-color: orange;" text="location" />
                         <Button fx:id="seeComments" layoutX="186.0" layoutY="271.0" mnemonicParsing="false" onAction="#seeCommentsHandler" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: orange;" text="see comments" />
                         <Button fx:id="confirm" layoutX="176.0" layoutY="308.0" mnemonicParsing="false" onAction="#confirmHandler" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: green;" text="confirm" AnchorPane.rightAnchor="44.0" />
                         <Button fx:id="reset" layoutX="45.0" layoutY="308.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: red;" text="reset" AnchorPane.leftAnchor="45.0" />
@@ -76,6 +76,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <TextField fx:id="locationBugger" editable="false" layoutX="255.0" layoutY="242.0" prefHeight="26.0" prefWidth="42.0" />
                      </children>
                   </AnchorPane>
             </content>

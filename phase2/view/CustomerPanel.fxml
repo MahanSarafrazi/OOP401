@@ -26,7 +26,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
-                                <ComboBox fx:id="searchType" layoutX="45.0" layoutY="12.0" prefHeight="26.0" prefWidth="139.0" promptText="Search type" AnchorPane.leftAnchor="45.0">
+                                <ComboBox fx:id="searchType" layoutX="74.0" layoutY="11.0" prefHeight="26.0" prefWidth="139.0" promptText="Search type" AnchorPane.leftAnchor="74.0">
                                     <items>
                                       <FXCollections fx:factory="observableArrayList">
                                            <String fx:value="normal" />
@@ -35,7 +35,7 @@
                                      </FXCollections>
                                  </items>
                                </ComboBox>
-                                <ComboBox fx:id="restaurantType" layoutX="45.0" layoutY="38.0" prefHeight="26.0" prefWidth="139" promptText="Restaurant type" AnchorPane.leftAnchor="45.0">
+                                <ComboBox fx:id="restaurantType" layoutX="74.0" layoutY="37.0" prefHeight="26.0" prefWidth="139" promptText="Restaurant type" AnchorPane.leftAnchor="74.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="IRANIAN" />
@@ -47,7 +47,7 @@
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
-                                <TextField fx:id="searchField" layoutX="192.0" layoutY="24.0" prefHeight="26.0" prefWidth="321.0" promptText="Search" style="-fx-background-color: white;" />
+                                <TextField fx:id="searchField" layoutX="227.0" layoutY="24.0" prefHeight="26.0" prefWidth="287.0" promptText="Search" style="-fx-background-color: white;" />
                                 <Button fx:id="iranianFood" layoutX="59.0" layoutY="69.0" mnemonicParsing="false" onAction="#iranianHandler" prefHeight="102.0" prefWidth="111.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="100.0">
                            <graphic>
                                         <ImageView fitHeight="98.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
@@ -121,6 +121,8 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Button fx:id="map" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#mapHandler" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: orange;" text="Map" />
+                        <TextField fx:id="locationBugger" layoutX="14.0" layoutY="37.0" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: white;" />
                             </children>
                         </AnchorPane>
                     </content>

@@ -10,6 +10,12 @@ public class Map {
         this.numberOfNodes = numberOfNodes;
         this.numberOfEdges = numberOfEdges;
         adjacencyMatrix = new int[numberOfNodes][numberOfNodes];
+        coordinates = new int[1000][2];
+        for(int i = 0; i < numberOfNodes; ++i) {
+            for(int j = 0; j < 2; ++j) {
+                coordinates[i][j] = 0;
+            }
+        }
         path = new ArrayList<>();
         for(int i = 0; i < numberOfNodes; ++i) {
             for(int j = 0; j < numberOfNodes; ++j) {
@@ -20,6 +26,7 @@ public class Map {
     private final int numberOfNodes;
     private final int numberOfEdges;
     private final int[][] adjacencyMatrix;
+    public final int[][] coordinates;
     public ArrayList<Integer> path;
 
     public int[][] getAdjacencyMatrix() {
