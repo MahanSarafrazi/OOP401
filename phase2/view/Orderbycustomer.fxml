@@ -29,13 +29,13 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="back" onAction="#backHandler" layoutX="247.0" layoutY="368.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #000000 0.0%, #000000 0.6711%, #ffffff 100.0%);" text="back" />
+      <Button fx:id="back" layoutX="247.0" layoutY="368.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #000000 0.0%, #000000 0.6711%, #ffffff 100.0%);" text="back" />
       <Text layoutX="26.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="restaurant's name:" AnchorPane.leftAnchor="26.0">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="showEstimatedDeliveryTime" layoutX="26.0" layoutY="146.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show estimated delivery time" />
+      <Button fx:id="showEstimatedDeliveryTime" layoutX="25.0" layoutY="185.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show estimated delivery time" />
       <TextField fx:id="totalPrice" layoutX="155.0" layoutY="19.0" prefHeight="30.0" prefWidth="129.0">
          <font>
             <Font size="14.0" />
@@ -56,10 +56,11 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextArea fx:id="showEstimatedTextArea" layoutX="23.0" layoutY="186.0" prefHeight="133.0" prefWidth="259.0">
+      <TextArea fx:id="showEstimatedTextArea" layoutX="25.0" layoutY="225.0" prefHeight="133.0" prefWidth="259.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
+      <Button fx:id="showPath" onAction="#showPath" layoutX="25.0" layoutY="140.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show path" />
    </children>
 </AnchorPane>
