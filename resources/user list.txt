@@ -259,6 +259,7 @@
   ],
   "deliverers": [
     {
+      "location": 0,
       "userName": "reza",
       "password": "Saeedi12"
     }
@@ -532,7 +533,7 @@
           "name": "jahan",
           "orders": [],
           "ID": 569095,
-          "location": 7,
+          "location": 753,
           "foodTypes": [
             "IRANIAN",
             "IRANIAN"
