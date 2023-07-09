@@ -13,7 +13,7 @@
       "password": "Cusi7485"
     },
     {
-      "spentMoney": 2074.4,
+      "spentMoney": 2397.8,
       "discountTokens": [],
       "orders": [
         {
@@ -128,7 +128,7 @@
           "ID": 260243,
           "restaurantID": 641385,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "pashmak",
           "restaurantLocation": 655,
@@ -150,13 +150,40 @@
           "foodsCount": [
             2
           ]
+        },
+        {
+          "ID": 839853,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 9, 2023, 4:28:33 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 900,
+          "foods": [
+            {
+              "price": 77.0,
+              "type": "DRINK",
+              "name": "drink3",
+              "activation": true,
+              "ID": 640538,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            3
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 497925.60000000003,
+      "charge": 497602.2,
       "userName": "fariman1",
       "password": "Fariman1",
       "restoreQuestion": "alo",
@@ -807,7 +834,7 @@
               "ID": 260243,
               "restaurantID": 641385,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 50,
               "restaurantName": "pashmak",
               "restaurantLocation": 655,
@@ -828,6 +855,33 @@
               ],
               "foodsCount": [
                 2
+              ]
+            },
+            {
+              "ID": 839853,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 9, 2023, 4:28:33 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 900,
+              "foods": [
+                {
+                  "price": 77.0,
+                  "type": "DRINK",
+                  "name": "drink3",
+                  "activation": true,
+                  "ID": 640538,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                3
               ]
             }
           ],

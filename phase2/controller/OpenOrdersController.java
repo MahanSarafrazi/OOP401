@@ -13,6 +13,7 @@ import phase2.model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.ResourceBundle;
 
 public class OpenOrdersController extends MenuController {
@@ -39,8 +40,6 @@ public class OpenOrdersController extends MenuController {
 
     @FXML
     public ArrayList<VBox> list;
-
-    private int ID;
     @FXML
     public VBox vBox;
     @FXML
@@ -52,53 +51,32 @@ public class OpenOrdersController extends MenuController {
         back();
     }
 
-    public void chooseOrder(int ID) {
-        this.ID = ID;
-        ID2.setText(Integer.toString(ID));
-        ID2.setEditable(false);
-        totalPrice.setText(Double.toString(getOrderByID().totalPrice()));
-        totalPrice.setEditable(false);
-        if (getManager().getLoggedInUser() instanceof  RestaurantOwner)
-            list = new ArrayList<>();
-        else {
-            restaurantName.setText(getOrderByID().getRestaurantName());
-            restaurantName.setEditable(false);
-        }
     public void chooseOrder(Order order) {
         this.order = order;
-        orderID.setText(Integer.toString(order.getID()));
+        ID2.setText(Integer.toString(order.getID()));
+        ID2.setEditable(false);
         totalPrice.setText(Double.toString(order.totalPrice()));
-        list = new ArrayList<>();
-        setFoods();
-    }
-
-    public Order getOrderByID() {
-        if (getManager().getLoggedInUser() instanceof  RestaurantOwner) {
-            Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
-            for (Order order : restaurant.getOrders()) {
-                if (order.getID() == ID) {
-                    return order;
-                }
-            }
-        }
+        totalPrice.setEditable(false);
+        if (getManager().getLoggedInUser() instanceof RestaurantOwner)
+            list = new ArrayList<>();
         else {
-            for (Order order : orders) {
-                if (order.getID() == ID) {
-                    return order;
-                }
-            }
+            restaurantName.setText(order.getRestaurantName());
+            restaurantName.setEditable(false);
         }
-        return null;
+        setFoods();
     }
 
     public void setFoods() {
         if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
             tabPane.getTabs().clear();
             list.clear();
-            ArrayList<FoodType> foodTypes = getManager().getLoggedInUser().getActiveRestaurant().getFoodType();
-            for (int i = 0; i < foodTypes.size(); ++i) {
+            LinkedHashSet<FoodType> foodTypeLol = order.getType();
+            ArrayList<FoodType> foodTypes = new ArrayList<>();
+            for (FoodType foodType : foodTypeLol)
+                foodTypes.add(foodType);
+            for (FoodType foodType : foodTypes) {
                 Tab tab = new Tab();
-                tab.setText(String.valueOf(foodTypes.get(i)));
+                tab.setText(String.valueOf(foodType));
                 ScrollPane scrollPane = new ScrollPane();
                 VBox vBox = new VBox();
                 scrollPane.setContent(vBox);
@@ -110,28 +88,32 @@ public class OpenOrdersController extends MenuController {
             FXMLLoader loader;
             for (int i = 0; i < list.size(); ++i) {
                 list.get(i).getChildren().clear();
-                ArrayList<Food> foods = getOrderByID().getFoods();
+                ArrayList<Food> foods = order.getFoods();
+                int count = -1;
                 for (Food food : foods) {
-                    if (food.getType().equals(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(i))) {
-                        loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
-                        try {
-                            loader.load();
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
+                    count++;
+                    for (int j = 0; j < order.getFoodsCount().get(count); j++) {
+                        if (food.getType().equals(foodTypes.get(i))) {
+                            loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                            ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), false);
+                            list.get(i).getChildren().add(loader.getRoot());
                         }
-                        ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                        ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), false);
-                        list.get(i).getChildren().add(loader.getRoot());
                     }
                 }
             }
         } else {
             FXMLLoader loader;
-            ArrayList<Food> foods = getOrderByID().getFoods();
+            ArrayList<Food> foods = order.getFoods();
             int count = -1;
             for (Food food : foods) {
                 count++;
-                for (int i = 0; i < getOrderByID().getFoodsCount().get(count); i++) {
+                for (int i = 0; i < order.getFoodsCount().get(count); i++) {
                     loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
                     try {
                         loader.load();
