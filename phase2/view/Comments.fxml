@@ -28,9 +28,9 @@
       <Button fx:id="back" mnemonicParsing="false" onAction="#backHandler" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: linear-gradient(from 47.3934% 94.3128% to 51.6588% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="back" GridPane.rowIndex="2" />
       <ScrollPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="599.0">
+          <AnchorPane maxHeight="1000000.0" minHeight="0.0" minWidth="0.0" prefHeight="267.0" prefWidth="599.0">
                <children>
-                  <VBox fx:id="vBox" prefHeight="150.0" prefWidth="600.0" />
+                  <VBox fx:id="vBox" maxHeight="1000000.0" prefHeight="150.0" prefWidth="600.0" />
                </children>
             </AnchorPane>
         </content>

@@ -340,11 +340,18 @@ public class Manager {
         }
         return Output.NO_FOOD_WITH_THIS_ID;
     }
-    public void addComment(String comment) {
-        if (loggedInUser.getActiveRestaurant().getOpenedFood() != null)
-            loggedInUser.getActiveRestaurant().getOpenedFood().addComment(loggedInUser, comment);
-        else
-            loggedInUser.getActiveRestaurant().addComment(comment, loggedInUser);
+    public boolean addComment(String comment) {
+        Customer customer = (Customer) loggedInUser;
+        for (Order order : customer.getOrders()) {
+            if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && order.contains(customer.getOrderedRestaurant().getOpenedFood())) {
+                customer.getActiveRestaurant().getOpenedFood().addComment(loggedInUser, comment);
+                return true;
+            } else if (loggedInUser.getActiveRestaurant().getOpenedFood() == null && order.getRestaurantID() == customer.getActiveRestaurant().getID()){
+                customer.getActiveRestaurant().addComment(comment,loggedInUser);
+                return true;
+            }
+        }
+        return false;
     }
     public String averageRating() {
         ArrayList<Rate> rates;

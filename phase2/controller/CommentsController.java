@@ -2,13 +2,17 @@ package phase2.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import phase2.model.Comment;
 import phase2.model.RestaurantOwner;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class CommentsController extends MenuController {
@@ -74,6 +78,14 @@ public class CommentsController extends MenuController {
                     ((CommentsBoxController) loader.getController()).chooseComment(comment);
                 }
             }
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/wide.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            gridPane.add(loader.getRoot(),0,3);
+            ((WideController) loader.getController()).initialize(getStage(),this,getMainScene(),null);
         }
     }
 
