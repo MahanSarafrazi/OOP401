@@ -8,7 +8,7 @@
           "ID": 253915,
           "restaurantID": 237920,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "reza",
           "restaurantLocation": 45,
