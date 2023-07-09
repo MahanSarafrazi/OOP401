@@ -16,10 +16,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import phase1.model.Map;
 import phase2.model.Deliverer;
 import phase2.model.Order;
-import phase2.model.Restaurant;
-import phase2.view.Output;
 import phase2.view.ZoomableScrollPane;
 
 import java.io.IOException;

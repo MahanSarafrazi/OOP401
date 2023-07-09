@@ -351,6 +351,11 @@
       "password": "Fariman3",
       "restoreQuestion": "ll",
       "restoreAnswer": "ll"
+    },
+    {
+      "location": 0,
+      "userName": "aariman1",
+      "password": "Fariman1"
     }
   ],
   "restaurantOwners": [

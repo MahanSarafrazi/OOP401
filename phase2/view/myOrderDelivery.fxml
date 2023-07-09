@@ -24,6 +24,6 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="showPath" layoutX="14.0" layoutY="148.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="302.0" style="-fx-background-color: orange;" text="show path" />
+      <Button fx:id="showPath" onAction="#showPath" layoutX="14.0" layoutY="148.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="302.0" style="-fx-background-color: orange;" text="show path" />
    </children>
 </AnchorPane>

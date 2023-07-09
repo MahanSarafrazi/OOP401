@@ -130,8 +130,6 @@ public class Order {
         hasDeliverer=true;
     }
     public boolean reachedRestaurant() {
-        //System.out.println(new Date().getTime());
-       // System.out.println(deliveryDate.getTime());
 
         return new Date().getTime() - deliveryDate.getTime() < 0;
     }
