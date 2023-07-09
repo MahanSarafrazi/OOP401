@@ -57,7 +57,13 @@ public class OpenOrdersBoxController extends MenuController {
     public void chooseOrder(Order order) {
         this.order = order;
         this.orderID.setText(Integer.toString(order.getID()));
+        orderID.setEditable(false);
         this.totalPrice.setText(Double.toString(order.totalPrice()));
+        totalPrice.setEditable(false);
         this.statusSent.setText(order.getOrderStatus().name());
+        if (getManager().getLoggedInUser() instanceof RestaurantOwner)
+            statusSent.setEditable(true);
+        else
+            statusSent.setEditable(false);
     }
 }
