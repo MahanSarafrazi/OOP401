@@ -41,7 +41,7 @@ public class CustomerMenuController extends MenuController {
                     throw new RuntimeException(e);
                 }
                 ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order);
                 openOrders.getChildren().add(loader.getRoot());
             }
             else {
@@ -52,7 +52,7 @@ public class CustomerMenuController extends MenuController {
                     throw new RuntimeException(e);
                 }
                 ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order);
                 sentOrders.getChildren().add(loader.getRoot());
             }
         }
@@ -239,7 +239,7 @@ public class CustomerMenuController extends MenuController {
                     throw new RuntimeException(e);
                 }
                 ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order);
                 openOrders.getChildren().add(loader.getRoot());
             }
             else {
@@ -250,7 +250,7 @@ public class CustomerMenuController extends MenuController {
                     throw new RuntimeException(e);
                 }
                 ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order);
                 sentOrders.getChildren().add(loader.getRoot());
             }
         }

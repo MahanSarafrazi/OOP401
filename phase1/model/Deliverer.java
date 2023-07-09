@@ -10,6 +10,7 @@ public class Deliverer extends User {
     }
     private Deliverer (String userName , String pass) {super(userName, pass);order = null;}
     public Order order;
+    private int location;
     public boolean hasOrder() {
         if (order == null)
             return false;
@@ -19,5 +20,13 @@ public class Deliverer extends User {
             return false;
         }
         return true;
+    }
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
     }
 }
