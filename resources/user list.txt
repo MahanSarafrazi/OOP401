@@ -259,8 +259,13 @@
   ],
   "deliverers": [
     {
-      "location": 0,
+      "location": 233,
       "userName": "reza",
+      "password": "Saeedi12"
+    },
+    {
+      "location": 0,
+      "userName": "r",
       "password": "Saeedi12"
     }
   ],

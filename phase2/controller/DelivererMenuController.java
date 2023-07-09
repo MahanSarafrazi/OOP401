@@ -11,12 +11,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import phase2.model.Deliverer;
 import phase2.model.Order;
+import phase2.model.Restaurant;
 import phase2.view.Output;
+import phase2.view.ZoomableScrollPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,13 +58,19 @@ public class DelivererMenuController extends MenuController {
     public Tab myOrderTab;
 
     @FXML
-    public Button setLocation;
+    public Button map;
 
     @FXML
     public AnchorPane defaultTab;
 
     @FXML
     public Text error;
+
+    @FXML
+    public TextField locationBugger;
+
+    @FXML
+    public Text error2;
 
     private AnchorPane myOrder;
 
@@ -98,6 +108,7 @@ public class DelivererMenuController extends MenuController {
 
         username.setText(getManager().getLoggedInUser().getUserName());
         password.setText(getManager().getLoggedInUser().getPassword());
+        locationBugger.setText(Integer.toString(((Deliverer)(getManager().getLoggedInUser())).getLocation()));
         update();
     }
 
@@ -140,11 +151,6 @@ public class DelivererMenuController extends MenuController {
         super.getStage().show();
     }
 
-    @FXML
-    public void setLocationHandler(ActionEvent actionEvent) {
-        ((Deliverer) getManager().getLoggedInUser()).setLocation(1);
-    }
-
     public AnchorPane getMyOrder() {
         return myOrder;
     }
@@ -177,5 +183,53 @@ public class DelivererMenuController extends MenuController {
     public void resetHandler(ActionEvent actionEvent) {
         restoreQuestion.setText("");
         restoreSolve.setText("");
+    }
+
+
+    @FXML
+    public void mapHandler(ActionEvent actionEvent) {
+        Deliverer deliverer = (Deliverer)(getManager().getLoggedInUser());
+        Stage primaryStage = new Stage();
+        AnchorPane pane = new AnchorPane();
+        int[][] coordinates = getManager().getMap().coordinates;
+        Manager manager = Manager.getManagerInstance();
+        int[][] adjacency = manager.getMap().getAdjacencyMatrix();
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if (adjacency[i][j] != 0) {
+                    Line line = new Line();
+                    line.setStartX(coordinates[i][0]);
+                    line.setEndX(coordinates[j][0]);
+                    line.setStartY(coordinates[i][1]);
+                    line.setEndY(coordinates[j][1]);
+                    pane.getChildren().add(line);
+                }
+            }
+        }
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if (adjacency[i][j] != 0) {
+                    Circle circle = new Circle(coordinates[i][0], coordinates[i][1], 25, Paint.valueOf("red"));
+                    int nodeLocation = i + 1;
+                    circle.setOnMouseClicked(mouseEvent -> {
+                        deliverer.setLocation(nodeLocation);
+                        locationBugger.setText(Integer.toString(deliverer.getLocation()));
+                        primaryStage.close();
+                    });
+                    pane.getChildren().add(circle);
+                }
+            }
+        }
+        ZoomableScrollPane zoomableScrollPane = new ZoomableScrollPane(pane);
+        zoomableScrollPane.setMaxHeight(400);
+        zoomableScrollPane.setMaxWidth(600);
+        Scene scene = new Scene(zoomableScrollPane);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Map");
+        primaryStage.show();
+    }
+
+    public Text getError2() {
+        return error2;
     }
 }
