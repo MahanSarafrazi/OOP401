@@ -11,7 +11,7 @@ import phase2.controller.RegisterAndLoginMenuController;
 public class Main extends Application {
     //this is for phase2
      public static void main(String[] args) {
-         DataBase dataBase = new DataBase("resources/graph.txt", "resources/user list.txt");
+         DataBase dataBase = new DataBase("resources/graph.txt", "resources/user list.txt","resources/coordinates.txt");
          dataBase.load();
          launch(args);
          Manager manager = Manager.getManagerInstance();

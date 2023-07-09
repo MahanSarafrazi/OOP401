@@ -300,7 +300,7 @@ public class CustomerMenuController extends MenuController {
         Customer customer = (Customer) getManager().getLoggedInUser();
         Stage primaryStage = new Stage();
         AnchorPane pane = new AnchorPane();
-        int[][] coordinates = UserList.getUserListInstance().coordinates;
+        int[][] coordinates = getManager().getMap().coordinates;
         Manager manager = Manager.getManagerInstance();
         int[][] adjacency = manager.getMap().getAdjacencyMatrix();
         for (int i = 0; i < 1000; i++) {
