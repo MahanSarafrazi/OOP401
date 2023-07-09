@@ -925,7 +925,8 @@
           "location": 6,
           "foodTypes": [
             "IRANIAN",
-            "DRINK"
+            "DRINK",
+            "ITALIAN"
           ],
           "foods": [
             {

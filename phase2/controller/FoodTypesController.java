@@ -18,8 +18,9 @@ public class FoodTypesController extends MenuController {
     @FXML
     public VBox vBox;
 
+    @Override
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
-        super.initialize(stage,fatherStageController, mainScene,previousScene);
+        super.initialize(stage, fatherStageController, mainScene, previousScene);
         vBox.getChildren().add(new StackPane(new Text("Here are the types")));
         for (FoodType foodType : getManager().getLoggedInUser().getActiveRestaurant().getFoodType()) {
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodTypeBox.fxml"));
