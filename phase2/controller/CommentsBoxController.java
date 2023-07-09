@@ -38,7 +38,8 @@ public class CommentsBoxController extends MenuController {
         this.userText.setText(comment.getComment());
         userText.setEditable(comment.getUser().getUserName().equals(getManager().getLoggedInUser().getUserName()));
         if (getFatherStageController() instanceof RestaurantMenuByCustomerController ||
-                getFatherStageController() instanceof FoodMenuUsedByCustomerController) {
+                getFatherStageController() instanceof FoodMenuUsedByCustomerController ||
+        getFatherStageController() instanceof  CommentsController) {
             if (comment.hasResponse) {
                 Label owner = new Label("owner");
                 owner.setMaxWidth(82);
