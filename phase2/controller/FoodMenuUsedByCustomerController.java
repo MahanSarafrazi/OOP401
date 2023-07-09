@@ -1,6 +1,7 @@
 package phase2.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -9,6 +10,8 @@ import phase2.model.Customer;
 import phase2.model.Food;
 import phase2.model.Restaurant;
 import phase2.model.RestaurantList;
+
+import java.io.IOException;
 
 public class FoodMenuUsedByCustomerController extends MenuController{
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
@@ -67,7 +70,8 @@ public class FoodMenuUsedByCustomerController extends MenuController{
 
     @FXML
     public void minusHandler() {
-        int count = Integer.parseInt(this.count.getText().substring(4,5));
+        String[] words = count.getText().split(" ");
+        int count = Integer.parseInt(words[1]);
         if (count>0)
             count--;
         this.count.setText("add "+count+" foods to cart");
@@ -75,14 +79,24 @@ public class FoodMenuUsedByCustomerController extends MenuController{
 
     @FXML
     public void plusHandler() {
-        int count = Integer.parseInt(this.count.getText().substring(4,5));
+        String[] words = count.getText().split(" ");
+        int count = Integer.parseInt(words[1]);
         count++;
         this.count.setText("add "+count+" foods to cart");
     }
 
     @FXML
     public void commentHandler() {
-
+        FXMLLoader commentsLoader = new FXMLLoader(this.getClass().getResource("../view/Comments.fxml"));
+        try {
+            commentsLoader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene commentsScene = new Scene(commentsLoader.getRoot());
+        ((CommentsController) commentsLoader.getController()).initialize(getStage(), this, commentsScene, getMainScene());
+        ((CommentsController) commentsLoader.getController()).getStage().setScene(commentsScene);
+        ((CommentsController) commentsLoader.getController()).getStage().show();
     }
 
     @FXML
@@ -99,7 +113,8 @@ public class FoodMenuUsedByCustomerController extends MenuController{
                 } else
                     score.setText(getManager().averageRating());
             }
-            int count = Integer.parseInt(this.count.getText().substring(4, 5));
+            String[] words = count.getText().split(" ");
+            int count = Integer.parseInt(words[1]);
             if (count == 0)
                 customer.getCart().remove(customer.getActiveRestaurant().getOpenedFood());
             else

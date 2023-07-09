@@ -170,7 +170,7 @@ public class FoodMenuByOwnerController extends MenuController {
             throw new RuntimeException(e);
         }
         Scene commentsScene = new Scene(commentsLoader.getRoot());
-        ((CommentsController) commentsLoader.getController()).initialize(new Stage(), this, commentsScene, null);
+        ((CommentsController) commentsLoader.getController()).initialize(getStage(), this, commentsScene, getMainScene());
         ((CommentsController) commentsLoader.getController()).getStage().setScene(commentsScene);
         ((CommentsController) commentsLoader.getController()).getStage().show();
     }

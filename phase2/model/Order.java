@@ -94,14 +94,14 @@ public class Order {
     public double totalDeliveryPrice() {
         Map map = Manager.getManagerInstance().getMap();
         int shortestPath = map.findShortestPath(customerLocation, restaurantLocation,false)/30;
-        return (0.1 + 0.1 * (double) shortestPath)*totalPrice();
+        return (1.1 + 0.1 * (double) shortestPath)*totalPrice();
     }
     public String estimateTime() {
         correctOrderStatus();
         if (orderStatus.equals(OrderStatus.SENT))
             return "The order "+ID+" is delivered";
         else if (orderStatus.equals(OrderStatus.ON_THE_WAY) && !hasDeliverer)
-            return "There isn't any deliverer for the order"+ ID;
+            return "There isn't any deliverer for the order "+ ID;
         else if (orderStatus.equals(OrderStatus.ON_THE_WAY)) {
             long time = timeOfDelivery - (new Date().getTime() - deliveryDate.getTime()) / 1000;
             return "The order " + ID + " will be delivered in " + time / 60 + "minutes";

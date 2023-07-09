@@ -343,7 +343,10 @@ public class Manager {
     public boolean addComment(String comment) {
         Customer customer = (Customer) loggedInUser;
         for (Order order : customer.getOrders()) {
-            if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && order.contains(customer.getOrderedRestaurant().getOpenedFood())) {
+            if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && customer.getOrderedRestaurant() != null && order.contains(customer.getOrderedRestaurant().getOpenedFood())) {
+                customer.getOrderedRestaurant().getOpenedFood().addComment(loggedInUser, comment);
+                return true;
+            } else if (loggedInUser.getActiveRestaurant().getOpenedFood() != null && customer.getOrderedRestaurant() == null && order.getRestaurantID() == customer.getActiveRestaurant().getID()) {
                 customer.getActiveRestaurant().getOpenedFood().addComment(loggedInUser, comment);
                 return true;
             } else if (loggedInUser.getActiveRestaurant().getOpenedFood() == null && order.getRestaurantID() == customer.getActiveRestaurant().getID()){

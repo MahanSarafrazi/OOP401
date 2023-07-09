@@ -34,12 +34,19 @@ public class DeliveryBoxController extends MenuController {
     @FXML
     public Button buttonBox;
 
+    @FXML
+    public TextField ordersID;
+
     private Order order;
 
     public void chooseOrder(Order order) {
         this.order = order;
         restaurantName.setText(order.getRestaurantName());
+        restaurantName.setEditable(false);
         deliveryPrice.setText(Double.toString(order.totalDeliveryPrice()));
+        deliveryPrice.setEditable(false);
+        ordersID.setText(Double.toString(order.getID()));
+        ordersID.setEditable(false);
     }
 
     public Order getOrder() {

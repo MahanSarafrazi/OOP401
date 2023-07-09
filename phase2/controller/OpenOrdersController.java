@@ -59,7 +59,10 @@ public class OpenOrdersController extends MenuController {
         this.order = order;
         ID2.setText(Integer.toString(order.getID()));
         ID2.setEditable(false);
-        totalPrice.setText(Double.toString(order.totalPrice()));
+        if (getManager().getLoggedInUser() instanceof RestaurantOwner)
+            totalPrice.setText(Double.toString(order.totalPrice()));
+        else
+            totalPrice.setText(Double.toString(order.totalDeliveryPrice()));
         totalPrice.setEditable(false);
         if (getManager().getLoggedInUser() instanceof RestaurantOwner)
             list = new ArrayList<>();
@@ -197,5 +200,13 @@ public class OpenOrdersController extends MenuController {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Map");
         primaryStage.show();
+    }
+    @FXML
+    public TextField showTime;
+
+    @FXML
+    public void estimateTime() {
+        showTime.setText(order.estimateTime());
+        showTime.setEditable(false);
     }
 }
