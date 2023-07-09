@@ -171,8 +171,6 @@ public class DelivererMenuController extends MenuController {
             getManager().setRestore(restoreQuestion.getText(), restoreSolve.getText());
             error.setFill(Paint.valueOf("green"));
             error.setText("The restore question set successfully");
-            restoreQuestion.setText("");
-            restoreSolve.setText("");
         }
         PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
         hitAnimation.setOnFinished(e -> error.setText(""));
