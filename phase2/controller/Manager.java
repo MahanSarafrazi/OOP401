@@ -387,15 +387,6 @@ public class Manager {
         }
         return false;
     }
-    public Output editLocation(int location) {
-        if (location>1000 || location<1)
-            return Output.LOCATION_NOT_IN_THE_MAP;
-        if (loggedInUser.getActiveRestaurant().getLocation() != location ) {
-            loggedInUser.getActiveRestaurant().setLocation(location);
-            return Output.LOCATION_SET;
-        }
-        return Output.EQUAL_LOCATION;
-    }
     public ArrayList<Restaurant> typeSearch(int location ,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)
