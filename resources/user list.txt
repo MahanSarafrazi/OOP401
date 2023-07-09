@@ -199,7 +199,12 @@
       "password": "Sakaki12"
     }
   ],
-  "deliverers": [],
+  "deliverers": [
+    {
+      "userName": "reza",
+      "password": "Saeedi12"
+    }
+  ],
   "restaurantOwners": [
     {
       "restaurants": [
