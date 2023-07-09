@@ -113,9 +113,7 @@ public class CartController extends MenuController{
             else
                 getManager().confirmOrder(50,Double.parseDouble(totalPrice.getText()),useDiscountTokens.getValue());
             CustomerMenuController customerMenuController = (CustomerMenuController) getFatherStageController();
-            Customer customer = (Customer) getManager().getLoggedInUser();
-            customerMenuController.totalSpending.setText(String.valueOf(customer.getSpentMoney()));
-            customerMenuController.accountCharge.setText(String.valueOf(customer.getCharge()));
+            customerMenuController.update();
             backHandler();
         }
     }

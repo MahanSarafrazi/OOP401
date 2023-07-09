@@ -13,47 +13,20 @@
       "password": "Cusi7485"
     },
     {
-      "spentMoney": 1945.6000000000001,
+      "spentMoney": 2074.4,
       "discountTokens": [],
       "orders": [
         {
-          "ID": 848891,
-          "restaurantID": 478900,
-          "hasDeliverer": false,
-          "orderStatus": "ON_THE_WAY",
-          "customerLocation": 50,
-          "restaurantName": "jahan",
-          "restaurantLocation": 6,
-          "registerDate": "Jul 9, 2023, 3:31:09 AM",
-          "timeOfDelivery": 340,
-          "timeOfGettingReady": 1200,
-          "foods": [
-            {
-              "price": 299.0,
-              "type": "IRANIAN",
-              "name": "kabab",
-              "activation": true,
-              "ID": 825113,
-              "discount": 0.0,
-              "comments": [],
-              "rates": []
-            }
-          ],
-          "foodsCount": [
-            4
-          ]
-        },
-        {
-          "ID": 211982,
+          "ID": 744604,
           "restaurantID": 641385,
           "hasDeliverer": false,
           "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "pashmak",
           "restaurantLocation": 655,
-          "registerDate": "Jul 7, 2023, 8:22:13 PM",
+          "registerDate": "Jul 7, 2023, 8:01:47 PM",
           "timeOfDelivery": 1800,
-          "timeOfGettingReady": 900,
+          "timeOfGettingReady": 1200,
           "foods": [
             {
               "price": 50.0,
@@ -67,7 +40,7 @@
             }
           ],
           "foodsCount": [
-            3
+            4
           ]
         },
         {
@@ -98,16 +71,16 @@
           ]
         },
         {
-          "ID": 744604,
+          "ID": 211982,
           "restaurantID": 641385,
           "hasDeliverer": false,
           "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "pashmak",
           "restaurantLocation": 655,
-          "registerDate": "Jul 7, 2023, 8:01:47 PM",
+          "registerDate": "Jul 7, 2023, 8:22:13 PM",
           "timeOfDelivery": 1800,
-          "timeOfGettingReady": 1200,
+          "timeOfGettingReady": 900,
           "foods": [
             {
               "price": 50.0,
@@ -121,7 +94,61 @@
             }
           ],
           "foodsCount": [
+            3
+          ]
+        },
+        {
+          "ID": 848891,
+          "restaurantID": 478900,
+          "hasDeliverer": false,
+          "orderStatus": "SENT",
+          "customerLocation": 50,
+          "restaurantName": "jahan",
+          "restaurantLocation": 6,
+          "registerDate": "Jul 9, 2023, 3:31:09 AM",
+          "timeOfDelivery": 340,
+          "timeOfGettingReady": 1200,
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
             4
+          ]
+        },
+        {
+          "ID": 260243,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 50,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 655,
+          "registerDate": "Jul 9, 2023, 3:34:25 PM",
+          "timeOfDelivery": 1800,
+          "timeOfGettingReady": 600,
+          "foods": [
+            {
+              "price": 46.0,
+              "type": "DRINK",
+              "name": "drink1",
+              "activation": true,
+              "ID": 588336,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            2
           ]
         }
       ],
@@ -129,7 +156,7 @@
         "foods": [],
         "foodsCount": []
       },
-      "charge": 498054.4,
+      "charge": 497925.60000000003,
       "userName": "fariman1",
       "password": "Fariman1",
       "restoreQuestion": "alo",
@@ -769,6 +796,33 @@
               ],
               "foodsCount": [
                 3
+              ]
+            },
+            {
+              "ID": 260243,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 50,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 655,
+              "registerDate": "Jul 9, 2023, 3:34:25 PM",
+              "timeOfDelivery": 1800,
+              "timeOfGettingReady": 600,
+              "foods": [
+                {
+                  "price": 46.0,
+                  "type": "DRINK",
+                  "name": "drink1",
+                  "activation": true,
+                  "ID": 588336,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                2
               ]
             }
           ],

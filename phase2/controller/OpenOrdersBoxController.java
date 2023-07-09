@@ -45,7 +45,7 @@ public class OpenOrdersBoxController extends MenuController {
             ((OpenOrdersController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
         else
             ((OpenOrdersController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene(),
-                    ((Customer)getManager().getLoggedInUser()).getOrders());
+                    ((Customer)getManager().getLoggedInUser()).getOrders(),Integer.parseInt(orderID.getText()));
         ((OpenOrdersController) loader.getController()).chooseOrder(Integer.parseInt(orderID.getText()));
         ((OpenOrdersController) loader.getController()).getStage().setScene(scene);
         ((OpenOrdersController) loader.getController()).getStage().show();

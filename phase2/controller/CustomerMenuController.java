@@ -44,6 +44,17 @@ public class CustomerMenuController extends MenuController {
                 ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
                 openOrders.getChildren().add(loader.getRoot());
             }
+            else {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Boxopenorders.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                sentOrders.getChildren().add(loader.getRoot());
+            }
         }
         Collections.reverse(customer.getOrders());
     }
@@ -211,6 +222,39 @@ public class CustomerMenuController extends MenuController {
         customer.charge(charge);
         this.accountCharge.setText(String.valueOf(customer.getCharge()));
         chargeBox.setValue(null);
+    }
+    public void update() {
+        Customer customer = (Customer) getManager().getLoggedInUser();
+        totalSpending.setText(String.valueOf(customer.getSpentMoney()));
+        accountCharge.setText(String.valueOf(customer.getCharge()));
+        Collections.reverse(customer.getOrders());
+        openOrders.getChildren().clear();
+        sentOrders.getChildren().clear();
+        for (Order order : customer.getOrders()) {
+            if (order.getOrderStatus() != OrderStatus.SENT) {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Boxopenorders.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                openOrders.getChildren().add(loader.getRoot());
+            }
+            else {
+                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Boxopenorders.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                sentOrders.getChildren().add(loader.getRoot());
+            }
+        }
+        Collections.reverse(customer.getOrders());
     }
 }
 

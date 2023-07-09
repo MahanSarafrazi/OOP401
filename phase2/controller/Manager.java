@@ -458,6 +458,13 @@ public class Manager {
         customer.getOrderedRestaurant().addOrder(order);
         customer.addOrder(order,totalPrice,discountToken);
     }
+    public Order getOrderByID(ArrayList<Order> orders,int ID) {
+        for (Order order : orders) {
+            if (order.getID() == ID)
+                return order;
+        }
+        return null;
+    }
     public ArrayList<String> estimateOrderTime() {
         Customer customer = (Customer) getLoggedInUser();
         ArrayList<String> estimateTimes = new ArrayList<>();

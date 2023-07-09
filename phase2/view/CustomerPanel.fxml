@@ -135,9 +135,13 @@
                </content>
                 </Tab>
                 <Tab text="Order History">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 53.0806% 100.0%, #1fafda 0.0%, #1fafda 0.6711%, #ffffff 100.0%);" />
-                    </content>
+               <content>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="sentOrders" prefHeight="200.0" prefWidth="601.0" />
+                     </content>
+                  </ScrollPane>
+               </content>
                 </Tab>
                 <Tab text="Account">
                     <content>
