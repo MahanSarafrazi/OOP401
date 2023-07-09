@@ -45,7 +45,7 @@ public class DeliveryBoxController extends MenuController {
         restaurantName.setEditable(false);
         deliveryPrice.setText(Double.toString(order.totalDeliveryPrice()));
         deliveryPrice.setEditable(false);
-        ordersID.setText(Double.toString(order.getID()));
+        ordersID.setText(Integer.toString(order.getID()));
         ordersID.setEditable(false);
     }
 

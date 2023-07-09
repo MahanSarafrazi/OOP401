@@ -399,34 +399,6 @@
       "password": "Saeedi12"
     },
     {
-      "order": {
-        "ID": 848891,
-        "restaurantID": 478900,
-        "hasDeliverer": true,
-        "orderStatus": "ON_THE_WAY",
-        "customerLocation": 50,
-        "restaurantName": "jahan",
-        "restaurantLocation": 6,
-        "registerDate": "Jul 9, 2023, 3:31:09 AM",
-        "deliveryDate": "Jul 9, 2023, 8:19:39 PM",
-        "timeOfDelivery": 340,
-        "timeOfGettingReady": 1200,
-        "foods": [
-          {
-            "price": 299.0,
-            "type": "IRANIAN",
-            "name": "kabab",
-            "activation": true,
-            "ID": 825113,
-            "discount": 0.0,
-            "comments": [],
-            "rates": []
-          }
-        ],
-        "foodsCount": [
-          4
-        ]
-      },
       "location": 726,
       "userName": "fariman3",
       "password": "Fariman3",
