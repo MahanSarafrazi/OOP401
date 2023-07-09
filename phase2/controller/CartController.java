@@ -42,8 +42,7 @@ public class CartController extends MenuController{
                 throw new RuntimeException(e);
             }
             ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, getMainScene(), null);
-            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
-                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID(), true);
+            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i), true);
             this.vBox.getChildren().add(foodLoader.getRoot());
         }
     }
@@ -70,8 +69,7 @@ public class CartController extends MenuController{
                 throw new RuntimeException(e);
             }
             ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, null, null);
-            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i).getName(),
-                    customer.getCart().getFoods().get(i).getType(), customer.getCart().getFoods().get(i).getDiscountedPrice(),customer.getCart().getFoods().get(i).getID(), true);
+            ((FoodBoxController) foodLoader.getController()).chooseFood(customer.getCart().getFoods().get(i), true);
             this.vBox.getChildren().add(foodLoader.getRoot());
         }
     }

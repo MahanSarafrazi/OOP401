@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import phase2.model.Food;
 import phase2.model.FoodType;
 import phase2.model.RestaurantOwner;
 
@@ -25,14 +27,19 @@ public class FoodBoxController extends MenuController {
     @FXML
     public Button buttonBOX;
 
+    @FXML
+    public AnchorPane view;
+
     boolean isButton;
 
-    private int ID;
+    boolean activation;
+
+    private Food food;
 
     @FXML
     public void buttonBOXHandler(ActionEvent actionEvent) {
         if(isButton) {
-            getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(ID);
+            getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(food.getID());
             if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByOwner.fxml"));
                 try {
@@ -61,11 +68,16 @@ public class FoodBoxController extends MenuController {
     }
 
     @FXML
-    public void chooseFood(String name, FoodType foodType, double price, int ID, boolean isButton) {
-        this.foodName.setText(name);
-        this.foodType.setText(foodType.name());
-        this.foodPrice.setText(Double.toString(price));
-        this.ID = ID;
+    public void chooseFood(Food food, boolean isButton) {
+        this.food = food;
+        this.foodName.setText(food.getName());
+        this.foodType.setText(food.getType().name());
+        this.foodPrice.setText(Double.toString(food.getPrice()));
         this.isButton = isButton;
+        this.activation = food.getActivation();
+        if(!activation) {
+            buttonBOX.setStyle("-fx-background-color: silver");
+            view.setStyle("-fx-background-color: silver");
+        }
     }
 }

@@ -42,9 +42,8 @@ public class RestaurantMenuByCustomerController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) foodLoader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
-                    ((FoodBoxController) foodLoader.getController()).chooseFood(food.getName(), food.getType(), food.getDiscountedPrice(), food.getID(), true);
+                    ((FoodBoxController) foodLoader.getController()).chooseFood(food, true);
                     vBox.getChildren().add(foodLoader.getRoot());
-
                 }
             }
             ScrollPane scrollPane = new ScrollPane(vBox);
