@@ -83,7 +83,7 @@ public class FoodMenuByOwnerController extends MenuController {
         price.setText(Double.toString(openedFood.getPrice()));
         discount.setText(Double.toString(getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getDiscount()));
         score.setText(getManager().averageRating());
-        activation.setSelected(!getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getActivation());
+        activation.setSelected(getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getActivation());
         startTimeLeft();
     }
 
