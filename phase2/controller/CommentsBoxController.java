@@ -63,7 +63,7 @@ public class CommentsBoxController extends MenuController {
                 responseTick.setMinHeight(49);
                 responseTick.setMaxHeight(49);
                 responseTick.setStyle("-fx-background-color: transparent");
-                Image image = new Image("@../../resources/Pics/cart.jpg");
+                Image image = new Image("@../../resources/Pics/tick.png");
                 ImageView imageView = new ImageView(image);
                 imageView.setFitHeight(44);
                 imageView.setFitWidth(45);
@@ -100,7 +100,7 @@ public class CommentsBoxController extends MenuController {
             responseTick.setMinHeight(49);
             responseTick.setMaxHeight(49);
             responseTick.setStyle("-fx-background-color: transparent");
-            Image image = new Image("@../../resources/Pics/cart.jpg");
+            Image image = new Image("@../../resources/Pics/tick.png");
             ImageView imageView = new ImageView(image);
             imageView.setFitHeight(44);
             imageView.setFitWidth(45);

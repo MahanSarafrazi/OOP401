@@ -101,7 +101,7 @@
           "ID": 848891,
           "restaurantID": 478900,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "jahan",
           "restaurantLocation": 6,
