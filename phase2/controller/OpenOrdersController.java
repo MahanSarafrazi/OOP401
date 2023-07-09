@@ -5,12 +5,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import phase2.model.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class OpenOrdersController extends MenuController {
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene,ArrayList<Order> orders,int ID) {
@@ -42,6 +45,7 @@ public class OpenOrdersController extends MenuController {
     public VBox vBox;
     @FXML
     public TextField restaurantName;
+    private Order order;
 
     @FXML
     public void backHandler(ActionEvent actionEvent) {
@@ -60,6 +64,11 @@ public class OpenOrdersController extends MenuController {
             restaurantName.setText(getOrderByID().getRestaurantName());
             restaurantName.setEditable(false);
         }
+    public void chooseOrder(Order order) {
+        this.order = order;
+        orderID.setText(Integer.toString(order.getID()));
+        totalPrice.setText(Double.toString(order.totalPrice()));
+        list = new ArrayList<>();
         setFoods();
     }
 

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import phase2.model.Customer;
 import phase2.model.RestaurantOwner;
+import phase2.model.Order;
 import phase2.view.OrderStatus;
 
 import java.io.IOException;
@@ -25,6 +26,8 @@ public class OpenOrdersBoxController extends MenuController {
 
     @FXML
     public Button buttonBox;
+
+    private Order order;
 
     @FXML
     public void buttonBoxHandler(ActionEvent actionEvent) {
@@ -46,14 +49,15 @@ public class OpenOrdersBoxController extends MenuController {
         else
             ((OpenOrdersController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene(),
                     ((Customer)getManager().getLoggedInUser()).getOrders(),Integer.parseInt(orderID.getText()));
-        ((OpenOrdersController) loader.getController()).chooseOrder(Integer.parseInt(orderID.getText()));
+        ((OpenOrdersController) loader.getController()).chooseOrder(order);
         ((OpenOrdersController) loader.getController()).getStage().setScene(scene);
         ((OpenOrdersController) loader.getController()).getStage().show();
     }
 
-    public void chooseOrder(int orderID, double totalPrice, OrderStatus status) {
-        this.orderID.setText(Integer.toString(orderID));
-        this.totalPrice.setText(Double.toString(totalPrice));
-        this.statusSent.setText(status.name());
+    public void chooseOrder(Order order) {
+        this.order = order;
+        this.orderID.setText(Integer.toString(order.getID()));
+        this.totalPrice.setText(Double.toString(order.totalPrice()));
+        this.statusSent.setText(order.getOrderStatus().name());
     }
 }

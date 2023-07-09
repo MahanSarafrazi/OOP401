@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="phase2.controller.MyOrderController" minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="332.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 100.0% 0.0%, #00ffd9 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="124.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="my order" underline="true">
+         <font>
+            <Font name="Bernard MT Condensed" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="38.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="delivery price:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="deliveryPrice" layoutX="145.0" layoutY="70.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="showPath" layoutX="14.0" layoutY="148.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="302.0" style="-fx-background-color: orange;" text="show path" />
+   </children>
+</AnchorPane>

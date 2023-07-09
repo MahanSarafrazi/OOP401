@@ -188,7 +188,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
                     throw new RuntimeException(e);
                 }
                 ((OrderHistoryBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                ((OrderHistoryBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice());
+                ((OrderHistoryBoxController) loader.getController()).chooseOrder(order);
                 orderHistoryList.getChildren().add(loader.getRoot());
             }
         }
@@ -206,7 +206,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
                     throw new RuntimeException(e);
                 }
                 ((OpenOrdersBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order.getID(), order.totalPrice(), order.getOrderStatus());
+                ((OpenOrdersBoxController) loader.getController()).chooseOrder(order);
                 openOrdersList.getChildren().add(loader.getRoot());
             }
         }

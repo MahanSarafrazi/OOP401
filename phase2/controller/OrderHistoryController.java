@@ -34,29 +34,19 @@ public class OrderHistoryController extends MenuController {
     @FXML
     public ArrayList<VBox> list;
 
-    private int ID;
+    private Order order;
 
     @FXML
     public void backHandler(ActionEvent actionEvent) {
         back();
     }
 
-    public void chooseOrder(int ID) {
-        this.ID = ID;
-        orderID.setText(Integer.toString(ID));
-        totalPrice.setText(Double.toString(getOrderByID().totalPrice()));
+    public void chooseOrder(Order order) {
+        this.order = order;
+        orderID.setText(Integer.toString(order.getID()));
+        totalPrice.setText(Double.toString(order.totalPrice()));
         list = new ArrayList<>();
         setFoods();
-    }
-
-    public Order getOrderByID() {
-        Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
-        for (Order order : restaurant.getOrders()) {
-            if(order.getID() == ID) {
-                return order;
-            }
-        }
-        return null;
     }
 
     public void setFoods() {
@@ -78,7 +68,7 @@ public class OrderHistoryController extends MenuController {
         FXMLLoader loader;
         for (int i = 0; i < list.size(); ++i) {
             list.get(i).getChildren().clear();
-            ArrayList<Food> foods = ((RestaurantOwner) getManager().getLoggedInUser()).getActiveRestaurant().getFoods();
+            ArrayList<Food> foods = order.getFoods();
             for (Food food : foods) {
                 if(food.getType().equals(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(i))) {
                     loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
