@@ -60,7 +60,7 @@ public class DeliveryBoxController extends MenuController {
     public void buttonBox(ActionEvent actionEvent) {
         Deliverer deliverer = (Deliverer)getManager().getLoggedInUser();
         if(deliverer.getLocation() <= 1000 && deliverer.getLocation() >= 1) {
-            if(((Deliverer)(getManager().getLoggedInUser())).hasOrder()) {
+            if(!((Deliverer)(getManager().getLoggedInUser())).hasOrder()) {
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/SureGettingOrder.fxml"));
                 try {
                     loader.load();
