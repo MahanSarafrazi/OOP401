@@ -36,7 +36,7 @@ public class DelivererMenu extends Menu {
             } else if (matchers[44].find()) {
                 processShowOpenOrders();
             } else if (matchers[50].find()) {
-                
+
                 processSelectOrder(Integer.parseInt(matchers[50].group(1)),Integer.parseInt(matchers[50].group(2)));
             } else if (matchers[51].find()) {
                 processShowPathToCustomer();
