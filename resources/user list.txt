@@ -9,6 +9,7 @@
         "foodsCount": []
       },
       "charge": 0.0,
+      "location": 0,
       "userName": "cusi",
       "password": "Cusi7485"
     },
@@ -155,7 +156,7 @@
           "ID": 839853,
           "restaurantID": 641385,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 50,
           "restaurantName": "pashmak",
           "restaurantLocation": 655,
@@ -184,6 +185,7 @@
         "foodsCount": []
       },
       "charge": 497602.2,
+      "location": 169,
       "userName": "fariman1",
       "password": "Fariman1",
       "restoreQuestion": "alo",
@@ -198,6 +200,7 @@
         "foodsCount": []
       },
       "charge": 0.0,
+      "location": 0,
       "userName": "ft",
       "password": "farimaN1"
     },
@@ -249,6 +252,7 @@
         "foodsCount": []
       },
       "charge": 999649.1,
+      "location": 0,
       "userName": "far",
       "password": "Sakaki12"
     }
@@ -861,7 +865,7 @@
               "ID": 839853,
               "restaurantID": 641385,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 50,
               "restaurantName": "pashmak",
               "restaurantLocation": 655,

@@ -12,6 +12,7 @@ public class Customer extends User {
 
     private Customer(String userName, String pass) {
         super(userName, pass);
+        location = 0;
         orders=new ArrayList<>();
         cart=new Cart();
         charge=0;
@@ -92,5 +93,7 @@ public class Customer extends User {
     public boolean hasThisToken(String token) {
         return discountTokens.contains(token);
     }
+
+    public int location ;
 }
 

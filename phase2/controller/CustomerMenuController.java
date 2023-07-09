@@ -3,13 +3,19 @@ package phase2.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import phase2.model.*;
 import phase2.view.OrderStatus;
+import phase2.view.ZoomableScrollPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,11 +63,11 @@ public class CustomerMenuController extends MenuController {
             }
         }
         Collections.reverse(customer.getOrders());
+        this.locationBugger.setText(Integer.toString(customer.location));
+        locationBugger.setEditable(false);
     }
     @FXML
     public ComboBox<String> searchType;
-
-    int location = 50;
 
     @FXML
     public ComboBox<String> restaurantType;
@@ -97,19 +103,29 @@ public class CustomerMenuController extends MenuController {
     public VBox sentOrders;
 
     @FXML
+    public Button map;
+
+    @FXML
+    private TextField locationBugger;
+
+    @FXML
     public void searchHandler() {
-        ArrayList<Restaurant> restaurants ;
-        if (searchType.getValue() == null)
-            restaurants = getManager().normalSearch(searchField.getText(),null);
-        else if (searchType.getValue().equals("near restaurants"))
-            restaurants = getManager().searchForNearRestaurants(location,restaurantType.getValue(), searchField.getText());
-        else if (searchType.getValue().equals("favorite restaurants"))
-            restaurants = getManager().favoriteRestaurants(restaurantType.getValue(), searchField.getText());
-        else if (restaurantType.getValue() != null)
-            restaurants = getManager().normalSearch(searchField.getText(),FoodType.valueOf(restaurantType.getValue()));
-        else
-            restaurants = getManager().normalSearch(searchField.getText(),null);
-        openRestaurantsMenu(restaurants);
+        if (locationBugger.getText().equals("0"))
+            locationBugger.setStyle("-fx-text-fill: red");
+        else {
+            ArrayList<Restaurant> restaurants;
+            if (searchType.getValue() == null)
+                restaurants = getManager().normalSearch(searchField.getText(), null);
+            else if (searchType.getValue().equals("near restaurants"))
+                restaurants = getManager().searchForNearRestaurants(Integer.parseInt(locationBugger.getText()), restaurantType.getValue(), searchField.getText());
+            else if (searchType.getValue().equals("favorite restaurants"))
+                restaurants = getManager().favoriteRestaurants(restaurantType.getValue(), searchField.getText());
+            else if (restaurantType.getValue() != null)
+                restaurants = getManager().normalSearch(searchField.getText(), FoodType.valueOf(restaurantType.getValue()));
+            else
+                restaurants = getManager().normalSearch(searchField.getText(), null);
+            openRestaurantsMenu(restaurants);
+        }
     }
 
 
@@ -153,38 +169,62 @@ public class CustomerMenuController extends MenuController {
 
     @FXML
     public void iranianHandler() {
-        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.IRANIAN);
-        openRestaurantsMenu(restaurants);
+        if (locationBugger.getText().equals("0"))
+            locationBugger.setStyle("-fx-text-fill: red");
+        else {
+            ArrayList<Restaurant> restaurants = getManager().typeSearch(Integer.parseInt(locationBugger.getText()), FoodType.IRANIAN);
+            openRestaurantsMenu(restaurants);
+        }
     }
 
     @FXML
     public void fastHandler() {
-        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.FAST_FOOD);
-        openRestaurantsMenu(restaurants);
+        if (locationBugger.getText().equals("0"))
+            locationBugger.setStyle("-fx-text-fill: red");
+        else {
+            ArrayList<Restaurant> restaurants = getManager().typeSearch(Integer.parseInt(locationBugger.getText()), FoodType.FAST_FOOD);
+            openRestaurantsMenu(restaurants);
+        }
     }
 
     @FXML
     public void drinkHandler() {
-        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.DRINK);
-        openRestaurantsMenu(restaurants);
+        if (locationBugger.getText().equals("0"))
+            locationBugger.setStyle("-fx-text-fill: red");
+        else {
+            ArrayList<Restaurant> restaurants = getManager().typeSearch(Integer.parseInt(locationBugger.getText()), FoodType.DRINK);
+            openRestaurantsMenu(restaurants);
+        }
     }
 
     @FXML
     public void dessertHandler() {
-        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.DESSERT);
-        openRestaurantsMenu(restaurants);
+        if (locationBugger.getText().equals("0"))
+            locationBugger.setStyle("-fx-text-fill: red");
+        else {
+            ArrayList<Restaurant> restaurants = getManager().typeSearch(Integer.parseInt(locationBugger.getText()), FoodType.DESSERT);
+            openRestaurantsMenu(restaurants);
+        }
     }
 
     @FXML
     public void turkishHandler() {
-        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.TURKISH);
-        openRestaurantsMenu(restaurants);
+        if (locationBugger.getText().equals("0"))
+            locationBugger.setStyle("-fx-text-fill: red");
+        else {
+            ArrayList<Restaurant> restaurants = getManager().typeSearch(Integer.parseInt(locationBugger.getText()), FoodType.TURKISH);
+            openRestaurantsMenu(restaurants);
+        }
     }
 
     @FXML
     public void interNationalHandler() {
-        ArrayList<Restaurant> restaurants = getManager().typeSearch(location, FoodType.INTERNATIONAL_FOOD);
-        openRestaurantsMenu(restaurants);
+        if (locationBugger.getText().equals("0"))
+            locationBugger.setStyle("-fx-text-fill: red");
+        else {
+            ArrayList<Restaurant> restaurants = getManager().typeSearch(Integer.parseInt(locationBugger.getText()), FoodType.INTERNATIONAL_FOOD);
+            openRestaurantsMenu(restaurants);
+        }
     }
     private void openRestaurantsMenu(ArrayList<Restaurant> restaurants) {
         super.getStage().close();
@@ -255,6 +295,47 @@ public class CustomerMenuController extends MenuController {
             }
         }
         Collections.reverse(customer.getOrders());
+    }
+    public void mapHandler() {
+        Customer customer = (Customer) getManager().getLoggedInUser();
+        Stage primaryStage = new Stage();
+        AnchorPane pane = new AnchorPane();
+        int[][] coordinates = UserList.getUserListInstance().coordinates;
+        Manager manager = Manager.getManagerInstance();
+        int[][] adjacency = manager.getMap().getAdjacencyMatrix();
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if (adjacency[i][j] != 0) {
+                    Line line = new Line();
+                    line.setStartX(coordinates[i][0]);
+                    line.setEndX(coordinates[j][0]);
+                    line.setStartY(coordinates[i][1]);
+                    line.setEndY(coordinates[j][1]);
+                    pane.getChildren().add(line);
+                }
+            }
+        }
+        for (int i = 0; i < 1000; i++) {
+            for (int j = 0; j < 1000; j++) {
+                if (adjacency[i][j] != 0) {
+                    Circle circle = new Circle(coordinates[i][0], coordinates[i][1], 25, Paint.valueOf("red"));
+                    int nodeLocation = i + 1;
+                    circle.setOnMouseClicked(mouseEvent -> {
+                        customer.location=nodeLocation;
+                        locationBugger.setText(Integer.toString(customer.location));
+                        primaryStage.close();
+                    });
+                    pane.getChildren().add(circle);
+                }
+            }
+        }
+        ZoomableScrollPane zoomableScrollPane = new ZoomableScrollPane(pane);
+        zoomableScrollPane.setMaxHeight(400);
+        zoomableScrollPane.setMaxWidth(600);
+        Scene scene = new Scene(zoomableScrollPane);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Map");
+        primaryStage.show();
     }
 }
 
