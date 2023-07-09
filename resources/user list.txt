@@ -559,6 +559,18 @@
           "photoPath": "C:\\Users\\sarafrazi\\OOP\\OOP401\\resources\\Pics\\restaurantPics\\fastfood.png",
           "comments": [],
           "rates": []
+        },
+        {
+          "name": "ali",
+          "orders": [],
+          "ID": 686455,
+          "location": 968,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [],
+          "comments": [],
+          "rates": []
         }
       ],
       "userName": "mahan",
