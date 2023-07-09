@@ -31,7 +31,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="ID2" editable="false" layoutX="155.0" layoutY="60.0" prefHeight="30.0" prefWidth="129.0">
+            <TextField fx:id="orderID" editable="false" layoutX="155.0" layoutY="60.0" prefHeight="30.0" prefWidth="129.0">
                <font>
                   <Font size="14.0" />
                </font>
