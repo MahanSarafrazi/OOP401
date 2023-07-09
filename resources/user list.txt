@@ -435,7 +435,8 @@
           "ID": 697570,
           "location": 55,
           "foodTypes": [
-            "FAST_FOOD"
+            "FAST_FOOD",
+            "DRINK"
           ],
           "foods": [
             {
@@ -466,6 +467,17 @@
               "name": "gfggf",
               "activation": true,
               "ID": 829662,
+              "discount": 0.0,
+              "restaurantName": "hgfhfgh",
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 55.0,
+              "type": "DRINK",
+              "name": "ff",
+              "activation": true,
+              "ID": 310203,
               "discount": 0.0,
               "restaurantName": "hgfhfgh",
               "comments": [],
@@ -714,7 +726,7 @@
               "ID": 848891,
               "restaurantID": 478900,
               "hasDeliverer": true,
-              "orderStatus": "ON_THE_WAY",
+              "orderStatus": "SENT",
               "customerLocation": 50,
               "restaurantName": "jahan",
               "restaurantLocation": 6,
