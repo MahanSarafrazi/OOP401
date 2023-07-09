@@ -135,7 +135,7 @@ public class Restaurant {
     }
     public boolean setOpenedFood(int ID) {
         for (Food food : foods) {
-            if(food.getID() == ID && food.getActivation()) {
+            if(food.getID() == ID) {
                 openedFood = food;
                 return true;
             }

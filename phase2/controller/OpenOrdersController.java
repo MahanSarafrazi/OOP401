@@ -105,7 +105,7 @@ public class OpenOrdersController extends MenuController {
                                 throw new RuntimeException(e);
                             }
                             ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                            ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), false);
+                            ((FoodBoxController) loader.getController()).chooseFood(food, false);
                             list.get(i).getChildren().add(loader.getRoot());
                         }
                     }
@@ -125,7 +125,7 @@ public class OpenOrdersController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), false);
+                    ((FoodBoxController) loader.getController()).chooseFood(food, false);
                     vBox.getChildren().add(loader.getRoot());
                 }
             }

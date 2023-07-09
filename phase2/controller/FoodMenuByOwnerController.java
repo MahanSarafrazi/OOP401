@@ -69,6 +69,8 @@ public class FoodMenuByOwnerController extends MenuController {
     @FXML
     public TextField timeLeft;
 
+    @FXML
+    public CheckBox activation;
 
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getID();
 
@@ -81,6 +83,7 @@ public class FoodMenuByOwnerController extends MenuController {
         price.setText(Double.toString(openedFood.getPrice()));
         discount.setText(Double.toString(getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getDiscount()));
         score.setText(getManager().averageRating());
+        activation.setSelected(!getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getActivation());
         startTimeLeft();
     }
 
@@ -215,5 +218,16 @@ public class FoodMenuByOwnerController extends MenuController {
             }
         });
         thread.start();
+    }
+
+    @FXML
+    public void activationHandler(ActionEvent actionEvent) {
+        int ID = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getID();
+        if(activation.isSelected()) {
+            getManager().deActiveFood(ID);
+        } else {
+            getManager().activeFood(ID);
+        }
+        ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
     }
 }

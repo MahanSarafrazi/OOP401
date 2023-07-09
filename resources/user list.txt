@@ -306,7 +306,7 @@
         "foodsCount": []
       },
       "charge": 999649.1,
-      "location": 0,
+      "location": 851,
       "userName": "far",
       "password": "Sakaki12"
     }
@@ -762,7 +762,7 @@
               "price": 20.0,
               "type": "DRINK",
               "name": "coca",
-              "activation": true,
+              "activation": false,
               "ID": 269918,
               "expireDate": "Jul 8, 2023, 6:13:11 PM",
               "discount": 0.0,

@@ -180,7 +180,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
                         throw new RuntimeException(e);
                     }
                     ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), true);
+                    ((FoodBoxController) loader.getController()).chooseFood(food, true);
                     list.get(i).getChildren().add(loader.getRoot());
                 }
             }

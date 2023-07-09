@@ -16,7 +16,7 @@
 
 <Button fx:id="buttonBOX" mnemonicParsing="false" onAction="#buttonBOXHandler" prefHeight="100.0" prefWidth="290.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff9202 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.FoodBoxController">
    <graphic>
-      <AnchorPane prefHeight="92.0" prefWidth="285.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff9202 0.0%, #ffffff 100.0%);">
+      <AnchorPane fx:id="view" prefHeight="92.0" prefWidth="285.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff9202 0.0%, #ffffff 100.0%);">
          <children>
             <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food's name:">
                <font>
