@@ -16,6 +16,7 @@ import phase2.model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.ResourceBundle;
 
 public class OrderHistoryController extends MenuController {
@@ -53,7 +54,10 @@ public class OrderHistoryController extends MenuController {
 
         tabPane.getTabs().clear();
         list.clear();
-        ArrayList<FoodType> foodTypes = getManager().getLoggedInUser().getActiveRestaurant().getFoodType();
+        LinkedHashSet<FoodType> foodTypeLinkedHashSet = order.getType();
+        ArrayList<FoodType> foodTypes = new ArrayList<>();
+        for (FoodType foodType : foodTypeLinkedHashSet)
+            foodTypes.add(foodType);
         for (int i = 0; i < foodTypes.size(); ++i) {
             Tab tab = new Tab();
             tab.setText(String.valueOf(foodTypes.get(i)));
@@ -69,17 +73,21 @@ public class OrderHistoryController extends MenuController {
         for (int i = 0; i < list.size(); ++i) {
             list.get(i).getChildren().clear();
             ArrayList<Food> foods = order.getFoods();
+            int count = -1;
             for (Food food : foods) {
-                if(food.getType().equals(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(i))) {
-                    loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                count++;
+                for (int j = 0; j < order.getFoodsCount().get(count); j++) {
+                    if (food.getType().equals(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(i))) {
+                        loader = new FXMLLoader(this.getClass().getResource("../view/BoxFoodbycustomer.fxml"));
+                        try {
+                            loader.load();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
+                        ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), false);
+                        list.get(i).getChildren().add(loader.getRoot());
                     }
-                    ((FoodBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), null);
-                    ((FoodBoxController) loader.getController()).chooseFood(food.getName(), food.getType(), food.getPrice(), food.getID(), false);
-                    list.get(i).getChildren().add(loader.getRoot());
                 }
             }
         }
