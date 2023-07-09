@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="599.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 0.0% 1.8957%, #01ffcc 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.CommentsBoxController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="599.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 0.0% 1.8957%, #01ffcc 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.CommentsBoxController">
    <children>
       <HBox fx:id="hBox1" layoutX="-1.0" prefHeight="64.0" prefWidth="599.0">
          <children>
@@ -33,7 +28,7 @@
                <graphic>
                   <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="550.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Pics/cart.jpg" />
+                        <Image url="@../../resources/Pics/tick.png" />
                      </image>
                   </ImageView>
                </graphic>
