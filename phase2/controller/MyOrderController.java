@@ -27,6 +27,7 @@ public class MyOrderController extends MenuController {
     public void chooseOrder(Order order) {
         this.order = order;
         deliveryPrice.setText(Double.toString(order.totalDeliveryPrice()));
+        deliveryPrice.setEditable(false);
         order.setDeliverer(((Deliverer)getManager().getLoggedInUser()).getLocation());
     }
 

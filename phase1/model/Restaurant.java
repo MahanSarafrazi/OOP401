@@ -72,6 +72,7 @@ public class Restaurant {
     }
 
     private final ArrayList<Food> foods;
+    private String photoPath;
 
     public void AddFood(String foodName, double foodPrice, FoodType foodType) {
         foods.add(new Food(foodName, foodPrice, foodType,name));

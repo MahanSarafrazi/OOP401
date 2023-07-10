@@ -276,7 +276,7 @@ public class Manager {
             if (food.getID() == ID) {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
-                    if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
+                    if ( (order.contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
                             order.getOrderStatus().equals(OrderStatus.NOT_READY))) {
                         isThereFood = true;
                         break;
@@ -297,7 +297,7 @@ public class Manager {
             if (food.getID() == ID) {
                 boolean isThereFood = false;
                 for (Order order : owner.getActiveRestaurant().getOrders()) {
-                    if ( (order.getFoods().contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
+                    if ( (order.contains(owner.getActiveRestaurant().getFoodByID(ID)) &&
                             order.getOrderStatus().equals(OrderStatus.NOT_READY))) {
                         isThereFood = true;
                         break;

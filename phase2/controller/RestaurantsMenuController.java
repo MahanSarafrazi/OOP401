@@ -23,6 +23,7 @@ public class RestaurantsMenuController extends MenuController{
             }
             ((RestaurantBoxController) restaurantLoader.getController()).initialize(getStage(), getFatherStageController(), getMainScene(), null);
             ((RestaurantBoxController) restaurantLoader.getController()).chooseRestaurant(restaurants.get(i-3).getName(), restaurants.get(i-3).getFoodType().get(0), restaurants.get(i-3).getID());
+            ((RestaurantBoxController) restaurantLoader.getController()).choosePics(restaurants);
             this.gridPane.add(restaurantLoader.getRoot(),i%3,i/3,1,1);
         }
     }
