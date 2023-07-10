@@ -53,7 +53,7 @@ public class OrderHistoryController extends MenuController {
         totalPrice.setText(Double.toString(order.totalPrice()));
         totalPrice.setEditable(false);
         list = new ArrayList<>();
-        if(order.getOrderStatus().equals(OrderStatus.ON_THE_WAY)) {
+        if(order.getOrderStatus().equals(OrderStatus.SENT)) {
             orderStatus.setSelected(true);
             orderStatus.setDisable(true);
         }
@@ -110,7 +110,7 @@ public class OrderHistoryController extends MenuController {
     @FXML
     public void orderStatusHandler(ActionEvent actionEvent) {
         if(orderStatus.isSelected()) {
-            order.setOrderStatus(OrderStatus.ON_THE_WAY);
+            order.setOrderStatus(OrderStatus.SENT);
             orderStatus.setDisable(true);
         }
     }
