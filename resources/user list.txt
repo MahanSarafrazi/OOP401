@@ -1,0 +1,96 @@
+{
+  "customers": [
+    {
+      "spentMoney": 0.0,
+      "discountTokens": [],
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 0.0,
+      "location": 671,
+      "userName": "cusi",
+      "password": "Cusi7485"
+    },
+    {
+      "spentMoney": 0.0,
+      "discountTokens": [],
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 1000000.0,
+      "location": 679,
+      "userName": "cusi2",
+      "password": "Cusi7485"
+    }
+  ],
+  "deliverers": [
+    {
+      "location": 0,
+      "userName": "deli",
+      "password": "Deli7485"
+    }
+  ],
+  "restaurantOwners": [
+    {
+      "restaurants": [
+        {
+          "name": "kkk",
+          "orders": [],
+          "ID": 737635,
+          "location": 765,
+          "foodTypes": [
+            "IRANIAN",
+            "TURKISH"
+          ],
+          "foods": [
+            {
+              "price": 11111.0,
+              "type": "TURKISH",
+              "name": "lll",
+              "activation": true,
+              "ID": 356398,
+              "discount": 0.0,
+              "restaurantName": "kkk",
+              "restaurantID": 737635,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        },
+        {
+          "name": "jojo",
+          "orders": [],
+          "ID": 652323,
+          "location": 765,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [
+            {
+              "price": 10000.0,
+              "type": "IRANIAN",
+              "name": "joje",
+              "activation": true,
+              "ID": 428064,
+              "discount": 0.0,
+              "restaurantName": "jojo",
+              "restaurantID": 652323,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "resi",
+      "password": "Resi7485"
+    }
+  ]
+}
