@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 53.0806% 100.0%, #1fafda 0.0%, #1fafda 0.6711%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.OpenOrdersController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 53.0806% 100.0%, #1fafda 0.0%, #1fafda 0.6711%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.OpenOrdersController">
    <children>
       <ScrollPane layoutX="300.0" layoutY="-3.0" prefHeight="400.0" prefWidth="297.0">
          <content>
@@ -34,7 +34,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="showEstimatedDeliveryTime" onAction="#estimateTime" layoutX="25.0" layoutY="250.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show estimated delivery time" />
+      <Button fx:id="showEstimatedDeliveryTime" layoutX="25.0" layoutY="250.0" mnemonicParsing="false" onAction="#estimateTime" prefHeight="29.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show estimated delivery time" />
       <TextField fx:id="totalPrice" layoutX="155.0" layoutY="19.0" prefHeight="30.0" prefWidth="129.0">
          <font>
             <Font size="14.0" />
