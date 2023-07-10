@@ -113,7 +113,7 @@ public class CustomerMenuController extends MenuController {
         if (locationBugger.getText().equals("0"))
             locationBugger.setStyle("-fx-text-fill: red");
         else {
-            if (searchType.getValue().equals("food")) {
+            if (searchType.getValue() !=null && searchType.getValue().equals("food")) {
                 openFoods();
                 return;
             }
