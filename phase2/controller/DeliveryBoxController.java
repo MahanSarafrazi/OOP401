@@ -26,16 +26,17 @@ public class DeliveryBoxController extends MenuController {
     public TextField restaurantName;
 
     @FXML
-    public Button restaurantLocation;
-
-    @FXML
-    public Button customerLocation;
-
-    @FXML
     public Button buttonBox;
 
     @FXML
     public TextField ordersID;
+
+    @FXML
+    public TextField customerLocation;
+
+    @FXML
+    public TextField restaurantLocation;
+
 
     private Order order;
 
@@ -47,6 +48,10 @@ public class DeliveryBoxController extends MenuController {
         deliveryPrice.setEditable(false);
         ordersID.setText(Integer.toString(order.getID()));
         ordersID.setEditable(false);
+        customerLocation.setText(Integer.toString(order.getCustomerLocation()));
+        customerLocation.setEditable(false);
+        restaurantLocation.setText(Integer.toString(order.getRestaurantLocation()));
+        restaurantLocation.setEditable(false);
     }
 
     public Order getOrder() {

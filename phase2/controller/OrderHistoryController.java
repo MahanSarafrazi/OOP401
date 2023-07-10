@@ -45,7 +45,9 @@ public class OrderHistoryController extends MenuController {
     public void chooseOrder(Order order) {
         this.order = order;
         orderID.setText(Integer.toString(order.getID()));
+        orderID.setEditable(false);
         totalPrice.setText(Double.toString(order.totalPrice()));
+        totalPrice.setEditable(false);
         list = new ArrayList<>();
         setFoods();
     }

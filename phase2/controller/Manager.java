@@ -285,7 +285,6 @@ public class Manager {
                 if (isThereFood) {
                     return Output.THERE_ARE_FOODS_IN_ORDER;
                 }
-                owner.getActiveRestaurant().deleteFood(ID);
                 return Output.FOOD_DELETED;
             }
         }

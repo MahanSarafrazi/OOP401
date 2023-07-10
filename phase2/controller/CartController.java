@@ -101,10 +101,11 @@ public class CartController extends MenuController{
     @FXML
     public void confirmHandler() {
         if ((useDiscountTokens.getValue() == null && Double.parseDouble(accountCharge.getText()) < Double.parseDouble(totalPrice.getText()))
-        || (useDiscountTokens.getValue() != null && Double.parseDouble(accountCharge.getText()) < 0.8*Double.parseDouble(totalPrice.getText()))
-                || vBox.getChildren().isEmpty())
+        || (useDiscountTokens.getValue() != null && Double.parseDouble(accountCharge.getText()) < 0.8*Double.parseDouble(totalPrice.getText())))
             accountCharge.setStyle("-fx-text-fill: red");
-        else {
+        else if (vBox.getChildren().isEmpty() || ((Customer) getManager().getLoggedInUser()).getCart().getFoods().isEmpty()) {
+            totalPrice.setStyle("-fx-text-fill: red;");
+        } else {
             vBox.getChildren().clear();
             if (useDiscountTokens.getValue() == null)
                 getManager().confirmOrder(((Customer) getManager().getLoggedInUser()).location,Double.parseDouble(totalPrice.getText()),"NO");

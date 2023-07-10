@@ -185,11 +185,23 @@ public class FoodMenuByOwnerController extends MenuController {
 
     public void deleteFoodHandler(ActionEvent actionEvent) {
         Food food = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood();
-        getManager().getLoggedInUser().getActiveRestaurant().closeFood();
-        getManager().getLoggedInUser().getActiveRestaurant().deleteFood(food.getID());
-
-        ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
-        back();
+        if (getManager().deleteFood(food.getID()) == Output.FOOD_DELETED) {
+            getManager().getLoggedInUser().getActiveRestaurant().closeFood();
+            getManager().getLoggedInUser().getActiveRestaurant().deleteFood(food.getID());
+            ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
+            back();
+        }
+        else {
+            nameError.setFill(Paint.valueOf("red"));
+            nameError.setText("there is a open order with this food");
+            PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
+            hitAnimation.setOnFinished(e -> {
+                nameError.setText("");
+                priceError.setText("");
+                discountError.setText("");
+            });
+            hitAnimation.playFromStart();
+        }
     }
 
     public void startTimeLeft() {
@@ -224,9 +236,9 @@ public class FoodMenuByOwnerController extends MenuController {
     public void activationHandler(ActionEvent actionEvent) {
         int ID = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getID();
         if(activation.isSelected()) {
-            getManager().deActiveFood(ID);
-        } else {
             getManager().activeFood(ID);
+        } else {
+            getManager().deActiveFood(ID);
         }
         ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
     }
