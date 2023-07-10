@@ -22,6 +22,16 @@ public class MenuController {
     private Scene previousScene;
     private MenuController fatherStageController;
 
+    public static String getTheme() {
+        return theme;
+    }
+
+    public static void setTheme(String theme) {
+        MenuController.theme = theme;
+    }
+
+    private static String theme = "gray";
+
     public MenuController getFatherStageController() {
         return fatherStageController;
     }

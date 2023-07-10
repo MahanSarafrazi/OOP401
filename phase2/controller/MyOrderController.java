@@ -22,6 +22,9 @@ public class MyOrderController extends MenuController {
     @FXML
     public Button showPath;
 
+    @FXML
+    public AnchorPane pane;
+
     private Order order;
 
     public void chooseOrder(Order order) {
@@ -29,6 +32,7 @@ public class MyOrderController extends MenuController {
         deliveryPrice.setText(Double.toString(order.totalDeliveryPrice()));
         deliveryPrice.setEditable(false);
         order.setDeliverer(((Deliverer)getManager().getLoggedInUser()).getLocation());
+        pane.setStyle("-fx-background-color: " + getTheme());
     }
 
     public Order getOrder() {

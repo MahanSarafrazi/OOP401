@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -28,6 +29,10 @@ public class RestaurantMenuByCustomerController extends MenuController {
 
     @FXML
     public Rectangle photoPlace;
+
+    @FXML
+    public AnchorPane pane;
+
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
         super.initialize(stage,fatherStageController,mainScene,previousScene);
         Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
@@ -61,6 +66,7 @@ public class RestaurantMenuByCustomerController extends MenuController {
             ScrollPane scrollPane = new ScrollPane(vBox);
             Tab tab = new Tab(foodType.toString(),scrollPane) ;
             tabPane.getTabs().add(tab);
+            pane.setStyle("-fx-background-color: " + getTheme());
         }
     }
 

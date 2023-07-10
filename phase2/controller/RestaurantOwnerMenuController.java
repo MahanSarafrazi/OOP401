@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
@@ -54,11 +55,15 @@ public class RestaurantOwnerMenuController extends MenuController {
     @FXML
     public Button doSearch;
 
+    @FXML
+    public AnchorPane pane;
+
     @Override
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
         super.initialize(stage, fatherStageController, mainScene, previousScene);
         username.setText(getManager().getLoggedInUser().getUserName());
         password.setText(getManager().getLoggedInUser().getPassword());
+        pane.setStyle("-fx-background-color: " + getTheme());
         update();
     }
     
@@ -102,6 +107,7 @@ public class RestaurantOwnerMenuController extends MenuController {
     public void resetHandler(ActionEvent actionEvent) {
         restoreQuestion.setText("");
         restoreSolve.setText("");
+        update();
     }
 
 
@@ -152,8 +158,8 @@ public class RestaurantOwnerMenuController extends MenuController {
             ((RestaurantBoxController) loader.getController()).chooseRestaurant(restaurant.getName(), restaurant.getFoodType().get(0), restaurant.getID());
             ((RestaurantBoxController) loader.getController()).choosePics();
             list.getChildren().add(loader.getRoot());
-            search.setText("");
         }
+        search.setText("");
     }
 
     public void backHandler(ActionEvent actionEvent) {

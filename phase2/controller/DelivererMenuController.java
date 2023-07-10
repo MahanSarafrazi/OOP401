@@ -71,6 +71,9 @@ public class DelivererMenuController extends MenuController {
     @FXML
     public Text error2;
 
+    @FXML
+    public AnchorPane pane;
+
     private AnchorPane myOrder;
 
     public VBox getList() {
@@ -91,6 +94,7 @@ public class DelivererMenuController extends MenuController {
             ((DeliveryBoxController) loader.getController()).initialize(getStage(), this, getMainScene(), getPreviousScene());
             ((DeliveryBoxController) loader.getController()).chooseOrder(order);
             list.getChildren().add(loader.getRoot());
+            pane.setStyle("-fx-background-color: " + getTheme());
         }
 
         if(((Deliverer) getManager().getLoggedInUser()).hasOrder()) {
