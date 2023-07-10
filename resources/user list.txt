@@ -37,7 +37,7 @@
         "foodsCount": []
       },
       "charge": 1987779.0,
-      "location": 0,
+      "location": 853,
       "userName": "cusi",
       "password": "Cusi7485"
     },
@@ -140,7 +140,7 @@
       "restoreAnswer": "are"
     },
     {
-      "spentMoney": 50757.2,
+      "spentMoney": 175369.8,
       "discountTokens": [],
       "orders": [
         {
@@ -202,7 +202,7 @@
           "ID": 217463,
           "restaurantID": 996474,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 233,
           "restaurantName": "farimman",
           "restaurantLocation": 890,
@@ -224,15 +224,110 @@
           "foodsCount": [
             2
           ]
+        },
+        {
+          "ID": 559863,
+          "restaurantID": 996474,
+          "hasDeliverer": false,
+          "orderStatus": "ON_THE_WAY",
+          "customerLocation": 233,
+          "restaurantName": "farimman",
+          "restaurantLocation": 890,
+          "registerDate": "Jul 10, 2023, 4:17:45 PM",
+          "timeOfDelivery": 1960,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 55.0,
+              "type": "IRANIAN",
+              "name": "kos",
+              "activation": true,
+              "ID": 349331,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        },
+        {
+          "ID": 792116,
+          "restaurantID": 996474,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 233,
+          "restaurantName": "farimman",
+          "restaurantLocation": 890,
+          "registerDate": "Jul 10, 2023, 4:32:09 PM",
+          "timeOfDelivery": 1960,
+          "timeOfGettingReady": 600,
+          "foods": [
+            {
+              "price": 44477.0,
+              "type": "TURKISH",
+              "name": "efa",
+              "activation": true,
+              "ID": 872552,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            2
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 949242.8,
+      "charge": 824630.2000000001,
       "location": 233,
       "userName": "cusi3",
+      "password": "Cusi7485"
+    },
+    {
+      "spentMoney": 12000.000000000002,
+      "discountTokens": [],
+      "orders": [
+        {
+          "ID": 339214,
+          "restaurantID": 340500,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 671,
+          "restaurantName": "kos",
+          "restaurantLocation": 765,
+          "registerDate": "Jul 10, 2023, 4:56:48 PM",
+          "timeOfDelivery": 780,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 10000.0,
+              "type": "IRANIAN",
+              "name": "mame",
+              "activation": true,
+              "ID": 810334,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        }
+      ],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 988000.0,
+      "location": 671,
+      "userName": "cusi4",
       "password": "Cusi7485"
     }
   ],
@@ -249,35 +344,68 @@
     },
     {
       "order": {
-        "ID": 434701,
+        "ID": 559863,
         "restaurantID": 996474,
         "hasDeliverer": true,
         "orderStatus": "ON_THE_WAY",
         "customerLocation": 233,
         "restaurantName": "farimman",
         "restaurantLocation": 890,
-        "registerDate": "Jul 10, 2023, 2:16:23 PM",
-        "deliveryDate": "Jul 10, 2023, 2:51:08 PM",
+        "registerDate": "Jul 10, 2023, 4:17:45 PM",
+        "deliveryDate": "Jul 10, 2023, 4:46:04 PM",
         "timeOfDelivery": 1960,
-        "timeOfGettingReady": 600,
+        "timeOfGettingReady": 300,
         "foods": [
           {
-            "price": 10000.0,
+            "price": 55.0,
             "type": "IRANIAN",
-            "name": "f",
+            "name": "kos",
             "activation": true,
-            "ID": 942725,
+            "ID": 349331,
             "discount": 0.0,
             "comments": [],
             "rates": []
           }
         ],
         "foodsCount": [
-          2
+          1
         ]
       },
       "location": 286,
       "userName": "deli3",
+      "password": "Deli7485"
+    },
+    {
+      "order": {
+        "ID": 339214,
+        "restaurantID": 340500,
+        "hasDeliverer": true,
+        "orderStatus": "ON_THE_WAY",
+        "customerLocation": 671,
+        "restaurantName": "kos",
+        "restaurantLocation": 765,
+        "registerDate": "Jul 10, 2023, 4:56:48 PM",
+        "deliveryDate": "Jul 10, 2023, 5:18:13 PM",
+        "timeOfDelivery": 780,
+        "timeOfGettingReady": 300,
+        "foods": [
+          {
+            "price": 10000.0,
+            "type": "IRANIAN",
+            "name": "mame",
+            "activation": true,
+            "ID": 810334,
+            "discount": 0.0,
+            "comments": [],
+            "rates": []
+          }
+        ],
+        "foodsCount": [
+          1
+        ]
+      },
+      "location": 994,
+      "userName": "deli4",
       "password": "Deli7485"
     }
   ],
@@ -472,7 +600,7 @@
               "ID": 434701,
               "restaurantID": 996474,
               "hasDeliverer": true,
-              "orderStatus": "ON_THE_WAY",
+              "orderStatus": "SENT",
               "customerLocation": 233,
               "restaurantName": "farimman",
               "restaurantLocation": 890,
@@ -500,7 +628,7 @@
               "ID": 217463,
               "restaurantID": 996474,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 233,
               "restaurantName": "farimman",
               "restaurantLocation": 890,
@@ -527,7 +655,7 @@
               "ID": 342661,
               "restaurantID": 996474,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 853,
               "restaurantName": "farimman",
               "restaurantLocation": 890,
@@ -549,12 +677,68 @@
               "foodsCount": [
                 1
               ]
+            },
+            {
+              "ID": 559863,
+              "restaurantID": 996474,
+              "hasDeliverer": true,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 233,
+              "restaurantName": "farimman",
+              "restaurantLocation": 890,
+              "registerDate": "Jul 10, 2023, 4:17:45 PM",
+              "deliveryDate": "Jul 10, 2023, 4:46:04 PM",
+              "timeOfDelivery": 1960,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 55.0,
+                  "type": "IRANIAN",
+                  "name": "kos",
+                  "activation": true,
+                  "ID": 349331,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            },
+            {
+              "ID": 792116,
+              "restaurantID": 996474,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 233,
+              "restaurantName": "farimman",
+              "restaurantLocation": 890,
+              "registerDate": "Jul 10, 2023, 4:32:09 PM",
+              "timeOfDelivery": 1960,
+              "timeOfGettingReady": 600,
+              "foods": [
+                {
+                  "price": 44477.0,
+                  "type": "TURKISH",
+                  "name": "efa",
+                  "activation": true,
+                  "ID": 872552,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                2
+              ]
             }
           ],
           "ID": 996474,
           "location": 890,
           "foodTypes": [
-            "IRANIAN"
+            "IRANIAN",
+            "TURKISH"
           ],
           "foods": [],
           "comments": [
@@ -588,6 +772,59 @@
               "rating": 2.0
             }
           ]
+        },
+        {
+          "name": "kos",
+          "orders": [
+            {
+              "ID": 339214,
+              "restaurantID": 340500,
+              "hasDeliverer": true,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 671,
+              "restaurantName": "kos",
+              "restaurantLocation": 765,
+              "registerDate": "Jul 10, 2023, 4:56:48 PM",
+              "deliveryDate": "Jul 10, 2023, 5:18:13 PM",
+              "timeOfDelivery": 780,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 10000.0,
+                  "type": "IRANIAN",
+                  "name": "mame",
+                  "activation": true,
+                  "ID": 810334,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            }
+          ],
+          "ID": 340500,
+          "location": 765,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [
+            {
+              "price": 10000.0,
+              "type": "IRANIAN",
+              "name": "mame",
+              "activation": true,
+              "ID": 810334,
+              "discount": 0.0,
+              "restaurantName": "kos",
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "comments": [],
+          "rates": []
         }
       ],
       "userName": "resi3",
