@@ -14,7 +14,7 @@
       "password": "Cusi7485"
     },
     {
-      "spentMoney": 11742.300000000001,
+      "spentMoney": 16715.100000000002,
       "discountTokens": [],
       "orders": [
         {
@@ -36,6 +36,7 @@
               "activation": true,
               "ID": 961269,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -63,6 +64,7 @@
               "activation": true,
               "ID": 961269,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -90,6 +92,7 @@
               "activation": true,
               "ID": 961269,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -117,6 +120,7 @@
               "activation": true,
               "ID": 825113,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -144,6 +148,7 @@
               "activation": true,
               "ID": 588336,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -171,6 +176,7 @@
               "activation": true,
               "ID": 640538,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -198,6 +204,7 @@
               "activation": true,
               "ID": 353327,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -225,6 +232,7 @@
               "activation": true,
               "ID": 353327,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -252,6 +260,7 @@
               "activation": true,
               "ID": 353327,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -279,6 +288,7 @@
               "activation": true,
               "ID": 600952,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -306,6 +316,7 @@
               "activation": true,
               "ID": 961269,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -333,6 +344,7 @@
               "activation": true,
               "ID": 600952,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -345,7 +357,7 @@
           "ID": 670090,
           "restaurantID": 641385,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 853,
           "restaurantName": "pashmak",
           "restaurantLocation": 853,
@@ -360,6 +372,7 @@
               "activation": true,
               "ID": 961269,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -367,13 +380,41 @@
           "foodsCount": [
             3
           ]
+        },
+        {
+          "ID": 694446,
+          "restaurantID": 452312,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 853,
+          "restaurantName": "pashmak2",
+          "restaurantLocation": 233,
+          "registerDate": "Jul 10, 2023, 5:25:33 PM",
+          "timeOfDelivery": 1840,
+          "timeOfGettingReady": 1200,
+          "foods": [
+            {
+              "price": 888.0,
+              "type": "IRANIAN",
+              "name": "alo",
+              "activation": true,
+              "ID": 931654,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            4
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 488257.7,
+      "charge": 483284.9,
       "location": 853,
       "userName": "fariman1",
       "password": "Fariman1",
@@ -416,6 +457,7 @@
               "activation": true,
               "ID": 825113,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -426,6 +468,7 @@
               "activation": true,
               "ID": 269918,
               "discount": 0.0,
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -480,6 +523,7 @@
             "activation": true,
             "ID": 640538,
             "discount": 0.0,
+            "restaurantID": 0,
             "comments": [],
             "rates": []
           }
@@ -513,6 +557,7 @@
             "activation": true,
             "ID": 961269,
             "discount": 0.0,
+            "restaurantID": 0,
             "comments": [],
             "rates": []
           }
@@ -558,6 +603,7 @@
               "ID": 309474,
               "discount": 0.0,
               "restaurantName": "saeed",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -587,6 +633,7 @@
             "ID": 309474,
             "discount": 0.0,
             "restaurantName": "saeed",
+            "restaurantID": 0,
             "comments": [],
             "rates": []
           }
@@ -615,6 +662,7 @@
               "ID": 645912,
               "discount": 0.0,
               "restaurantName": "hgfhfgh",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -626,6 +674,7 @@
               "ID": 607517,
               "discount": 0.0,
               "restaurantName": "hgfhfgh",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -637,6 +686,7 @@
               "ID": 829662,
               "discount": 0.0,
               "restaurantName": "hgfhfgh",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -648,6 +698,7 @@
               "ID": 310203,
               "discount": 0.0,
               "restaurantName": "hgfhfgh",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -827,6 +878,7 @@
                   "activation": true,
                   "ID": 600952,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -854,6 +906,7 @@
                   "activation": true,
                   "ID": 600952,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -878,6 +931,7 @@
               "ID": 600952,
               "discount": 0.0,
               "restaurantName": "jahan",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -926,6 +980,7 @@
                   "activation": true,
                   "ID": 825113,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 },
@@ -936,6 +991,7 @@
                   "activation": true,
                   "ID": 269918,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -965,6 +1021,7 @@
                   "activation": true,
                   "ID": 825113,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -991,6 +1048,7 @@
               "expireDate": "Jul 8, 2023, 6:06:22 PM",
               "discount": 0.0,
               "restaurantName": "jahan",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -1003,6 +1061,7 @@
               "expireDate": "Jul 8, 2023, 6:13:11 PM",
               "discount": 0.0,
               "restaurantName": "jahan",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             }
@@ -1119,6 +1178,7 @@
                   "activation": true,
                   "ID": 961269,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1146,6 +1206,7 @@
                   "activation": true,
                   "ID": 961269,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1173,6 +1234,7 @@
                   "activation": true,
                   "ID": 961269,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1200,6 +1262,7 @@
                   "activation": true,
                   "ID": 588336,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1228,6 +1291,7 @@
                   "activation": true,
                   "ID": 640538,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1255,6 +1319,7 @@
                   "activation": true,
                   "ID": 353327,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1282,6 +1347,7 @@
                   "activation": true,
                   "ID": 353327,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1309,6 +1375,7 @@
                   "activation": true,
                   "ID": 353327,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1336,6 +1403,7 @@
                   "activation": true,
                   "ID": 961269,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1348,7 +1416,7 @@
               "ID": 670090,
               "restaurantID": 641385,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 853,
               "restaurantName": "pashmak",
               "restaurantLocation": 853,
@@ -1363,6 +1431,7 @@
                   "activation": true,
                   "ID": 961269,
                   "discount": 0.0,
+                  "restaurantID": 0,
                   "comments": [],
                   "rates": []
                 }
@@ -1389,6 +1458,7 @@
               "ID": 588336,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -1400,6 +1470,7 @@
               "ID": 113098,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -1411,6 +1482,7 @@
               "ID": 640538,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -1422,6 +1494,7 @@
               "ID": 462408,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -1433,6 +1506,7 @@
               "ID": 983317,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -1444,6 +1518,7 @@
               "ID": 746654,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [],
               "rates": []
             },
@@ -1455,6 +1530,7 @@
               "ID": 961269,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [
                 {
                   "user": {
@@ -1503,6 +1579,7 @@
               "ID": 353327,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
               "comments": [
                 {
                   "user": {
@@ -1527,6 +1604,19 @@
               "ID": 141440,
               "discount": 0.0,
               "restaurantName": "pashmak",
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 5555.0,
+              "type": "INTERNATIONAL_FOOD",
+              "name": "hfghghg",
+              "activation": true,
+              "ID": 782308,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "restaurantID": 641385,
               "comments": [],
               "rates": []
             }
@@ -1875,13 +1965,67 @@
         },
         {
           "name": "pashmak2",
-          "orders": [],
+          "orders": [
+            {
+              "ID": 694446,
+              "restaurantID": 452312,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 853,
+              "restaurantName": "pashmak2",
+              "restaurantLocation": 233,
+              "registerDate": "Jul 10, 2023, 5:25:33 PM",
+              "timeOfDelivery": 1840,
+              "timeOfGettingReady": 1200,
+              "foods": [
+                {
+                  "price": 888.0,
+                  "type": "IRANIAN",
+                  "name": "alo",
+                  "activation": true,
+                  "ID": 931654,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                4
+              ]
+            }
+          ],
           "ID": 452312,
           "location": 233,
           "foodTypes": [
             "IRANIAN"
           ],
-          "foods": [],
+          "foods": [
+            {
+              "price": 888.0,
+              "type": "IRANIAN",
+              "name": "alo",
+              "activation": true,
+              "ID": 931654,
+              "discount": 0.0,
+              "restaurantName": "pashmak2",
+              "restaurantID": 452312,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 886.0,
+              "type": "IRANIAN",
+              "name": "al",
+              "activation": true,
+              "ID": 277748,
+              "discount": 0.0,
+              "restaurantName": "pashmak2",
+              "restaurantID": 452312,
+              "comments": [],
+              "rates": []
+            }
+          ],
           "photoPath": "D:\\University\\2nd semester\\Oop\\Project\\OOP401\\resources\\Pics\\tick.png",
           "comments": [],
           "rates": []

@@ -389,6 +389,15 @@ public class Manager {
         }
         return false;
     }
+    public ArrayList<Food> searchFood(String s) {
+        ArrayList<Food> allFoods = getActiveFoods();
+        ArrayList<Food> foods = new ArrayList<>();
+        for (Food food : allFoods)
+            if (food.getName().contains(s))
+                foods.add(food);
+        return foods;
+
+    }
     public ArrayList<Restaurant> typeSearch(int location ,FoodType foodType) {
         ArrayList<Restaurant> restaurants = new ArrayList<>();
         for (Restaurant restaurant : RestaurantList.restaurants)

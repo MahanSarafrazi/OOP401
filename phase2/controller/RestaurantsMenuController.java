@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import phase2.model.Food;
 import phase2.model.Restaurant;
 
 import java.io.IOException;
@@ -25,6 +26,21 @@ public class RestaurantsMenuController extends MenuController{
             ((RestaurantBoxController) restaurantLoader.getController()).chooseRestaurant(restaurants.get(i-3).getName(), restaurants.get(i-3).getFoodType().get(0), restaurants.get(i-3).getID());
             ((RestaurantBoxController) restaurantLoader.getController()).choosePics(restaurants);
             this.gridPane.add(restaurantLoader.getRoot(),i%3,i/3,1,1);
+        }
+    }
+    public void initialize2(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene,ArrayList<Food> foods) {
+        super.initialize(stage,fatherStageController,mainScene,previousScene);
+        FXMLLoader restaurantLoader;
+        for (int i = 3; i < foods.size() + 3; ++i) {
+            FXMLLoader foodLoader = new FXMLLoader(this.getClass().getResource("../view/boxFoodByCustomer.fxml"));
+            try {
+                foodLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            ((FoodBoxController) foodLoader.getController()).initialize(getStage(), this, getMainScene(), null);
+            ((FoodBoxController) foodLoader.getController()).chooseFood(foods.get(i - 3), true);
+            this.gridPane.add(foodLoader.getRoot(),i%3,i/3,1,1);
         }
     }
     @FXML

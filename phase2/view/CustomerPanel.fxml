@@ -32,6 +32,7 @@
                                            <String fx:value="normal" />
                                           <String fx:value="near restaurants" />
                                          <String fx:value="favorite restaurants" />
+                                          <String fx:value="food" />
                                      </FXCollections>
                                  </items>
                                </ComboBox>

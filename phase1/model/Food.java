@@ -36,6 +36,7 @@ public class Food {
     private double discount;
     private String restaurantName;
     public String getRestaurantName() {return restaurantName;}
+    private int restaurantID;
      public Food(String name, double price, FoodType type,String restaurantName){
         this.name = name;
         this.price = price;
