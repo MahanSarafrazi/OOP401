@@ -12,6 +12,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import phase2.model.*;
+import phase2.view.OrderStatus;
 import phase2.view.ZoomableScrollPane;
 
 import java.io.IOException;
@@ -21,7 +22,8 @@ import java.util.LinkedHashSet;
 import java.util.ResourceBundle;
 
 public class OpenOrdersController extends MenuController {
-    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene,ArrayList<Order> orders,int ID) {
+
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene, ArrayList<Order> orders, int ID) {
         super.initialize(stage, fatherStageController, mainScene, previousScene);
         this.orders=orders;
         this.ID2.setText(String.valueOf(getManager().getOrderByID(orders,ID).getRestaurantID()));
@@ -44,10 +46,15 @@ public class OpenOrdersController extends MenuController {
 
     @FXML
     public ArrayList<VBox> list;
+
     @FXML
     public VBox vBox;
+
     @FXML
     public TextField restaurantName;
+
+    @FXML
+    public CheckBox orderStatus;
     private Order order;
 
     @FXML
@@ -69,6 +76,10 @@ public class OpenOrdersController extends MenuController {
         else {
             restaurantName.setText(order.getRestaurantName());
             restaurantName.setEditable(false);
+        }
+        if(order.getOrderStatus().equals(OrderStatus.SENT)) {
+            orderStatus.setSelected(true);
+            orderStatus.setDisable(true);
         }
         setFoods();
     }
@@ -208,5 +219,12 @@ public class OpenOrdersController extends MenuController {
     public void estimateTime() {
         showTime.setText(order.estimateTime());
         showTime.setEditable(false);
+    }
+
+    public void orderStatusHandler(ActionEvent actionEvent) {
+        if(orderStatus.isSelected()) {
+            order.setOrderStatus(OrderStatus.SENT);
+            orderStatus.setDisable(true);
+        }
     }
 }

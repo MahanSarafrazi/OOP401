@@ -394,7 +394,7 @@
       "password": "farimaN1"
     },
     {
-      "spentMoney": 350.90000000000003,
+      "spentMoney": 1696.4,
       "discountTokens": [],
       "orders": [
         {
@@ -434,13 +434,94 @@
             1,
             1
           ]
+        },
+        {
+          "ID": 779192,
+          "restaurantID": 478900,
+          "hasDeliverer": false,
+          "orderStatus": "SENT",
+          "customerLocation": 851,
+          "restaurantName": "jahan",
+          "restaurantLocation": 6,
+          "registerDate": "Jul 10, 2023, 5:52:28 PM",
+          "timeOfDelivery": 2440,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        },
+        {
+          "ID": 787697,
+          "restaurantID": 478900,
+          "hasDeliverer": false,
+          "orderStatus": "SENT",
+          "customerLocation": 851,
+          "restaurantName": "jahan",
+          "restaurantLocation": 6,
+          "registerDate": "Jul 10, 2023, 5:58:08 PM",
+          "timeOfDelivery": 2440,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        },
+        {
+          "ID": 728580,
+          "restaurantID": 478900,
+          "hasDeliverer": false,
+          "orderStatus": "SENT",
+          "customerLocation": 851,
+          "restaurantName": "jahan",
+          "restaurantLocation": 6,
+          "registerDate": "Jul 10, 2023, 6:02:35 PM",
+          "timeOfDelivery": 2440,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 299.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 825113,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 999649.1,
+      "charge": 998303.6,
       "location": 851,
       "userName": "far",
       "password": "Sakaki12"
@@ -911,7 +992,7 @@
               "ID": 769455,
               "restaurantID": 478900,
               "hasDeliverer": false,
-              "orderStatus": "ON_THE_WAY",
+              "orderStatus": "SENT",
               "customerLocation": 50,
               "restaurantName": "jahan",
               "restaurantLocation": 6,
@@ -971,6 +1052,87 @@
               ],
               "foodsCount": [
                 4
+              ]
+            },
+            {
+              "ID": 779192,
+              "restaurantID": 478900,
+              "hasDeliverer": false,
+              "orderStatus": "SENT",
+              "customerLocation": 851,
+              "restaurantName": "jahan",
+              "restaurantLocation": 6,
+              "registerDate": "Jul 10, 2023, 5:52:28 PM",
+              "timeOfDelivery": 2440,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 299.0,
+                  "type": "IRANIAN",
+                  "name": "kabab",
+                  "activation": true,
+                  "ID": 825113,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            },
+            {
+              "ID": 787697,
+              "restaurantID": 478900,
+              "hasDeliverer": false,
+              "orderStatus": "SENT",
+              "customerLocation": 851,
+              "restaurantName": "jahan",
+              "restaurantLocation": 6,
+              "registerDate": "Jul 10, 2023, 5:58:08 PM",
+              "timeOfDelivery": 2440,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 299.0,
+                  "type": "IRANIAN",
+                  "name": "kabab",
+                  "activation": true,
+                  "ID": 825113,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            },
+            {
+              "ID": 728580,
+              "restaurantID": 478900,
+              "hasDeliverer": false,
+              "orderStatus": "SENT",
+              "customerLocation": 851,
+              "restaurantName": "jahan",
+              "restaurantLocation": 6,
+              "registerDate": "Jul 10, 2023, 6:02:35 PM",
+              "timeOfDelivery": 2440,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 299.0,
+                  "type": "IRANIAN",
+                  "name": "kabab",
+                  "activation": true,
+                  "ID": 825113,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
               ]
             }
           ],
@@ -1889,6 +2051,24 @@
       ],
       "userName": "farimaan2",
       "password": "Farimaan2"
+    },
+    {
+      "restaurants": [
+        {
+          "name": "j",
+          "orders": [],
+          "ID": 187763,
+          "location": 813,
+          "foodTypes": [
+            "FAST_FOOD"
+          ],
+          "foods": [],
+          "comments": [],
+          "rates": []
+        }
+      ],
+      "userName": "m",
+      "password": "Sarafrazi1"
     }
   ]
 }
