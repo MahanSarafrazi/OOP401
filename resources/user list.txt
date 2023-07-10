@@ -14,7 +14,7 @@
       "password": "Cusi7485"
     },
     {
-      "spentMoney": 11577.300000000001,
+      "spentMoney": 11742.300000000001,
       "discountTokens": [],
       "orders": [
         {
@@ -340,13 +340,40 @@
           "foodsCount": [
             2
           ]
+        },
+        {
+          "ID": 670090,
+          "restaurantID": 641385,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 853,
+          "restaurantName": "pashmak",
+          "restaurantLocation": 853,
+          "registerDate": "Jul 10, 2023, 4:29:08 PM",
+          "timeOfDelivery": 0,
+          "timeOfGettingReady": 900,
+          "foods": [
+            {
+              "price": 50.0,
+              "type": "IRANIAN",
+              "name": "irani1",
+              "activation": true,
+              "ID": 961269,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            3
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 488422.7,
+      "charge": 488257.7,
       "location": 853,
       "userName": "fariman1",
       "password": "Fariman1",
@@ -1315,6 +1342,33 @@
               ],
               "foodsCount": [
                 23
+              ]
+            },
+            {
+              "ID": 670090,
+              "restaurantID": 641385,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 853,
+              "restaurantName": "pashmak",
+              "restaurantLocation": 853,
+              "registerDate": "Jul 10, 2023, 4:29:08 PM",
+              "timeOfDelivery": 0,
+              "timeOfGettingReady": 900,
+              "foods": [
+                {
+                  "price": 50.0,
+                  "type": "IRANIAN",
+                  "name": "irani1",
+                  "activation": true,
+                  "ID": 961269,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                3
               ]
             }
           ],
