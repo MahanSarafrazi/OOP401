@@ -11,15 +11,16 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import phase2.model.*;
+import phase2.model.Food;
+import phase2.model.FoodType;
+import phase2.model.Order;
+import phase2.model.RestaurantOwner;
 import phase2.view.OrderStatus;
 import phase2.view.ZoomableScrollPane;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.ResourceBundle;
 
 public class OpenOrdersController extends MenuController {
 
@@ -77,11 +78,12 @@ public class OpenOrdersController extends MenuController {
             restaurantName.setText(order.getRestaurantName());
             restaurantName.setEditable(false);
         }
-        if(order.getOrderStatus().equals(OrderStatus.SENT)) {
+        if(order.getOrderStatus().equals(OrderStatus.SENT) && getManager().getLoggedInUser() instanceof RestaurantOwner) {
             orderStatus.setSelected(true);
             orderStatus.setDisable(true);
         }
         setFoods();
+        
     }
 
     public void setFoods() {
