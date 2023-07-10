@@ -235,10 +235,22 @@ public class FoodMenuByOwnerController extends MenuController {
     @FXML
     public void activationHandler(ActionEvent actionEvent) {
         int ID = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getID();
+        Output output;
         if(activation.isSelected()) {
-            getManager().activeFood(ID);
+            output = getManager().activeFood(ID);
         } else {
-            getManager().deActiveFood(ID);
+            output = getManager().deActiveFood(ID);
+        }
+        if (output == Output.THERE_ARE_FOODS_IN_ORDER) {
+            nameError.setFill(Paint.valueOf("red"));
+            nameError.setText("there is a open order with this food");
+            PauseTransition hitAnimation = new PauseTransition(Duration.seconds(3));
+            hitAnimation.setOnFinished(e -> {
+                nameError.setText("");
+                priceError.setText("");
+                discountError.setText("");
+            });
+            hitAnimation.playFromStart();
         }
         ((RestaurantMenuByOwnerController) getFatherStageController()).updateRestaurantInformation();
     }
