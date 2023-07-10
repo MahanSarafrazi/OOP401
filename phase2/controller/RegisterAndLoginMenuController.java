@@ -44,15 +44,15 @@ public class RegisterAndLoginMenuController extends MenuController {
 
     @FXML
     public void registerHandler(ActionEvent actionEvent) {
-        FXMLLoader registerLoader = new FXMLLoader(this.getClass().getResource("../view/RegisterMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Captcha.fxml"));
         try {
-            registerLoader.load();
+            loader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene registerScene = new Scene(registerLoader.getRoot());
-        ((RegisterMenuController) registerLoader.getController()).initialize(getStage(), null, registerScene, getMainScene());
-        super.getStage().setScene(registerScene);
+        Scene captcha = new Scene(loader.getRoot());
+        ((CaptchaController) loader.getController()).initialize(getStage(), null, captcha, getMainScene(),2);
+        super.getStage().setScene(captcha);
     }
 
     @FXML

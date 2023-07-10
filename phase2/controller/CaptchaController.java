@@ -65,6 +65,17 @@ public class CaptchaController extends MenuController{
                 super.getStage().setScene(scene);
                 super.getStage().show();
             }
+            else {
+                FXMLLoader registerLoader = new FXMLLoader(this.getClass().getResource("../view/RegisterMenu.fxml"));
+                try {
+                    registerLoader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene registerScene = new Scene(registerLoader.getRoot());
+                ((RegisterMenuController) registerLoader.getController()).initialize(getStage(), null, registerScene, getPreviousScene());
+                super.getStage().setScene(registerScene);
+            }
         }
     }
 

@@ -140,7 +140,13 @@
       "password": "Fariman1"
     }
   ],
-  "deliverers": [],
+  "deliverers": [
+    {
+      "location": 0,
+      "userName": "fariman3",
+      "password": "Fariman3"
+    }
+  ],
   "restaurantOwners": [
     {
       "restaurants": [
