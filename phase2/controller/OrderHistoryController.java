@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import phase2.model.*;
+import phase2.view.OrderStatus;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,6 +36,9 @@ public class OrderHistoryController extends MenuController {
     @FXML
     public ArrayList<VBox> list;
 
+    @FXML
+    public CheckBox orderStatus;
+
     private Order order;
 
     @FXML
@@ -49,6 +53,10 @@ public class OrderHistoryController extends MenuController {
         totalPrice.setText(Double.toString(order.totalPrice()));
         totalPrice.setEditable(false);
         list = new ArrayList<>();
+        if(order.getOrderStatus().equals(OrderStatus.SENT)) {
+            orderStatus.setSelected(true);
+            orderStatus.setDisable(true);
+        }
         setFoods();
     }
 
@@ -97,5 +105,13 @@ public class OrderHistoryController extends MenuController {
 
     @FXML
     public void showCustomerLocationHandler(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void orderStatusHandler(ActionEvent actionEvent) {
+        if(orderStatus.isSelected()) {
+            order.setOrderStatus(OrderStatus.SENT);
+            orderStatus.setDisable(true);
+        }
     }
 }

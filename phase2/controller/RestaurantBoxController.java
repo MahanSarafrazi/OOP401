@@ -86,6 +86,7 @@ public class RestaurantBoxController extends MenuController {
         for (Restaurant restaurant : restaurants) {
             if(restaurant.getID() == ID) {
                 if(restaurant.getPhotoPath() != null) {
+                    System.out.println(restaurant.getName());
                     Image image = new Image(restaurant.getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
                     imageView.setImage(image);
                 }

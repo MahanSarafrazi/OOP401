@@ -72,10 +72,10 @@ public class MyOrderController extends MenuController {
             Line line = new Line();
             line.setStroke(Paint.valueOf("green"));
             line.setStrokeWidth(25);
-            line.setStartX(coordinates[manager.getMap().path.get(i - 1)][0]);
-            line.setEndX(coordinates[manager.getMap().path.get(i)][0]);
-            line.setStartY(coordinates[manager.getMap().path.get(i - 1)][1]);
-            line.setEndY(coordinates[manager.getMap().path.get(i)][1]);
+            line.setStartX(coordinates[manager.getMap().path.get(i - 1)-1][0]);
+            line.setEndX(coordinates[manager.getMap().path.get(i)-1][0]);
+            line.setStartY(coordinates[manager.getMap().path.get(i - 1)-1][1]);
+            line.setEndY(coordinates[manager.getMap().path.get(i)-1][1]);
             if (i == 1) {
                 Circle circle = new Circle(line.getStartX(), line.getStartY(), 50, Paint.valueOf("orange"));
                 pane.getChildren().add(circle);
