@@ -77,7 +77,7 @@ public class OpenOrdersController extends MenuController {
             restaurantName.setText(order.getRestaurantName());
             restaurantName.setEditable(false);
         }
-        if(order.getOrderStatus().equals(OrderStatus.SENT)) {
+        if(order.getOrderStatus().equals(OrderStatus.ON_THE_WAY)) {
             orderStatus.setSelected(true);
             orderStatus.setDisable(true);
         }
@@ -223,7 +223,7 @@ public class OpenOrdersController extends MenuController {
 
     public void orderStatusHandler(ActionEvent actionEvent) {
         if(orderStatus.isSelected()) {
-            order.setOrderStatus(OrderStatus.SENT);
+            order.setOrderStatus(OrderStatus.ON_THE_WAY);
             orderStatus.setDisable(true);
         }
     }
