@@ -1,9 +1,19 @@
 {
   "customers": [
     {
-      "spentMoney": 2022220.2000000002,
+      "spentMoney": 5633327.7,
       "discountTokens": [
-        "TOlL8ILdbH"
+        "TOlL8ILdbH",
+        "trcNBlpHCF",
+        "hqSn6jfuXw",
+        "LMblhICcQt",
+        "gua88r84j7",
+        "BhIDxxIYZI",
+        "25IqLY8nPA",
+        "fsRMDHICkw",
+        "iGaWKjIh90",
+        "bBRCPeyJOU",
+        "QzgcZTsEPO"
       ],
       "orders": [
         {
@@ -38,11 +48,67 @@
           "ID": 657644,
           "restaurantID": 755740,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 853,
           "restaurantName": "aaa",
           "restaurantLocation": 423,
           "registerDate": "Jul 10, 2023, 5:56:24 PM",
+          "timeOfDelivery": 1460,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 555555.0,
+              "type": "IRANIAN",
+              "name": "ff",
+              "activation": true,
+              "ID": 632916,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        },
+        {
+          "ID": 659996,
+          "restaurantID": 755740,
+          "hasDeliverer": false,
+          "orderStatus": "ON_THE_WAY",
+          "customerLocation": 853,
+          "restaurantName": "aaa",
+          "restaurantLocation": 423,
+          "registerDate": "Jul 10, 2023, 9:34:38 PM",
+          "timeOfDelivery": 1460,
+          "timeOfGettingReady": 1200,
+          "foods": [
+            {
+              "price": 555555.0,
+              "type": "IRANIAN",
+              "name": "ff",
+              "activation": true,
+              "ID": 632916,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            4
+          ]
+        },
+        {
+          "ID": 782537,
+          "restaurantID": 755740,
+          "hasDeliverer": false,
+          "orderStatus": "ON_THE_WAY",
+          "customerLocation": 853,
+          "restaurantName": "aaa",
+          "restaurantLocation": 423,
+          "registerDate": "Jul 10, 2023, 9:36:32 PM",
           "timeOfDelivery": 1460,
           "timeOfGettingReady": 300,
           "foods": [
@@ -67,7 +133,7 @@
         "foods": [],
         "foodsCount": []
       },
-      "charge": 2977779.8,
+      "charge": 4366672.3,
       "location": 853,
       "userName": "fariman1",
       "password": "Fariman1"
@@ -84,7 +150,7 @@
               "ID": 337310,
               "restaurantID": 755740,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 853,
               "restaurantName": "aaa",
               "restaurantLocation": 423,
@@ -112,11 +178,67 @@
               "ID": 657644,
               "restaurantID": 755740,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 853,
               "restaurantName": "aaa",
               "restaurantLocation": 423,
               "registerDate": "Jul 10, 2023, 5:56:24 PM",
+              "timeOfDelivery": 1460,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 555555.0,
+                  "type": "IRANIAN",
+                  "name": "ff",
+                  "activation": true,
+                  "ID": 632916,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            },
+            {
+              "ID": 659996,
+              "restaurantID": 755740,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 853,
+              "restaurantName": "aaa",
+              "restaurantLocation": 423,
+              "registerDate": "Jul 10, 2023, 9:34:38 PM",
+              "timeOfDelivery": 1460,
+              "timeOfGettingReady": 1200,
+              "foods": [
+                {
+                  "price": 555555.0,
+                  "type": "IRANIAN",
+                  "name": "ff",
+                  "activation": true,
+                  "ID": 632916,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                4
+              ]
+            },
+            {
+              "ID": 782537,
+              "restaurantID": 755740,
+              "hasDeliverer": false,
+              "orderStatus": "ON_THE_WAY",
+              "customerLocation": 853,
+              "restaurantName": "aaa",
+              "restaurantLocation": 423,
+              "registerDate": "Jul 10, 2023, 9:36:32 PM",
               "timeOfDelivery": 1460,
               "timeOfGettingReady": 300,
               "foods": [
@@ -157,7 +279,15 @@
             }
           ],
           "comments": [],
-          "rates": []
+          "rates": [
+            {
+              "user": {
+                "userName": "fariman1",
+                "password": "Fariman1"
+              },
+              "rating": 2.0
+            }
+          ]
         },
         {
           "name": "rrr",

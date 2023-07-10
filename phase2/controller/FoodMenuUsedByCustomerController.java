@@ -28,6 +28,7 @@ public class FoodMenuUsedByCustomerController extends MenuController{
         Customer customer = (Customer) getManager().getLoggedInUser();
         if (customer.getCart().getFoods().contains(food))
             count.setText("add "+customer.getCart().foodCount(food)+" foods to cart");
+        count.setEditable(false);
         restaurantName.setText(customer.getActiveRestaurant().getName());
         rID=customer.getActiveRestaurant().getID();
     }

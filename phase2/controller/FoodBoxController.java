@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import phase2.model.Customer;
 import phase2.model.Food;
 import phase2.model.FoodType;
 import phase2.model.RestaurantOwner;
@@ -54,6 +56,7 @@ public class FoodBoxController extends MenuController {
                 getStage().show();
             }
             else {
+                getManager().getLoggedInUser().setActiveRestaurant(food.getRestaurantID());
                 getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(food.getID());
                 if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
                     FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByOwner.fxml"));
