@@ -71,8 +71,11 @@ public class FoodBoxController extends MenuController {
     public void chooseFood(Food food, boolean isButton) {
         this.food = food;
         this.foodName.setText(food.getName());
+        this.foodName.setEditable(false);
         this.foodType.setText(food.getType().name());
+        this.foodType.setEditable(false);
         this.foodPrice.setText(Double.toString(food.getPrice()));
+        this.foodPrice.setEditable(false);
         this.isButton = isButton;
         this.activation = food.getActivation();
         if(!activation) {
