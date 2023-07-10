@@ -63,7 +63,7 @@ public class MenuController {
                 && getManager().getLoggedInUser() !=null && getManager().getLoggedInUser() instanceof Customer customer &&
         !getManager().favoriteRestaurants(null,"").isEmpty()) {
             Random random = new Random();
-            if (random.nextInt()%20 == 0) {
+            if (random.nextInt()%25 == 0) {
                 Stage stage1 = new Stage();
                 Text text = new Text("check out your favorite restaurant and get a new discount token !");
                 Restaurant restaurant = getManager().favoriteRestaurants(null,"").get(0);
