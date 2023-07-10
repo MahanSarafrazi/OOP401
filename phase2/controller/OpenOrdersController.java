@@ -81,7 +81,7 @@ public class OpenOrdersController extends MenuController {
             restaurantName.setText(order.getRestaurantName());
             restaurantName.setEditable(false);
         }
-        if(order.getOrderStatus().equals(OrderStatus.SENT)) {
+        if(order.getOrderStatus().equals(OrderStatus.SENT) && getManager().getLoggedInUser() instanceof RestaurantOwner) {
             orderStatus.setSelected(true);
             orderStatus.setDisable(true);
         }

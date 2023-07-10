@@ -4,65 +4,62 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="243.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #00d9ff 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="407.0" prefWidth="243.0" style="-fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #00d9ff 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.CaptchaController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9a9c9e" height="93.0" layoutX="22.0" stroke="BLACK" strokeType="INSIDE" width="197.0" />
-      <ImageView fx:id="imageview" fitHeight="93.0" fitWidth="197.0" layoutX="22.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="captcha" layoutX="22.0" layoutY="101.0" prefHeight="31.0" prefWidth="197.0">
+      <ImageView fx:id="image" fitHeight="93.0" fitWidth="197.0" layoutX="22.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="text" layoutX="22.0" layoutY="101.0" prefHeight="31.0" prefWidth="197.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Button fx:id="one" layoutX="22.0" layoutY="144.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="1">
+      <Button fx:id="one" layoutX="22.0" layoutY="144.0" mnemonicParsing="false" onAction="#set1" prefHeight="56.0" prefWidth="60.0" text="1">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="eight" layoutX="92.0" layoutY="276.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="8">
+      <Button fx:id="eight" layoutX="92.0" layoutY="276.0" mnemonicParsing="false" onAction="#set8" prefHeight="56.0" prefWidth="60.0" text="8">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="seven" layoutX="22.0" layoutY="276.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="7">
+      <Button fx:id="seven" layoutX="22.0" layoutY="276.0" mnemonicParsing="false" onAction="#set7" prefHeight="56.0" prefWidth="60.0" text="7">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="six" layoutX="162.0" layoutY="210.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="6">
+      <Button fx:id="six" layoutX="162.0" layoutY="210.0" mnemonicParsing="false" onAction="#set6" prefHeight="56.0" prefWidth="60.0" text="6">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="three" layoutX="162.0" layoutY="144.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="3">
+      <Button fx:id="three" layoutX="162.0" layoutY="144.0" mnemonicParsing="false" onAction="#set3" prefHeight="56.0" prefWidth="60.0" text="3">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="five" layoutX="92.0" layoutY="210.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="5">
+      <Button fx:id="five" layoutX="92.0" layoutY="210.0" mnemonicParsing="false" onAction="#set5" prefHeight="56.0" prefWidth="60.0" text="5">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="tow" layoutX="92.0" layoutY="144.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="2">
+      <Button fx:id="two" layoutX="92.0" layoutY="144.0" mnemonicParsing="false" onAction="#set2" prefHeight="56.0" prefWidth="60.0" text="2">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="four" layoutX="22.0" layoutY="210.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="4">
+      <Button fx:id="four" layoutX="22.0" layoutY="210.0" mnemonicParsing="false" onAction="#set4" prefHeight="56.0" prefWidth="60.0" text="4">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="nine" layoutX="162.0" layoutY="276.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="60.0" text="9">
+      <Button fx:id="nine" layoutX="162.0" layoutY="276.0" mnemonicParsing="false" onAction="#set9" prefHeight="56.0" prefWidth="60.0" text="9">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="confirm" layoutX="126.0" layoutY="343.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="96.0" style="-fx-background-color: green;" text="confirm" />
-      <Button fx:id="refresh" layoutX="22.0" layoutY="343.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="96.0" style="-fx-background-color: red;" text="refresh" />
+      <Button fx:id="confirm" layoutX="126.0" layoutY="343.0" mnemonicParsing="false" onAction="#confirmHandler" prefHeight="56.0" prefWidth="96.0" style="-fx-background-color: green;" text="confirm" />
+      <Button fx:id="reset" layoutX="22.0" layoutY="343.0" mnemonicParsing="false" onAction="#resetHandler" prefHeight="56.0" prefWidth="96.0" style="-fx-background-color: red;" text="reset" />
    </children>
 </AnchorPane>

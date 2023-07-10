@@ -26,15 +26,15 @@ public class RegisterAndLoginMenuController extends MenuController {
 
     @FXML
     public void loginHandler(ActionEvent actionEvent) {
-        FXMLLoader loginLoader = new FXMLLoader(this.getClass().getResource("../view/LoginMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Captcha.fxml"));
         try {
-            loginLoader.load();
+            loader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene loginScene = new Scene(loginLoader.getRoot());
-        ((LoginMenuController) loginLoader.getController()).initialize(getStage(), null, loginScene, getMainScene());
-        super.getStage().setScene(loginScene);
+        Scene captcha = new Scene(loader.getRoot());
+        ((CaptchaController) loader.getController()).initialize(getStage(), null, captcha, getMainScene(),1);
+        super.getStage().setScene(captcha);
     }
 
     @FXML
@@ -44,15 +44,15 @@ public class RegisterAndLoginMenuController extends MenuController {
 
     @FXML
     public void registerHandler(ActionEvent actionEvent) {
-        FXMLLoader registerLoader = new FXMLLoader(this.getClass().getResource("../view/RegisterMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/Captcha.fxml"));
         try {
-            registerLoader.load();
+            loader.load();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene registerScene = new Scene(registerLoader.getRoot());
-        ((RegisterMenuController) registerLoader.getController()).initialize(getStage(), null, registerScene, getMainScene());
-        super.getStage().setScene(registerScene);
+        Scene captcha = new Scene(loader.getRoot());
+        ((CaptchaController) loader.getController()).initialize(getStage(), null, captcha, getMainScene(),2);
+        super.getStage().setScene(captcha);
     }
 
     @FXML

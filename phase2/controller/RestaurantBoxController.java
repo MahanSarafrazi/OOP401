@@ -11,15 +11,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import phase2.model.Food;
-import phase2.model.FoodType;
-import phase2.model.Restaurant;
-import phase2.model.RestaurantOwner;
+import phase2.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class RestaurantBoxController extends MenuController {
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene,boolean add){
+        super.initialize(stage,fatherStageController,mainScene,previousScene);
+        this.add = add;
+    }
+    boolean add;
 
     @FXML
     public Button buttonBOX;
@@ -59,6 +61,8 @@ public class RestaurantBoxController extends MenuController {
             getStage().show();
         }
         else {
+            if (add)
+                ((Customer)getManager().getLoggedInUser()).addToken();
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantMenuByCustomer.fxml"));
             try {
                 loader.load();
