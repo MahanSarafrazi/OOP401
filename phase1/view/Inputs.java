@@ -24,7 +24,6 @@ public enum Inputs {
     DE_ACTIVE_FOOD("^\\s*(?i)deActive\\s+food\\s+(\\d+)\\s*$"), //18
     ACTIVE_FOOD("^\\s*active\\s+food\\s+(\\d+)\\s*$"), //19
     SEARCH_RESTAURANT("^\\s*search\\s+restaurant\\s+(\\S+)\\s*$"), //20
-
     SEARCH_FOOD("^\\s*search\\s+food\\s+(\\S+)\\s*$"), //21
     SELECT_FOOD("^\\s*select\\s+food\\s+(\\d+)\\s*$"), //22
     DISPLAY_COMMENTS("^\\s*display\\s+comments\\s*$"), //23
@@ -33,10 +32,8 @@ public enum Inputs {
     DISPLAY_RATING("^\\s*display\\s+rating\\s*$"), //26
     SUBMIT_RATING("^\\s*submit\\s+rating\\s+(\\d+)\\s*$"), //27
     EDIT_RATING("^\\s*edit\\s+rating\\s+(\\d+)\\s*$"), //28
-
     SET_DISCOUNT("^\\s*discount\\s+food\\s+(\\d+)\\s+(\\d*\\.?\\d+)\\s+(\\d+)\\s+hours\\s*$"), //29
     DISPLAY_RATINGS("^\\s*display\\s+ratings\\s*$"), //30
-
     ADD_RESPONSE("^\\s*add\\s+new\\s+response\\s+(\\d+)\\s*$"), //31
     EDIT_RESPONSE("^\\s*edit\\s+response\\s+(\\d+)\\s*$"), //32
     SHOW_LOCATION("^\\s*show\\s+location\\s*$"), //33
