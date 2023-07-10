@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Button fx:id="buttonBox" mnemonicParsing="false" onAction="#buttonBox" prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff6a00 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.DeliveryBoxController">
+<Button fx:id="buttonBox" mnemonicParsing="false" onAction="#buttonBox" prefHeight="192.0" prefWidth="300.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff6a00 0.0%, #ffffff 100.0%);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.DeliveryBoxController">
    <textFill>
       <LinearGradient endX="1.0" endY="1.0" startX="1.0">
          <stops>
@@ -29,34 +29,52 @@
    <graphic>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #ff6a00 0.0%, #ffffff 100.0%);">
          <children>
-            <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="delivery price:">
+            <Text layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="delivery price:">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="restaurant's name:">
+            <Text layoutX="2.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="restaurant's name:">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="deliveryPrice" layoutX="134.0" layoutY="-1.0" prefHeight="30.0" prefWidth="150.0">
+            <TextField fx:id="deliveryPrice" layoutX="126.0" layoutY="7.0" prefHeight="30.0" prefWidth="150.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="restaurantName" layoutX="134.0" layoutY="31.0" prefHeight="30.0" prefWidth="150.0">
+            <TextField fx:id="restaurantName" layoutX="126.0" layoutY="39.0" prefHeight="30.0" prefWidth="150.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="restaurantLocation" layoutX="147.0" layoutY="102.0" mnemonicParsing="false" onAction="#restaurantLocationHandler" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #0aff00 0.0%, #ffffff 100.0%);" text="restaurant's location" />
-            <Button fx:id="customerLocation" layoutX="11.0" layoutY="102.0" mnemonicParsing="false" onAction="#customerLocationHandler" style="-fx-background-color: linear-gradient(from 100.0% 0.0% to 100.0% 100.0%, #0aff00 0.0%, #ffffff 100.0%);" text="customer's location" />
-            <Text layoutX="14.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="order's ID:">
+            <Text layoutX="3.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="order's ID:">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="ordersID" layoutX="133.0" layoutY="65.0" prefHeight="30.0" prefWidth="150.0">
+            <TextField fx:id="ordersID" layoutX="126.0" layoutY="71.0" prefHeight="30.0" prefWidth="150.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Text layoutX="2.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="customer Locatioan :" wrappingWidth="127.65350341796875">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="3.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="restaurant Location:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="customerLocation" layoutX="126.0" layoutY="104.0" prefHeight="25.0" prefWidth="150.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="restaurantLocation" layoutX="126.0" layoutY="136.0" prefHeight="27.0" prefWidth="150.0">
                <font>
                   <Font size="14.0" />
                </font>

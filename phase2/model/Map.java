@@ -83,6 +83,7 @@ public class Map {
             }
         }
         if(showPath) {
+            path.clear();
             //System.out.println(nodeValues.get(destination));
             int index = destination;
             while(index != origin) {
