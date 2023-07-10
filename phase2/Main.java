@@ -26,7 +26,7 @@ public class Main extends Application {
         Scene scene = new Scene(loader.getRoot());
         ((RegisterAndLoginMenuController) loader.getController()).initialize(primaryStage, null, scene, null);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Shahkar");
+        primaryStage.setTitle("Shahkar Completed");
         //primaryStage.setResizable(false);
         primaryStage.show();
     }
