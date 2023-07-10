@@ -37,7 +37,7 @@
             </items>
         </ChoiceBox>
         <TabPane fx:id="tabPane" layoutX="306.0" prefHeight="400.0" prefWidth="298.0" style="-fx-background-color: white;" tabClosingPolicy="UNAVAILABLE" />
-        <Button fx:id="seeComments" onAction="#commentHandler" layoutX="26.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: orange;" text="see comments">
+        <Button fx:id="seeComments" layoutX="26.0" layoutY="314.0" mnemonicParsing="false" onAction="#commentHandler" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: orange;" text="see comments">
             <font>
                 <Font size="15.0" />
             </font>
@@ -52,7 +52,7 @@
                 <Font size="15.0" />
             </font>
         </Text>
-        <Button fx:id="back" onAction="#backHandler" layoutX="26.0" layoutY="352.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: linear-gradient(from 47.3934% 94.3128% to 51.6588% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="352.0" />
+        <Button fx:id="back" layoutX="26.0" layoutY="352.0" mnemonicParsing="false" onAction="#backHandler" prefHeight="26.0" prefWidth="67.0" style="-fx-background-color: linear-gradient(from 47.3934% 94.3128% to 51.6588% 0.0%, #000000 0.0%, #ffffff 100.0%);" text="back" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="352.0" />
         <Label layoutX="160.0" layoutY="130.0" prefHeight="31.0" prefWidth="121.0">
             <font>
                 <Font size="14.0" />
@@ -63,12 +63,12 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbbfc3" height="139.0" layoutX="19.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="251.0" />
-        <ImageView fx:id="ImageVi" fitHeight="139.0" fitWidth="251.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
       <TextField fx:id="name" layoutX="149.0" layoutY="166.0" prefHeight="26.0" prefWidth="121.0" />
       <TextField fx:id="type" layoutX="149.0" layoutY="201.0" prefHeight="26.0" prefWidth="121.0" />
       <TextField fx:id="ID" layoutX="149.0" layoutY="232.0" prefHeight="26.0" prefWidth="121.0" />
       <TextField fx:id="score" layoutX="149.0" layoutY="265.0" prefHeight="26.0" prefWidth="67.0" />
       <Button fx:id="confirm" layoutX="99.0" layoutY="352.0" mnemonicParsing="false" onAction="#confirmHandler" prefHeight="26.0" prefWidth="178.0" style="-fx-background-color: orange;" text="confirm" />
+      <Rectangle fx:id="photoPlace" arcHeight="5.0" arcWidth="5.0" fill="#dde8f2" height="127.0" layoutX="19.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="251.0" />
+      <ImageView fx:id="photo" fitHeight="125.0" fitWidth="251.0" layoutX="19.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

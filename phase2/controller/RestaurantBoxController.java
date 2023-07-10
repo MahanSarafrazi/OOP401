@@ -17,6 +17,7 @@ import phase2.model.Restaurant;
 import phase2.model.RestaurantOwner;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class RestaurantBoxController extends MenuController {
 
@@ -73,6 +74,16 @@ public class RestaurantBoxController extends MenuController {
 
     public void choosePics() {
         for (Restaurant restaurant : ((RestaurantOwner) getManager().getLoggedInUser()).getRestaurants()) {
+            if(restaurant.getID() == ID) {
+                if(restaurant.getPhotoPath() != null) {
+                    Image image = new Image(restaurant.getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
+                    imageView.setImage(image);
+                }
+            }
+        }
+    }
+    public void choosePics(ArrayList<Restaurant> restaurants) {
+        for (Restaurant restaurant : restaurants) {
             if(restaurant.getID() == ID) {
                 if(restaurant.getPhotoPath() != null) {
                     Image image = new Image(restaurant.getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);

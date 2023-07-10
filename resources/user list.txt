@@ -318,7 +318,7 @@
           "ID": 801441,
           "restaurantID": 569095,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 853,
           "restaurantName": "jahan",
           "restaurantLocation": 7,
@@ -812,7 +812,7 @@
               "ID": 801441,
               "restaurantID": 569095,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 853,
               "restaurantName": "jahan",
               "restaurantLocation": 7,
@@ -1818,6 +1818,19 @@
               "rating": 3.0
             }
           ]
+        },
+        {
+          "name": "pashmak2",
+          "orders": [],
+          "ID": 452312,
+          "location": 233,
+          "foodTypes": [
+            "IRANIAN"
+          ],
+          "foods": [],
+          "photoPath": "D:\\University\\2nd semester\\Oop\\Project\\OOP401\\resources\\Pics\\tick.png",
+          "comments": [],
+          "rates": []
         }
       ],
       "userName": "farimaan2",

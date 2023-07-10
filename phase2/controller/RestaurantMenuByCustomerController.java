@@ -7,8 +7,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import phase2.model.Comment;
@@ -20,6 +23,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class RestaurantMenuByCustomerController extends MenuController {
+    @FXML
+    public ImageView photo;
+
+    @FXML
+    public Rectangle photoPlace;
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
         super.initialize(stage,fatherStageController,mainScene,previousScene);
         Restaurant restaurant = getManager().getLoggedInUser().getActiveRestaurant();
@@ -31,6 +39,10 @@ public class RestaurantMenuByCustomerController extends MenuController {
         this.ID.setEditable(false);
         this.score.setText(getManager().averageRating());
         this.score.setEditable(false);
+        if(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath() != null) {
+            Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
+            photo.setImage(image);
+        }
         for (FoodType foodType : restaurant.getFoodType()) {
             VBox vBox = new VBox();
             for (Food food : getManager().getActiveRestaurantActiveFoods()) {
