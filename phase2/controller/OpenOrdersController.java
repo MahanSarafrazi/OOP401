@@ -11,16 +11,15 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import phase2.model.Food;
-import phase2.model.FoodType;
-import phase2.model.Order;
-import phase2.model.RestaurantOwner;
+import phase2.model.*;
 import phase2.view.OrderStatus;
 import phase2.view.ZoomableScrollPane;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.ResourceBundle;
 
 public class OpenOrdersController extends MenuController {
 
@@ -78,12 +77,11 @@ public class OpenOrdersController extends MenuController {
             restaurantName.setText(order.getRestaurantName());
             restaurantName.setEditable(false);
         }
-        if(order.getOrderStatus().equals(OrderStatus.SENT) && getManager().getLoggedInUser() instanceof RestaurantOwner) {
+        if(order.getOrderStatus().equals(OrderStatus.ON_THE_WAY)) {
             orderStatus.setSelected(true);
             orderStatus.setDisable(true);
         }
         setFoods();
-        
     }
 
     public void setFoods() {
@@ -188,10 +186,10 @@ public class OpenOrdersController extends MenuController {
             Line line = new Line();
             line.setStroke(Paint.valueOf("green"));
             line.setStrokeWidth(25);
-            line.setStartX(coordinates[manager.getMap().path.get(i - 1)-1][0]);
-            line.setEndX(coordinates[manager.getMap().path.get(i)-1][0]);
-            line.setStartY(coordinates[manager.getMap().path.get(i - 1)-1][1]);
-            line.setEndY(coordinates[manager.getMap().path.get(i)-1][1]);
+            line.setStartX(coordinates[manager.getMap().path.get(i - 1)][0]);
+            line.setEndX(coordinates[manager.getMap().path.get(i)][0]);
+            line.setStartY(coordinates[manager.getMap().path.get(i - 1)][1]);
+            line.setEndY(coordinates[manager.getMap().path.get(i)][1]);
             if (i == 1) {
                 Circle circle = new Circle(line.getStartX(), line.getStartY(), 50, Paint.valueOf("orange"));
                 pane.getChildren().add(circle);
@@ -225,7 +223,7 @@ public class OpenOrdersController extends MenuController {
 
     public void orderStatusHandler(ActionEvent actionEvent) {
         if(orderStatus.isSelected()) {
-            order.setOrderStatus(OrderStatus.SENT);
+            order.setOrderStatus(OrderStatus.ON_THE_WAY);
             orderStatus.setDisable(true);
         }
     }
