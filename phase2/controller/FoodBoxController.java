@@ -39,20 +39,9 @@ public class FoodBoxController extends MenuController {
     @FXML
     public void buttonBOXHandler(ActionEvent actionEvent) {
         if(isButton) {
-            getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(food.getID());
-            if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
-                FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByOwner.fxml"));
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                Scene scene = new Scene(loader.getRoot());
-                getStage().setScene(scene);
-                ((FoodMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
-                getStage().show();
-            }
-            else  {
+            if (getFatherStageController() instanceof RestaurantsMenuController) {
+                getManager().getLoggedInUser().setActiveRestaurant(food.getRestaurantID());
+                getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(food.getID());
                 FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByCustomer.fxml"));
                 try {
                     loader.load();
@@ -63,6 +52,32 @@ public class FoodBoxController extends MenuController {
                 getStage().setScene(scene);
                 ((FoodMenuUsedByCustomerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
                 getStage().show();
+            }
+            else {
+                getManager().getLoggedInUser().getActiveRestaurant().setOpenedFood(food.getID());
+                if (getManager().getLoggedInUser() instanceof RestaurantOwner) {
+                    FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByOwner.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene = new Scene(loader.getRoot());
+                    getStage().setScene(scene);
+                    ((FoodMenuByOwnerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
+                    getStage().show();
+                } else {
+                    FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/FoodMenuByCustomer.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene = new Scene(loader.getRoot());
+                    getStage().setScene(scene);
+                    ((FoodMenuUsedByCustomerController) loader.getController()).initialize(getStage(), getFatherStageController(), scene, getMainScene());
+                    getStage().show();
+                }
             }
         }
     }

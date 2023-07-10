@@ -113,6 +113,10 @@ public class CustomerMenuController extends MenuController {
         if (locationBugger.getText().equals("0"))
             locationBugger.setStyle("-fx-text-fill: red");
         else {
+            if (searchType.getValue().equals("food")) {
+                openFoods();
+                return;
+            }
             ArrayList<Restaurant> restaurants;
             if (searchType.getValue() == null)
                 restaurants = getManager().normalSearch(searchField.getText(), null);
@@ -128,6 +132,18 @@ public class CustomerMenuController extends MenuController {
         }
     }
 
+    private void openFoods() {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("../view/RestaurantsMenu.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(loader.getRoot());
+        ((RestaurantsMenuController) loader.getController()).initialize2(getStage(), null, scene, getMainScene(),getManager().searchFood(searchField.getText()));
+        super.getStage().setScene(scene);
+        super.getStage().show();
+    }
 
     @FXML
     public void resetHandler1() {

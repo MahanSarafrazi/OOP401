@@ -36,13 +36,16 @@ public class Food {
     private double discount;
     private String restaurantName;
     public String getRestaurantName() {return restaurantName;}
-    public Food(String name, double price, FoodType type,String restaurantName){
+    private int restaurantID;
+    public int getRestaurantID() {return restaurantID;}
+    public Food(String name, double price, FoodType type,String restaurantName,int ID){
         this.name = name;
         this.price = price;
         this.discount = 0;
         this.type = type;
         this.restaurantName=restaurantName;
         this.activation = true;
+        this.restaurantID=ID;
         RandomIDGenerator randomIDGenerator = new RandomIDGenerator();
         this.ID = randomIDGenerator.getLastNumber();
         this.comments = new ArrayList<>();

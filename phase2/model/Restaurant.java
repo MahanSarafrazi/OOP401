@@ -85,7 +85,7 @@ public class Restaurant {
     }
 
     public void AddFood(String foodName, double foodPrice, FoodType foodType) {
-        foods.add(new Food(foodName, foodPrice, foodType,name));
+        foods.add(new Food(foodName, foodPrice, foodType,name,ID));
     }
 
     public void deleteFood(int ID) {
