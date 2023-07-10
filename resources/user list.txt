@@ -14,7 +14,7 @@
       "password": "Cusi7485"
     },
     {
-      "spentMoney": 10177.300000000001,
+      "spentMoney": 11577.300000000001,
       "discountTokens": [],
       "orders": [
         {
@@ -313,13 +313,40 @@
           "foodsCount": [
             23
           ]
+        },
+        {
+          "ID": 801441,
+          "restaurantID": 569095,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 853,
+          "restaurantName": "jahan",
+          "restaurantLocation": 7,
+          "registerDate": "Jul 10, 2023, 3:20:27 PM",
+          "timeOfDelivery": 2380,
+          "timeOfGettingReady": 600,
+          "foods": [
+            {
+              "price": 500.0,
+              "type": "IRANIAN",
+              "name": "kabab",
+              "activation": true,
+              "ID": 600952,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            2
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 489822.7,
+      "charge": 488422.7,
       "location": 853,
       "userName": "fariman1",
       "password": "Fariman1",
@@ -779,6 +806,33 @@
               ],
               "foodsCount": [
                 9
+              ]
+            },
+            {
+              "ID": 801441,
+              "restaurantID": 569095,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 853,
+              "restaurantName": "jahan",
+              "restaurantLocation": 7,
+              "registerDate": "Jul 10, 2023, 3:20:27 PM",
+              "timeOfDelivery": 2380,
+              "timeOfGettingReady": 600,
+              "foods": [
+                {
+                  "price": 500.0,
+                  "type": "IRANIAN",
+                  "name": "kabab",
+                  "activation": true,
+                  "ID": 600952,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                2
               ]
             }
           ],
@@ -1269,7 +1323,8 @@
           "foodTypes": [
             "IRANIAN",
             "DRINK",
-            "DRINK"
+            "DRINK",
+            "INTERNATIONAL_FOOD"
           ],
           "foods": [
             {
@@ -1408,6 +1463,17 @@
                   "responseID": 0
                 }
               ],
+              "rates": []
+            },
+            {
+              "price": 33.0,
+              "type": "INTERNATIONAL_FOOD",
+              "name": "inter",
+              "activation": true,
+              "ID": 141440,
+              "discount": 0.0,
+              "restaurantName": "pashmak",
+              "comments": [],
               "rates": []
             }
           ],
