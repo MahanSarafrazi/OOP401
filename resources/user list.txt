@@ -251,39 +251,23 @@
       "location": 543,
       "userName": "cusi4",
       "password": "Cusi7485"
+    },
+    {
+      "spentMoney": 0.0,
+      "discountTokens": [],
+      "orders": [],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 0.0,
+      "location": 0,
+      "userName": "cusi10",
+      "password": "Cusi7485"
     }
   ],
   "deliverers": [
     {
-      "order": {
-        "ID": 539101,
-        "restaurantID": 652323,
-        "hasDeliverer": true,
-        "orderStatus": "ON_THE_WAY",
-        "customerLocation": 753,
-        "restaurantName": "jojo",
-        "restaurantLocation": 765,
-        "registerDate": "Jul 10, 2023, 6:30:07 PM",
-        "deliveryDate": "Jul 10, 2023, 6:55:11 PM",
-        "timeOfDelivery": 400,
-        "timeOfGettingReady": 300,
-        "foods": [
-          {
-            "price": 10000.0,
-            "type": "IRANIAN",
-            "name": "joje",
-            "activation": true,
-            "ID": 428064,
-            "discount": 0.0,
-            "restaurantID": 0,
-            "comments": [],
-            "rates": []
-          }
-        ],
-        "foodsCount": [
-          1
-        ]
-      },
       "location": 423,
       "userName": "deli",
       "password": "Deli7485"
@@ -410,7 +394,7 @@
               "ID": 949542,
               "restaurantID": 652323,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 978,
               "restaurantName": "jojo",
               "restaurantLocation": 765,
@@ -438,7 +422,7 @@
               "ID": 676981,
               "restaurantID": 652323,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 978,
               "restaurantName": "jojo",
               "restaurantLocation": 765,
@@ -466,7 +450,7 @@
               "ID": 292050,
               "restaurantID": 652323,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 543,
               "restaurantName": "jojo",
               "restaurantLocation": 765,
@@ -494,7 +478,7 @@
               "ID": 206823,
               "restaurantID": 652323,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 543,
               "restaurantName": "jojo",
               "restaurantLocation": 765,
