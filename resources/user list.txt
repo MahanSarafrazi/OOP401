@@ -111,6 +111,146 @@
       "location": 753,
       "userName": "cusi2",
       "password": "Cusi7485"
+    },
+    {
+      "spentMoney": 180000.00000000003,
+      "discountTokens": [],
+      "orders": [
+        {
+          "ID": 949542,
+          "restaurantID": 652323,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 978,
+          "restaurantName": "jojo",
+          "restaurantLocation": 765,
+          "registerDate": "Jul 10, 2023, 7:05:27 PM",
+          "timeOfDelivery": 1000,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 100000.0,
+              "type": "IRANIAN",
+              "name": "lllllllll",
+              "activation": true,
+              "ID": 825411,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        },
+        {
+          "ID": 676981,
+          "restaurantID": 652323,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 978,
+          "restaurantName": "jojo",
+          "restaurantLocation": 765,
+          "registerDate": "Jul 10, 2023, 7:07:49 PM",
+          "timeOfDelivery": 1000,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 50000.0,
+              "type": "IRANIAN",
+              "name": "lllllllll",
+              "activation": true,
+              "ID": 825411,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        }
+      ],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 820000.0,
+      "location": 978,
+      "userName": "cusi3",
+      "password": "Cusi7485"
+    },
+    {
+      "spentMoney": 1.3052E7,
+      "discountTokens": [],
+      "orders": [
+        {
+          "ID": 292050,
+          "restaurantID": 652323,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 543,
+          "restaurantName": "jojo",
+          "restaurantLocation": 765,
+          "registerDate": "Jul 10, 2023, 7:12:06 PM",
+          "timeOfDelivery": 1260,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 1.0E7,
+              "type": "IRANIAN",
+              "name": "koss",
+              "activation": true,
+              "ID": 507394,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        },
+        {
+          "ID": 206823,
+          "restaurantID": 652323,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 543,
+          "restaurantName": "jojo",
+          "restaurantLocation": 765,
+          "registerDate": "Jul 10, 2023, 7:13:12 PM",
+          "timeOfDelivery": 1260,
+          "timeOfGettingReady": 300,
+          "foods": [
+            {
+              "price": 50000.0,
+              "type": "IRANIAN",
+              "name": "lllllllll",
+              "activation": true,
+              "ID": 825411,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            1
+          ]
+        }
+      ],
+      "cart": {
+        "foods": [],
+        "foodsCount": []
+      },
+      "charge": 1948000.0,
+      "location": 543,
+      "userName": "cusi4",
+      "password": "Cusi7485"
     }
   ],
   "deliverers": [
@@ -213,7 +353,7 @@
               "ID": 539101,
               "restaurantID": 652323,
               "hasDeliverer": true,
-              "orderStatus": "ON_THE_WAY",
+              "orderStatus": "SENT",
               "customerLocation": 753,
               "restaurantName": "jojo",
               "restaurantLocation": 765,
@@ -242,7 +382,7 @@
               "ID": 332586,
               "restaurantID": 652323,
               "hasDeliverer": false,
-              "orderStatus": "NOT_READY",
+              "orderStatus": "ON_THE_WAY",
               "customerLocation": 753,
               "restaurantName": "jojo",
               "restaurantLocation": 765,
@@ -265,6 +405,118 @@
               "foodsCount": [
                 2
               ]
+            },
+            {
+              "ID": 949542,
+              "restaurantID": 652323,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 978,
+              "restaurantName": "jojo",
+              "restaurantLocation": 765,
+              "registerDate": "Jul 10, 2023, 7:05:27 PM",
+              "timeOfDelivery": 1000,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 100000.0,
+                  "type": "IRANIAN",
+                  "name": "lllllllll",
+                  "activation": true,
+                  "ID": 825411,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            },
+            {
+              "ID": 676981,
+              "restaurantID": 652323,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 978,
+              "restaurantName": "jojo",
+              "restaurantLocation": 765,
+              "registerDate": "Jul 10, 2023, 7:07:49 PM",
+              "timeOfDelivery": 1000,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 50000.0,
+                  "type": "IRANIAN",
+                  "name": "lllllllll",
+                  "activation": true,
+                  "ID": 825411,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            },
+            {
+              "ID": 292050,
+              "restaurantID": 652323,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 543,
+              "restaurantName": "jojo",
+              "restaurantLocation": 765,
+              "registerDate": "Jul 10, 2023, 7:12:06 PM",
+              "timeOfDelivery": 1260,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 1.0E7,
+                  "type": "IRANIAN",
+                  "name": "koss",
+                  "activation": true,
+                  "ID": 507394,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
+            },
+            {
+              "ID": 206823,
+              "restaurantID": 652323,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 543,
+              "restaurantName": "jojo",
+              "restaurantLocation": 765,
+              "registerDate": "Jul 10, 2023, 7:13:12 PM",
+              "timeOfDelivery": 1260,
+              "timeOfGettingReady": 300,
+              "foods": [
+                {
+                  "price": 50000.0,
+                  "type": "IRANIAN",
+                  "name": "lllllllll",
+                  "activation": true,
+                  "ID": 825411,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                1
+              ]
             }
           ],
           "ID": 652323,
@@ -279,6 +531,31 @@
               "name": "joje",
               "activation": true,
               "ID": 428064,
+              "discount": 0.0,
+              "restaurantName": "jojo",
+              "restaurantID": 652323,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 100000.0,
+              "type": "IRANIAN",
+              "name": "lllllllll",
+              "activation": true,
+              "ID": 825411,
+              "expireDate": "Jul 10, 2023, 8:06:33 PM",
+              "discount": 50.0,
+              "restaurantName": "jojo",
+              "restaurantID": 652323,
+              "comments": [],
+              "rates": []
+            },
+            {
+              "price": 1.0E7,
+              "type": "IRANIAN",
+              "name": "koss",
+              "activation": true,
+              "ID": 507394,
               "discount": 0.0,
               "restaurantName": "jojo",
               "restaurantID": 652323,
