@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
@@ -72,6 +73,9 @@ public class FoodMenuByOwnerController extends MenuController {
     @FXML
     public CheckBox activation;
 
+    @FXML
+    public AnchorPane pane;
+
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getID();
 
     @Override
@@ -84,6 +88,7 @@ public class FoodMenuByOwnerController extends MenuController {
         discount.setText(Double.toString(getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getDiscount()));
         score.setText(getManager().averageRating());
         activation.setSelected(getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood().getActivation());
+        pane.setStyle("-fx-background-color: " + getTheme());
         startTimeLeft();
     }
 

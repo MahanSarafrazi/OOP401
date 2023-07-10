@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import phase2.model.Customer;
 import phase2.model.Food;
@@ -14,6 +15,9 @@ import phase2.model.RestaurantList;
 import java.io.IOException;
 
 public class FoodMenuUsedByCustomerController extends MenuController{
+    @FXML
+    public AnchorPane pane;
+
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
         super.initialize(stage,fatherStageController,mainScene,previousScene);
         Food food = getManager().getLoggedInUser().getActiveRestaurant().getOpenedFood();
@@ -30,6 +34,7 @@ public class FoodMenuUsedByCustomerController extends MenuController{
             count.setText("add "+customer.getCart().foodCount(food)+" foods to cart");
         restaurantName.setText(customer.getActiveRestaurant().getName());
         rID=customer.getActiveRestaurant().getID();
+        pane.setStyle("-fx-background-color: " + getTheme());
     }
     private int rID;
     @FXML

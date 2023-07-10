@@ -23,9 +23,13 @@ import java.util.ResourceBundle;
 
 public class OpenOrdersController extends MenuController {
 
+    @FXML
+    public AnchorPane pane;
+
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene, ArrayList<Order> orders, int ID) {
         super.initialize(stage, fatherStageController, mainScene, previousScene);
         this.orders=orders;
+        pane.setStyle("-fx-background-color: " + getTheme());
         this.ID2.setText(String.valueOf(getManager().getOrderByID(orders,ID).getRestaurantID()));
     }
 

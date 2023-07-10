@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.FoodMenuUsedByCustomerController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.FoodMenuUsedByCustomerController">
     <children>
         <Button fx:id="back" layoutX="274.0" layoutY="374.0" mnemonicParsing="false" onAction="#backHandler" style="-fx-background-color: linear-gradient(from 47.8673% 0.0% to 51.1848% 100.0%, #000000 0.0%, #ffffff 100.0%);" text="back" />
         <Text layoutX="26.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="restaurants's name:" textAlignment="JUSTIFY" wrappingWidth="154.39999999999986">

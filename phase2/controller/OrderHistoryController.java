@@ -30,6 +30,13 @@ public class OrderHistoryController extends MenuController {
 
     @FXML
     public Button showCustomerLocation;
+
+    @Override
+    public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
+        super.initialize(stage, fatherStageController, mainScene, previousScene);
+        pane.setStyle("-fx-background-color: " + getTheme());
+    }
+
     @FXML
     public TabPane tabPane;
 
@@ -38,6 +45,9 @@ public class OrderHistoryController extends MenuController {
 
     @FXML
     public CheckBox orderStatus;
+
+    @FXML
+    public AnchorPane pane;
 
     private Order order;
 

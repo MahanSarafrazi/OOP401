@@ -102,6 +102,9 @@ public class RestaurantMenuByOwnerController extends MenuController {
     private final int ID = getManager().getLoggedInUser().getActiveRestaurant().getID();
 
     @FXML
+    public AnchorPane pane;
+
+    @FXML
     public void seeCommentsHandler(ActionEvent actionEvent) {
         FXMLLoader commentsLoader = new FXMLLoader(this.getClass().getResource("../view/Comments.fxml"));
         try {
@@ -122,6 +125,7 @@ public class RestaurantMenuByOwnerController extends MenuController {
         restaurantID.setText(Integer.toString(ID));
         foodType.setText(getManager().getLoggedInUser().getActiveRestaurant().getFoodType().get(0).name());
         score.setText(getManager().averageRating());
+        pane.setStyle("-fx-background-color: " + getTheme());
         if(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath() != null) {
             Image image = new Image(getManager().getLoggedInUser().getActiveRestaurant().getPhotoPath(), photoPlace.getWidth(), photoPlace.getHeight(), false, false);
             photo.setImage(image);

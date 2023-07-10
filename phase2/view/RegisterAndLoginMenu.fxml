@@ -5,8 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane fx:controller="phase2.controller.RegisterAndLoginMenuController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: cornsilk;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: cornsilk;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.RegisterAndLoginMenuController">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: cornsilk;">
          <children>
@@ -15,9 +14,10 @@
                   <Font size="25.0" />
                </font>
             </Text>
-            <Button fx:id="login" alignment="CENTER" layoutX="179.0" layoutY="230.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: aqua;" text="Login" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
-            <Button fx:id="exit" alignment="CENTER" layoutX="190.0" layoutY="292.0" mnemonicParsing="false" onAction="#exitHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: coral;" text="Exit" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
-            <Button fx:id="register" alignment="CENTER" layoutX="179.0" layoutY="168.0" mnemonicParsing="false" onAction="#registerHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: chartreuse;" text="Register" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+            <Button fx:id="login" alignment="CENTER" layoutX="190.0" layoutY="194.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: aqua;" text="Login" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+            <Button fx:id="exit" alignment="CENTER" layoutX="190.0" layoutY="325.0" mnemonicParsing="false" onAction="#exitHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: coral;" text="Exit" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+            <Button fx:id="register" alignment="CENTER" layoutX="190.0" layoutY="131.0" mnemonicParsing="false" onAction="#registerHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: chartreuse;" text="Register" AnchorPane.bottomAnchor="221.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+            <Button fx:id="theme" alignment="CENTER" layoutX="188.0" layoutY="259.0" mnemonicParsing="false" onAction="#themeHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: orange;" text="Theme" />
          </children>
       </AnchorPane>
    </center>

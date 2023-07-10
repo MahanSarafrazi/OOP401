@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import phase2.model.Cart;
@@ -13,6 +14,9 @@ import phase2.model.Customer;
 import java.io.IOException;
 
 public class CartController extends MenuController{
+    @FXML
+    public AnchorPane pane;
+
     @Override
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
         super.initialize(stage,fatherStageController,mainScene,previousScene);
@@ -32,6 +36,7 @@ public class CartController extends MenuController{
         this.totalPrice.setEditable(false);
         this.accountCharge.setText(String.valueOf(customer.getCharge()));
         this.accountCharge.setEditable(false);
+        pane.setStyle("-fx-background-color: " + getTheme());
         for (String string : customer.getDiscountTokens())
             this.useDiscountTokens.getItems().add(string);
         for (int i = 0 ; i < customer.getCart().getFoods().size() ; ++i) {
