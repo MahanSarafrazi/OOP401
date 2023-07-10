@@ -22,6 +22,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CustomerMenuController extends MenuController {
+    @FXML
+    public AnchorPane pane;
+
     public void initialize(Stage stage, MenuController fatherStageController, Scene mainScene, Scene previousScene) {
         super.initialize(stage,fatherStageController,mainScene,previousScene);
         Customer customer = (Customer) getManager().getLoggedInUser();
@@ -65,6 +68,7 @@ public class CustomerMenuController extends MenuController {
         Collections.reverse(customer.getOrders());
         this.locationBugger.setText(Integer.toString(customer.location));
         locationBugger.setEditable(false);
+        pane.setStyle("-fx-background-color: " + getTheme());
     }
     @FXML
     public ComboBox<String> searchType;
