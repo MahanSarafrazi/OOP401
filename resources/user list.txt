@@ -14,7 +14,7 @@
       "password": "Cusi7485"
     },
     {
-      "spentMoney": 22000.0,
+      "spentMoney": 44000.0,
       "discountTokens": [],
       "orders": [
         {
@@ -73,13 +73,41 @@
           "foodsCount": [
             1
           ]
+        },
+        {
+          "ID": 332586,
+          "restaurantID": 652323,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 753,
+          "restaurantName": "jojo",
+          "restaurantLocation": 765,
+          "registerDate": "Jul 10, 2023, 6:49:38 PM",
+          "timeOfDelivery": 400,
+          "timeOfGettingReady": 600,
+          "foods": [
+            {
+              "price": 10000.0,
+              "type": "IRANIAN",
+              "name": "joje",
+              "activation": true,
+              "ID": 428064,
+              "discount": 0.0,
+              "restaurantID": 0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            2
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 978000.0,
+      "charge": 956000.0,
       "location": 753,
       "userName": "cusi2",
       "password": "Cusi7485"
@@ -208,6 +236,34 @@
               ],
               "foodsCount": [
                 1
+              ]
+            },
+            {
+              "ID": 332586,
+              "restaurantID": 652323,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 753,
+              "restaurantName": "jojo",
+              "restaurantLocation": 765,
+              "registerDate": "Jul 10, 2023, 6:49:38 PM",
+              "timeOfDelivery": 400,
+              "timeOfGettingReady": 600,
+              "foods": [
+                {
+                  "price": 10000.0,
+                  "type": "IRANIAN",
+                  "name": "joje",
+                  "activation": true,
+                  "ID": 428064,
+                  "discount": 0.0,
+                  "restaurantID": 0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                2
               ]
             }
           ],
