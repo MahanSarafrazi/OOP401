@@ -92,7 +92,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="timeLeft" layoutX="226.0" layoutY="194.0" />
+      <TextField fx:id="timeLeft" editable="false" layoutX="226.0" layoutY="194.0" />
       <CheckBox fx:id="activation" layoutX="432.0" layoutY="86.0" mnemonicParsing="false" onAction="#activationHandler" text="food's activation">
          <font>
             <Font size="15.0" />

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: cornsilk;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phase2.controller.RegisterAndLoginMenuController">
-    <children>
-        <Text layoutX="232.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" textAlignment="CENTER" wrappingWidth="122.13671875" AnchorPane.topAnchor="32.0">
-            <font>
-                <Font size="25.0" />
-            </font>
-        </Text>
-        <Button fx:id="login" alignment="CENTER" layoutX="179.0" layoutY="230.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: aqua;" text="Login" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
-        <Button fx:id="exit" alignment="CENTER" layoutX="190.0" layoutY="292.0" mnemonicParsing="false" onAction="#exitHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: coral;" text="Exit" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
-        <Button fx:id="register" alignment="CENTER" layoutX="179.0" layoutY="168.0" mnemonicParsing="false" onAction="#registerHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: chartreuse;" text="Register" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
-    </children>
-</AnchorPane>
+
+<BorderPane fx:controller="phase2.controller.RegisterAndLoginMenuController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: cornsilk;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: cornsilk;">
+         <children>
+            <Text layoutX="232.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome!" textAlignment="CENTER" wrappingWidth="122.13671875" AnchorPane.topAnchor="32.0">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <Button fx:id="login" alignment="CENTER" layoutX="179.0" layoutY="230.0" mnemonicParsing="false" onAction="#loginHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: aqua;" text="Login" AnchorPane.bottomAnchor="122.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+            <Button fx:id="exit" alignment="CENTER" layoutX="190.0" layoutY="292.0" mnemonicParsing="false" onAction="#exitHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: coral;" text="Exit" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+            <Button fx:id="register" alignment="CENTER" layoutX="179.0" layoutY="168.0" mnemonicParsing="false" onAction="#registerHandler" prefHeight="48.0" prefWidth="224.0" style="-fx-background-color: chartreuse;" text="Register" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="190.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
