@@ -290,14 +290,14 @@
       "password": "Cusi7485"
     },
     {
-      "spentMoney": 12000.000000000002,
+      "spentMoney": 48000.00000000001,
       "discountTokens": [],
       "orders": [
         {
           "ID": 339214,
           "restaurantID": 340500,
           "hasDeliverer": false,
-          "orderStatus": "NOT_READY",
+          "orderStatus": "ON_THE_WAY",
           "customerLocation": 671,
           "restaurantName": "kos",
           "restaurantLocation": 765,
@@ -319,13 +319,40 @@
           "foodsCount": [
             1
           ]
+        },
+        {
+          "ID": 591759,
+          "restaurantID": 340500,
+          "hasDeliverer": false,
+          "orderStatus": "NOT_READY",
+          "customerLocation": 671,
+          "restaurantName": "kos",
+          "restaurantLocation": 765,
+          "registerDate": "Jul 10, 2023, 5:09:28 PM",
+          "timeOfDelivery": 780,
+          "timeOfGettingReady": 900,
+          "foods": [
+            {
+              "price": 10000.0,
+              "type": "IRANIAN",
+              "name": "mame",
+              "activation": true,
+              "ID": 810334,
+              "discount": 0.0,
+              "comments": [],
+              "rates": []
+            }
+          ],
+          "foodsCount": [
+            3
+          ]
         }
       ],
       "cart": {
         "foods": [],
         "foodsCount": []
       },
-      "charge": 988000.0,
+      "charge": 952000.0,
       "location": 671,
       "userName": "cusi4",
       "password": "Cusi7485"
@@ -385,7 +412,7 @@
         "restaurantName": "kos",
         "restaurantLocation": 765,
         "registerDate": "Jul 10, 2023, 4:56:48 PM",
-        "deliveryDate": "Jul 10, 2023, 5:18:13 PM",
+        "deliveryDate": "Jul 10, 2023, 5:27:43 PM",
         "timeOfDelivery": 780,
         "timeOfGettingReady": 300,
         "foods": [
@@ -803,6 +830,33 @@
               "foodsCount": [
                 1
               ]
+            },
+            {
+              "ID": 591759,
+              "restaurantID": 340500,
+              "hasDeliverer": false,
+              "orderStatus": "NOT_READY",
+              "customerLocation": 671,
+              "restaurantName": "kos",
+              "restaurantLocation": 765,
+              "registerDate": "Jul 10, 2023, 5:09:28 PM",
+              "timeOfDelivery": 780,
+              "timeOfGettingReady": 900,
+              "foods": [
+                {
+                  "price": 10000.0,
+                  "type": "IRANIAN",
+                  "name": "mame",
+                  "activation": true,
+                  "ID": 810334,
+                  "discount": 0.0,
+                  "comments": [],
+                  "rates": []
+                }
+              ],
+              "foodsCount": [
+                3
+              ]
             }
           ],
           "ID": 340500,
@@ -823,8 +877,17 @@
               "rates": []
             }
           ],
+          "photoPath": "C:\\Users\\Lenovo\\OneDrive\\تصاویر\\تصاویر از صفحه\\Screenshot (553).png",
           "comments": [],
-          "rates": []
+          "rates": [
+            {
+              "user": {
+                "userName": "cusi4",
+                "password": "Cusi7485"
+              },
+              "rating": 2.0
+            }
+          ]
         }
       ],
       "userName": "resi3",

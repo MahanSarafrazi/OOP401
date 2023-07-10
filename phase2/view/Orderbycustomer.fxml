@@ -34,7 +34,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Button fx:id="showEstimatedDeliveryTime" onAction="#estimateTime" layoutX="25.0" layoutY="250.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show estimated delivery time" />
+      <Button fx:id="showEstimatedDeliveryTime" layoutX="25.0" layoutY="250.0" mnemonicParsing="false" onAction="#estimateTime" prefHeight="29.0" prefWidth="259.0" style="-fx-background-color: orange;" text="show estimated delivery time" />
       <TextField fx:id="totalPrice" layoutX="155.0" layoutY="19.0" prefHeight="30.0" prefWidth="129.0">
          <font>
             <Font size="14.0" />
